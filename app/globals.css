@@ -1,0 +1,605 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 222.2 47.4% 11.2%;
+    --primary-foreground: 210 40% 98%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 210 40% 96.1%;
+    --accent-foreground: 222.2 47.4% 11.2%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 222.2 84% 4.9%;
+
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* Custom container */
+.container-custom {
+  @apply mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl;
+}
+
+/* Section spacing */
+.section-spacing {
+  @apply py-12 md:py-16 lg:py-20;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+  @apply absolute left-1/2 z-10 mt-2 w-screen max-w-5xl -translate-x-1/2 transform px-4 sm:px-0 opacity-0 invisible transition-all duration-300 ease-in-out;
+}
+
+.dropdown-active {
+  @apply opacity-100 visible;
+}
+
+.dropdown-content {
+  @apply overflow-hidden rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white;
+}
+
+/* Regions column */
+.regions-column {
+  @apply bg-gray-50 p-5;
+}
+
+.regions-title {
+  @apply text-sm font-medium text-gray-500 mb-4;
+}
+
+.regions-list {
+  @apply space-y-0; /* Remove default spacing */
+}
+
+.regions-list li {
+  margin-bottom: 1.3rem; /* 30% increased spacing between B2C and B2B */
+}
+
+.region-button {
+  @apply flex items-center space-x-2 text-base font-medium text-gray-900 hover:text-red-600 transition-colors duration-200 py-1;
+}
+
+.region-active {
+  @apply text-red-600;
+}
+
+.region-icon {
+  @apply w-5 h-5 text-gray-400;
+}
+
+/* Destinations content */
+.destinations-content {
+  @apply grid grid-cols-1 gap-5 p-5;
+}
+
+.region-layout {
+  @apply grid grid-cols-1 md:grid-cols-3 gap-8;
+}
+
+.destinations-columns {
+  @apply col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8;
+}
+
+.destinations-column {
+  @apply space-y-4;
+}
+
+.destinations-title {
+  @apply text-base font-medium text-gray-900 mb-2;
+}
+
+.destinations-list {
+  @apply space-y-3;
+  gap: 0.6rem; /* 20% increased spacing between service items */
+}
+
+.destination-item {
+  @apply text-sm text-gray-700;
+}
+
+.sub-region-icon {
+  @apply w-5 h-5 mr-2 text-red-500;
+}
+
+/* Region image */
+.region-image {
+  @apply hidden md:block;
+}
+
+/* Menu item hover effect */
+.menu-item-hover {
+  @apply hover:text-red-600 transition-colors duration-200;
+}
+
+/* Icon rotation */
+.icon-rotate {
+  @apply transition-transform duration-200;
+}
+
+/* Animation classes */
+.menu-fade-in {
+  animation: fadeIn 0.3s ease-in-out forwards;
+  opacity: 0;
+}
+
+.menu-fade-in-right {
+  animation: fadeInRight 0.3s ease-in-out forwards;
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.menu-stagger-1 {
+  animation-delay: 0.05s;
+}
+
+.menu-stagger-2 {
+  animation-delay: 0.1s;
+}
+
+.menu-stagger-3 {
+  animation-delay: 0.15s;
+}
+
+.menu-stagger-4 {
+  animation-delay: 0.2s;
+}
+
+.menu-stagger-5 {
+  animation-delay: 0.25s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* Mobile menu styles */
+.mobile-menu-container {
+  @apply space-y-2;
+}
+
+.mobile-menu-title {
+  @apply flex w-full items-center justify-between py-2 text-lg font-medium;
+}
+
+.mobile-menu-title-text {
+  @apply text-base font-medium;
+}
+
+.mobile-menu-icon {
+  @apply h-5 w-5 transition-transform duration-200;
+}
+
+.mobile-menu-icon-rotate {
+  @apply rotate-180;
+}
+
+.mobile-divider {
+  @apply border-t my-2;
+}
+
+.mobile-menu-section {
+  @apply py-1;
+}
+
+.mobile-menu-animation {
+  @apply space-y-3 mt-2;
+}
+
+.mobile-category {
+  @apply rounded-md overflow-hidden transition-all duration-300 ease-in-out;
+  margin-bottom: 1.2rem; /* 30% increased spacing between B2C and B2B in mobile */
+}
+
+.mobile-category-active {
+  @apply bg-gray-50;
+}
+
+.mobile-category-button {
+  @apply flex w-full items-center justify-between p-2 text-base font-medium;
+}
+
+.mobile-category-icon {
+  @apply w-5 h-5 mr-2 text-gray-500;
+}
+
+.mobile-category-content {
+  @apply overflow-hidden transition-all duration-300 ease-in-out space-y-1 px-2;
+}
+
+.mobile-subcategory {
+  @apply rounded-md overflow-hidden transition-all duration-300 ease-in-out;
+}
+
+.mobile-subcategory-button {
+  @apply flex w-full items-center justify-between p-2 text-sm font-medium;
+}
+
+.mobile-subcategory-icon {
+  @apply w-4 h-4 mr-2 text-red-500;
+}
+
+.mobile-subcategory-content {
+  @apply overflow-hidden transition-all duration-300 ease-in-out space-y-1 px-2;
+}
+
+.mobile-link {
+  @apply flex items-center p-2 text-sm text-gray-700 rounded-md hover:bg-gray-100;
+  margin-bottom: 0.6rem; /* 20% increased spacing between service items in mobile */
+}
+
+/* Ripple effect */
+.ripple-effect {
+  @apply relative overflow-hidden;
+}
+
+.ripple-effect::after {
+  content: "";
+  @apply absolute bg-gray-200 rounded-full opacity-0 transform scale-0 transition-all duration-500 ease-in-out;
+}
+
+.ripple-effect:active::after {
+  @apply opacity-30 scale-100;
+  padding: 50%;
+  left: var(--ripple-x, 0);
+  top: var(--ripple-y, 0);
+  transform: translate(-50%, -50%) scale(1);
+}
+
+/* Icon scale effect */
+.icon-scale {
+  @apply transition-transform duration-200;
+}
+
+.icon-scale:hover {
+  @apply transform scale-110;
+}
+
+/* New animations */
+.animate-fade-in {
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.animate-fade-in-delay {
+  animation: fadeIn 1s ease-in-out 0.3s forwards;
+  opacity: 0;
+}
+
+.animate-fade-in-delay-2 {
+  animation: fadeIn 1s ease-in-out 0.6s forwards;
+  opacity: 0;
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-15px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+/* Prose styles for blog content */
+.prose {
+  @apply max-w-none text-gray-800 leading-relaxed;
+  font-size: 16px;
+}
+
+.prose h1 {
+  @apply text-3xl md:text-4xl font-bold text-gray-900 mb-6 mt-8 leading-tight;
+  color: #1f2937;
+  border-bottom: 3px solid #ef4444;
+  padding-bottom: 0.5rem;
+}
+
+.prose h2 {
+  @apply text-2xl md:text-3xl font-semibold text-gray-900 mb-4 mt-8 leading-tight;
+  color: #374151;
+  position: relative;
+  padding-left: 1rem;
+}
+
+.prose h2::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4px;
+  background: linear-gradient(to bottom, #ef4444, #dc2626);
+  border-radius: 2px;
+}
+
+.prose h3 {
+  @apply text-xl md:text-2xl font-semibold text-gray-900 mb-3 mt-6 leading-tight;
+  color: #4b5563;
+  padding-left: 0.75rem;
+  border-left: 3px solid #f87171;
+}
+
+.prose h4 {
+  @apply text-lg md:text-xl font-semibold text-gray-900 mb-3 mt-6 leading-tight;
+  color: #6b7280;
+}
+
+.prose h5 {
+  @apply text-base md:text-lg font-semibold text-gray-900 mb-2 mt-4 leading-tight;
+}
+
+.prose h6 {
+  @apply text-base font-semibold text-gray-900 mb-2 mt-4 leading-tight;
+}
+
+.prose p {
+  @apply mb-4 text-gray-700 leading-relaxed;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.prose strong {
+  @apply font-semibold;
+  color: #1f2937;
+  background: linear-gradient(120deg, #fef3c7 0%, #fcd34d 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 88%;
+  padding: 0 2px;
+}
+
+.prose em {
+  @apply italic;
+  color: #6b7280;
+}
+
+.prose ul {
+  @apply list-none ml-0 mb-6 space-y-3;
+}
+
+.prose ul li {
+  @apply relative pl-6 text-gray-700 leading-relaxed;
+  position: relative;
+}
+
+.prose ul li::before {
+  content: "▶";
+  position: absolute;
+  left: 0;
+  color: #ef4444;
+  font-size: 0.75rem;
+  top: 0.25rem;
+}
+
+.prose ol {
+  @apply list-decimal ml-6 mb-6 space-y-3;
+  counter-reset: item;
+}
+
+.prose ol li {
+  @apply text-gray-700 leading-relaxed;
+  line-height: 1.8;
+}
+
+.prose li strong {
+  @apply font-semibold text-gray-900;
+  background: none;
+  padding: 0;
+}
+
+.prose blockquote {
+  @apply border-l-4 border-red-500 pl-6 my-8 italic text-gray-700 rounded-r-lg;
+  background: linear-gradient(135deg, #fef3f2 0%, #fee2e2 100%);
+  padding: 1.5rem 1.5rem 1.5rem 2rem;
+  position: relative;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.prose blockquote::before {
+  content: "\201C";
+  font-size: 4rem;
+  color: #ef4444;
+  position: absolute;
+  top: -0.5rem;
+  left: 1rem;
+  font-family: Georgia, serif;
+  opacity: 0.3;
+}
+
+.prose table {
+  @apply w-full border-collapse my-8;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+.prose th {
+  @apply px-6 py-4 text-left font-semibold;
+  background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-size: 0.875rem;
+}
+
+.prose td {
+  @apply px-6 py-4 text-gray-700;
+  border-bottom: 1px solid #e5e7eb;
+  transition: background-color 0.2s ease;
+}
+
+.prose tr:hover td {
+  background-color: #f9fafb;
+}
+
+.prose tr:nth-child(even) {
+  background-color: #f8fafc;
+}
+
+.prose code {
+  @apply px-2 py-1 rounded text-sm font-mono;
+  background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%);
+  color: #dc2626;
+  border: 1px solid #fca5a5;
+}
+
+.prose pre {
+  @apply p-6 rounded-lg overflow-x-auto my-8;
+  background: linear-gradient(135deg, #1f2937 0%, #111827 100%);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+}
+
+.prose pre code {
+  @apply bg-transparent p-0;
+  color: #e5e7eb;
+  border: none;
+  background: none;
+}
+
+.prose a {
+  @apply font-medium transition-all duration-200;
+  color: #ef4444;
+  text-decoration: none;
+  background-image: linear-gradient(120deg, #fecaca 0%, #fecaca 100%);
+  background-repeat: no-repeat;
+  background-size: 100% 0.2em;
+  background-position: 0 88%;
+  transition: background-size 0.25s ease-in;
+}
+
+.prose a:hover {
+  background-size: 100% 1.5em;
+  color: #dc2626;
+}
+
+.prose hr {
+  @apply my-12;
+  border: none;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #ef4444, transparent);
+}
+
+.prose img {
+  @apply max-w-full h-auto rounded-lg my-8;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease;
+}
+
+.prose img:hover {
+  transform: scale(1.02);
+}
+
+/* Special styling for case studies and highlight boxes */
+.prose .highlight-box {
+  @apply my-8 p-6 rounded-lg;
+  background: linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%);
+  border-left: 4px solid #3b82f6;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .region-layout {
+    @apply grid-cols-1;
+  }
+
+  .destinations-columns {
+    @apply col-span-1 grid-cols-1;
+  }
+
+  .prose h1 {
+    @apply text-2xl mb-4;
+  }
+
+  .prose h2 {
+    @apply text-xl mb-3;
+  }
+
+  .prose h3 {
+    @apply text-lg mb-3;
+  }
+
+  .prose h4 {
+    @apply text-base mb-2;
+  }
+}

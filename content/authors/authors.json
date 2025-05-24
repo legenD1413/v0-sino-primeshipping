@@ -1,0 +1,25 @@
+{
+  "authors": [
+    {
+      "id": "zhang-ming",
+      "name": "Ming Zhang",
+      "role": "Logistics Expert",
+      "bio": "10 years of China-North America logistics experience, specializing in international supply chain optimization and maritime shipping strategies.",
+      "avatar": "/avatars/zhang-ming.png"
+    },
+    {
+      "id": "li-wei",
+      "name": "Wei Li",
+      "role": "Customs Affairs Consultant",
+      "bio": "Former customs official, now providing customs clearance and compliance consulting for cross-border e-commerce businesses.",
+      "avatar": "/avatars/li-wei.png"
+    },
+    {
+      "id": "wang-jing",
+      "name": "Jing Wang",
+      "role": "E-commerce Logistics Specialist",
+      "bio": "E-commerce supply chain management expert, proficient in FBA and global warehousing logistics solutions.",
+      "avatar": "/avatars/wang-jing.png"
+    }
+  ]
+} 
