@@ -13,7 +13,7 @@ export function Footer() {
               <span className="font-bold">SinoPrime Shipping</span>
             </Link>
             <p className="mb-4 text-sm text-muted-foreground">
-              Professional international logistics solutions from China to worldwide destinations.
+              Professional international logistics solutions from China to Canada and USA destinations.
             </p>
             <div className="flex space-x-4">
               <Link href="#" className="text-muted-foreground hover:text-primary">

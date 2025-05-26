@@ -82,7 +82,7 @@ export default function DirectToConsumerShippingPage() {
               Etsy, etc.), handling the picking, packing, and final delivery of orders from China to USA and Canada.
             </p>
           </div>
-          <div className="relative rounded-xl overflow-hidden shadow-xl">
+          <div className="relative rounded-xl overflow-hidden">
             <ImageFallbackWrapper
               src="/b2c-services-image.jpg"
               fallbackSrc="/ecommerce-shipping-warehouse.png"
@@ -426,7 +426,7 @@ export default function DirectToConsumerShippingPage() {
         <div className="mb-16">
           <h2 className="text-3xl font-bold mb-8 text-center">How We Add Value as Your China Fulfillment Partner</h2>
           <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div className="relative rounded-xl overflow-hidden shadow-xl">
+            <div className="relative rounded-xl overflow-hidden">
               <ImageFallbackWrapper
                 src="/ecommerce-fulfillment-center.png"
                 fallbackSrc="/modern-ecommerce-fulfillment-center.png"

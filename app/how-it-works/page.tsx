@@ -24,7 +24,7 @@ export default function HowItWorksPage() {
             <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">How SPS Works</h1>
             <p className="text-xl md:text-2xl font-light">
               Our goal is to make global logistics a stress-free process for you. Talk to our helpful shipping advisors
-              today to find out how you can optimize for time and cost, and start shipping within a week.
+              today to find out how you can optimize for time and cost, and start shipping .
             </p>
             <div className="flex flex-wrap gap-4 mt-8">
               <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
@@ -124,7 +124,7 @@ export default function HowItWorksPage() {
             <div className="relative">
               <div className="relative h-[400px] overflow-hidden rounded-xl">
                 <Image
-                  src="/expert-support-consultation.png"
+                  src="/expert-support-consultation.jpg"
                   alt="Expert shipping advisor providing consultation to client"
                   fill
                   className="object-cover"

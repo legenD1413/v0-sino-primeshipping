@@ -784,56 +784,86 @@ export default function OverseasWarehousingPage() {
               <path d="M18 9h2a2 2 0 0 1 2 2v11l-4-4h-6a2 2 0 0 1-2-2v-1" />
             </svg>
           </div>
-          <h2 className="text-3xl font-bold">Summary</h2>
+          <h2 className="text-3xl font-bold">Summary & Outlook</h2>
         </div>
 
-        <div className="rounded-xl bg-gradient-to-r from-blue-50 to-blue-100 p-8 shadow-sm">
-          <div className="flex justify-center">
-            <Image
-              src="/overseas-warehousing-summary.png"
-              alt="Overseas Warehousing Summary"
-              width={600}
-              height={300}
-              className="mb-6 rounded-lg"
-            />
+        <div className="grid gap-8 md:grid-cols-2">
+          <div className="rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 p-8">
+            <h3 className="mb-4 text-xl font-bold text-blue-800">Strategic Value</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start">
+                <div className="mr-2 mt-1 rounded-full bg-blue-200 p-1">
+                  <svg className="h-4 w-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-gray-700">
+                  Overseas warehousing is an inevitable choice for cross-border e-commerce development, significantly optimizing shopping experience and logistics efficiency through forward logistics deployment
+                </span>
+              </li>
+              <li className="flex items-start">
+                <div className="mr-2 mt-1 rounded-full bg-blue-200 p-1">
+                  <svg className="h-4 w-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-gray-700">
+                  Despite inventory and capital pressures, the competitive advantages and customer satisfaction improvements are significant strategic benefits
+                </span>
+              </li>
+            </ul>
           </div>
-          <p className="text-lg text-gray-700">
-            Overseas warehousing and fulfillment is an inevitable choice for cross-border e-commerce development at a
-            certain stage. By positioning logistics ahead of the sales market, it greatly optimizes the shopping
-            experience and logistics efficiency. Although it brings certain inventory and capital pressure, the
-            competitive advantages and customer satisfaction improvements it brings are crucial strategic layouts for
-            sellers committed to developing overseas markets. Choosing a reliable overseas warehouse service provider is
-            key to success.
-          </p>
+
+          <div className="rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 p-8">
+            <h3 className="mb-4 text-xl font-bold text-blue-800">Development Recommendations</h3>
+            <ul className="space-y-3">
+              <li className="flex items-start">
+                <div className="mr-2 mt-1 rounded-full bg-blue-200 p-1">
+                  <svg className="h-4 w-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-gray-700">
+                  Selecting reliable overseas warehouse service providers is crucial, considering their service capabilities, system stability, and operational efficiency
+                </span>
+              </li>
+              <li className="flex items-start">
+                <div className="mr-2 mt-1 rounded-full bg-blue-200 p-1">
+                  <svg className="h-4 w-4 text-blue-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <span className="text-gray-700">
+                  Develop appropriate overseas warehousing strategies based on product characteristics, sales scale, and market demand to achieve optimal balance between logistics costs and efficiency
+                </span>
+              </li>
+            </ul>
+          </div>
+
+          <div className="rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 p-8 md:col-span-2">
+            <h3 className="mb-4 text-xl font-bold text-blue-800">Future Outlook</h3>
+            <p className="text-gray-700">
+              As cross-border e-commerce continues to evolve and consumer demands for rapid delivery increase, overseas warehousing will play an increasingly crucial role in global supply chains. Through digital transformation, intelligent operations, and network optimization, overseas warehousing services will provide sellers with more efficient and flexible solutions, supporting sustained business growth in international markets.
+            </p>
+          </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section id="contact" className="rounded-xl bg-gradient-to-r from-blue-600 to-blue-800 p-8 text-white shadow-lg">
-        <div className="grid gap-8 md:grid-cols-2">
-          <div>
-            <h2 className="mb-4 text-3xl font-bold">Ready to Optimize Your Cross-Border Logistics?</h2>
-            <p className="mb-6 text-lg text-white/90">
-              Contact us today to learn how our overseas warehousing and fulfillment solutions can help your business
-              reduce shipping times, lower costs, and enhance customer satisfaction.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
-                <Link href="/contact">Contact Us</Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
-                <Link href="/services">Explore More Services</Link>
-              </Button>
-            </div>
-          </div>
-          <div className="flex items-center justify-center">
-            <Image
-              src="/global-fulfillment-network.png"
-              alt="Global Fulfillment Network"
-              width={400}
-              height={300}
-              className="rounded-lg"
-            />
+      <section id="contact" className="rounded-xl bg-gradient-to-r from-blue-600 to-blue-800 p-12 text-white shadow-lg">
+        <div className="max-w-3xl mx-auto text-center">
+          <h2 className="mb-6 text-3xl font-bold">Ready to Optimize Your Cross-Border Logistics?</h2>
+          <p className="mb-8 text-lg text-white/90">
+            Contact us today to learn how our overseas warehousing and fulfillment solutions can help your business
+            reduce shipping times, lower costs, and enhance customer satisfaction.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
+              <Link href="/contact">Contact Us</Link>
+            </Button>
+            <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
+              <Link href="/services">Explore More Services</Link>
+            </Button>
           </div>
         </div>
       </section>

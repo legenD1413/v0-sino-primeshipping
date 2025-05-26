@@ -47,7 +47,7 @@ export default function FBAPrepAndShipPage() {
             mistakes, delays, and potential account issues while optimizing your inventory management.
           </p>
         </div>
-        <div className="relative rounded-xl overflow-hidden shadow-xl">
+        <div className="relative rounded-xl overflow-hidden">
           <ImageFallbackWrapper
             src="/fba-prep-hero-new.png"
             fallbackSrc="/placeholder.svg?height=400&width=600&query=amazon+fba+preparation+warehouse"
