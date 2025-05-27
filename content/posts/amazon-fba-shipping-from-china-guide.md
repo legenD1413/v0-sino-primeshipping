@@ -241,3 +241,4 @@ SPD is suitable for small goods shipped directly to Amazon warehouses. LTL is su
 - Compare quotes from multiple providers
 - Optimize product packaging to reduce volume
 - Consider establishing local transit warehouses
+ 

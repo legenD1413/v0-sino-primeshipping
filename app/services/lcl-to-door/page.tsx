@@ -18,7 +18,7 @@ export default function LCLToDoorPage() {
       {/* Hero Section */}
       <div className="relative rounded-xl overflow-hidden mb-16">
         <Image
-          src="/lcl-to-door-hero.png"
+          src="/lcl-to-door-hero.jpg"
           alt="LCL to Door Service"
           fill
           className="object-cover brightness-[0.7]"
@@ -295,53 +295,114 @@ export default function LCLToDoorPage() {
           <div className="w-20 h-1 bg-blue-600 mt-4 rounded-full"></div>
         </div>
 
-        <div className="bg-white rounded-xl shadow-md overflow-hidden">
-          <div className="p-6 md:p-8">
-            <div className="relative h-80 md:h-96 w-full mb-8">
-              <Image src="/lcl-process-flow.png" alt="LCL to Door Process Flow" fill className="object-contain" />
+        {/* Hero Image Section */}
+        <div className="mb-12">
+          <div className="relative w-full h-80 md:h-96 rounded-xl overflow-hidden shadow-lg">
+            <Image src="/lcl-process-flow.png" alt="LCL to Door Service Process" fill className="object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent"></div>
+            <div className="absolute bottom-6 left-6 right-6">
+              <h3 className="text-white text-2xl md:text-3xl font-bold mb-2">
+                Seamless End-to-End Logistics Solution
+              </h3>
+              <p className="text-white/90 text-lg">
+                From collection in China to delivery at your door in North America
+              </p>
             </div>
+          </div>
+        </div>
 
-            <div className="relative">
-              <div className="hidden md:block absolute top-1/2 left-0 right-0 h-1 bg-blue-200 -translate-y-1/2 z-0"></div>
-              <div className="grid md:grid-cols-3 gap-6">
-                <div className="bg-blue-50 p-6 rounded-xl relative z-10">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3">
-                      1
-                    </div>
-                    <h3 className="font-bold text-lg text-blue-800">Collection & Consolidation</h3>
-                  </div>
-                  <p className="text-gray-700">
-                    Multiple shipments are collected from different shippers and consolidated at our warehouse.
-                  </p>
+        {/* Process Steps */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+          <div className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
+            <div className="h-2 bg-gradient-to-r from-blue-500 to-blue-600"></div>
+            <div className="p-8">
+              <div className="flex items-center mb-6">
+                <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4 group-hover:scale-110 transition-transform duration-300">
+                  1
                 </div>
-                <div className="bg-blue-50 p-6 rounded-xl relative z-10">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3">
-                      2
-                    </div>
-                    <h3 className="font-bold text-lg text-blue-800">Ocean Transport</h3>
-                  </div>
-                  <p className="text-gray-700">
-                    Consolidated cargo is loaded into containers and shipped via ocean freight to the destination port.
-                  </p>
+                <div>
+                  <h3 className="font-bold text-xl text-blue-800 mb-1">Collection & Consolidation</h3>
+                  <p className="text-blue-600 text-sm font-medium">Cargo Collection & Assembly</p>
                 </div>
-                <div className="bg-blue-50 p-6 rounded-xl relative z-10">
-                  <div className="flex items-center mb-4">
-                    <div className="bg-blue-600 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold mr-3">
-                      3
-                    </div>
-                    <h3 className="font-bold text-lg text-blue-800">Deconsolidation & Delivery</h3>
-                  </div>
-                  <p className="text-gray-700">
-                    Cargo is deconsolidated at destination and delivered to each consignee's door via appropriate
-                    transport.
-                  </p>
+              </div>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Multiple shipments are collected from different shippers and consolidated at our warehouse.
+              </p>
+              <div className="flex items-center space-x-4 text-sm text-blue-600">
+                <div className="flex items-center">
+                  <Package className="h-4 w-4 mr-1" />
+                  <span>Collection</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="h-4 w-4 mr-1" />
+                  <span>Quality Check</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
+            <div className="h-2 bg-gradient-to-r from-blue-600 to-blue-700"></div>
+            <div className="p-8">
+              <div className="flex items-center mb-6">
+                <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4 group-hover:scale-110 transition-transform duration-300">
+                  2
+                </div>
+                <div>
+                  <h3 className="font-bold text-xl text-blue-800 mb-1">Ocean Transport</h3>
+                  <p className="text-blue-600 text-sm font-medium">Sea Freight Shipping</p>
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Consolidated cargo is loaded into containers and shipped via ocean freight to the destination port.
+              </p>
+              <div className="flex items-center space-x-4 text-sm text-blue-600">
+                <div className="flex items-center">
+                  <svg className="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 2l10 5.5-10 5.5L2 7.5 12 2z" />
+                  </svg>
+                  <span>Sea Freight</span>
+                </div>
+                <div className="flex items-center">
+                  <svg className="h-4 w-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4" />
+                  </svg>
+                  <span>Tracking</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="group bg-white rounded-xl shadow-md hover:shadow-xl transition-all duration-300 overflow-hidden">
+            <div className="h-2 bg-gradient-to-r from-blue-700 to-blue-800"></div>
+            <div className="p-8">
+              <div className="flex items-center mb-6">
+                <div className="bg-blue-600 text-white rounded-full w-12 h-12 flex items-center justify-center font-bold text-lg mr-4 group-hover:scale-110 transition-transform duration-300">
+                  3
+                </div>
+                <div>
+                  <h3 className="font-bold text-xl text-blue-800 mb-1">Deconsolidation & Delivery</h3>
+                  <p className="text-blue-600 text-sm font-medium">Container Unpacking & Distribution</p>
+                </div>
+              </div>
+              <p className="text-gray-700 leading-relaxed mb-4">
+                Cargo is deconsolidated at destination and delivered to each consignee's door via appropriate transport.
+              </p>
+              <div className="flex items-center space-x-4 text-sm text-blue-600">
+                <div className="flex items-center">
+                  <Truck className="h-4 w-4 mr-1" />
+                  <span>Last Mile</span>
+                </div>
+                <div className="flex items-center">
+                  <CheckCircle className="h-4 w-4 mr-1" />
+                  <span>Delivered</span>
                 </div>
               </div>
             </div>
           </div>
         </div>
+
+
       </section>
 
       {/* Last Mile Delivery */}
@@ -454,9 +515,55 @@ export default function LCLToDoorPage() {
           </div>
         </div>
 
-        <div className="mt-12 bg-white p-6 rounded-xl shadow-md">
-          <div className="relative h-80 md:h-96 w-full">
-            <Image src="/last-mile-delivery.png" alt="Last Mile Delivery Options" fill className="object-contain" />
+        {/* Delivery Showcase */}
+        <div className="mt-12">
+          <div className="relative rounded-2xl overflow-hidden shadow-xl">
+            <div className="relative h-64 md:h-80 lg:h-96">
+              <Image 
+                src="/last-mile-delivery.png" 
+                alt="Last Mile Delivery - Door to Door Service" 
+                fill 
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-900/60 via-transparent to-orange-900/40"></div>
+              
+              {/* Overlay Content */}
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center text-white max-w-2xl px-6">
+                  <div className="inline-flex items-center bg-white/20 backdrop-blur-sm rounded-full px-4 py-2 mb-4">
+                    <Truck className="h-5 w-5 mr-2" />
+                    <span className="font-medium">Professional Last Mile Delivery</span>
+                  </div>
+                  <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold mb-3">
+                    From Port to Your Doorstep
+                  </h3>
+                  <p className="text-lg md:text-xl text-white/90 leading-relaxed">
+                    Reliable final delivery service ensuring your cargo reaches its destination safely and on time
+                  </p>
+                </div>
+              </div>
+
+              {/* Bottom Info Cards */}
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                    <div className="flex items-center text-white mb-2">
+                      <Package className="h-5 w-5 mr-2" />
+                      <span className="font-semibold">Express Courier</span>
+                    </div>
+                    <p className="text-white/80 text-sm">FedEx/UPS for packages ≤22KG</p>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm rounded-lg p-4 border border-white/20">
+                    <div className="flex items-center text-white mb-2">
+                      <Truck className="h-5 w-5 mr-2" />
+                      <span className="font-semibold">LTL Freight</span>
+                    </div>
+                    <p className="text-white/80 text-sm">Truck delivery for larger cargo</p>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

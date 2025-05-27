@@ -17,7 +17,7 @@ export default function FCLToDoorPage() {
       <div className="relative rounded-xl overflow-hidden mb-16">
         <div className="absolute inset-0">
           <Image
-            src="/fcl-to-door-hero.png"
+            src="/fcl-to-door-hero.jpg"
             alt="FCL to Door Service"
             fill
             className="object-cover brightness-[0.7]"
@@ -170,7 +170,7 @@ export default function FCLToDoorPage() {
         <div className="grid md:grid-cols-2">
           <div className="relative h-full min-h-[400px]">
             <Image
-              src="/fcl-to-door-coverage-map.png"
+              src="/fcl-to-door-coverage-map.jpg"
               alt="FCL to Door Service Coverage Map showing shipping routes from China to North America and Europe"
               fill
               className="object-cover"
@@ -298,7 +298,7 @@ export default function FCLToDoorPage() {
         </div>
 
         <div className="relative rounded-xl overflow-hidden h-[400px] mb-12">
-          <Image src="/fcl-to-door-process.png" alt="FCL to Door Process Flow" fill className="object-cover" />
+          <Image src="/fcl-to-door-process.jpg" alt="FCL to Door Process Flow" fill className="object-cover" />
         </div>
 
         <div className="grid md:grid-cols-4 gap-6">
@@ -410,7 +410,7 @@ export default function FCLToDoorPage() {
           </div>
 
           <div className="relative rounded-xl overflow-hidden h-[300px]">
-            <Image src="/container-types.png" alt="Container Types" fill className="object-cover" />
+            <Image src="/container-types.jpg" alt="Container Types" fill className="object-cover" />
           </div>
         </CardContent>
       </Card>

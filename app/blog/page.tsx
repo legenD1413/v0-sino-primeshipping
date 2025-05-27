@@ -53,7 +53,7 @@ export default function BlogPage({
   
   // Check if there are any filters applied
   const hasFilter = Boolean(searchQuery || categoryFilter)
-  
+
   return (
     <div className="bg-gray-50 min-h-screen">
       {/* Hero Section */}
@@ -80,10 +80,10 @@ export default function BlogPage({
         <div className="grid grid-cols-1 lg:grid-cols-4 gap-8">
           {/* Main Content - Article Grid */}
           <div className="lg:col-span-3">
-            {/* Search Bar */}
+        {/* Search Bar */}
             <div className="mb-8">
               <BlogSearch />
-            </div>
+        </div>
 
             {/* Filter Info */}
             {hasFilter && (
@@ -95,8 +95,8 @@ export default function BlogPage({
                 <Link href="/blog" className="text-blue-600 hover:text-blue-800 text-sm">
                   View All Posts
                 </Link>
-              </div>
-            )}
+          </div>
+        )}
 
             {/* Articles Grid */}
             {blogPosts.length > 0 ? (
@@ -118,11 +118,11 @@ export default function BlogPage({
                     <Card key={post.slug} className="h-full border-none shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
                       <CardContent className="p-0">
                         {/* Cover Image */}
-                        <div className="relative h-48 overflow-hidden">
-                          <Image
+                      <div className="relative h-48 overflow-hidden">
+                        <Image
                             src={post.coverImage || "/placeholder-byhpf.png"}
-                            alt={post.title}
-                            fill
+                          alt={post.title}
+                          fill
                             className="object-cover group-hover:scale-105 transition-transform duration-200"
                           />
                           {/* Category Tag Overlay */}
@@ -131,15 +131,15 @@ export default function BlogPage({
                               {post.category}
                             </span>
                           </div>
-                        </div>
+                      </div>
                         
                         {/* Article Content */}
                         <div className="p-4">
-                          <Link href={`/blog/${post.slug}`}>
+                        <Link href={`/blog/${post.slug}`}>
                             <h2 className="text-lg font-bold text-gray-900 mb-3 hover:text-red-600 transition-colors leading-tight">
-                              {post.title}
-                            </h2>
-                          </Link>
+                            {post.title}
+                          </h2>
+                        </Link>
                           
                           <p className="text-gray-600 text-sm mb-4 line-clamp-3">
                             {post.excerpt}
@@ -154,7 +154,7 @@ export default function BlogPage({
                     </Card>
                   )
                 })}
-              </div>
+                </div>
             ) : (
               <div className="text-center py-12">
                 <p className="text-gray-500 mb-4">No articles found matching your criteria</p>
@@ -201,7 +201,7 @@ export default function BlogPage({
                       href={`/blog?category=${category.key}`}
                       className={`flex items-center justify-between transition-colors ${
                         categoryFilter === category.key 
-                          ? "text-red-600 font-medium" 
+                          ? "text-red-600 font-medium"
                           : "text-gray-600 hover:text-red-600"
                       }`}
                     >
@@ -239,14 +239,14 @@ export default function BlogPage({
                             fill
                             className="object-cover group-hover:scale-105 transition-transform duration-200"
                           />
-                        </div>
+                    </div>
                         <div className="flex-1 min-w-0">
                           <h4 className="font-medium text-gray-900 group-hover:text-red-600 transition-colors line-clamp-2 text-sm leading-tight">
-                            {post.title}
+                        {post.title}
                           </h4>
                           <p className="text-xs text-gray-500 mt-1">{formattedDate}</p>
-                        </div>
-                      </div>
+                    </div>
+                  </div>
                     </Link>
                   )
                 })}

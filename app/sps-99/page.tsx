@@ -131,18 +131,7 @@ export default function SPS99Page() {
           </div>
         </div>
 
-        {/* Visual Elements - Supply Chain Flow */}
-        <div className="absolute bottom-0 left-0 right-0 h-24 overflow-hidden z-10 opacity-70">
-          <div className="flex items-center justify-around w-full">
-            <Image
-              src="/shipping-advisor.png"
-              alt="Supply Chain Flow"
-              width={1200}
-              height={100}
-              className="object-contain"
-            />
-          </div>
-        </div>
+
 
         {/* Decorative Elements */}
         <div className="absolute top-10 left-10 w-20 h-20 border border-red-500/20 rounded-full animate-ping opacity-20" />

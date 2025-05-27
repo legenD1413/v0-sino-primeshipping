@@ -113,93 +113,80 @@ export default function AboutUs() {
           <Award className="h-8 w-8 text-blue-600 mr-3" />
           <h2 className="text-3xl font-bold">Why Choose SPS Sinoprime Shipping?</h2>
         </div>
-        <div className="space-y-8">
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="md:w-1/2">
-              <h3 className="text-xl font-semibold mb-3">North America Focused, Global Perspective</h3>
-              <p className="text-gray-700">
+        
+        {/* Main Content Layout */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Image Section - Takes 1/3 width on large screens */}
+          <div className="lg:col-span-1">
+            <div className="relative w-full aspect-square rounded-xl overflow-hidden">
+              <Image
+                src="/north-america-shipping-new.png"
+                alt="SPS Sinoprime Shipping comprehensive logistics solutions"
+                fill
+                className="object-cover"
+              />
+            </div>
+          </div>
+
+          {/* Content Grid - Takes 2/3 width on large screens */}
+          <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+              <h3 className="text-lg font-semibold mb-3 flex items-center">
+                <Globe className="h-5 w-5 text-blue-600 mr-2" />
+                North America Focused, Global Perspective
+              </h3>
+              <p className="text-gray-700 text-sm">
                 We are rooted in facilitating China-Canada and China-U.S. trade, while precisely focusing on the unique
-                needs and operational details of the North American market (USA and Canada). We have a deep
-                understanding of local customs policies, major carrier networks, and local customer expectations.
+                needs and operational details of the North American market.
               </p>
             </div>
-            <div className="md:w-1/2">
-              <div className="relative w-full h-64 rounded-lg overflow-hidden">
-                <Image
-                  src="/north-america-shipping-new.png"
-                  alt="North America shipping map"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
 
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="md:w-1/2 md:order-2">
-              <h3 className="text-xl font-semibold mb-3">End-to-End Worry-Free Process</h3>
-              <p className="text-gray-700">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+              <h3 className="text-lg font-semibold mb-3 flex items-center">
+                <Truck className="h-5 w-5 text-blue-600 mr-2" />
+                End-to-End Worry-Free Process
+              </h3>
+              <p className="text-gray-700 text-sm">
                 From initial consultation and supplier coordination in China to "last-mile" delivery in North America,
-                we meticulously manage every step for you. Services include Amazon FBA preparation, e-commerce order
-                fulfillment, B2B freight solutions, professional customs brokerage, and more.
+                we meticulously manage every step for you.
               </p>
             </div>
-            <div className="md:w-1/2 md:order-1">
-              <div className="relative w-full h-64 rounded-lg overflow-hidden">
-                <Image src="/shipping-modes.png" alt="End-to-end shipping process" fill className="object-cover" />
-              </div>
-            </div>
-          </div>
 
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="md:w-1/2">
-              <h3 className="text-xl font-semibold mb-3">Your Dedicated "E-commerce Friend"</h3>
-              <p className="text-gray-700">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+              <h3 className="text-lg font-semibold mb-3 flex items-center">
+                <HeartHandshake className="h-5 w-5 text-blue-600 mr-2" />
+                Your Dedicated "E-commerce Friend"
+              </h3>
+              <p className="text-gray-700 text-sm">
                 We pride ourselves on our "customer-first" service philosophy. At SPS, you are never just a tracking
-                number. We provide personalized support and proactive communication, striving to be your trusted
-                "e-commerce friend."
+                number.
               </p>
             </div>
-            <div className="md:w-1/2">
-              <div className="relative w-full h-64 rounded-lg overflow-hidden">
-                <Image
-                  src="/expert-support-consultation.png"
-                  alt="Customer support team"
-                  fill
-                  className="object-cover"
-                />
-              </div>
-            </div>
-          </div>
 
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="md:w-1/2 md:order-2">
-              <h3 className="text-xl font-semibold mb-3">Professional Experience, Efficient Guarantee</h3>
-              <p className="text-gray-700">
+            <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+              <h3 className="text-lg font-semibold mb-3 flex items-center">
+                <Award className="h-5 w-5 text-blue-600 mr-2" />
+                Professional Experience, Efficient Guarantee
+              </h3>
+              <p className="text-gray-700 text-sm">
                 Our team has many years of practical experience in international logistics and supply chain management.
-                We are committed to tailoring the most efficient and cost-effective solutions to your specific needs.
               </p>
-            </div>
-            <div className="md:w-1/2 md:order-1">
-              <div className="relative w-full h-64 rounded-lg overflow-hidden">
-                <Image src="/global-shipping-network.png" alt="Global shipping network" fill className="object-cover" />
-              </div>
             </div>
           </div>
+        </div>
 
-          <div className="flex flex-col md:flex-row gap-6">
-            <div className="md:w-1/2">
-              <h3 className="text-xl font-semibold mb-3">Technology-Empowered, Smart Logistics</h3>
-              <p className="text-gray-700">
-                We use advanced logistics platforms and tracking systems, allowing you to grasp real-time cargo
-                dynamics, with everything under control.
-              </p>
-            </div>
-            <div className="md:w-1/2">
-              <div className="relative w-full h-64 rounded-lg overflow-hidden">
-                <Image src="/data-viz-overlay.png" alt="Technology logistics platform" fill className="object-cover" />
-              </div>
-            </div>
+        {/* Technology Section - Full width below */}
+        <div className="mt-8">
+          <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100">
+            <h3 className="text-xl font-semibold mb-3 flex items-center">
+              <Lightbulb className="h-5 w-5 text-blue-600 mr-2" />
+              Technology-Empowered, Smart Logistics
+            </h3>
+            <p className="text-gray-700">
+              We use advanced logistics platforms and tracking systems, allowing you to grasp real-time cargo
+              dynamics, with everything under control. Our technology solutions provide transparency and efficiency
+              throughout your entire supply chain journey.
+            </p>
           </div>
         </div>
       </section>
@@ -263,14 +250,14 @@ export default function AboutUs() {
 
       {/* CTA Section */}
       <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 md:p-12 rounded-xl">
-        <h2 className="text-3xl font-bold mb-4">Let's Build Your Bridge to North American Success Together</h2>
-        <div className="prose prose-lg prose-invert max-w-none mb-8">
-          <p>
+        <h2 className="text-3xl font-bold mb-4 text-white">Let's Build Your Bridge to North American Success Together</h2>
+        <div className="mb-8">
+          <p className="text-lg text-white mb-4 leading-relaxed">
             We understand that choosing a logistics partner is a crucial decision for business development. At SPS
             Sinoprime Shipping, we are confident in our commitment to providing you with exceptional service that not
             only meets your logistics needs but also powerfully boosts your business growth.
           </p>
-          <p>
+          <p className="text-lg text-white leading-relaxed">
             We invite you to learn more about our various services or contact us directly to discuss how SPS can become
             your ideal partner in optimizing your China-to-North America supply chain, creating brilliance together.
           </p>
@@ -284,7 +271,7 @@ export default function AboutUs() {
           </Link>
           <Link
             href="/contact"
-            className="bg-transparent hover:bg-blue-700 border border-white px-6 py-3 rounded-lg font-medium text-center"
+            className="bg-transparent hover:bg-blue-700 border border-white text-white px-6 py-3 rounded-lg font-medium text-center"
           >
             Contact Us
           </Link>

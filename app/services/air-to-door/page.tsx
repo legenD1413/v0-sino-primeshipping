@@ -310,8 +310,86 @@ export default function AirToDoorsPage() {
               </div>
             </div>
           </div>
-          <div className="relative h-80 md:h-96 w-full bg-gradient-to-b from-white to-blue-50 p-4">
-            <Image src="/air-to-door-process.png" alt="Air to Door Process Flow" fill className="object-contain p-4" />
+          {/* Process Flow Showcase */}
+          <div className="relative">
+            <div className="relative h-64 md:h-80 lg:h-96 w-full rounded-2xl overflow-hidden shadow-xl">
+              <Image 
+                src="/air-to-door-process.png" 
+                alt="Complete Door-to-Door Air Transport Process" 
+                fill 
+                className="object-cover"
+                priority
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-blue-900/70 via-transparent to-transparent"></div>
+              
+              {/* Overlay Content */}
+              <div className="absolute bottom-6 left-6 right-6">
+                <div className="bg-white/10 backdrop-blur-sm rounded-xl p-6 border border-white/20">
+                  <div className="flex items-center justify-between flex-wrap gap-4">
+                    <div className="flex items-center text-white">
+                      <div className="bg-white/20 rounded-full p-2 mr-3">
+                        <Plane className="h-6 w-6" />
+                      </div>
+                      <div>
+                        <h4 className="text-lg font-bold mb-1">Complete Air Transport Solution</h4>
+                        <p className="text-white/90 text-sm">From factory pickup in China to customer's door in North America</p>
+                      </div>
+                    </div>
+                    <div className="flex items-center space-x-6 text-white">
+                      <div className="text-center">
+                        <div className="text-2xl font-bold">10-15</div>
+                        <div className="text-xs text-white/80">Days Transit</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold">72hr</div>
+                        <div className="text-xs text-white/80">Delivery</div>
+                      </div>
+                      <div className="text-center">
+                        <div className="text-2xl font-bold">GPS</div>
+                        <div className="text-xs text-white/80">Tracking</div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Corner Badges */}
+              <div className="absolute top-4 left-4">
+                <div className="bg-blue-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  Door-to-Door Service
+                </div>
+              </div>
+              <div className="absolute top-4 right-4">
+                <div className="bg-green-600 text-white px-3 py-1 rounded-full text-sm font-medium">
+                  Real-time Tracking
+                </div>
+              </div>
+            </div>
+
+            {/* Additional Info Cards */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
+              <div className="bg-white rounded-lg shadow-md p-4 border-l-4 border-blue-500">
+                <div className="flex items-center mb-2">
+                  <MapPin className="h-5 w-5 text-blue-600 mr-2" />
+                  <span className="font-semibold text-blue-800">Origin (China)</span>
+                </div>
+                <p className="text-gray-600 text-sm">Complete door-to-door pickup with export clearance</p>
+              </div>
+              <div className="bg-white rounded-lg shadow-md p-4 border-l-4 border-green-500">
+                <div className="flex items-center mb-2">
+                  <Plane className="h-5 w-5 text-green-600 mr-2" />
+                  <span className="font-semibold text-green-800">Air Transport</span>
+                </div>
+                <p className="text-gray-600 text-sm">Fast and secure air freight with real-time monitoring</p>
+              </div>
+              <div className="bg-white rounded-lg shadow-md p-4 border-l-4 border-orange-500">
+                <div className="flex items-center mb-2">
+                  <Truck className="h-5 w-5 text-orange-600 mr-2" />
+                  <span className="font-semibold text-orange-800">Destination (Canada & USA )</span>
+                </div>
+                <p className="text-gray-600 text-sm">Import clearance and 72-hour delivery guarantee</p>
+              </div>
+            </div>
           </div>
         </div>
       </section>

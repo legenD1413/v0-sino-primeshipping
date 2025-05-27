@@ -94,8 +94,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               className="object-cover" 
               priority
             />
-          </div>
-          
+      </div>
+
           {/* Article title and meta information */}
           <div className="p-8">
             <div className="flex flex-wrap items-center gap-4 mb-4">
@@ -118,11 +118,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             
             {/* Author information */}
             {author ? (
-              <div className="flex items-center">
+            <div className="flex items-center">
                 <div className="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center text-white mr-4">
                   {author.name.charAt(0)}
-                </div>
-                <div>
+              </div>
+              <div>
                   <div className="font-medium">{author.name}</div>
                   <div className="text-sm text-gray-500">{author.role}</div>
                 </div>
@@ -131,12 +131,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               <div className="flex items-center">
                 <div className="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center text-white mr-4">
                   {post.author ? post.author.charAt(0).toUpperCase() : 'A'}
-                </div>
+            </div>
                 <div>
                   <div className="font-medium">{post.author ? `Author: ${post.author}` : 'Anonymous Author'}</div>
                   <div className="text-sm text-gray-500">Contributor</div>
-                </div>
-              </div>
+          </div>
+        </div>
             )}
           </div>
         </div>
@@ -163,12 +163,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                         key={tag}
                         href={`/blog?tag=${tag}`}
                         className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm"
-                      >
+                >
                         #{tag}
                       </Link>
-                    ))}
-                  </div>
-                </div>
+              ))}
+            </div>
+          </div>
               )}
             </div>
           </div>
@@ -182,7 +182,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center text-white mr-4">
                     {author.name.charAt(0)}
-                  </div>
+        </div>
                   <div>
                     <div className="font-medium">{author.name}</div>
                     <div className="text-sm text-gray-500">{author.role}</div>
@@ -214,10 +214,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                           </h4>
                           <p className="text-xs text-gray-500 mt-1">{relatedPost.readTime}</p>
                         </div>
-                      </div>
-                    </Link>
-                  ))}
-                </div>
+                  </div>
+                </Link>
+              ))}
+            </div>
               </div>
             )}
             
