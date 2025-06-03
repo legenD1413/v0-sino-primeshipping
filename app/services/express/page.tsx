@@ -7,7 +7,7 @@ export default function ExpressPage() {
       {/* Hero Section */}
       <section className="relative h-96 rounded-lg overflow-hidden mb-10">
         <Image
-          src="/express-hero-image.png"
+          src="/data-viz-overlay.png"
           alt="International Express Service"
           fill
           className="object-cover"

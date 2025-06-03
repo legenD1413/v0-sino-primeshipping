@@ -139,28 +139,28 @@ export default function HowItWorksPage() {
               </p>
               <div className="space-y-4">
                 <div className="flex items-start gap-3">
-                  <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary/10">
-                    <Check className="h-3 w-3 text-primary" />
+                  <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600">
+                    <Check className="h-3 w-3 text-white" />
                   </div>
                   <span className="text-muted-foreground">Personalized shipping solutions tailored to your needs</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary/10">
-                    <Check className="h-3 w-3 text-primary" />
+                  <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600">
+                    <Check className="h-3 w-3 text-white" />
                   </div>
                   <span className="text-muted-foreground">
                     Expert guidance on documentation and customs requirements
                   </span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary/10">
-                    <Check className="h-3 w-3 text-primary" />
+                  <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600">
+                    <Check className="h-3 w-3 text-white" />
                   </div>
                   <span className="text-muted-foreground">Proactive communication throughout the shipping process</span>
                 </div>
                 <div className="flex items-start gap-3">
-                  <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-primary/10">
-                    <Check className="h-3 w-3 text-primary" />
+                  <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-blue-600">
+                    <Check className="h-3 w-3 text-white" />
                   </div>
                   <span className="text-muted-foreground">Quick resolution of any issues that may arise</span>
                 </div>

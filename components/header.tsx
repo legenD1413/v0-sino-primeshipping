@@ -336,12 +336,12 @@ export function Header() {
               </div>
             </div>
 
-            {/* SPS 99 - Moved to third position with dark blue color */}
+            {/* SPS 19 - Moved to third position with dark blue color */}
             <Link
               href="/sps-99"
               className="px-3 py-2 text-sm font-medium hover:bg-gray-100 rounded-md menu-item-hover text-[#0A2240] font-semibold"
             >
-              SPS 99
+              SPS 19
             </Link>
 
             {/* ABOUT US - Now in fourth position */}
@@ -598,14 +598,14 @@ function EnhancedMobileMenu({ setOpen }: EnhancedMobileMenuProps) {
         )}
       </div>
 
-      {/* SPS 99 - Moved to third position with dark blue color */}
+      {/* SPS 19 - Moved to third position with dark blue color */}
       <div className="mobile-divider"></div>
       <Link
         href="/sps-99"
         className="mobile-menu-title ripple-effect menu-item-hover text-[#0A2240] font-semibold"
         onClick={() => setOpen(false)}
       >
-        <span className="mobile-menu-title-text">SPS 99</span>
+        <span className="mobile-menu-title-text">SPS 19</span>
       </Link>
 
       {/* ABOUT US - Now in fourth position */}

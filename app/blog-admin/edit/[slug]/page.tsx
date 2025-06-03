@@ -8,8 +8,9 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Textarea } from "@/components/ui/textarea"
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
-import { Card, CardContent } from "@/components/ui/card"
-import { ArrowLeft, Save } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Alert, AlertDescription } from "@/components/ui/alert"
+import { ArrowLeft, Save, Shield, Lock } from "lucide-react"
 
 // 博客文章类型
 type Post = {
@@ -34,6 +35,8 @@ type Author = {
 export default function EditPostPage({ params }: { params: Promise<{ slug: string }> }) {
   // 使用 React.use() 来解包 params Promise
   const resolvedParams = use(params)
+  const [isLoggedIn, setIsLoggedIn] = useState(false)
+  const [isChecking, setIsChecking] = useState(true)
   const [post, setPost] = useState<Post | null>(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isSaving, setIsSaving] = useState(false)
@@ -42,8 +45,24 @@ export default function EditPostPage({ params }: { params: Promise<{ slug: strin
   const [error, setError] = useState<string | null>(null)
   const router = useRouter()
   
+  // 检查登录状态
+  useEffect(() => {
+    const checkAuthStatus = () => {
+      const isAdmin = localStorage.getItem('sps_admin_logged_in')
+      if (isAdmin === 'true') {
+        setIsLoggedIn(true)
+      } else {
+        router.push('/sps-admin')
+      }
+      setIsChecking(false)
+    }
+    
+    checkAuthStatus()
+  }, [router])
+  
   // 加载文章数据
   useEffect(() => {
+    if (!isLoggedIn) return
     const fetchPost = async () => {
       try {
         // 实际项目中应该从API获取数据
@@ -102,7 +121,7 @@ export default function EditPostPage({ params }: { params: Promise<{ slug: strin
     }
     
     fetchPost()
-  }, [resolvedParams.slug])
+  }, [resolvedParams.slug, isLoggedIn])
   
   // 处理表单提交
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
@@ -126,7 +145,7 @@ export default function EditPostPage({ params }: { params: Promise<{ slug: strin
       await new Promise(resolve => setTimeout(resolve, 1000))
       
       // 保存成功，返回列表页
-      router.push('/blog-admin')
+      router.push('/sps-admin?tab=blog')
       router.refresh()
     } catch (error) {
       console.error('保存文章失败:', error)
@@ -159,6 +178,50 @@ export default function EditPostPage({ params }: { params: Promise<{ slug: strin
     })
   }
   
+  if (isChecking) {
+    return (
+      <div className="container mx-auto py-12 px-4">
+        <div className="text-center">
+          <div className="animate-spin w-8 h-8 border-4 border-blue-500 border-t-transparent rounded-full mx-auto mb-4"></div>
+          <p>检查认证状态...</p>
+        </div>
+      </div>
+    )
+  }
+
+  if (!isLoggedIn) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-blue-50 to-indigo-100 p-6">
+        <Card className="w-full max-w-lg">
+          <CardHeader className="text-center pb-8">
+            <div className="mx-auto mb-6 p-4 bg-red-100 rounded-full w-fit">
+              <Lock className="h-10 w-10 text-red-600" />
+            </div>
+            <CardTitle className="text-3xl font-bold text-gray-900">访问受限</CardTitle>
+            <CardDescription className="text-base">
+              编辑文章功能需要管理员认证
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="pt-8 space-y-6">
+            <Alert>
+              <Shield className="h-4 w-4" />
+              <AlertDescription>
+                请先登录管理后台再访问此功能
+              </AlertDescription>
+            </Alert>
+            
+            <Link href="/sps-admin">
+              <Button className="w-full h-12 text-base flex items-center justify-center gap-2">
+                <Shield className="h-5 w-5" />
+                返回管理后台
+              </Button>
+            </Link>
+          </CardContent>
+        </Card>
+      </div>
+    )
+  }
+  
   if (isLoading) {
     return (
       <div className="container mx-auto py-12 px-4">
@@ -172,7 +235,7 @@ export default function EditPostPage({ params }: { params: Promise<{ slug: strin
       <div className="container mx-auto py-12 px-4">
         <div className="text-center text-red-600">{error || '文章不存在'}</div>
         <div className="mt-4 text-center">
-          <Link href="/blog-admin">
+          <Link href="/sps-admin?tab=blog">
             <Button>返回列表</Button>
           </Link>
         </div>
@@ -183,7 +246,7 @@ export default function EditPostPage({ params }: { params: Promise<{ slug: strin
   return (
     <div className="container mx-auto py-12 px-4">
       <div className="mb-8">
-        <Link href="/blog-admin" className="inline-flex items-center text-blue-600 hover:text-blue-800">
+        <Link href="/sps-admin?tab=blog" className="inline-flex items-center text-blue-600 hover:text-blue-800">
           <ArrowLeft className="h-4 w-4 mr-2" />
           返回博客管理
         </Link>

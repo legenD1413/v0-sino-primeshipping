@@ -36,8 +36,18 @@ export default function DirectToConsumerShippingPage() {
         {/* Hero Section */}
         <div className="relative rounded-xl overflow-hidden mb-16">
           <div className="absolute inset-0">
-            {/* Replace image with gradient background */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900 to-blue-700">
+            {/* Background Image */}
+            <ImageFallbackWrapper
+              src="/data-viz-overlay.png"
+              fallbackSrc="/placeholder.svg?height=600&width=1200&query=china+north+america+shipping+logistics"
+              alt="Direct-to-Consumer Shipping Background"
+              width={1200}
+              height={600}
+              className="object-cover w-full h-full"
+              wrapperClassName="w-full h-full"
+            />
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-blue-700/80">
               {/* Add pattern overlay */}
               <div
                 className="absolute inset-0 opacity-10"

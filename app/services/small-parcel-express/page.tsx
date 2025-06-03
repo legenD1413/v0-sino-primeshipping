@@ -31,7 +31,7 @@ export default function SmallParcelExpressPage() {
         <div className="absolute inset-0">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-indigo-900/80 mix-blend-multiply z-10"></div>
           <Image
-            src="/small-parcel-express-hero.png"
+            src="/data-viz-overlay.png"
             alt="Small Parcel Express"
             fill
             className="object-cover"
@@ -73,7 +73,7 @@ export default function SmallParcelExpressPage() {
             </p>
             <p className="mb-6 text-lg">
               The term "Special Line" refers to optimized shipping channels that logistics providers have established
-              for specific countries or regions (such as US Line, Europe Line, UK Line, Australia Line) through resource
+              for specific countries or regions (such as US Line, Canada Line, UK Line) through resource
               integration and process optimization.
             </p>
             <div className="mt-8">

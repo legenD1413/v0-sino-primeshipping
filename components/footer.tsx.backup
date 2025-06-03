@@ -67,12 +67,12 @@ export function Footer() {
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase">Resources</h3>
             <ul className="space-y-2 text-sm">
-              <li className="hidden">
+              <li>
                 <Link href="/blog" className="text-muted-foreground hover:text-primary">
                   Blog
                 </Link>
               </li>
-              <li className="hidden">
+              <li>
                 <Link href="/podcast" className="text-muted-foreground hover:text-primary">
                   Podcast
                 </Link>
