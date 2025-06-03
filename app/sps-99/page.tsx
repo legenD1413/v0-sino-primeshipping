@@ -1549,7 +1549,7 @@ export default function SPS99Page() {
                   </div>
                   <div>
                     <span className="font-semibold text-xl block mb-1">Stable sourcing needs from China</span>
-                    <p className="text-gray-700 mt-1 leading-relaxed">Regular orders that benefit from consistent management</p>
+                    <p className="text-white/80 mt-1 leading-relaxed">Regular orders that benefit from consistent management</p>
                   </div>
                 </li>
                 <li className="flex items-start">
@@ -1558,7 +1558,7 @@ export default function SPS99Page() {
                   </div>
                   <div>
                     <span className="font-semibold text-xl block mb-1">Growth-oriented business</span>
-                    <p className="text-gray-700 mt-1 leading-relaxed">Clear plans for scaling your TikTok or crowdfunding success</p>
+                    <p className="text-white/80 mt-1 leading-relaxed">Clear plans for scaling your TikTok or crowdfunding success</p>
                   </div>
                 </li>
                 <li className="flex items-start">
@@ -1567,7 +1567,7 @@ export default function SPS99Page() {
                   </div>
                   <div>
                     <span className="font-semibold text-xl block mb-1">Value sincere, long-term partnership</span>
-                    <p className="text-gray-700 mt-1 leading-relaxed">Looking for a true partner, not just a service provider</p>
+                    <p className="text-white/80 mt-1 leading-relaxed">Looking for a true partner, not just a service provider</p>
                   </div>
                 </li>
               </ul>

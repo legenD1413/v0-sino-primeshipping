@@ -87,7 +87,7 @@
 
 /* Dropdown menu */
 .dropdown-menu {
-  @apply absolute left-1/2 z-10 mt-2 w-screen max-w-5xl -translate-x-1/2 transform px-4 sm:px-0 opacity-0 invisible transition-all duration-300 ease-in-out;
+  @apply absolute left-1/2 z-10 mt-2 w-screen max-w-7xl -translate-x-1/2 transform px-4 sm:px-0 opacity-0 invisible transition-all duration-300 ease-in-out;
 }
 
 .dropdown-active {
@@ -100,7 +100,7 @@
 
 /* Regions column */
 .regions-column {
-  @apply bg-gray-50 p-5;
+  @apply bg-gray-50 p-6;
 }
 
 .regions-title {
@@ -129,7 +129,7 @@
 
 /* Destinations content */
 .destinations-content {
-  @apply grid grid-cols-1 gap-5 p-5;
+  @apply grid grid-cols-1 gap-5 p-6;
 }
 
 .region-layout {
@@ -137,7 +137,7 @@
 }
 
 .destinations-columns {
-  @apply col-span-2 grid grid-cols-1 md:grid-cols-2 gap-8;
+  @apply col-span-2 grid grid-cols-1 md:grid-cols-3 gap-8;
 }
 
 .destinations-column {
