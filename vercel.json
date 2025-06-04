@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "build": {
+    "env": {
+      "GIT_COMMIT_AUTHOR_NAME": "maigee",
+      "GIT_COMMIT_AUTHOR_EMAIL": "maigee@163.com"
+    }
+  }
+}
