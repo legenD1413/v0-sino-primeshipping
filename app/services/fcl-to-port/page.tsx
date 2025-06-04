@@ -287,14 +287,14 @@ export default function FCLToPortPage() {
       </Card>
 
       {/* CTA Section */}
-      <div className="text-center bg-gradient-to-r from-blue-50 to-indigo-50 rounded-xl p-12">
-        <h2 className="text-2xl md:text-3xl font-bold mb-4">Ready to ship your full container?</h2>
-        <p className="mb-8 text-lg max-w-2xl mx-auto">
+      <div className="text-center bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700 rounded-xl p-12 text-white shadow-2xl">
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-white">Ready to ship your full container?</h2>
+        <p className="mb-8 text-lg max-w-2xl mx-auto text-blue-50">
           Contact our team today to get a competitive quote for your FCL to Port shipping needs.
         </p>
         <Link
           href="/contact"
-          className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-4 text-lg font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
+          className="inline-flex items-center justify-center rounded-md bg-white px-8 py-4 text-lg font-medium text-blue-600 shadow-lg transition-all duration-300 hover:bg-blue-50 hover:shadow-xl transform hover:scale-105"
         >
           Get a Quote
         </Link>
