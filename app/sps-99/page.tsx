@@ -34,9 +34,14 @@ export default function SPS99Page() {
   // 表单状态管理
   const [formData, setFormData] = useState({
     fullName: '',
-    email: '',
     company: '',
-    businessType: '',
+    email: '',
+    country: '',
+    salesPlatforms: [] as string[],
+    productCategories: '',
+    monthlyOrderVolume: '',
+    logisticsChallenges: [] as string[],
+    otherChallenge: '',
     description: ''
   })
   const [isSubmitting, setIsSubmitting] = useState(false)
@@ -64,7 +69,7 @@ export default function SPS99Page() {
     setSubmitMessage('')
 
     // 表单验证
-    if (!formData.fullName || !formData.email || !formData.company || !formData.businessType || !formData.description) {
+    if (!formData.fullName || !formData.email || !formData.company || !formData.country || formData.salesPlatforms.length === 0 || !formData.productCategories || !formData.monthlyOrderVolume || formData.logisticsChallenges.length === 0 || !formData.description) {
       setSubmitStatus('error')
       setSubmitMessage('Please fill in all required fields')
       setIsSubmitting(false)
@@ -88,9 +93,14 @@ export default function SPS99Page() {
         // 清空表单
         setFormData({
           fullName: '',
-          email: '',
           company: '',
-          businessType: '',
+          email: '',
+          country: '',
+          salesPlatforms: [] as string[],
+          productCategories: '',
+          monthlyOrderVolume: '',
+          logisticsChallenges: [] as string[],
+          otherChallenge: '',
           description: ''
         })
       } else {
@@ -1534,8 +1544,8 @@ export default function SPS99Page() {
             <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+            <div className="lg:col-span-2">
               <h3 className="text-2xl font-bold mb-8 flex items-center">
                 <div className="bg-red-500 p-2 rounded-lg mr-3">
                   <CheckCircle className="h-6 w-6 text-white" />
@@ -1573,7 +1583,7 @@ export default function SPS99Page() {
               </ul>
             </div>
 
-            <div className="bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 shadow-xl">
+            <div className="lg:col-span-3 bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 shadow-xl">
               <h3 className="text-2xl font-bold mb-8 text-center">Start Your Application</h3>
               
               {/* 状态提示 */}
@@ -1597,10 +1607,15 @@ export default function SPS99Page() {
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+                {/* Contact Information */}
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold text-white border-b border-white/20 pb-2">Contact Information</h4>
+                  
                 <div>
                   <label htmlFor="fullName" className="block text-sm font-medium mb-2">
-                    Full Name
+                      Your Name *
                   </label>
                   <input
                     type="text"
@@ -1614,9 +1629,25 @@ export default function SPS99Page() {
                   />
                 </div>
 
+                  <div>
+                    <label htmlFor="company" className="block text-sm font-medium mb-2">
+                      Company/Store Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                      placeholder="Your company or store name"
+                      required
+                    />
+                  </div>
+
                 <div>
                   <label htmlFor="email" className="block text-sm font-medium mb-2">
-                    Email Address
+                      Email Address *
                   </label>
                   <input
                     type="email"
@@ -1631,74 +1662,162 @@ export default function SPS99Page() {
                 </div>
 
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium mb-2">
-                    Company Name
+                    <label htmlFor="country" className="block text-sm font-medium mb-2">
+                      Country *
+                    </label>
+                    <select
+                      id="country"
+                      name="country"
+                      value={formData.country}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                      required
+                    >
+                      <option value="" disabled className="text-gray-700">Select your country</option>
+                      <option value="usa" className="text-gray-900 bg-white">United States</option>
+                      <option value="canada" className="text-gray-900 bg-white">Canada</option>
+                      <option value="other" className="text-gray-900 bg-white">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                  {/* Business Information */}
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-white border-b border-white/20 pb-2">Business Information</h4>
+                  
+                  <div>
+                    <label className="block text-sm font-medium mb-3">
+                      Primary Sales Platform * (Select all that apply)
+                    </label>
+                    <div className="space-y-2">
+                      {[
+                        { value: 'tiktok-us', label: 'TikTok Shop US' },
+                        { value: 'tiktok-ca', label: 'TikTok Shop CA' },
+                        { value: 'website-us', label: 'Independent Website US' },
+                        { value: 'website-ca', label: 'Independent Website CA' },
+                        { value: 'crowdfunding', label: 'Crowdfunding Platform' },
+                        { value: 'other', label: 'Other' }
+                      ].map((platform) => (
+                        <label key={platform.value} className="flex items-center space-x-3 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            value={platform.value}
+                            checked={formData.salesPlatforms.includes(platform.value)}
+                            onChange={(e) => {
+                              const value = e.target.value;
+                              setFormData(prev => ({
+                                ...prev,
+                                salesPlatforms: e.target.checked 
+                                  ? [...prev.salesPlatforms, value]
+                                  : prev.salesPlatforms.filter(p => p !== value)
+                              }));
+                            }}
+                            className="rounded border-gray-600 text-red-600 focus:ring-red-500"
+                          />
+                          <span className="text-white text-sm">{platform.label}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  <div>
+                    <label htmlFor="productCategories" className="block text-sm font-medium mb-2">
+                      Main Product Categories *
                   </label>
                   <input
                     type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
+                      id="productCategories"
+                      name="productCategories"
+                      value={formData.productCategories}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
-                    placeholder="Your company"
+                      placeholder="e.g., Clothing, Electronics, Home & Garden, Beauty Products"
                     required
                   />
                 </div>
 
                 <div>
-                  <label htmlFor="businessType" className="block text-sm font-medium mb-2">
-                    Business Type
+                    <label htmlFor="monthlyOrderVolume" className="block text-sm font-medium mb-2">
+                      Monthly Order Volume *
                   </label>
-                  <div className="relative">
                     <select
-                      id="businessType"
-                      name="businessType"
-                      value={formData.businessType}
+                      id="monthlyOrderVolume"
+                      name="monthlyOrderVolume"
+                      value={formData.monthlyOrderVolume}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 appearance-none"
+                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                       required
                     >
-                      <option value="" disabled className="text-gray-700">
-                        Select your business type
-                      </option>
-                      <option value="tiktok" className="text-gray-900 bg-white">
-                        TikTok seller
-                      </option>
-                      <option value="kickstarter" className="text-gray-900 bg-white">
-                        Kickstarter Creator
-                      </option>
-                      <option value="indiegogo" className="text-gray-900 bg-white">
-                        Indiegogo Creator
-                      </option>
-                      <option value="ecommerce" className="text-gray-900 bg-white">
-                        E-commerce Brand
-                      </option>
-                      <option value="other" className="text-gray-900 bg-white">
-                        Other
-                      </option>
+                      <option value="" disabled className="text-gray-700">Select monthly order volume</option>
+                      <option value="under-100" className="text-gray-900 bg-white">&lt; 100</option>
+                      <option value="100-500" className="text-gray-900 bg-white">100 - 500</option>
+                      <option value="501-2000" className="text-gray-900 bg-white">501 - 2000</option>
+                      <option value="over-2000" className="text-gray-900 bg-white">2000+</option>
                     </select>
-                    <div className="absolute inset-y-0 right-0 flex items-center pr-3 pointer-events-none">
-                      <svg
-                        className="h-5 w-5 text-gray-400"
-                        xmlns="http://www.w3.org/2000/svg"
-                        viewBox="0 0 20 20"
-                        fill="currentColor"
-                        aria-hidden="true"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                    </div>
                   </div>
                 </div>
+                </div>
+
+                {/* Logistics Needs - Full Width */}
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold text-white border-b border-white/20 pb-2">Logistics Needs</h4>
+                  
+                  <div>
+                    <label className="block text-sm font-medium mb-3">
+                      Primary Business Challenge in Logistics * (Select all that apply)
+                    </label>
+                    <div className="space-y-2">
+                      {[
+                        { value: 'high-costs', label: 'High shipping costs' },
+                        { value: 'slow-delivery', label: 'Slow delivery times' },
+                        { value: 'customs', label: 'Customs clearance issues' },
+                        { value: 'no-tracking', label: 'Lack of tracking' },
+                        { value: 'damaged-goods', label: 'Damaged/Lost goods' },
+                        { value: 'other', label: 'Other' },
+                        { value: 'none', label: 'None' }
+                      ].map((challenge) => (
+                        <label key={challenge.value} className="flex items-center space-x-3 cursor-pointer">
+                          <input
+                            type="checkbox"
+                            value={challenge.value}
+                            checked={formData.logisticsChallenges.includes(challenge.value)}
+                            onChange={(e) => {
+                              const value = e.target.value;
+                              setFormData(prev => ({
+                                ...prev,
+                                logisticsChallenges: e.target.checked 
+                                  ? [...prev.logisticsChallenges, value]
+                                  : prev.logisticsChallenges.filter(c => c !== value)
+                              }));
+                            }}
+                            className="rounded border-gray-600 text-red-600 focus:ring-red-500"
+                          />
+                          <span className="text-white text-sm">{challenge.label}</span>
+                        </label>
+                      ))}
+                    </div>
+                  </div>
+
+                  {formData.logisticsChallenges.includes('other') && (
+                    <div>
+                      <label htmlFor="otherChallenge" className="block text-sm font-medium mb-2">
+                        Please describe other challenges
+                      </label>
+                      <input
+                        type="text"
+                        id="otherChallenge"
+                        name="otherChallenge"
+                        value={formData.otherChallenge}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                        placeholder="Describe your other logistics challenges"
+                      />
+                </div>
+                  )}
 
                 <div>
                   <label htmlFor="description" className="block text-sm font-medium mb-2">
-                    Briefly describe your business and China sourcing needs
+                      Briefly describe your needs *
                   </label>
                   <textarea
                     id="description"
@@ -1707,9 +1826,10 @@ export default function SPS99Page() {
                     value={formData.description}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
-                    placeholder="Tell us about your business"
+                      placeholder="Tell us about your specific needs and requirements"
                     required
                   />
+                  </div>
                 </div>
 
                 <div>

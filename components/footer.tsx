@@ -15,7 +15,11 @@ export function Footer() {
             <p className="mb-4 text-sm text-muted-foreground">
               Professional international logistics solutions from China to Canada and USA destinations.
             </p>
-            <div className="flex space-x-4">
+            <div className="mb-4 flex items-center space-x-2 text-sm text-muted-foreground">
+              <MapPin className="h-5 w-5" />
+              <span>Suite 4019, Jincheng Building, Fuyong Street, Bao'an District, Shenzhen</span>
+            </div>
+            <div className="flex space-x-4 hidden">
               <Link href="#" className="text-muted-foreground hover:text-primary">
                 <Facebook className="h-5 w-5" />
                 <span className="sr-only">Facebook</span>
@@ -37,31 +41,53 @@ export function Footer() {
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase">Services</h3>
             <ul className="space-y-2 text-sm">
+             
+           
+             
               <li>
-                <Link href="/services/sea-freight" className="text-muted-foreground hover:text-primary">
-                  Sea Freight
+                <Link href="/services/fba-prep-and-ship" className="text-muted-foreground hover:text-primary">
+                FBA Prep & Ship Services
                 </Link>
               </li>
+
               <li>
-                <Link href="/services/air-freight" className="text-muted-foreground hover:text-primary">
-                  Air Freight
+                <Link href="/services/direct-to-consumer-shipping" className="text-muted-foreground hover:text-primary">
+                DTC Shipping
                 </Link>
               </li>
+
               <li>
                 <Link href="/services/express" className="text-muted-foreground hover:text-primary">
-                  Express
+                International Express
                 </Link>
               </li>
+
               <li>
-                <Link href="/services/amazon-fba-shipping" className="text-muted-foreground hover:text-primary">
-                  Amazon FBA Shipping
+                <Link href="/services/overseas-warehousing-and-fulfillment" className="text-muted-foreground hover:text-primary">
+                Warehousing & Fulfillment
                 </Link>
               </li>
+
               <li>
-                <Link href="/services/door-to-door-service" className="text-muted-foreground hover:text-primary">
-                  Door to Door Service
+                <Link href="/services/lcl-to-door" className="text-muted-foreground hover:text-primary">
+                LCL to Door
                 </Link>
               </li>
+
+              <li>
+                <Link href="/services/fcl-to-door" className="text-muted-foreground hover:text-primary">
+                FCL to Door
+                </Link>
+              </li>
+
+
+              <li>
+                <Link href="/services/air-to-door" className="text-muted-foreground hover:text-primary">
+                  Air Freight to Door
+                </Link>
+              </li>
+
+
             </ul>
           </div>
           <div>
@@ -85,22 +111,11 @@ export function Footer() {
             </ul>
           </div>
           <div>
-            <h3 className="mb-4 text-sm font-semibold uppercase">Contact</h3>
-            <ul className="space-y-4 text-sm">
-              <li className="flex">
-                <MapPin className="mr-2 h-5 w-5 text-muted-foreground" />
-                <span className="text-muted-foreground">123 Logistics Center, Shenzhen, Guangdong, China</span>
-              </li>
-              <li className="flex">
-                <Phone className="mr-2 h-5 w-5 text-muted-foreground" />
-                <Link href="tel:+8612345678901" className="text-muted-foreground hover:text-primary">
-                  +86 123 4567 8901
-                </Link>
-              </li>
-              <li className="flex">
-                <Mail className="mr-2 h-5 w-5 text-muted-foreground" />
-                <Link href="mailto:info@sinoprimeshipping.com" className="text-muted-foreground hover:text-primary">
-                  info@sinoprimeshipping.com
+            <h3 className="mb-4 text-sm font-semibold uppercase">SPS Program</h3>
+            <ul className="space-y-2 text-sm">
+              <li>
+                <Link href="/sps-99" className="text-muted-foreground hover:text-primary">
+                  SPS 19 Pioneer Program
                 </Link>
               </li>
             </ul>

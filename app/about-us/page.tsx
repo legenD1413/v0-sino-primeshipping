@@ -249,7 +249,21 @@ export default function AboutUs() {
       </section>
 
       {/* CTA Section */}
-      <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 md:p-12 rounded-xl">
+      <section className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8 md:p-12 rounded-xl overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <Image 
+            src="/global-shipping-routes.png" 
+            alt="Global logistics network background" 
+            fill 
+            className="object-cover opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/80 to-blue-800/80"></div>
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+        
+        {/* Content */}
+        <div className="relative z-10">
         <h2 className="text-3xl font-bold mb-4 text-white">Let's Build Your Bridge to North American Success Together</h2>
         <div className="mb-8">
           <p className="text-lg text-white mb-4 leading-relaxed">
@@ -265,16 +279,17 @@ export default function AboutUs() {
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
             href="/services"
-            className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium text-center"
+              className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium text-center transition-all duration-300 hover:transform hover:scale-105"
           >
             Explore Our Services
           </Link>
           <Link
             href="/contact"
-            className="bg-transparent hover:bg-blue-700 border border-white text-white px-6 py-3 rounded-lg font-medium text-center"
+              className="bg-transparent hover:bg-blue-700/50 border border-white text-white px-6 py-3 rounded-lg font-medium text-center transition-all duration-300 hover:transform hover:scale-105"
           >
             Contact Us
           </Link>
+          </div>
         </div>
       </section>
     </div>

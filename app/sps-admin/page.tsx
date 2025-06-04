@@ -40,7 +40,12 @@ interface FormSubmission {
   full_name: string
   email: string
   company: string
-  business_type: string
+  country: string
+  sales_platforms: string[]
+  product_categories: string
+  monthly_order_volume: string
+  logistics_challenges: string[]
+  other_challenge: string
   description: string
   status: string
   email_sent: boolean
@@ -1173,17 +1178,15 @@ export default function SPSAdminPage() {
                   </div>
                   
                   <div>
-                    <Label>业务类型</Label>
+                      <Label>国家地区</Label>
                     <select
                       value={formFilters.businessType}
                       onChange={(e) => setFormFilters({...formFilters, businessType: e.target.value})}
                       className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
                     >
-                      <option value="">全部类型</option>
-                      <option value="tiktok">TikTok销售商</option>
-                      <option value="kickstarter">Kickstarter创作者</option>
-                      <option value="indiegogo">Indiegogo创作者</option>
-                      <option value="ecommerce">电商品牌</option>
+                        <option value="">全部国家</option>
+                        <option value="usa">美国</option>
+                        <option value="canada">加拿大</option>
                       <option value="other">其他</option>
                     </select>
                   </div>
@@ -1348,7 +1351,9 @@ export default function SPSAdminPage() {
                             <th className="border border-gray-200 px-4 py-3 text-left font-medium text-gray-900">姓名</th>
                             <th className="border border-gray-200 px-4 py-3 text-left font-medium text-gray-900">邮箱</th>
                             <th className="border border-gray-200 px-4 py-3 text-left font-medium text-gray-900">公司</th>
-                            <th className="border border-gray-200 px-4 py-3 text-left font-medium text-gray-900">业务类型</th>
+                            <th className="border border-gray-200 px-4 py-3 text-left font-medium text-gray-900">国家</th>
+                            <th className="border border-gray-200 px-4 py-3 text-left font-medium text-gray-900">销售平台</th>
+                            <th className="border border-gray-200 px-4 py-3 text-left font-medium text-gray-900">产品类别</th>
                             <th className="border border-gray-200 px-4 py-3 text-left font-medium text-gray-900">申请状态</th>
                             <th className="border border-gray-200 px-4 py-3 text-left font-medium text-gray-900">回复状态</th>
                             <th className="border border-gray-200 px-4 py-3 text-left font-medium text-gray-900">邮件状态</th>
@@ -1378,12 +1383,42 @@ export default function SPSAdminPage() {
                                 </td>
                                 <td className="border border-gray-200 px-4 py-3">
                                   <span className="text-gray-600">
-                                    {form.business_type === 'tiktok' ? 'TikTok销售商' :
-                                     form.business_type === 'kickstarter' ? 'Kickstarter创作者' :
-                                     form.business_type === 'indiegogo' ? 'Indiegogo创作者' :
-                                     form.business_type === 'ecommerce' ? '电商品牌' :
-                                     '其他'}
+                                    {form.country === 'usa' ? '美国' :
+                                     form.country === 'canada' ? '加拿大' :
+                                     form.country === 'other' ? '其他' : form.country}
                                   </span>
+                                </td>
+                                <td className="border border-gray-200 px-4 py-3">
+                                  <span className="text-gray-600 text-sm">
+                                    {Array.isArray(form.sales_platforms) ? 
+                                      form.sales_platforms.map(p => {
+                                        const platformMap: Record<string, string> = {
+                                          'tiktok-us': 'TikTok Shop 美国',
+                                          'tiktok-ca': 'TikTok Shop 加拿大',
+                                          'website-us': '独立站 美国',
+                                          'website-ca': '独立站 加拿大',
+                                          'crowdfunding': '众筹平台',
+                                          'other': '其他'
+                                        }
+                                        return platformMap[p] || p
+                                      }).join(', ') : 
+                                      (typeof form.sales_platforms === 'string' ? 
+                                        JSON.parse(form.sales_platforms).map((p: string) => {
+                                          const platformMap: Record<string, string> = {
+                                            'tiktok-us': 'TikTok Shop 美国',
+                                            'tiktok-ca': 'TikTok Shop 加拿大',
+                                            'website-us': '独立站 美国',
+                                            'website-ca': '独立站 加拿大',
+                                            'crowdfunding': '众筹平台',
+                                            'other': '其他'
+                                          }
+                                          return platformMap[p] || p
+                                        }).join(', ') : '无')
+                                    }
+                                  </span>
+                                </td>
+                                <td className="border border-gray-200 px-4 py-3">
+                                  <span className="text-gray-600 text-sm">{form.product_categories}</span>
                                 </td>
                                 <td className="border border-gray-200 px-4 py-3">
                                   <Badge variant={
@@ -1447,10 +1482,62 @@ export default function SPSAdminPage() {
                               {/* 展开的详细信息行 */}
                               {expandedFormId === form.id && (
                                 <tr>
-                                  <td colSpan={9} className="border border-gray-200 bg-gray-50 px-4 py-4">
+                                  <td colSpan={11} className="border border-gray-200 bg-gray-50 px-4 py-4">
                                     <div className="space-y-4">
+                                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                       <div>
-                                        <h4 className="font-medium text-gray-900 mb-2">业务描述:</h4>
+                                          <h4 className="font-medium text-gray-900 mb-2">月均订单量:</h4>
+                                          <p className="text-gray-600 text-sm">
+                                            {form.monthly_order_volume === 'under-100' ? '< 100' :
+                                             form.monthly_order_volume === '100-500' ? '100 - 500' :
+                                             form.monthly_order_volume === '501-2000' ? '501 - 2000' :
+                                             form.monthly_order_volume === 'over-2000' ? '2000+' : 
+                                             form.monthly_order_volume}
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <h4 className="font-medium text-gray-900 mb-2">物流挑战:</h4>
+                                          <p className="text-gray-600 text-sm">
+                                            {Array.isArray(form.logistics_challenges) ? 
+                                              form.logistics_challenges.map(c => {
+                                                const challengeMap: Record<string, string> = {
+                                                  'high-costs': '运输成本过高',
+                                                  'slow-delivery': '配送时效慢',
+                                                  'customs': '清关问题',
+                                                  'no-tracking': '缺乏物流追踪',
+                                                  'damaged-goods': '货物破损丢失',
+                                                  'other': '其他',
+                                                  'none': '无'
+                                                }
+                                                return challengeMap[c] || c
+                                              }).join(', ') : 
+                                              (typeof form.logistics_challenges === 'string' ? 
+                                                JSON.parse(form.logistics_challenges).map((c: string) => {
+                                                  const challengeMap: Record<string, string> = {
+                                                    'high-costs': '运输成本过高',
+                                                    'slow-delivery': '配送时效慢',
+                                                    'customs': '清关问题',
+                                                    'no-tracking': '缺乏物流追踪',
+                                                    'damaged-goods': '货物破损丢失',
+                                                    'other': '其他',
+                                                    'none': '无'
+                                                  }
+                                                  return challengeMap[c] || c
+                                                }).join(', ') : '无')
+                                            }
+                                          </p>
+                                        </div>
+                                      </div>
+                                      
+                                      {form.other_challenge && (
+                                        <div>
+                                          <h4 className="font-medium text-gray-900 mb-2">其他挑战:</h4>
+                                          <p className="text-gray-600 text-sm">{form.other_challenge}</p>
+                                        </div>
+                                      )}
+                                      
+                                      <div>
+                                        <h4 className="font-medium text-gray-900 mb-2">详细需求描述:</h4>
                                         <p className="text-gray-600 text-sm">{form.description}</p>
                                       </div>
                                       

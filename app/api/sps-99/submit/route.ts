@@ -4,9 +4,14 @@ import db from '@/lib/database'
 // 表单数据接口
 interface FormData {
   fullName: string
-  email: string
   company: string
-  businessType: string
+  email: string
+  country: string
+  salesPlatforms: string[]
+  productCategories: string
+  monthlyOrderVolume: string
+  logisticsChallenges: string[]
+  otherChallenge: string
   description: string
 }
 
@@ -15,7 +20,7 @@ export async function POST(request: NextRequest) {
     const formData: FormData = await request.json()
     
     // 验证必需的字段
-    if (!formData.fullName || !formData.email || !formData.company || !formData.businessType || !formData.description) {
+    if (!formData.fullName || !formData.email || !formData.company || !formData.country || formData.salesPlatforms.length === 0 || !formData.productCategories || !formData.monthlyOrderVolume || formData.logisticsChallenges.length === 0 || !formData.description) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -67,16 +72,46 @@ export async function POST(request: NextRequest) {
       ccAddresses.push(postmarkConfig.ccEmail)
     }
 
-    // 获取业务类型的中文名称
-    const businessTypeMap: Record<string, string> = {
-      'tiktok': 'TikTok销售商',
-      'kickstarter': 'Kickstarter创作者',
-      'indiegogo': 'Indiegogo创作者',
-      'ecommerce': '电商品牌',
+    // 获取国家的中文名称
+    const countryMap: Record<string, string> = {
+      'usa': '美国',
+      'canada': '加拿大',
       'other': '其他'
     }
 
-    const businessTypeCN = businessTypeMap[formData.businessType] || formData.businessType
+    // 获取销售平台的中文名称
+    const platformMap: Record<string, string> = {
+      'tiktok-us': 'TikTok Shop 美国',
+      'tiktok-ca': 'TikTok Shop 加拿大',
+      'website-us': '独立站 美国',
+      'website-ca': '独立站 加拿大',
+      'crowdfunding': '众筹平台',
+      'other': '其他'
+    }
+
+    // 获取物流挑战的中文名称
+    const challengeMap: Record<string, string> = {
+      'high-costs': '运输成本过高',
+      'slow-delivery': '配送时效慢',
+      'customs': '清关问题',
+      'no-tracking': '缺乏物流追踪',
+      'damaged-goods': '货物破损丢失',
+      'other': '其他',
+      'none': '无'
+    }
+
+    // 获取月均订单量的中文名称
+    const volumeMap: Record<string, string> = {
+      'under-100': '< 100',
+      '100-500': '100 - 500',
+      '501-2000': '501 - 2000',
+      'over-2000': '2000+'
+    }
+
+    const countryCN = countryMap[formData.country] || formData.country
+    const platformsCN = formData.salesPlatforms.map(p => platformMap[p] || p).join(', ')
+    const challengesCN = formData.logisticsChallenges.map(c => challengeMap[c] || c).join(', ')
+    const volumeCN = volumeMap[formData.monthlyOrderVolume] || formData.monthlyOrderVolume
 
     // 准备邮件内容
     const emailData = {
@@ -100,33 +135,54 @@ export async function POST(request: NextRequest) {
                 </div>
                 
                 <div style="background: #f8fafc; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
-                    <h2 style="color: #1e40af; margin-top: 0;">📋 申请人信息</h2>
+                    <h2 style="color: #1e40af; margin-top: 0;">📋 联系信息</h2>
                     <table style="width: 100%; border-collapse: collapse;">
                         <tr>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb; font-weight: bold; width: 120px;">姓名：</td>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">${formData.fullName}</td>
                         </tr>
                         <tr>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb; font-weight: bold;">公司名称：</td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">${formData.company}</td>
+                        </tr>
+                        <tr>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb; font-weight: bold;">邮箱：</td>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">${formData.email}</td>
                         </tr>
                         <tr>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb; font-weight: bold;">公司：</td>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">${formData.company}</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb; font-weight: bold;">业务类型：</td>
-                            <td style="padding: 8px 0; border-bottom: 1px solid #e5e7eb;">${businessTypeCN} (${formData.businessType})</td>
-                        </tr>
-                        <tr>
-                            <td style="padding: 8px 0; font-weight: bold; vertical-align: top;">申请时间：</td>
-                            <td style="padding: 8px 0;">${new Date().toLocaleString('zh-CN')}</td>
+                            <td style="padding: 8px 0; font-weight: bold;">国家：</td>
+                            <td style="padding: 8px 0;">${countryCN} (${formData.country})</td>
                         </tr>
                     </table>
                 </div>
+
+                <div style="background: #f0f9ff; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                    <h2 style="color: #0369a1; margin-top: 0;">💼 业务信息</h2>
+                    <table style="width: 100%; border-collapse: collapse;">
+                        <tr>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e0f2fe; font-weight: bold; width: 140px;">主要销售平台：</td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e0f2fe;">${platformsCN}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e0f2fe; font-weight: bold;">主要产品类别：</td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e0f2fe;">${formData.productCategories}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; font-weight: bold;">月均订单量：</td>
+                            <td style="padding: 8px 0;">${volumeCN}</td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div style="background: #fef3f2; padding: 20px; border-radius: 8px; margin-bottom: 20px;">
+                    <h2 style="color: #dc2626; margin-top: 0;">🚚 物流需求</h2>
+                    <p style="margin: 0 0 10px 0;"><strong>主要物流挑战：</strong></p>
+                    <p style="margin: 0 0 15px 0; color: #7f1d1d;">${challengesCN}</p>
+                    ${formData.otherChallenge ? `<p style="margin: 0;"><strong>其他挑战：</strong> ${formData.otherChallenge}</p>` : ''}
+                </div>
                 
                 <div style="background: #eff6ff; padding: 20px; border-radius: 8px; border-left: 4px solid #3b82f6;">
-                    <h3 style="color: #1e40af; margin-top: 0;">💼 业务描述</h3>
+                    <h3 style="color: #1e40af; margin-top: 0;">📝 需求描述</h3>
                     <p style="white-space: pre-wrap; line-height: 1.6;">${formData.description}</p>
                 </div>
                 
@@ -142,6 +198,9 @@ export async function POST(request: NextRequest) {
                 
                 <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 1px solid #e5e7eb;">
                     <p style="color: #6b7280; font-size: 14px;">
+                        申请时间：${new Date().toLocaleString('zh-CN')}
+                    </p>
+                    <p style="color: #6b7280; font-size: 14px;">
                         此邮件由 SPS 申请系统自动发送
                     </p>
                     <p style="color: #6b7280; font-size: 12px;">
@@ -155,15 +214,25 @@ export async function POST(request: NextRequest) {
       TextBody: `
 新的SPS 19 Pioneer项目申请
 
-申请人信息：
+联系信息：
 - 姓名：${formData.fullName}
+- 公司名称：${formData.company}
 - 邮箱：${formData.email}
-- 公司：${formData.company}
-- 业务类型：${businessTypeCN} (${formData.businessType})
-- 申请时间：${new Date().toLocaleString('zh-CN')}
+- 国家：${countryCN} (${formData.country})
 
-业务描述：
+业务信息：
+- 主要销售平台：${platformsCN}
+- 主要产品类别：${formData.productCategories}
+- 月均订单量：${volumeCN}
+
+物流需求：
+- 主要物流挑战：${challengesCN}
+${formData.otherChallenge ? `- 其他挑战：${formData.otherChallenge}` : ''}
+
+需求描述：
 ${formData.description}
+
+申请时间：${new Date().toLocaleString('zh-CN')}
 
 后续行动：
 - 请在24小时内回复申请人
@@ -189,12 +258,17 @@ ${formData.description}
           full_name, 
           email, 
           company, 
-          business_type, 
+          country,
+          sales_platforms,
+          product_categories,
+          monthly_order_volume,
+          logistics_challenges,
+          other_challenge,
           description, 
           status,
           email_sent,
           submitted_at
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7, NOW())
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, NOW())
         RETURNING id
       `
       
@@ -202,7 +276,12 @@ ${formData.description}
         formData.fullName,
         formData.email,
         formData.company,
-        formData.businessType,
+        formData.country,
+        JSON.stringify(formData.salesPlatforms),
+        formData.productCategories,
+        formData.monthlyOrderVolume,
+        JSON.stringify(formData.logisticsChallenges),
+        formData.otherChallenge || null,
         formData.description,
         'pending',
         false // 先设为false，邮件发送成功后再更新
@@ -269,8 +348,6 @@ ${formData.description}
       console.error('邮件发送过程出错:', emailError)
       // 不返回错误，因为数据已经保存到数据库
     }
-
-
 
     // 记录成功信息
     console.log('表单提交处理成功:', {

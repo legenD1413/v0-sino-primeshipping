@@ -7,7 +7,12 @@ interface FormSubmission {
   fullName: string
   email: string
   company: string
-  businessType: string
+  country: string
+  salesPlatforms: string[]
+  productCategories: string
+  monthlyOrderVolume: string
+  logisticsChallenges: string[]
+  otherChallenge: string
   description: string
   status: string
   emailSent: boolean
@@ -30,7 +35,7 @@ export async function GET(request: NextRequest) {
     const limit = parseInt(searchParams.get('limit') || '20')
     const status = searchParams.get('status')
     const replyStatus = searchParams.get('replyStatus')
-    const businessType = searchParams.get('businessType')
+    const country = searchParams.get('country')
     const search = searchParams.get('search')
 
     const offset = (page - 1) * limit
@@ -52,9 +57,9 @@ export async function GET(request: NextRequest) {
       paramIndex++
     }
 
-    if (businessType) {
-      whereConditions.push(`business_type = $${paramIndex}`)
-      queryParams.push(businessType)
+    if (country) {
+      whereConditions.push(`country = $${paramIndex}`)
+      queryParams.push(country)
       paramIndex++
     }
 
@@ -78,7 +83,12 @@ export async function GET(request: NextRequest) {
         full_name,
         email,
         company,
-        business_type,
+        country,
+        sales_platforms,
+        product_categories,
+        monthly_order_volume,
+        logistics_challenges,
+        other_challenge,
         description,
         status,
         email_sent,

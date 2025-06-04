@@ -31,7 +31,7 @@ export function StagewiseDevToolbar() {
 
   // 确保只在客户端渲染，避免SSR问题
   if (!isClient) {
-    return null
+  return null
   }
 
   // 如果有错误，暂时禁用工具栏
