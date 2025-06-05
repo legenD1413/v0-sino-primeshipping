@@ -1,5 +1,6 @@
 import type { Metadata } from "next"
 import Image from "next/image"
+import Link from "next/link"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Check, Clock, BarChart, Globe, Scale, CheckCircle, TruckIcon } from "lucide-react"
@@ -27,12 +28,11 @@ export default function HowItWorksPage() {
               today to find out how you can optimize for time and cost, and start shipping .
             </p>
             <div className="flex flex-wrap gap-4 mt-8">
-              <Button size="lg" className="bg-blue-600 hover:bg-blue-700">
-                Sign Up Free
-              </Button>
-              <Button size="lg" variant="outline" className="bg-white/10 text-white border-white hover:bg-white/20">
-                Talk to Expert
-              </Button>
+              <Link href="/get-quote">
+                <Button size="lg" variant="outline" className="bg-white/10 text-white border-white hover:bg-white/20">
+                  Talk to Expert
+                </Button>
+              </Link>
             </div>
           </div>
         </div>
@@ -248,12 +248,11 @@ export default function HowItWorksPage() {
           help you with your next shipment.
         </p>
         <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0">
-          <Button size="lg" className="bg-primary hover:bg-primary/90">
-            Get a Quote
-          </Button>
-          <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-            Talk to Our Team
-          </Button>
+          <Link href="/get-quote">
+            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
+              Talk to Our Team
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

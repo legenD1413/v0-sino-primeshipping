@@ -543,7 +543,7 @@ export default function ExpressPage() {
             efficiently and smoothly. Let us help you optimize your shipping strategy.
           </p>
           <Link 
-            href="/contact" 
+            href="/get-quote" 
             className="inline-flex items-center bg-white text-blue-600 font-bold py-3 px-8 rounded-lg hover:bg-gray-100 transition-colors"
           >
             Get Express Quote

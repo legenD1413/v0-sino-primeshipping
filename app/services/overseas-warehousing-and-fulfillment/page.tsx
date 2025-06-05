@@ -859,7 +859,7 @@ export default function OverseasWarehousingPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button asChild size="lg" className="bg-white text-blue-600 hover:bg-gray-100">
-              <Link href="/contact">Contact Us</Link>
+              <Link href="/get-quote">Contact Us</Link>
             </Button>
             <Button asChild size="lg" variant="outline" className="border-white text-white hover:bg-white/10">
               <Link href="/services">Explore More Services</Link>

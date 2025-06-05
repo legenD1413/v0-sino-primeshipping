@@ -449,7 +449,7 @@ export default function ReturnsManagementPage() {
           advantage.
         </p>
         <Link
-          href="/contact"
+          href="/get-quote"
           className="inline-flex items-center justify-center rounded-md bg-primary px-8 py-4 text-lg font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90"
         >
           Contact Us

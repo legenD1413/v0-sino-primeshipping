@@ -293,7 +293,7 @@ export default function FCLToPortPage() {
           Contact our team today to get a competitive quote for your FCL to Port shipping needs.
         </p>
         <Link
-          href="/contact"
+                      href="/get-quote"
           className="inline-flex items-center justify-center rounded-md bg-white px-8 py-4 text-lg font-medium text-blue-600 shadow-lg transition-all duration-300 hover:bg-blue-50 hover:shadow-xl transform hover:scale-105"
         >
           Get a Quote

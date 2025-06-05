@@ -18,7 +18,7 @@ import { ServiceIcon } from "@/components/service-icon"
 const regions = {
   B2C: {
     "Sino Services": ["FBA Prep & Ship", "Direct-to-Consumer Shipping", "Small Parcel Express", "Express"],
-    "Overseas Services": ["Overseas Warehousing & Fulfillment", "Returns Management"],
+    "Warehouse Services": ["Overseas Warehousing & Fulfillment", "Returns Management"],
   },
   B2B: {
     "Ocean Freight": ["FCL to port", "FCL to Door", "LCL to Door"],
@@ -200,45 +200,37 @@ export function Header() {
                 <div className="dropdown-content">
                   <div className="regions-column">
                     <h3 className="regions-title">CATEGORIES</h3>
-                    <ul className="regions-list flex flex-row space-x-4" role="menu">
+                    <ul className="regions-list flex flex-row space-x-2" role="menu">
                       <li role="menuitem">
                         <button
                           className={cn(
-                            "region-button flex items-center space-x-2",
-                            activeRegion === "B2C" ? "region-active text-red-500" : "",
+                            "region-tab",
+                            activeRegion === "B2C" ? "region-tab-active" : "region-tab-inactive",
                           )}
                           onMouseEnter={() => handleRegionHover("B2C")}
-                          onClick={() => handleRegionHover("B2C")}
+                          onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            handleRegionHover("B2C")
+                          }}
                         >
-                          <div
-                            className={cn(
-                              "w-5 h-5 rounded-full border border-gray-300 flex items-center justify-center",
-                              activeRegion === "B2C" ? "border-red-500" : "",
-                            )}
-                          >
-                            {activeRegion === "B2C" && <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>}
-                          </div>
-                          <span>B2C</span>
+                          B2C
                         </button>
                       </li>
                       <li role="menuitem">
                         <button
                           className={cn(
-                            "region-button flex items-center space-x-2",
-                            activeRegion === "B2B" ? "region-active text-red-500" : "",
+                            "region-tab",
+                            activeRegion === "B2B" ? "region-tab-active" : "region-tab-inactive",
                           )}
                           onMouseEnter={() => handleRegionHover("B2B")}
-                          onClick={() => handleRegionHover("B2B")}
+                          onClick={(e) => {
+                            e.preventDefault()
+                            e.stopPropagation()
+                            handleRegionHover("B2B")
+                          }}
                         >
-                          <div
-                            className={cn(
-                              "w-5 h-5 rounded-full border border-gray-300 flex items-center justify-center",
-                              activeRegion === "B2B" ? "border-red-500" : "",
-                            )}
-                          >
-                            {activeRegion === "B2B" && <div className="w-2.5 h-2.5 rounded-full bg-red-500"></div>}
-                          </div>
-                          <span>B2B</span>
+                          B2B
                         </button>
                       </li>
                     </ul>
@@ -356,7 +348,9 @@ export function Header() {
 
         {/* Quote button and mobile menu on the right */}
         <div className="flex items-center space-x-4">
-          <Button className="hidden sm:flex bg-[#0A2240] text-white hover:bg-[#081A33]">Get a Quote</Button>
+          <Link href="/get-quote">
+            <Button className="hidden sm:flex bg-[#0A2240] text-white hover:bg-[#081A33]">Get a Quote</Button>
+          </Link>
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
               <Button variant="outline" size="icon" className="lg:hidden border-gray-300 text-black hover:bg-gray-100">
@@ -376,7 +370,9 @@ export function Header() {
               <div className="p-4">
                 <EnhancedMobileMenu setOpen={setOpen} />
                 <div className="mt-6">
-                  <Button className="w-full bg-[#0A2240] text-white hover:bg-[#081A33]">Get a Quote</Button>
+                  <Link href="/get-quote">
+                    <Button className="w-full bg-[#0A2240] text-white hover:bg-[#081A33]">Get a Quote</Button>
+                  </Link>
                 </div>
               </div>
             </SheetContent>

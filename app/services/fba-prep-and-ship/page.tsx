@@ -291,7 +291,7 @@ export default function FBAPrepAndShipPage() {
           Contact our team today to discuss how our FBA Prep & Ship services can help your Amazon business grow.
         </p>
         <Link
-          href="/contact"
+          href="/get-quote"
           className="inline-flex items-center justify-center rounded-md bg-white px-8 py-4 text-lg font-medium text-blue-700 shadow transition-colors hover:bg-gray-100"
         >
           Get Started <ArrowRight className="ml-2 h-5 w-5" />

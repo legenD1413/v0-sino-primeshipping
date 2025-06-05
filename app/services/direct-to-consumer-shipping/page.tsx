@@ -523,12 +523,12 @@ export default function DirectToConsumerShippingPage() {
             Contact our team today to learn how our E-commerce Logistics China to North America solutions can help your
             business grow in the USA and Canadian markets.
           </p>
-          <Link
-            href="/contact"
-            className="inline-flex items-center justify-center rounded-md bg-white px-8 py-4 text-lg font-medium text-blue-700 shadow transition-colors hover:bg-gray-100"
-          >
-            Get Started <ArrowRight className="ml-2 h-5 w-5" />
-          </Link>
+                  <Link
+          href="/get-quote"
+          className="inline-flex items-center justify-center rounded-md bg-white px-8 py-4 text-lg font-medium text-blue-700 shadow transition-colors hover:bg-gray-100"
+        >
+          Get Started <ArrowRight className="ml-2 h-5 w-5" />
+        </Link>
         </div>
       </div>
     </>

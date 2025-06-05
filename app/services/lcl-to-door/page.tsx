@@ -673,17 +673,12 @@ export default function LCLToDoorPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <Link
-                href="/contact"
+                href="/get-quote"
               className="inline-flex items-center bg-white text-blue-600 font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:bg-blue-50 hover:shadow-xl transform hover:scale-105"
               >
                 Get a Quote <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
-              <Link
-                href="/services"
-              className="inline-flex items-center bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:bg-white/10 hover:shadow-lg"
-              >
-                Explore All Services
-              </Link>
+
           </div>
         </div>
       </section>

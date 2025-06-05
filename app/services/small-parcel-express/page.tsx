@@ -618,9 +618,11 @@ export default function SmallParcelExpressPage() {
                 delivery time requirements, and destination country policies. Our logistics experts can help you select
                 the optimal solution for your business needs.
               </p>
-              <Button size="lg" className="bg-primary hover:bg-primary/90">
-                Get Expert Advice
-              </Button>
+              <Link href="/get-quote">
+                <Button size="lg" className="bg-primary hover:bg-primary/90">
+                  Get Expert Advice
+                </Button>
+              </Link>
             </div>
           </div>
         </CardContent>
@@ -634,12 +636,11 @@ export default function SmallParcelExpressPage() {
           for your cross-border e-commerce business.
         </p>
         <div className="flex flex-col space-y-4 sm:flex-row sm:justify-center sm:space-x-4 sm:space-y-0">
-          <Button size="lg" className="bg-primary hover:bg-primary/90">
-            Get a Free Quote
-          </Button>
-          <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
-            Contact Our Team
-          </Button>
+          <Link href="/get-quote">
+            <Button size="lg" variant="outline" className="border-primary text-primary hover:bg-primary/10">
+              Contact Our Team
+            </Button>
+          </Link>
         </div>
       </div>
     </div>

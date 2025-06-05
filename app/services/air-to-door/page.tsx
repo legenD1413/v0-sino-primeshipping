@@ -785,7 +785,7 @@ export default function AirToDoorsPage() {
             </p>
             <div className="flex flex-wrap justify-center gap-4 animate-fade-in-delay-2">
               <Link
-                href="/contact"
+                href="/get-quote"
                 className="inline-flex items-center bg-white text-blue-600 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-colors hover:shadow-xl group"
               >
                 Get a Quote{" "}
