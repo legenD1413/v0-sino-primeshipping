@@ -13,6 +13,7 @@ export async function POST(request: NextRequest) {
         phone VARCHAR(50),
         country VARCHAR(50) NOT NULL,
         product_categories TEXT NOT NULL,
+        ecommerce_platforms VARCHAR(50),
         origin_country VARCHAR(50) NOT NULL DEFAULT 'china',
         destination_countries JSONB NOT NULL,
         shipping_methods JSONB NOT NULL,
@@ -80,6 +81,11 @@ export async function POST(request: NextRequest) {
         -- 添加 quote_valid_until 字段
         IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='quote_requests' AND column_name='quote_valid_until') THEN
           ALTER TABLE quote_requests ADD COLUMN quote_valid_until DATE;
+        END IF;
+        
+        -- 添加 ecommerce_platforms 字段
+        IF NOT EXISTS (SELECT 1 FROM information_schema.columns WHERE table_name='quote_requests' AND column_name='ecommerce_platforms') THEN
+          ALTER TABLE quote_requests ADD COLUMN ecommerce_platforms VARCHAR(50);
         END IF;
       END $$;
     `

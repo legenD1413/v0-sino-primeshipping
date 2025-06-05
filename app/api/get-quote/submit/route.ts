@@ -9,6 +9,7 @@ interface QuoteFormData {
   phone: string
   country: string
   productCategories: string
+  ecommercePlatforms: string
   originCountry: string
   destinationCountry: string[]
   shippingMethod: string[]
@@ -20,7 +21,7 @@ export async function POST(request: NextRequest) {
     const formData: QuoteFormData = await request.json()
     
     // 验证必需的字段
-    if (!formData.fullName || !formData.email || !formData.company || !formData.country || !formData.productCategories || formData.destinationCountry.length === 0 || formData.shippingMethod.length === 0 || !formData.description) {
+    if (!formData.fullName || !formData.email || !formData.company || !formData.country || !formData.productCategories || !formData.ecommercePlatforms || formData.destinationCountry.length === 0 || formData.shippingMethod.length === 0 || !formData.description) {
       return NextResponse.json(
         { error: 'Missing required fields' },
         { status: 400 }
@@ -98,9 +99,27 @@ export async function POST(request: NextRequest) {
       'air-freight': '空运到门'
     }
 
+    // 获取电商平台的中文名称
+    const ecommercePlatformMap: Record<string, string> = {
+      'shopify': 'Shopify',
+      'amazon': 'Amazon',
+      'wordpress': 'WordPress',
+      'bigcommerce': 'BigCommerce',
+      'wix': 'Wix',
+      'ebay': 'Ebay',
+      'etsy': 'Etsy',
+      'lazada': 'Lazada',
+      'magento': 'Magento',
+      'lcl-fcl': 'LCL/FCL',
+      'crowdfunding': '众筹平台',
+      'individual-order': '个人订单',
+      'none-other': '无/其他'
+    }
+
     const countryCN = countryMap[formData.country] || formData.country
     const destinationsCN = formData.destinationCountry.map(d => destinationMap[d] || d).join(', ')
     const shippingMethodsCN = formData.shippingMethod.map(s => shippingMethodMap[s] || s).join(', ')
+    const ecommercePlatformCN = ecommercePlatformMap[formData.ecommercePlatforms] || formData.ecommercePlatforms
 
     // 准备邮件内容
     const emailData = {
@@ -155,6 +174,10 @@ export async function POST(request: NextRequest) {
                         <tr>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e0f2fe; font-weight: bold; width: 140px;">主要产品类别：</td>
                             <td style="padding: 8px 0; border-bottom: 1px solid #e0f2fe;">${formData.productCategories}</td>
+                        </tr>
+                        <tr>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e0f2fe; font-weight: bold;">电商平台：</td>
+                            <td style="padding: 8px 0; border-bottom: 1px solid #e0f2fe;">${ecommercePlatformCN}</td>
                         </tr>
                         <tr>
                             <td style="padding: 8px 0; font-weight: bold;">产品来源国：</td>
@@ -219,6 +242,7 @@ export async function POST(request: NextRequest) {
 
 产品信息：
 - 主要产品类别：${formData.productCategories}
+- 电商平台：${ecommercePlatformCN}
 - 产品来源国：中国 (${formData.originCountry})
 
 物流需求：
@@ -257,6 +281,7 @@ ${formData.description}
           phone,
           country,
           product_categories,
+          ecommerce_platforms,
           origin_country,
           destination_countries,
           shipping_methods,
@@ -264,7 +289,7 @@ ${formData.description}
           status,
           email_sent,
           submitted_at
-        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, NOW())
+        ) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12, $13, NOW())
         RETURNING id
       `
       
@@ -275,6 +300,7 @@ ${formData.description}
         formData.phone || null,
         formData.country,
         formData.productCategories,
+        formData.ecommercePlatforms,
         formData.originCountry,
         JSON.stringify(formData.destinationCountry),
         JSON.stringify(formData.shippingMethod),

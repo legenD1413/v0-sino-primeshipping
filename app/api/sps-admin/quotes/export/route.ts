@@ -31,6 +31,7 @@ export async function POST(request: NextRequest) {
         phone,
         country,
         product_categories,
+        ecommerce_platforms,
         origin_country,
         destination_countries,
         shipping_methods,
@@ -74,6 +75,7 @@ export async function POST(request: NextRequest) {
       '联系电话': quote.phone || '',
       '所在国家': translateCountry(quote.country),
       '产品类别': quote.product_categories,
+      '电商平台': translateEcommercePlatform(quote.ecommerce_platforms),
       '货物起运国': quote.origin_country === 'china' ? '中国' : quote.origin_country,
       '目的地国家': translateDestinations(quote.destination_countries),
       '运输方式': translateShippingMethods(quote.shipping_methods),
@@ -110,6 +112,7 @@ export async function POST(request: NextRequest) {
       { wch: 15 },  // 联系电话
       { wch: 12 },  // 所在国家
       { wch: 20 },  // 产品类别
+      { wch: 15 },  // 电商平台
       { wch: 12 },  // 货物起运国
       { wch: 20 },  // 目的地国家
       { wch: 30 },  // 运输方式
@@ -221,6 +224,29 @@ function translateShippingMethods(methods: any): string {
   }
   
   return methodArray.map((m: string) => methodMap[m] || m).join(', ')
+}
+
+// 电商平台翻译函数
+function translateEcommercePlatform(platform: string): string {
+  if (!platform) return ''
+  
+  const platformMap: { [key: string]: string } = {
+    'shopify': 'Shopify',
+    'amazon': 'Amazon',
+    'wordpress': 'WordPress',
+    'bigcommerce': 'BigCommerce',
+    'wix': 'Wix',
+    'ebay': 'Ebay',
+    'etsy': 'Etsy',
+    'lazada': 'Lazada',
+    'magento': 'Magento',
+    'lcl-fcl': 'LCL/FCL',
+    'crowdfunding': '众筹平台',
+    'individual-order': '个人订单',
+    'none-other': '无/其他'
+  }
+  
+  return platformMap[platform] || platform
 }
 
 // 日期格式化函数

@@ -32,6 +32,7 @@ export default function GetQuotePage() {
     phone: '',
     country: '',
     productCategories: '',
+    ecommercePlatforms: '',
     originCountry: 'china',
     destinationCountry: [] as string[],
     shippingMethod: [] as string[],
@@ -62,7 +63,7 @@ export default function GetQuotePage() {
     setSubmitMessage('')
 
     // 表单验证
-    if (!formData.fullName || !formData.email || !formData.company || !formData.country || !formData.productCategories || formData.destinationCountry.length === 0 || formData.shippingMethod.length === 0 || !formData.description) {
+    if (!formData.fullName || !formData.email || !formData.company || !formData.country || !formData.productCategories || !formData.ecommercePlatforms || formData.destinationCountry.length === 0 || formData.shippingMethod.length === 0 || !formData.description) {
       setSubmitStatus('error')
       setSubmitMessage('Please fill in all required fields')
       setIsSubmitting(false)
@@ -91,6 +92,7 @@ export default function GetQuotePage() {
           phone: '',
           country: '',
           productCategories: '',
+          ecommercePlatforms: '',
           originCountry: 'china',
           destinationCountry: [] as string[],
           shippingMethod: [] as string[],
@@ -215,27 +217,6 @@ export default function GetQuotePage() {
           </div>
 
           <div className="bg-white rounded-2xl p-8 border border-gray-200">
-            {/* Success/Error Messages */}
-            {submitStatus === 'success' && (
-              <div className="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
-                <div className="flex items-center">
-                  <CheckCircle className="h-5 w-5 mr-2" />
-                  {submitMessage}
-                </div>
-              </div>
-            )}
-
-            {submitStatus === 'error' && (
-              <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
-                <div className="flex items-center">
-                  <div className="h-5 w-5 mr-2 rounded-full bg-red-500 flex items-center justify-center">
-                    <span className="text-white text-xs">!</span>
-                  </div>
-                  {submitMessage}
-                </div>
-              </div>
-            )}
-
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Contact Information */}
@@ -340,20 +321,63 @@ export default function GetQuotePage() {
                     <label htmlFor="productCategories" className="block text-sm font-medium text-gray-700 mb-2">
                       Main Product Categories *
                     </label>
-                    <input
-                      type="text"
+                    <select
                       id="productCategories"
                       name="productCategories"
                       value={formData.productCategories}
                       onChange={handleInputChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
-                      placeholder="e.g., Clothing, Electronics, Home & Garden, Beauty Products"
                       required
-                    />
-                    <p className="text-gray-500 text-xs mt-1">You can list multiple categories</p>
+                    >
+                      <option value="" disabled>Select a product category</option>
+                      <option value="bike-vehicle">Bike & Vehicle</option>
+                      <option value="books">Books</option>
+                      <option value="clothing-shoes-accessories">Clothing, Shoes & Accessories</option>
+                      <option value="computers-tablets-networking">Computers/Tablets & Networking</option>
+                      <option value="consumer-electronics">Consumer Electronics</option>
+                      <option value="cosmetics-skincare">Cosmetics & Skincare</option>
+                      <option value="garden">Garden</option>
+                      <option value="health-beauty">Health & Beauty</option>
+                      <option value="home-decoration">Home & Decoration</option>
+                      <option value="jewelry-watch">Jewelry & Watch</option>
+                      <option value="kitchenware">Kitchenware</option>
+                      <option value="pet-supplies">Pet Supplies</option>
+                      <option value="sports-fitness-outdoors">Sports/Fitness & Outdoors</option>
+                      <option value="toys-games">Toys & Games</option>
+                      <option value="others">Others</option>
+                    </select>
                   </div>
 
                   <div>
+                    <label htmlFor="ecommercePlatforms" className="block text-sm font-medium text-gray-700 mb-2">
+                      Your eCommerce platforms *
+                    </label>
+                    <select
+                      id="ecommercePlatforms"
+                      name="ecommercePlatforms"
+                      value={formData.ecommercePlatforms}
+                      onChange={handleInputChange}
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-blue-500 focus:border-blue-500 transition-all duration-300"
+                      required
+                    >
+                      <option value="" disabled>Select your eCommerce platform</option>
+                      <option value="shopify">Shopify</option>
+                      <option value="amazon">Amazon</option>
+                      <option value="wordpress">WordPress</option>
+                      <option value="bigcommerce">BigCommerce</option>
+                      <option value="wix">Wix</option>
+                      <option value="ebay">Ebay</option>
+                      <option value="etsy">Etsy</option>
+                      <option value="lazada">Lazada</option>
+                      <option value="magento">Magento</option>
+                      <option value="lcl-fcl">LCL/FCL</option>
+                      <option value="crowdfunding">Crowdfunding</option>
+                      <option value="individual-order">Individual Order</option>
+                      <option value="none-other">None/other</option>
+                    </select>
+                  </div>
+
+                  <div className="hidden">
                     <label htmlFor="originCountry" className="block text-sm font-medium text-gray-700 mb-2">
                       Goods Originating Country *
                     </label>
@@ -486,6 +510,28 @@ export default function GetQuotePage() {
                     </>
                   )}
                 </button>
+                
+                {/* Success/Error Messages - Moved below the submit button */}
+                {submitStatus === 'success' && (
+                  <div className="mt-4 p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
+                    <div className="flex items-center">
+                      <CheckCircle className="h-5 w-5 mr-2" />
+                      {submitMessage}
+                    </div>
+                  </div>
+                )}
+
+                {submitStatus === 'error' && (
+                  <div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
+                    <div className="flex items-center">
+                      <div className="h-5 w-5 mr-2 rounded-full bg-red-500 flex items-center justify-center">
+                        <span className="text-white text-xs">!</span>
+                      </div>
+                      {submitMessage}
+                    </div>
+                  </div>
+                )}
+                
                 <p className="text-gray-600 text-sm text-center mt-3">
                   We'll respond to your quote request within 24 hours
                 </p>
