@@ -278,13 +278,7 @@ export default function AboutUs() {
         </div>
         <div className="flex flex-col sm:flex-row gap-4">
           <Link
-            href="/services"
-              className="bg-white text-blue-600 hover:bg-gray-100 px-6 py-3 rounded-lg font-medium text-center transition-all duration-300 hover:transform hover:scale-105"
-          >
-            Explore Our Services
-          </Link>
-          <Link
-            href="/contact"
+            href="/get-quote"
               className="bg-transparent hover:bg-blue-700/50 border border-white text-white px-6 py-3 rounded-lg font-medium text-center transition-all duration-300 hover:transform hover:scale-105"
           >
             Contact Us

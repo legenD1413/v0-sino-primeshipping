@@ -79,19 +79,7 @@ export default function Home() {
               </div>
             </div>
 
-            {/* Hero Image - Enhanced with floating animation and shadow */}
-            <div className="hidden lg:flex justify-end items-center">
-              <div className="relative w-[450px] h-[350px] animate-float">
-                <div className="absolute inset-0 bg-gradient-to-r from-blue-600/20 to-blue-400/20 rounded-2xl blur-xl transform -rotate-3"></div>
-                <Image
-                  src="/business-logistics-hero.png"
-                  alt="Focus on business while we handle logistics"
-                  fill
-                  className="object-contain rounded-lg z-10"
-                  priority
-                />
-              </div>
-            </div>
+
           </div>
         </div>
 
@@ -543,7 +531,7 @@ export default function Home() {
       </section>
 
       {/* 5. Featured Resources/Blog Posts - Enhanced with better cards and hover effects */}
-      <section className="section-spacing bg-white py-20">
+      <section className="section-spacing bg-white py-20 hidden">
         <div className="container-custom">
           <div className="mb-16 text-center">
             <div className="inline-flex items-center px-4 py-1 mb-4 rounded-full bg-indigo-50 text-indigo-700 text-sm font-medium">
@@ -656,13 +644,10 @@ export default function Home() {
               Get in touch with our logistics experts for a customized solution tailored to your specific needs.
             </p>
             <div className="flex flex-col space-y-4 sm:flex-row sm:space-x-6 sm:space-y-0 justify-center">
-              <Button size="lg" className="bg-white text-[#1a2c4b] hover:bg-gray-100 transition-all duration-300">
-                Get a Free Quote
-              </Button>
               <Button
                 size="lg"
                 variant="outline"
-                className="border-white text-white hover:bg-white/10 transition-all duration-300"
+                className="bg-transparent border-white text-white hover:bg-white/10 transition-all duration-300"
               >
                 Contact Our Team
               </Button>
