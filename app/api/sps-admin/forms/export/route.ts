@@ -17,7 +17,12 @@ export async function GET(request: NextRequest) {
         full_name,
         email,
         company,
-        business_type,
+        country,
+        sales_platforms,
+        product_categories,
+        monthly_order_volume,
+        logistics_challenges,
+        other_challenge,
         description,
         status,
         reply_status,
@@ -50,7 +55,12 @@ export async function GET(request: NextRequest) {
       '姓名': form.full_name,
       '邮箱': form.email,
       '公司': form.company,
-      '业务类型': translateBusinessType(form.business_type),
+      '国家': form.country,
+      '销售平台': Array.isArray(form.sales_platforms) ? form.sales_platforms.join(', ') : form.sales_platforms,
+      '产品类别': form.product_categories,
+      '月订单量': form.monthly_order_volume,
+      '物流挑战': Array.isArray(form.logistics_challenges) ? form.logistics_challenges.join(', ') : form.logistics_challenges,
+      '其他挑战': form.other_challenge || '',
       '业务描述': form.description,
       '申请状态': translateStatus(form.status),
       '回复状态': form.reply_status === 'replied' ? '已回复' : '未回复',
@@ -77,8 +87,13 @@ export async function GET(request: NextRequest) {
       { wch: 15 },  // 姓名
       { wch: 25 },  // 邮箱
       { wch: 20 },  // 公司
-      { wch: 15 },  // 业务类型
-      { wch: 50 },  // 业务描述
+      { wch: 12 },  // 国家
+      { wch: 20 },  // 销售平台
+      { wch: 15 },  // 产品类别
+      { wch: 15 },  // 月订单量
+      { wch: 25 },  // 物流挑战
+      { wch: 20 },  // 其他挑战
+      { wch: 40 },  // 业务描述
       { wch: 12 },  // 申请状态
       { wch: 12 },  // 回复状态
       { wch: 15 },  // 邮件发送状态
@@ -123,18 +138,6 @@ export async function GET(request: NextRequest) {
       error: '导出失败，请稍后重试'
     }, { status: 500 })
   }
-}
-
-// 业务类型翻译函数
-function translateBusinessType(type: string): string {
-  const types: { [key: string]: string } = {
-    'tiktok': 'TikTok销售商',
-    'kickstarter': 'Kickstarter创作者',
-    'indiegogo': 'Indiegogo创作者',
-    'ecommerce': '电商品牌',
-    'other': '其他'
-  }
-  return types[type] || type
 }
 
 // 状态翻译函数

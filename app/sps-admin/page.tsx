@@ -60,6 +60,36 @@ interface FormSubmission {
   updated_at: string
 }
 
+// 报价申请记录接口
+interface QuoteRequest {
+  id: number
+  full_name: string
+  email: string
+  company: string
+  phone: string
+  country: string
+  product_categories: string
+  origin_country: string
+  destination_countries: string[]
+  shipping_methods: string[]
+  description: string
+  status: string
+  email_sent: boolean
+  email_message_id: string
+  recipients_to: string
+  recipients_cc: string
+  recipients_bcc: string
+  reply_status: string
+  admin_notes: string
+  quote_provided: boolean
+  quote_amount: number
+  quote_currency: string
+  quote_valid_until: string
+  submitted_at: string
+  replied_at: string
+  updated_at: string
+}
+
 export default function SPSAdminPage() {
   // 登录状态管理
   const [isLoggedIn, setIsLoggedIn] = useState(false)
@@ -137,6 +167,25 @@ export default function SPSAdminPage() {
   const [hasLoadedForms, setHasLoadedForms] = useState(false)
   const [isExporting, setIsExporting] = useState(false)
   
+  // 报价申请管理状态
+  const [quoteRequests, setQuoteRequests] = useState<QuoteRequest[]>([])
+  const [quoteStats, setQuoteStats] = useState<any>({})
+  const [quotePagination, setQuotePagination] = useState<any>({})
+  const [isLoadingQuotes, setIsLoadingQuotes] = useState(false)
+  const [quoteFilters, setQuoteFilters] = useState({
+    status: '',
+    replyStatus: '',
+    country: '',
+    search: ''
+  })
+  const [currentQuotePage, setCurrentQuotePage] = useState(1)
+  const [selectedQuote, setSelectedQuote] = useState<QuoteRequest | null>(null)
+  const [isUpdatingQuote, setIsUpdatingQuote] = useState(false)
+  const [expandedQuoteId, setExpandedQuoteId] = useState<number | null>(null)
+  const [hasLoadedQuotes, setHasLoadedQuotes] = useState(false)
+  const [selectedQuoteIds, setSelectedQuoteIds] = useState<number[]>([])
+  const [isExportingQuotes, setIsExportingQuotes] = useState(false)
+  
   const { toast } = useToast()
 
   // 检查登录状态和加载保存的配置
@@ -156,6 +205,12 @@ export default function SPSAdminPage() {
           // 延迟一点确保组件已经渲染
           setTimeout(() => {
             handleLoadFormSubmissions(1)
+          }, 500)
+        }
+        if (tabParam === 'quotes' && !hasLoadedQuotes) {
+          // 延迟一点确保组件已经渲染
+          setTimeout(() => {
+            handleLoadQuoteRequests(1)
           }, 500)
         }
       }
@@ -773,6 +828,244 @@ export default function SPSAdminPage() {
     }
   }
 
+  // 导出选中的报价申请
+  const handleExportQuotes = async () => {
+    if (selectedQuoteIds.length === 0) {
+      toast({
+        title: "请选择记录",
+        description: "请至少选择一条报价申请记录进行导出",
+        variant: "destructive"
+      })
+      return
+    }
+
+    setIsExportingQuotes(true)
+    
+    try {
+      toast({
+        title: "开始导出",
+        description: `正在导出 ${selectedQuoteIds.length} 条报价申请记录，请稍候...`,
+      })
+
+      const response = await fetch('/api/sps-admin/quotes/export', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ ids: selectedQuoteIds })
+      })
+
+      if (!response.ok) {
+        const errorResult = await response.json()
+        throw new Error(errorResult.error || '导出失败')
+      }
+
+      // 获取文件名
+      const contentDisposition = response.headers.get('content-disposition')
+      let fileName = 'SPS_报价申请数据.xlsx'
+      
+      if (contentDisposition) {
+        const fileNameMatch = contentDisposition.match(/filename[^;=\n]*=((['"]).*?\2|[^;\n]*)/)
+        if (fileNameMatch && fileNameMatch[1]) {
+          fileName = decodeURIComponent(fileNameMatch[1].replace(/['"]/g, ''))
+        }
+      }
+
+      // 创建下载链接
+      const blob = await response.blob()
+      const url = window.URL.createObjectURL(blob)
+      const link = document.createElement('a')
+      link.href = url
+      link.download = fileName
+      
+      // 触发下载
+      document.body.appendChild(link)
+      link.click()
+      
+      // 清理
+      document.body.removeChild(link)
+      window.URL.revokeObjectURL(url)
+
+      toast({
+        title: "导出成功",
+        description: `已导出 ${selectedQuoteIds.length} 条记录到 ${fileName}`,
+      })
+
+      // 清空选择
+      setSelectedQuoteIds([])
+
+    } catch (error) {
+      console.error('导出报价申请时出错:', error)
+      toast({
+        title: "导出失败",
+        description: error instanceof Error ? error.message : "导出时出现错误，请稍后重试",
+        variant: "destructive"
+      })
+    } finally {
+      setIsExportingQuotes(false)
+    }
+  }
+
+  // =============== 报价申请管理函数 ===============
+  
+  // 加载报价申请列表
+  const handleLoadQuoteRequests = async (page = 1) => {
+    setIsLoadingQuotes(true)
+    setHasLoadedQuotes(true)
+    
+    try {
+      const queryParams = new URLSearchParams({
+        page: page.toString(),
+        limit: '20',
+        ...(quoteFilters.status && { status: quoteFilters.status }),
+        ...(quoteFilters.replyStatus && { replyStatus: quoteFilters.replyStatus }),
+        ...(quoteFilters.country && { country: quoteFilters.country }),
+        ...(quoteFilters.search && { search: quoteFilters.search })
+      })
+
+      const response = await fetch(`/api/sps-admin/quotes?${queryParams}`)
+      const result = await response.json()
+
+      if (response.ok && result.success) {
+        setQuoteRequests(result.data)
+        setQuoteStats(result.stats)
+        setQuotePagination(result.pagination)
+        setCurrentQuotePage(page)
+      } else {
+        toast({
+          title: "加载失败",
+          description: result.error || "无法加载报价申请数据",
+          variant: "destructive"
+        })
+      }
+    } catch (error) {
+      console.error('加载报价申请数据时出错:', error)
+      toast({
+        title: "加载失败",
+        description: "网络错误，请检查您的连接后重试",
+        variant: "destructive"
+      })
+    } finally {
+      setIsLoadingQuotes(false)
+    }
+  }
+
+  // 更新报价申请状态
+  const handleUpdateQuoteStatus = async (quoteId: number, updates: any) => {
+    setIsUpdatingQuote(true)
+    
+    try {
+      const response = await fetch(`/api/sps-admin/quotes?id=${quoteId}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(updates)
+      })
+
+      const result = await response.json()
+
+      if (response.ok && result.success) {
+        toast({
+          title: "更新成功",
+          description: result.message,
+        })
+        
+        // 重新加载数据
+        handleLoadQuoteRequests(currentQuotePage)
+        setSelectedQuote(null)
+      } else {
+        toast({
+          title: "更新失败",
+          description: result.error || "请稍后重试",
+          variant: "destructive"
+        })
+      }
+    } catch (error) {
+      console.error('更新报价申请状态时出错:', error)
+      toast({
+        title: "更新失败",
+        description: "网络错误，请检查您的连接后重试",
+        variant: "destructive"
+      })
+    } finally {
+      setIsUpdatingQuote(false)
+    }
+  }
+
+  // 删除报价申请记录
+  const handleDeleteQuote = async (quoteId: number) => {
+    if (!window.confirm('确定要删除这条报价申请记录吗？此操作不可撤销。')) {
+      return
+    }
+    
+    try {
+      const response = await fetch(`/api/sps-admin/quotes?id=${quoteId}`, {
+        method: 'DELETE'
+      })
+
+      const result = await response.json()
+
+      if (response.ok && result.success) {
+        toast({
+          title: "删除成功",
+          description: result.message,
+        })
+        
+        // 重新加载数据
+        handleLoadQuoteRequests(currentQuotePage)
+      } else {
+        toast({
+          title: "删除失败",
+          description: result.error || "请稍后重试",
+          variant: "destructive"
+        })
+      }
+    } catch (error) {
+      console.error('删除报价申请记录时出错:', error)
+      toast({
+        title: "删除失败",
+        description: "网络错误，请检查您的连接后重试",
+        variant: "destructive"
+      })
+    }
+  }
+
+  // 初始化报价申请表
+  const handleInitializeQuotesTable = async () => {
+    setIsInitializingDatabase(true)
+    
+    try {
+      const response = await fetch('/api/sps-admin/database/init-quotes', {
+        method: 'POST'
+      })
+
+      const result = await response.json()
+
+      if (response.ok && result.success) {
+        toast({
+          title: "初始化成功",
+          description: result.message,
+        })
+      } else {
+        toast({
+          title: "初始化失败",
+          description: result.error || "请稍后重试",
+          variant: "destructive"
+        })
+      }
+    } catch (error) {
+      console.error('初始化报价申请表时出错:', error)
+      toast({
+        title: "初始化失败",
+        description: "网络错误，请检查您的连接后重试",
+        variant: "destructive"
+      })
+    } finally {
+      setIsInitializingDatabase(false)
+    }
+  }
+
   // 登录表单
   if (!isLoggedIn) {
     return (
@@ -841,10 +1134,7 @@ export default function SPSAdminPage() {
               </Button>
             </form>
             
-            <div className="mt-8 text-base text-gray-600 text-center">
-              <p>默认管理员账户：</p>
-              <p>用户名: admin / 密码: sps2024!</p>
-            </div>
+            
           </CardContent>
         </Card>
       </div>
@@ -858,8 +1148,8 @@ export default function SPSAdminPage() {
         {/* 头部 */}
         <div className="flex justify-between items-center mb-10">
           <div>
-            <h1 className="text-4xl font-bold text-gray-900">SPS 管理后台</h1>
-            <p className="text-lg text-gray-600 mt-2">新普瑞姆国际货运管理系统</p>
+            <h1 className="text-4xl font-bold text-gray-900">SPS Management</h1>
+            <p className="text-lg text-gray-600 mt-2">SinoPrimeshipping</p>
           </div>
           <Button onClick={handleLogout} variant="outline" className="flex items-center gap-2 px-6 py-3 text-base">
             <LogOut className="h-5 w-5" />
@@ -882,9 +1172,17 @@ export default function SPSAdminPage() {
               })
               handleLoadFormSubmissions(1)
             }
+            // 当切换到报价申请标签页时自动加载/刷新数据
+            if (value === "quotes") {
+              toast({
+                title: "正在刷新报价申请数据",
+                description: "正在获取最新数据...",
+              })
+              handleLoadQuoteRequests(1)
+            }
           }}
         >
-          <TabsList className="grid w-full grid-cols-5 h-14">
+          <TabsList className="grid w-full grid-cols-6 h-14">
             <TabsTrigger value="users" className="flex items-center gap-2 text-base px-6 py-3">
               <Users className="h-5 w-5" />
               用户管理
@@ -892,6 +1190,10 @@ export default function SPSAdminPage() {
             <TabsTrigger value="forms" className="flex items-center gap-2 text-base px-6 py-3">
               <FileText className="h-5 w-5" />
               表单管理
+            </TabsTrigger>
+            <TabsTrigger value="quotes" className="flex items-center gap-2 text-base px-6 py-3">
+              <FileText className="h-5 w-5" />
+              报价申请
             </TabsTrigger>
             <TabsTrigger value="blog" className="flex items-center gap-2 text-base px-6 py-3">
               <MessageSquare className="h-5 w-5" />
@@ -1683,6 +1985,677 @@ export default function SPSAdminPage() {
             )}
           </TabsContent>
 
+          {/* 报价申请管理标签页 */}
+          <TabsContent value="quotes" className="space-y-8">
+            {/* 统计概览 */}
+            <div className="grid grid-cols-1 md:grid-cols-5 gap-6">
+              <Card>
+                <CardContent className="p-8">
+                  <div className="flex items-center">
+                    <div className="p-3 bg-blue-100 rounded-lg mr-6">
+                      <FileText className="h-8 w-8 text-blue-600" />
+                    </div>
+                    <div>
+                      <p className="text-base font-medium text-gray-600">总申请数</p>
+                      <p className="text-3xl font-bold">{quoteStats.total || 0}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-8">
+                  <div className="flex items-center">
+                    <div className="p-3 bg-yellow-100 rounded-lg mr-6">
+                      <Clock className="h-8 w-8 text-yellow-600" />
+                    </div>
+                    <div>
+                      <p className="text-base font-medium text-gray-600">待处理</p>
+                      <p className="text-3xl font-bold">{quoteStats.pending || 0}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-8">
+                  <div className="flex items-center">
+                    <div className="p-3 bg-green-100 rounded-lg mr-6">
+                      <CheckCircle className="h-8 w-8 text-green-600" />
+                    </div>
+                    <div>
+                      <p className="text-base font-medium text-gray-600">已报价</p>
+                      <p className="text-3xl font-bold">{quoteStats.quoted || 0}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-8">
+                  <div className="flex items-center">
+                    <div className="p-3 bg-purple-100 rounded-lg mr-6">
+                      <MessageSquare className="h-8 w-8 text-purple-600" />
+                    </div>
+                    <div>
+                      <p className="text-base font-medium text-gray-600">已回复</p>
+                      <p className="text-3xl font-bold">{quoteStats.replied || 0}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+
+              <Card>
+                <CardContent className="p-8">
+                  <div className="flex items-center">
+                    <div className="p-3 bg-red-100 rounded-lg mr-6">
+                      <Mail className="h-8 w-8 text-red-600" />
+                    </div>
+                    <div>
+                      <p className="text-base font-medium text-gray-600">邮件已发</p>
+                      <p className="text-3xl font-bold">{quoteStats.email_sent || 0}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
+            {/* 操作按钮区域 */}
+            <Card>
+              <CardContent className="p-8">
+                <div className="flex gap-4 items-center">
+                  <Button 
+                    onClick={() => handleLoadQuoteRequests(1)}
+                    disabled={isLoadingQuotes}
+                    className="flex items-center gap-2"
+                  >
+                    <RefreshCw className={`h-4 w-4 ${isLoadingQuotes ? 'animate-spin' : ''}`} />
+                    {isLoadingQuotes ? '加载中...' : '刷新数据'}
+                  </Button>
+                  
+                  <Button 
+                    variant="outline"
+                    onClick={() => handleInitializeQuotesTable()}
+                    disabled={isInitializingDatabase}
+                    className="flex items-center gap-2"
+                  >
+                    <Database className={`h-4 w-4 ${isInitializingDatabase ? 'animate-spin' : ''}`} />
+                    {isInitializingDatabase ? '初始化中...' : '初始化报价申请表'}
+                  </Button>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* 筛选器 */}
+            <Card>
+              <CardContent className="p-8">
+                <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                  <div>
+                    <Label htmlFor="quote-status-filter">申请状态</Label>
+                    <select
+                      id="quote-status-filter"
+                      value={quoteFilters.status}
+                      onChange={(e) => {
+                        setQuoteFilters(prev => ({ ...prev, status: e.target.value }))
+                        handleLoadQuoteRequests(1)
+                      }}
+                      className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="">全部状态</option>
+                      <option value="pending">待处理</option>
+                      <option value="processing">处理中</option>
+                      <option value="quoted">已报价</option>
+                      <option value="approved">已通过</option>
+                      <option value="rejected">已拒绝</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="quote-reply-filter">回复状态</Label>
+                    <select
+                      id="quote-reply-filter"
+                      value={quoteFilters.replyStatus}
+                      onChange={(e) => {
+                        setQuoteFilters(prev => ({ ...prev, replyStatus: e.target.value }))
+                        handleLoadQuoteRequests(1)
+                      }}
+                      className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="">全部回复状态</option>
+                      <option value="no_reply">未回复</option>
+                      <option value="replied">已回复</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="quote-country-filter">国家</Label>
+                    <select
+                      id="quote-country-filter"
+                      value={quoteFilters.country}
+                      onChange={(e) => {
+                        setQuoteFilters(prev => ({ ...prev, country: e.target.value }))
+                        handleLoadQuoteRequests(1)
+                      }}
+                      className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    >
+                      <option value="">全部国家</option>
+                      <option value="usa">美国</option>
+                      <option value="canada">加拿大</option>
+                      <option value="other">其他</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <Label htmlFor="quote-search">搜索</Label>
+                    <div className="relative">
+                      <Input
+                        id="quote-search"
+                        type="text"
+                        placeholder="搜索姓名、邮箱或公司"
+                        value={quoteFilters.search}
+                        onChange={(e) => setQuoteFilters(prev => ({ ...prev, search: e.target.value }))}
+                        onKeyPress={(e) => {
+                          if (e.key === 'Enter') {
+                            handleLoadQuoteRequests(1)
+                          }
+                        }}
+                        className="pr-10"
+                      />
+                      <Button
+                        variant="ghost"
+                        size="sm"
+                        className="absolute right-0 top-0 h-full px-3"
+                        onClick={() => handleLoadQuoteRequests(1)}
+                      >
+                        <Search className="h-4 w-4" />
+                      </Button>
+                    </div>
+                  </div>
+                </div>
+              </CardContent>
+            </Card>
+
+            {/* 报价申请列表 */}
+            <Card>
+              <CardHeader>
+                <div className="flex justify-between items-center">
+                  <div>
+                    <CardTitle>报价申请列表</CardTitle>
+                    <CardDescription>
+                      管理所有客户的报价申请记录
+                    </CardDescription>
+                  </div>
+                  <div className="flex gap-2">
+                    {selectedQuoteIds.length > 0 && (
+                      <Button
+                        onClick={handleExportQuotes}
+                        disabled={isExportingQuotes}
+                        className="flex items-center gap-2"
+                      >
+                        {isExportingQuotes ? (
+                          <>
+                            <RefreshCw className="h-4 w-4 animate-spin" />
+                            导出中...
+                          </>
+                        ) : (
+                          <>
+                            <Download className="h-4 w-4" />
+                            导出选中 ({selectedQuoteIds.length})
+                          </>
+                        )}
+                      </Button>
+                    )}
+                    {!isLoadingQuotes && hasLoadedQuotes && quoteRequests.length === 0 && (
+                      <Button onClick={() => handleLoadQuoteRequests(1)}>
+                        立即加载
+                      </Button>
+                    )}
+                  </div>
+                </div>
+              </CardHeader>
+              <CardContent>
+                {isLoadingQuotes ? (
+                  <div className="flex items-center justify-center py-12">
+                    <RefreshCw className="h-8 w-8 animate-spin text-blue-600" />
+                    <span className="ml-3 text-lg">加载报价申请数据中...</span>
+                  </div>
+                ) : quoteRequests.length === 0 ? (
+                  <div className="text-center py-12">
+                    <FileText className="h-16 w-16 text-gray-400 mx-auto mb-4" />
+                    <h3 className="text-lg font-medium text-gray-900 mb-2">暂无报价申请数据</h3>
+                    <p className="text-gray-600 mb-4">目前还没有收到任何报价申请。</p>
+                    <Button onClick={() => handleLoadQuoteRequests(1)}>
+                      刷新数据
+                    </Button>
+                  </div>
+                ) : (
+                  <div className="overflow-x-auto">
+                    <div className="min-w-full">
+                      <table className="min-w-full table-auto border-collapse border border-gray-200">
+                        <thead className="bg-gray-50">
+                          <tr>
+                            <th className="border border-gray-200 px-4 py-3 text-center text-sm font-medium text-gray-900">
+                              <input
+                                type="checkbox"
+                                checked={quoteRequests.length > 0 && selectedQuoteIds.length === quoteRequests.length}
+                                onChange={(e) => {
+                                  if (e.target.checked) {
+                                    setSelectedQuoteIds(quoteRequests.map(q => q.id))
+                                  } else {
+                                    setSelectedQuoteIds([])
+                                  }
+                                }}
+                                className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                              />
+                            </th>
+                            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-900">客户信息</th>
+                            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-900">邮箱</th>
+                            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-900">公司</th>
+                            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-900">国家</th>
+                            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-900">产品类别</th>
+                            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-900">状态</th>
+                            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-900">回复状态</th>
+                            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-900">邮件状态</th>
+                            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-900">提交时间</th>
+                            <th className="border border-gray-200 px-4 py-3 text-left text-sm font-medium text-gray-900">操作</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {quoteRequests.map((quote) => (
+                            <React.Fragment key={quote.id}>
+                              <tr className="hover:bg-gray-50">
+                                <td className="border border-gray-200 px-4 py-3 text-center" onClick={(e) => e.stopPropagation()}>
+                                  <input
+                                    type="checkbox"
+                                    checked={selectedQuoteIds.includes(quote.id)}
+                                    onChange={(e) => {
+                                      if (e.target.checked) {
+                                        setSelectedQuoteIds(prev => [...prev, quote.id])
+                                      } else {
+                                        setSelectedQuoteIds(prev => prev.filter(id => id !== quote.id))
+                                      }
+                                    }}
+                                    className="rounded border-gray-300 text-blue-600 focus:ring-blue-500"
+                                  />
+                                </td>
+                                <td className="border border-gray-200 px-4 py-3 cursor-pointer" onClick={() => setExpandedQuoteId(expandedQuoteId === quote.id ? null : quote.id)}>
+                                  <div className="flex items-center gap-2">
+                                    <span className="font-medium text-gray-900">{quote.full_name}</span>
+                                    {expandedQuoteId === quote.id ? (
+                                      <ChevronDown className="h-4 w-4 text-gray-400" />
+                                    ) : (
+                                      <ChevronRight className="h-4 w-4 text-gray-400" />
+                                    )}
+                                  </div>
+                                </td>
+                                <td className="border border-gray-200 px-4 py-3">
+                                  <span className="text-gray-600">{quote.email}</span>
+                                </td>
+                                <td className="border border-gray-200 px-4 py-3">
+                                  <span className="text-gray-600">{quote.company}</span>
+                                </td>
+                                <td className="border border-gray-200 px-4 py-3">
+                                  <span className="text-gray-600">
+                                    {quote.country === 'usa' ? '美国' :
+                                     quote.country === 'canada' ? '加拿大' :
+                                     quote.country === 'other' ? '其他' : quote.country}
+                                  </span>
+                                </td>
+                                <td className="border border-gray-200 px-4 py-3">
+                                  <span className="text-gray-600">{quote.product_categories}</span>
+                                </td>
+                                <td className="border border-gray-200 px-4 py-3">
+                                  <Badge variant={
+                                    quote.status === 'pending' ? 'secondary' :
+                                    quote.status === 'processing' ? 'default' :
+                                    quote.status === 'quoted' ? 'outline' :
+                                    quote.status === 'approved' ? 'default' :
+                                    quote.status === 'rejected' ? 'destructive' : 'secondary'
+                                  }>
+                                    {quote.status === 'pending' ? '待处理' :
+                                     quote.status === 'processing' ? '处理中' :
+                                     quote.status === 'quoted' ? '已报价' :
+                                     quote.status === 'approved' ? '已通过' :
+                                     quote.status === 'rejected' ? '已拒绝' : quote.status}
+                                  </Badge>
+                                </td>
+                                <td className="border border-gray-200 px-4 py-3">
+                                  <Badge variant={quote.reply_status === 'replied' ? 'default' : 'secondary'}>
+                                    {quote.reply_status === 'replied' ? '已回复' : '未回复'}
+                                  </Badge>
+                                </td>
+                                <td className="border border-gray-200 px-4 py-3">
+                                  {quote.email_sent ? (
+                                    <Badge variant="outline" className="text-green-600">
+                                      <Mail className="h-3 w-3 mr-1" />
+                                      邮件已发送
+                                    </Badge>
+                                  ) : (
+                                    <Badge variant="outline" className="text-orange-600">
+                                      <XCircle className="h-3 w-3 mr-1" />
+                                      未发送
+                                    </Badge>
+                                  )}
+                                </td>
+                                <td className="border border-gray-200 px-4 py-3">
+                                  <span className="text-sm text-gray-500">
+                                    {new Date(quote.submitted_at).toLocaleString('zh-CN')}
+                                  </span>
+                                </td>
+                                <td className="border border-gray-200 px-4 py-3" onClick={(e) => e.stopPropagation()}>
+                                  <div className="flex gap-2">
+                                    <Button
+                                      size="sm"
+                                      variant="outline"
+                                      onClick={() => setSelectedQuote(quote)}
+                                      className="text-xs"
+                                    >
+                                      <Edit className="h-3 w-3 mr-1" />
+                                      编辑
+                                    </Button>
+                                    <Button
+                                      size="sm"
+                                      variant="outline"
+                                      onClick={() => handleDeleteQuote(quote.id)}
+                                      className="text-red-600 hover:text-red-700 text-xs"
+                                    >
+                                      <Trash2 className="h-3 w-3 mr-1" />
+                                      删除
+                                    </Button>
+                                  </div>
+                                </td>
+                              </tr>
+                              {/* 展开的详细信息行 */}
+                              {expandedQuoteId === quote.id && (
+                                <tr>
+                                  <td colSpan={11} className="border border-gray-200 bg-gray-50 px-4 py-4">
+                                    <div className="space-y-4">
+                                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div>
+                                          <h4 className="font-medium text-gray-900 mb-2">联系信息:</h4>
+                                          <p className="text-gray-600 text-sm">
+                                            <strong>电话:</strong> {quote.phone || '未提供'}
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <h4 className="font-medium text-gray-900 mb-2">目的地国家:</h4>
+                                          <p className="text-gray-600 text-sm">
+                                            {Array.isArray(quote.destination_countries) ? 
+                                              quote.destination_countries.map(d => {
+                                                const destinationMap: Record<string, string> = {
+                                                  'usa': '美国',
+                                                  'canada': '加拿大',
+                                                  'usa-canada': '美国和加拿大',
+                                                  'other': '其他'
+                                                }
+                                                return destinationMap[d] || d
+                                              }).join(', ') : 
+                                              (typeof quote.destination_countries === 'string' ? 
+                                                JSON.parse(quote.destination_countries).map((d: string) => {
+                                                  const destinationMap: Record<string, string> = {
+                                                    'usa': '美国',
+                                                    'canada': '加拿大',
+                                                    'usa-canada': '美国和加拿大',
+                                                    'other': '其他'
+                                                  }
+                                                  return destinationMap[d] || d
+                                                }).join(', ') : '无')
+                                            }
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <h4 className="font-medium text-gray-900 mb-2">运输方式:</h4>
+                                          <p className="text-gray-600 text-sm">
+                                            {Array.isArray(quote.shipping_methods) ? 
+                                              quote.shipping_methods.map(s => {
+                                                const shippingMap: Record<string, string> = {
+                                                  'fba-prep': 'FBA准备和发货服务',
+                                                  'dtc-shipping': 'DTC直接发货',
+                                                  'international-express': '国际快递',
+                                                  'warehousing': '仓储和配送',
+                                                  'lcl-door': 'LCL拼箱到门',
+                                                  'fcl-door': 'FCL整箱到门',
+                                                  'air-freight': '空运到门'
+                                                }
+                                                return shippingMap[s] || s
+                                              }).join(', ') : 
+                                              (typeof quote.shipping_methods === 'string' ? 
+                                                JSON.parse(quote.shipping_methods).map((s: string) => {
+                                                  const shippingMap: Record<string, string> = {
+                                                    'fba-prep': 'FBA准备和发货服务',
+                                                    'dtc-shipping': 'DTC直接发货',
+                                                    'international-express': '国际快递',
+                                                    'warehousing': '仓储和配送',
+                                                    'lcl-door': 'LCL拼箱到门',
+                                                    'fcl-door': 'FCL整箱到门',
+                                                    'air-freight': '空运到门'
+                                                  }
+                                                  return shippingMap[s] || s
+                                                }).join(', ') : '无')
+                                            }
+                                          </p>
+                                        </div>
+                                        <div>
+                                          <h4 className="font-medium text-gray-900 mb-2">报价信息:</h4>
+                                          <p className="text-gray-600 text-sm">
+                                            {quote.quote_provided ? 
+                                              `已报价: ${quote.quote_amount} ${quote.quote_currency || 'USD'}` + 
+                                              (quote.quote_valid_until ? ` (有效期至: ${new Date(quote.quote_valid_until).toLocaleDateString('zh-CN')})` : '') 
+                                              : '尚未报价'}
+                                          </p>
+                                        </div>
+                                      </div>
+                                      
+                                      <div>
+                                        <h4 className="font-medium text-gray-900 mb-2">详细需求描述:</h4>
+                                        <p className="text-gray-600 text-sm">{quote.description}</p>
+                                      </div>
+                                      
+                                      {quote.email_sent && (quote.recipients_to || quote.recipients_cc || quote.recipients_bcc) && (
+                                        <div>
+                                          <h4 className="font-medium text-gray-900 mb-2">实际邮件收件人:</h4>
+                                          <div className="text-sm text-gray-600 space-y-1">
+                                            {quote.recipients_to && <p><strong>主收件人:</strong> {quote.recipients_to}</p>}
+                                            {quote.recipients_cc && <p><strong>抄送:</strong> {quote.recipients_cc}</p>}
+                                            {quote.recipients_bcc && <p><strong>密抄:</strong> {quote.recipients_bcc}</p>}
+                                            {quote.email_message_id && <p><strong>邮件ID:</strong> {quote.email_message_id}</p>}
+                                          </div>
+                                        </div>
+                                      )}
+                                      
+                                      {quote.admin_notes && (
+                                        <div>
+                                          <h4 className="font-medium text-gray-900 mb-2">管理员备注:</h4>
+                                          <div className="bg-blue-50 p-3 rounded">
+                                            <p className="text-blue-800 text-sm">{quote.admin_notes}</p>
+                                          </div>
+                                        </div>
+                                      )}
+                                    </div>
+                                  </td>
+                                </tr>
+                              )}
+                            </React.Fragment>
+                          ))}
+                        </tbody>
+                      </table>
+                    </div>
+                    
+                    {/* 分页 */}
+                    {quotePagination.totalPages > 1 && (
+                      <div className="flex justify-between items-center mt-6">
+                        <div className="text-sm text-gray-600">
+                          显示第 {(currentQuotePage - 1) * (quotePagination.limit || 20) + 1} - {Math.min(currentQuotePage * (quotePagination.limit || 20), quotePagination.totalCount)} 条，
+                          共 {quotePagination.totalCount} 条记录
+                        </div>
+                        <div className="flex gap-2">
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleLoadQuoteRequests(currentQuotePage - 1)}
+                            disabled={!quotePagination.hasPrev || isLoadingQuotes}
+                          >
+                            上一页
+                          </Button>
+                          <span className="px-3 py-1 text-sm">
+                            第 {currentQuotePage} / {quotePagination.totalPages} 页
+                          </span>
+                          <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => handleLoadQuoteRequests(currentQuotePage + 1)}
+                            disabled={!quotePagination.hasNext || isLoadingQuotes}
+                          >
+                            下一页
+                          </Button>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                )}
+              </CardContent>
+            </Card>
+
+            {/* 编辑报价申请弹窗 */}
+            {selectedQuote && (
+              <Card>
+                <CardHeader>
+                  <CardTitle>编辑报价申请状态和备注</CardTitle>
+                  <CardDescription>
+                    更新 {selectedQuote.full_name} 的报价申请状态
+                  </CardDescription>
+                </CardHeader>
+                <CardContent>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <Label>申请状态</Label>
+                      <select
+                        id="edit-quote-status"
+                        defaultValue={selectedQuote.status}
+                        className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value="pending">待处理</option>
+                        <option value="processing">处理中</option>
+                        <option value="quoted">已报价</option>
+                        <option value="approved">已通过</option>
+                        <option value="rejected">已拒绝</option>
+                      </select>
+                    </div>
+                    
+                    <div>
+                      <Label>回复状态</Label>
+                      <select
+                        id="edit-quote-reply"
+                        defaultValue={selectedQuote.reply_status}
+                        className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value="no_reply">未回复</option>
+                        <option value="replied">已回复</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <Label>报价金额</Label>
+                      <Input
+                        id="edit-quote-amount"
+                        type="number"
+                        step="0.01"
+                        defaultValue={selectedQuote.quote_amount || ''}
+                        placeholder="输入报价金额"
+                      />
+                    </div>
+
+                    <div>
+                      <Label>报价货币</Label>
+                      <select
+                        id="edit-quote-currency"
+                        defaultValue={selectedQuote.quote_currency || 'USD'}
+                        className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value="USD">USD</option>
+                        <option value="CNY">CNY</option>
+                        <option value="CAD">CAD</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <Label>报价有效期</Label>
+                      <Input
+                        id="edit-quote-valid-until"
+                        type="date"
+                        defaultValue={selectedQuote.quote_valid_until ? new Date(selectedQuote.quote_valid_until).toISOString().split('T')[0] : ''}
+                      />
+                    </div>
+
+                    <div>
+                      <Label>是否已提供报价</Label>
+                      <select
+                        id="edit-quote-provided"
+                        defaultValue={selectedQuote.quote_provided ? 'true' : 'false'}
+                        className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
+                      >
+                        <option value="false">未提供报价</option>
+                        <option value="true">已提供报价</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div className="mb-4">
+                    <Label>管理员备注</Label>
+                    <Textarea
+                      id="edit-quote-notes"
+                      defaultValue={selectedQuote.admin_notes || ''}
+                      placeholder="添加备注或更新信息..."
+                      rows={4}
+                    />
+                  </div>
+
+                  <div className="flex gap-4">
+                    <Button
+                      onClick={() => {
+                        const status = (document.getElementById('edit-quote-status') as HTMLSelectElement).value
+                        const replyStatus = (document.getElementById('edit-quote-reply') as HTMLSelectElement).value
+                        const notes = (document.getElementById('edit-quote-notes') as HTMLTextAreaElement).value
+                        const quoteAmount = (document.getElementById('edit-quote-amount') as HTMLInputElement).value
+                        const quoteCurrency = (document.getElementById('edit-quote-currency') as HTMLSelectElement).value
+                        const quoteValidUntil = (document.getElementById('edit-quote-valid-until') as HTMLInputElement).value
+                        const quoteProvided = (document.getElementById('edit-quote-provided') as HTMLSelectElement).value === 'true'
+
+                        const updates: any = {
+                          status,
+                          reply_status: replyStatus,
+                          admin_notes: notes,
+                          quote_provided: quoteProvided
+                        }
+
+                        if (quoteAmount) {
+                          updates.quote_amount = parseFloat(quoteAmount)
+                        }
+                        if (quoteCurrency) {
+                          updates.quote_currency = quoteCurrency
+                        }
+                        if (quoteValidUntil) {
+                          updates.quote_valid_until = quoteValidUntil
+                        }
+
+                        handleUpdateQuoteStatus(selectedQuote.id, updates)
+                      }}
+                      disabled={isUpdatingQuote}
+                    >
+                      {isUpdatingQuote ? '更新中...' : '保存更改'}
+                    </Button>
+                    <Button
+                      variant="outline"
+                      onClick={() => setSelectedQuote(null)}
+                    >
+                      取消
+                    </Button>
+                  </div>
+                </CardContent>
+              </Card>
+            )}
+          </TabsContent>
+
           {/* 博客管理标签页 */}
           <TabsContent value="blog" className="space-y-8">
             <BlogManagement />
@@ -1956,7 +2929,7 @@ export default function SPSAdminPage() {
                   )}
                 </div>
 
-                <div className="flex gap-6">
+                <div className="flex gap-6 flex-wrap">
                   <Button 
                     onClick={handleTestDatabase}
                     disabled={isTestingDatabase}
@@ -1982,6 +2955,34 @@ export default function SPSAdminPage() {
                       <Server className="h-5 w-5" />
                     )}
                     {isInitializingDatabase ? "初始化中..." : "初始化数据库"}
+                  </Button>
+
+                  <Button 
+                    variant="outline"
+                    onClick={handleInitializeFormsTable}
+                    disabled={isInitializingDatabase || !databaseStatus.isConnected}
+                    className="flex items-center gap-2 px-6 py-3 text-base"
+                  >
+                    {isInitializingDatabase ? (
+                      <RefreshCw className="h-5 w-5 animate-spin" />
+                    ) : (
+                      <FileText className="h-5 w-5" />
+                    )}
+                    {isInitializingDatabase ? "初始化中..." : "初始化申请表单表"}
+                  </Button>
+
+                  <Button 
+                    variant="outline"
+                    onClick={handleInitializeQuotesTable}
+                    disabled={isInitializingDatabase || !databaseStatus.isConnected}
+                    className="flex items-center gap-2 px-6 py-3 text-base"
+                  >
+                    {isInitializingDatabase ? (
+                      <RefreshCw className="h-5 w-5 animate-spin" />
+                    ) : (
+                      <FileText className="h-5 w-5" />
+                    )}
+                    {isInitializingDatabase ? "初始化中..." : "初始化报价申请表"}
                   </Button>
                 </div>
 

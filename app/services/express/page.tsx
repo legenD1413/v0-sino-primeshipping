@@ -99,7 +99,7 @@ export default function ExpressPage() {
           </div>
           <div className="relative rounded-xl overflow-hidden">
             <ImageFallbackWrapper
-              src="/express-service-hero.jpg"
+              src="/express-service-hero.png"
               fallbackSrc="/data-viz-overlay.png"
               alt="International Express Service"
               width={600}

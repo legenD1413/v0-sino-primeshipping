@@ -36,7 +36,7 @@ export default function AdminNav() {
   }
 
   return (
-    <Card className="fixed top-4 right-4 z-50 w-64 shadow-lg">
+    <Card className="fixed top-4 right-4 z-50 w-64 shadow-lg hidden">
       <CardContent className="p-4">
         <div className="space-y-2">
           <h3 className="font-semibold text-sm text-gray-900 mb-3">管理导航</h3>

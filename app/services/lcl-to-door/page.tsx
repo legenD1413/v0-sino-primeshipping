@@ -667,23 +667,23 @@ export default function LCLToDoorPage() {
       {/* CTA Section */}
       <section>
         <div className="text-center bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700 rounded-xl p-12 text-white shadow-2xl">
-          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Ship Your Cargo?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Ship Your Cargo?</h2>
           <p className="text-xl text-blue-50 mb-8 max-w-3xl mx-auto">
-            Contact our team today to get a customized LCL to Door shipping solution for your business needs.
-          </p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Link
-              href="/contact"
+              Contact our team today to get a customized LCL to Door shipping solution for your business needs.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                href="/contact"
               className="inline-flex items-center bg-white text-blue-600 font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:bg-blue-50 hover:shadow-xl transform hover:scale-105"
-            >
-              Get a Quote <ArrowRight className="ml-2 h-5 w-5" />
-            </Link>
-            <Link
-              href="/services"
+              >
+                Get a Quote <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+              <Link
+                href="/services"
               className="inline-flex items-center bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:bg-white/10 hover:shadow-lg"
-            >
-              Explore All Services
-            </Link>
+              >
+                Explore All Services
+              </Link>
           </div>
         </div>
       </section>

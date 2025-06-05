@@ -27,12 +27,62 @@
 - **邮件服务**：Postmark API
 - **图标库**：Lucide React
 
-## SPS 99 Pioneer 项目申请系统
+## 表单系统
+
+本项目提供两套完整的表单系统，为不同业务需求提供专业的解决方案。
+
+### 1. 报价申请系统（新增）
+
+专为客户报价需求设计的综合表单系统，提供完整的国际物流服务报价申请。
+
+#### 访问地址
+```
+/get-quote
+```
+
+#### 功能特性
+- 📝 完整的报价申请表单（包含联系信息和业务信息）
+- ✅ 实时表单验证和错误提示
+- 📧 自动邮件通知系统
+- 🎨 现代化UI设计，参考SPS-99页面风格
+- 📱 完全响应式移动端适配
+- 🔄 提交状态实时反馈
+- 💾 数据库持久化存储
+
+#### 表单内容结构
+
+**一、联系信息 (Contact Information)**
+- 您的姓名 (必填)
+- 公司/店铺名称 (必填)
+- 邮箱地址 (必填)
+- 电话号码 (选填)
+- 国家 (必填) - 下拉选择：美国、加拿大、其他
+
+**二、业务信息 (Business Information)**
+- 主要产品类别 (必填) - 可填写多个
+- 货物发货国 (必填) - 默认：中国
+- 货物目的国/地区 (必填) - 多选：美国、加拿大、美国和加拿大、其他
+- 偏好运输方式 (必填) - 多选：
+  - FBA Prep & Ship Services
+  - DTC Shipping
+  - International Express
+  - Warehousing & Fulfillment
+  - LCL to Door
+  - FCL to Door
+  - Air Freight to Door
+- 需求描述 (必填) - 详细的业务需求说明
+
+#### 数据库支持
+- 新建 `quote_requests` 数据表
+- 支持JSON格式存储多选字段
+- 自动时间戳记录
+- 状态管理和工作流跟踪
+
+### 2. SPS 99 Pioneer 项目申请系统
 
 专为SPS 99 Pioneer项目设计的申请表单系统，提供完整的表单提交、邮件通知和管理功能。
 
-### 申请表单页面
-
+#### 访问地址
 ```
 /sps-99
 ```
@@ -147,7 +197,8 @@ POST /api/postmark/send-test   # 发送测试邮件
 GET    /api/sps-admin/forms           # 获取表单提交记录列表
 PUT    /api/sps-admin/forms           # 更新表单状态和备注
 DELETE /api/sps-admin/forms           # 删除表单记录
-POST   /api/sps-99/submit             # 提交表单申请
+POST   /api/sps-99/submit             # 提交SPS 99 Pioneer申请
+POST   /api/get-quote/submit          # 提交报价申请（新增）
 GET    /api/sps-admin/forms/export    # 导出全部表单数据为Excel文件
 ```
 
