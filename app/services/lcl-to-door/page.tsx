@@ -666,34 +666,24 @@ export default function LCLToDoorPage() {
 
       {/* CTA Section */}
       <section>
-        <div className="relative rounded-xl overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-900"></div>
-          <div
-            className="absolute inset-0 opacity-20"
-            style={{
-              backgroundImage:
-                "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23ffffff' fillOpacity='0.2'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")",
-            }}
-          ></div>
-          <div className="relative z-10 py-16 px-6 md:px-12 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Ship Your Cargo?</h2>
-            <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
-              Contact our team today to get a customized LCL to Door shipping solution for your business needs.
-            </p>
-            <div className="flex flex-wrap justify-center gap-4">
-              <Link
-                href="/contact"
-                className="inline-flex items-center bg-white text-blue-600 font-semibold px-8 py-4 rounded-lg hover:bg-blue-50 transition-colors"
-              >
-                Get a Quote <ArrowRight className="ml-2 h-5 w-5" />
-              </Link>
-              <Link
-                href="/services"
-                className="inline-flex items-center bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-lg hover:bg-white/10 transition-colors"
-              >
-                Explore All Services
-              </Link>
-            </div>
+        <div className="text-center bg-gradient-to-br from-blue-500 via-blue-600 to-indigo-700 rounded-xl p-12 text-white shadow-2xl">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Ship Your Cargo?</h2>
+          <p className="text-xl text-blue-50 mb-8 max-w-3xl mx-auto">
+            Contact our team today to get a customized LCL to Door shipping solution for your business needs.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Link
+              href="/contact"
+              className="inline-flex items-center bg-white text-blue-600 font-semibold px-8 py-4 rounded-lg shadow-lg transition-all duration-300 hover:bg-blue-50 hover:shadow-xl transform hover:scale-105"
+            >
+              Get a Quote <ArrowRight className="ml-2 h-5 w-5" />
+            </Link>
+            <Link
+              href="/services"
+              className="inline-flex items-center bg-transparent border-2 border-white text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:bg-white/10 hover:shadow-lg"
+            >
+              Explore All Services
+            </Link>
           </div>
         </div>
       </section>
