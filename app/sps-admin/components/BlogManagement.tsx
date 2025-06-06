@@ -58,33 +58,33 @@ export default function BlogManagement() {
         // 如果API调用失败，使用模拟数据
         const mockPosts = [
           {
+            slug: 'fcl-vs-lcl-rail-freight',
+            title: 'FCL vs LCL铁路货运：从中国发货哪种集装箱选择最佳',
+            date: '2023-05-15',
+            author: 'Zhang Ming',
+            category: 'SHIPPING',
+            excerpt: '了解FCL和LCL铁路货运的区别，为从中国发货优化物流策略。',
+            tags: ['铁路货运', '集装箱', '中欧班列', '物流优化'],
+            status: 'published' as const
+          },
+          {
+            slug: 'amazon-fba-shipping-from-china-guide',
+            title: '亚马逊FBA从中国发货完全指南：卖家必读',
+            date: '2023-01-12',
+            author: 'Wang Jing',
+            category: 'FBA',
+            excerpt: '全面了解如何从中国供应商向亚马逊FBA仓库高效发货的策略和最佳实践。',
+            tags: ['亚马逊FBA', '跨境电商', '中国供应链', '物流优化'],
+            status: 'published' as const
+          },
+          {
             slug: 'shipping-guide-2024',
             title: '2024年国际物流完整指南',
             date: '2024-01-15',
-            author: 'Ming Zhang',
+            author: 'Li Wei',
             category: 'SHIPPING',
             excerpt: '全面了解2024年国际物流的最新趋势和最佳实践',
             tags: ['物流', '指南', '2024'],
-            status: 'published' as const
-          },
-          {
-            slug: 'ecommerce-fulfillment',
-            title: '电商履约最佳实践',
-            date: '2024-01-10',
-            author: 'Wei Li',
-            category: 'E-COMMERCE',
-            excerpt: '提升电商履约效率的关键策略和方法',
-            tags: ['电商', '履约', '效率'],
-            status: 'published' as const
-          },
-          {
-            slug: 'fba-optimization',
-            title: 'FBA优化策略',
-            date: '2024-01-05',
-            author: 'Jing Wang',
-            category: 'FBA',
-            excerpt: '如何优化亚马逊FBA操作，降低成本提升效率',
-            tags: ['FBA', '亚马逊', '优化'],
             status: 'draft' as const
           }
         ]
@@ -222,13 +222,12 @@ export default function BlogManagement() {
                 管理所有博客文章的创建、编辑和发布
               </CardDescription>
             </div>
-            <Button 
-              className="flex items-center gap-2"
-              onClick={() => window.open('/blog-admin/new', '_blank')}
-            >
-              <PlusCircle className="h-4 w-4" />
-              创建新文章
-            </Button>
+            <Link href="/blog-admin/new">
+              <Button className="flex items-center gap-2">
+                <PlusCircle className="h-4 w-4" />
+                创建新文章
+              </Button>
+            </Link>
           </div>
         </CardHeader>
         <CardContent className="pt-6">
@@ -312,15 +311,16 @@ export default function BlogManagement() {
                               查看
                             </Button>
                           </Link>
-                          <Button 
-                            variant="outline" 
-                            size="sm" 
-                            className="text-xs"
-                            onClick={() => window.open(`/blog-admin/edit/${post.slug}`, '_blank')}
-                          >
-                            <Pencil className="h-3 w-3 mr-1" />
-                            编辑
-                          </Button>
+                          <Link href={`/blog-admin/edit/${post.slug}`}>
+                            <Button 
+                              variant="outline" 
+                              size="sm" 
+                              className="text-xs"
+                            >
+                              <Pencil className="h-3 w-3 mr-1" />
+                              编辑
+                            </Button>
+                          </Link>
                           <Button 
                             variant="outline" 
                             size="sm" 

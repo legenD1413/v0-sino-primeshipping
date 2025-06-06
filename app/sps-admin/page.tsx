@@ -8,11 +8,13 @@ import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { Alert, AlertDescription } from '@/components/ui/alert'
 import { Separator } from '@/components/ui/separator'
-import { Eye, EyeOff, LogOut, Users, Mail, Shield, Plus, Edit, Trash2, Database, Server, CheckCircle, XCircle, RefreshCw, FileText, MessageSquare, Search, Calendar, Filter, Clock, ChevronDown, ChevronRight, Download } from 'lucide-react'
+import { Eye, EyeOff, LogOut, Users, Mail, Shield, Plus, Edit, Trash2, Database, Server, CheckCircle, XCircle, RefreshCw, FileText, MessageSquare, Search, Calendar, Filter, Clock, ChevronDown, ChevronRight, Download, HelpCircle, BarChart3 } from 'lucide-react'
 import { useToast } from '@/hooks/use-toast'
 import { Badge } from '@/components/ui/badge'
 import { Textarea } from '@/components/ui/textarea'
 import BlogManagement from './components/BlogManagement'
+import FAQManagement from './components/FAQManagement'
+import AnalyticsManagement from './components/AnalyticsManagement'
 
 // 模拟用户数据
 interface User {
@@ -1032,6 +1034,39 @@ export default function SPSAdminPage() {
   }
 
   // 初始化报价申请表
+  // 初始化FAQ表
+  const handleInitializeFAQTable = async () => {
+    try {
+      const response = await fetch('/api/sps-admin/database/init-faq', {
+        method: 'POST'
+      })
+      
+      const result = await response.json()
+      
+      if (response.ok && result.success) {
+        toast({
+          title: "FAQ表初始化成功",
+          description: "已成功创建faq_items表并插入示例数据",
+        })
+        // 刷新数据库表列表
+        handleGetDatabaseTables()
+      } else {
+        toast({
+          title: "初始化失败",
+          description: result.error || "请检查数据库连接",
+          variant: "destructive"
+        })
+      }
+    } catch (error) {
+      console.error('初始化FAQ表时出错:', error)
+      toast({
+        title: "初始化失败",
+        description: "网络错误，请检查连接",
+        variant: "destructive"
+      })
+    }
+  }
+
   const handleInitializeQuotesTable = async () => {
     setIsInitializingDatabase(true)
     
@@ -1182,18 +1217,26 @@ export default function SPSAdminPage() {
             }
           }}
         >
-          <TabsList className="grid w-full grid-cols-6 h-14">
+          <TabsList className="grid w-full grid-cols-8 h-14">
             <TabsTrigger value="users" className="flex items-center gap-2 text-base px-6 py-3">
               <Users className="h-5 w-5" />
               用户管理
             </TabsTrigger>
             <TabsTrigger value="forms" className="flex items-center gap-2 text-base px-6 py-3">
               <FileText className="h-5 w-5" />
-              表单管理
+              SPS 19申请
             </TabsTrigger>
             <TabsTrigger value="quotes" className="flex items-center gap-2 text-base px-6 py-3">
               <FileText className="h-5 w-5" />
               报价申请
+            </TabsTrigger>
+            <TabsTrigger value="faq" className="flex items-center gap-2 text-base px-6 py-3">
+              <HelpCircle className="h-5 w-5" />
+              FAQ管理
+            </TabsTrigger>
+            <TabsTrigger value="analytics" className="flex items-center gap-2 text-base px-6 py-3">
+              <BarChart3 className="h-5 w-5" />
+              Analytics
             </TabsTrigger>
             <TabsTrigger value="blog" className="flex items-center gap-2 text-base px-6 py-3">
               <MessageSquare className="h-5 w-5" />
@@ -2656,6 +2699,16 @@ export default function SPSAdminPage() {
             )}
           </TabsContent>
 
+          {/* FAQ管理标签页 */}
+          <TabsContent value="faq" className="space-y-8">
+            <FAQManagement />
+          </TabsContent>
+
+          {/* Analytics管理标签页 */}
+          <TabsContent value="analytics" className="space-y-8">
+            <AnalyticsManagement />
+          </TabsContent>
+
           {/* 博客管理标签页 */}
           <TabsContent value="blog" className="space-y-8">
             <BlogManagement />
@@ -2983,6 +3036,20 @@ export default function SPSAdminPage() {
                       <FileText className="h-5 w-5" />
                     )}
                     {isInitializingDatabase ? "初始化中..." : "初始化报价申请表"}
+                  </Button>
+
+                  <Button 
+                    variant="outline"
+                    onClick={handleInitializeFAQTable}
+                    disabled={isInitializingDatabase || !databaseStatus.isConnected}
+                    className="flex items-center gap-2 px-6 py-3 text-base"
+                  >
+                    {isInitializingDatabase ? (
+                      <RefreshCw className="h-5 w-5 animate-spin" />
+                    ) : (
+                      <HelpCircle className="h-5 w-5" />
+                    )}
+                    {isInitializingDatabase ? "初始化中..." : "初始化FAQ表"}
                   </Button>
                 </div>
 

@@ -52,12 +52,14 @@ export default function EditPostPage({ params }: { params: Promise<{ slug: strin
       if (isAdmin === 'true') {
         setIsLoggedIn(true)
       } else {
-        router.push('/sps-admin')
+        // 如果没有登录状态，重定向到管理页面并附带当前页面作为参数
+        router.push(`/sps-admin?redirect=${encodeURIComponent(window.location.pathname)}`)
       }
       setIsChecking(false)
     }
     
-    checkAuthStatus()
+    // 添加小延迟确保localStorage已经加载
+    setTimeout(checkAuthStatus, 100)
   }, [router])
   
   // 加载文章数据
@@ -71,34 +73,56 @@ export default function EditPostPage({ params }: { params: Promise<{ slug: strin
         // const data = await response.json()
         // setPost(data)
         
-        // 模拟数据
-        if (resolvedParams.slug === 'fcl-vs-lcl-rail-freight') {
-          setPost({
-            slug: "fcl-vs-lcl-rail-freight",
-            title: "FCL vs LCL铁路货运：从中国发货哪种集装箱选择最佳",
-            date: "2023-05-15",
-            author: "zhang-ming",
-            category: "SHIPPING",
-            tags: ["铁路货运", "集装箱", "中欧班列", "物流优化"],
-            excerpt: "了解FCL和LCL铁路货运的区别，为从中国发货优化物流策略。",
-            content: "# FCL vs LCL铁路货运：从中国发货哪种集装箱选择最佳\n\n随着中欧班列的快速发展，铁路运输已成为连接中国与欧洲市场的重要物流方式。在选择铁路货运服务时，理解FCL（整箱货物）和LCL（拼箱货物）的区别至关重要...",
-            coverImage: "/fcl-vs-lcl-rail-freight.png",
-            readTime: "8 min"
-          })
-        } else if (resolvedParams.slug === 'amazon-fba-shipping-from-china-guide') {
-          setPost({
-            slug: "amazon-fba-shipping-from-china-guide",
-            title: "亚马逊FBA从中国发货完全指南：卖家必读",
-            date: "2023-01-12",
-            author: "wang-jing",
-            category: "FBA",
-            tags: ["亚马逊FBA", "跨境电商", "中国供应链", "物流优化"],
-            excerpt: "全面了解如何从中国供应商向亚马逊FBA仓库高效发货的策略和最佳实践。",
-            content: "# 亚马逊FBA从中国发货完全指南：卖家必读\n\n如果您是亚马逊卖家，从中国采购产品并发往FBA仓库可能是您业务中最关键的环节之一...",
-            coverImage: "/fba-shipping-services.png",
-            readTime: "12 min"
-          })
+        // 模拟数据 - 使用与BlogManagement相同的数据源
+        const mockPosts = [
+          {
+            slug: 'fcl-vs-lcl-rail-freight',
+            title: 'FCL vs LCL铁路货运：从中国发货哪种集装箱选择最佳',
+            date: '2023-05-15',
+            author: 'zhang-ming',
+            category: 'SHIPPING',
+            tags: ['铁路货运', '集装箱', '中欧班列', '物流优化'],
+            excerpt: '了解FCL和LCL铁路货运的区别，为从中国发货优化物流策略。',
+            content: '# FCL vs LCL铁路货运：从中国发货哪种集装箱选择最佳\n\n随着中欧班列的快速发展，铁路运输已成为连接中国与欧洲市场的重要物流方式。在选择铁路货运服务时，理解FCL（整箱货物）和LCL（拼箱货物）的区别至关重要...',
+            coverImage: '/fcl-vs-lcl-rail-freight.png',
+            readTime: '8 min'
+          },
+          {
+            slug: 'amazon-fba-shipping-from-china-guide',
+            title: '亚马逊FBA从中国发货完全指南：卖家必读',
+            date: '2023-01-12',
+            author: 'wang-jing',
+            category: 'FBA',
+            tags: ['亚马逊FBA', '跨境电商', '中国供应链', '物流优化'],
+            excerpt: '全面了解如何从中国供应商向亚马逊FBA仓库高效发货的策略和最佳实践。',
+            content: '# 亚马逊FBA从中国发货完全指南：卖家必读\n\n如果您是亚马逊卖家，从中国采购产品并发往FBA仓库可能是您业务中最关键的环节之一...',
+            coverImage: '/fba-shipping-services.png',
+            readTime: '12 min'
+          },
+          {
+            slug: 'shipping-guide-2024',
+            title: '2024年国际物流完整指南',
+            date: '2024-01-15',
+            author: 'li-wei',
+            category: 'SHIPPING',
+            tags: ['物流', '指南', '2024'],
+            excerpt: '全面了解2024年国际物流的最新趋势和最佳实践',
+            content: '# 2024年国际物流完整指南\n\n2024年国际物流行业面临着诸多挑战和机遇。本指南将为您详细介绍最新的物流趋势、技术创新和最佳实践...',
+            coverImage: '/logistics-hero-bg.jpg',
+            readTime: '10 min'
+          }
+        ]
+        
+        console.log('正在查找文章，slug:', resolvedParams.slug)
+        console.log('可用的文章:', mockPosts.map(p => p.slug))
+        
+        const foundPost = mockPosts.find(post => post.slug === resolvedParams.slug)
+        
+        if (foundPost) {
+          setPost(foundPost)
         } else {
+          console.log('未找到匹配的文章slug:', resolvedParams.slug)
+          console.log('支持的slug列表:', mockPosts.map(p => p.slug))
           throw new Error('文章不存在')
         }
         

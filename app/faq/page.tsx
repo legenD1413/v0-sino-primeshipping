@@ -1,8 +1,6 @@
 "use client"
 
-import React from "react"
-
-import { useState, useEffect } from "react"
+import React, { useState, useEffect } from "react"
 import Link from "next/link"
 import {
   Search,
@@ -30,30 +28,14 @@ import { cn } from "@/lib/utils"
 
 // FAQ data structure
 interface FAQItem {
-  id: string
+  id: number
   question: string
-  answer: React.ReactNode
+  answer: string
   category: string
-  searchableText?: string // Added for search purposes
-  popular?: boolean
-}
-
-// Helper function to extract searchable text from React nodes
-function getSearchableText(node: React.ReactNode): string {
-  if (typeof node === "string") {
-    return node
-  }
-
-  if (Array.isArray(node)) {
-    return node.map(getSearchableText).join(" ")
-  }
-
-  if (node && typeof node === "object" && "props" in node) {
-    const { children } = node.props || {}
-    return getSearchableText(children)
-  }
-
-  return ""
+  searchable_text?: string
+  is_popular?: boolean
+  is_active?: boolean
+  sort_order?: number
 }
 
 export default function FAQPage() {
@@ -63,383 +45,55 @@ export default function FAQPage() {
   const [expandedItems, setExpandedItems] = useState<string[]>([])
   const [showScrollTop, setShowScrollTop] = useState(false)
   const [popularQuestions, setPopularQuestions] = useState<FAQItem[]>([])
+  const [allFAQs, setAllFAQs] = useState<FAQItem[]>([])
+  const [isLoading, setIsLoading] = useState(true)
 
-  // Define all FAQ items
-  const faqItems: FAQItem[] = [
-    // General Questions
-    {
-      id: "general-1",
-      question: "What is SinoPrime Shipping?",
-      answer: (
-        <div>
-          SinoPrime Shipping is a comprehensive international logistics provider specializing in shipping solutions from
-          China to global destinations. We offer a wide range of services including FCL and LCL ocean freight, air
-          freight, express shipping, FBA preparation, and overseas warehousing solutions.
-        </div>
-      ),
-      category: "general",
-      searchableText:
-        "SinoPrime Shipping is a comprehensive international logistics provider specializing in shipping solutions from China to global destinations. We offer a wide range of services including FCL and LCL ocean freight, air freight, express shipping, FBA preparation, and overseas warehousing solutions.",
-      popular: true,
-    },
-    {
-      id: "general-2",
-      question: "Which countries do you ship to?",
-      answer: (
-        <div>
-          We ship to over 200 countries and territories worldwide, with particularly strong networks in North America,
-          Europe, Australia, Southeast Asia, and the Middle East. Our global logistics network ensures reliable delivery
-          to virtually any destination.
-        </div>
-      ),
-      category: "general",
-      searchableText:
-        "We ship to over 200 countries and territories worldwide, with particularly strong networks in North America, Europe, Australia, Southeast Asia, and the Middle East. Our global logistics network ensures reliable delivery to virtually any destination.",
-    },
-    {
-      id: "general-3",
-      question: "How can I contact customer support?",
-      answer: (
-        <div>
-          You can contact our customer support team through multiple channels:
-          <ul className="list-disc pl-5 mt-2">
-            <li>Email: support@sinoprimeshipping.com</li>
-            <li>Phone: +1 (888) 123-4567</li>
-            <li>Live Chat: Available on our website during business hours</li>
-            <li>Contact Form: Fill out the form on our Contact page</li>
-          </ul>
-          Our support team is available Monday through Friday, 9:00 AM to 6:00 PM (GMT+8).
-        </div>
-      ),
-      category: "general",
-      searchableText:
-        "You can contact our customer support team through multiple channels: Email: support@sinoprimeshipping.com Phone: +1 (888) 123-4567 Live Chat: Available on our website during business hours Contact Form: Fill out the form on our Contact page. Our support team is available Monday through Friday, 9:00 AM to 6:00 PM (GMT+8).",
-    },
-    {
-      id: "general-4",
-      question: "Do you have a minimum order requirement?",
-      answer: (
-        <div>
-          Our minimum order requirements vary by service type:
-          <ul className="list-disc pl-5 mt-2">
-            <li>Express Shipping: No minimum</li>
-            <li>Air Freight: 45kg minimum</li>
-            <li>LCL Ocean Freight: 0.5 CBM minimum</li>
-            <li>FCL Ocean Freight: No minimum (full container)</li>
-          </ul>
-          For smaller shipments, we recommend our express or small parcel services which have no minimum requirements.
-        </div>
-      ),
-      category: "general",
-      searchableText:
-        "Our minimum order requirements vary by service type: Express Shipping: No minimum Air Freight: 45kg minimum LCL Ocean Freight: 0.5 CBM minimum FCL Ocean Freight: No minimum (full container). For smaller shipments, we recommend our express or small parcel services which have no minimum requirements.",
-    },
-    {
-      id: "general-5",
-      question: "What makes SinoPrime Shipping different from other logistics providers?",
-      answer: (
-        <div>
-          SinoPrime Shipping differentiates itself through:
-          <ul className="list-disc pl-5 mt-2">
-            <li>Specialized China-to-global shipping expertise</li>
-            <li>Comprehensive end-to-end logistics solutions</li>
-            <li>Dedicated account managers for personalized service</li>
-            <li>Advanced tracking and visibility systems</li>
-            <li>Competitive rates through established carrier relationships</li>
-            <li>Value-added services like FBA preparation and overseas warehousing</li>
-            <li>Multilingual support team with deep industry knowledge</li>
-          </ul>
-          Our focus is on creating customized logistics solutions that address your specific business needs.
-        </div>
-      ),
-      category: "general",
-      searchableText:
-        "SinoPrime Shipping differentiates itself through: Specialized China-to-global shipping expertise Comprehensive end-to-end logistics solutions Dedicated account managers for personalized service Advanced tracking and visibility systems Competitive rates through established carrier relationships Value-added services like FBA preparation and overseas warehousing Multilingual support team with deep industry knowledge. Our focus is on creating customized logistics solutions that address your specific business needs.",
-    },
+  // 从API获取FAQ数据
+  const fetchFAQs = async () => {
+    try {
+      setIsLoading(true)
+      const response = await fetch('/api/faq?active=true&limit=100')
+      const result = await response.json()
+      
+      if (result.success) {
+        setAllFAQs(result.data)
+        setPopularQuestions(result.data.filter((item: FAQItem) => item.is_popular))
+      } else {
+        console.error('获取FAQ失败:', result.error)
+      }
+    } catch (error) {
+      console.error('获取FAQ失败:', error)
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
-    // Shipping & Logistics
-    {
-      id: "shipping-1",
-      question: "What shipping methods do you offer?",
-      answer: (
-        <div>
-          We offer multiple shipping methods to meet different needs:
-          <ul className="list-disc pl-5 mt-2">
-            <li>Express Shipping (3-5 days)</li>
-            <li>Air Freight (5-8 days)</li>
-            <li>Sea-Air Combined (12-15 days)</li>
-            <li>LCL Ocean Freight (25-35 days)</li>
-            <li>FCL Ocean Freight (25-40 days)</li>
-            <li>Rail Freight (18-22 days to Europe)</li>
-            <li>Special Cargo Solutions for oversized or dangerous goods</li>
-          </ul>
-          Delivery times vary based on destination and current logistics conditions.
-        </div>
-      ),
-      category: "shipping",
-      searchableText:
-        "We offer multiple shipping methods to meet different needs: Express Shipping (3-5 days) Air Freight (5-8 days) Sea-Air Combined (12-15 days) LCL Ocean Freight (25-35 days) FCL Ocean Freight (25-40 days) Rail Freight (18-22 days to Europe) Special Cargo Solutions for oversized or dangerous goods. Delivery times vary based on destination and current logistics conditions.",
-      popular: true,
-    },
-    {
-      id: "shipping-2",
-      question: "How long will my shipment take?",
-      answer: (
-        <div>
-          Transit times depend on the shipping method and destination:
-          <ul className="list-disc pl-5 mt-2">
-            <li>Express: 3-5 business days worldwide</li>
-            <li>Air Freight: 5-8 business days</li>
-            <li>Sea-Air: 12-15 business days</li>
-            <li>Ocean FCL/LCL to North America: 25-35 days</li>
-            <li>Ocean FCL/LCL to Europe: 30-40 days</li>
-            <li>Ocean FCL/LCL to Australia/NZ: 20-30 days</li>
-            <li>Ocean FCL/LCL to Southeast Asia: 10-20 days</li>
-            <li>Rail to Europe: 18-22 days</li>
-          </ul>
-          These are estimates and may vary due to customs clearance, port congestion, or seasonal factors. For the most
-          accurate transit time for your specific route, please contact our team.
-        </div>
-      ),
-      category: "shipping",
-      searchableText:
-        "Transit times depend on the shipping method and destination: Express: 3-5 business days worldwide Air Freight: 5-8 business days Sea-Air: 12-15 business days Ocean FCL/LCL to North America: 25-35 days Ocean FCL/LCL to Europe: 30-40 days Ocean FCL/LCL to Australia/NZ: 20-30 days Ocean FCL/LCL to Southeast Asia: 10-20 days Rail to Europe: 18-22 days. These are estimates and may vary due to customs clearance, port congestion, or seasonal factors. For the most accurate transit time for your specific route, please contact our team.",
-    },
-    {
-      id: "shipping-3",
-      question: "How can I track my shipment?",
-      answer: (
-        <div>
-          You can track your shipment in several ways:
-          <ul className="list-disc pl-5 mt-2">
-            <li>Through our online tracking portal on our website</li>
-            <li>Via our mobile app (iOS and Android)</li>
-            <li>By email notifications (opt-in during booking)</li>
-            <li>By contacting your account manager</li>
-          </ul>
-          All shipments receive a unique tracking number upon confirmation. Our system provides real-time updates at key
-          milestones throughout the shipping journey.
-        </div>
-      ),
-      category: "shipping",
-      searchableText:
-        "You can track your shipment in several ways: Through our online tracking portal on our website Via our mobile app (iOS and Android) By email notifications (opt-in during booking) By contacting your account manager. All shipments receive a unique tracking number upon confirmation. Our system provides real-time updates at key milestones throughout the shipping journey.",
-    },
-    {
-      id: "shipping-4",
-      question: "What's the difference between FCL and LCL shipping?",
-      answer: (
-        <div>
-          <p>
-            <strong>FCL (Full Container Load):</strong> You book an entire container exclusively for your cargo. This is
-            ideal for larger shipments (typically over 15 CBM) or when you want to avoid co-loading with other shippers'
-            goods.
-          </p>
-
-          <p className="mt-2">
-            <strong>LCL (Less than Container Load):</strong> Your cargo shares container space with other shippers'
-            goods. This is more economical for smaller shipments (0.5-15 CBM) but may have slightly longer transit times
-            due to consolidation and deconsolidation processes.
-          </p>
-
-          <p className="mt-2">Key differences include:</p>
-          <ul className="list-disc pl-5 mt-1">
-            <li>Cost structure (FCL has fixed container rates; LCL charges by volume)</li>
-            <li>Transit time (FCL is typically faster)</li>
-            <li>Handling (LCL involves more handling of your goods)</li>
-            <li>Security (FCL offers more security as only your goods are in the container)</li>
-          </ul>
-
-          <p className="mt-2">
-            We can help you determine which option is most cost-effective based on your shipment size and requirements.
-          </p>
-        </div>
-      ),
-      category: "shipping",
-      searchableText:
-        "FCL (Full Container Load): You book an entire container exclusively for your cargo. This is ideal for larger shipments (typically over 15 CBM) or when you want to avoid co-loading with other shippers' goods. LCL (Less than Container Load): Your cargo shares container space with other shippers' goods. This is more economical for smaller shipments (0.5-15 CBM) but may have slightly longer transit times due to consolidation and deconsolidation processes. Key differences include: Cost structure (FCL has fixed container rates; LCL charges by volume) Transit time (FCL is typically faster) Handling (LCL involves more handling of your goods) Security (FCL offers more security as only your goods are in the container). We can help you determine which option is most cost-effective based on your shipment size and requirements.",
-      popular: true,
-    },
-    {
-      id: "shipping-5",
-      question: "What should I do if my shipment is delayed?",
-      answer: (
-        <div>
-          If your shipment is delayed:
-          <ol className="list-decimal pl-5 mt-2">
-            <li>Check the tracking information for status updates</li>
-            <li>Contact your dedicated account manager for detailed information</li>
-            <li>Request an estimated new delivery date</li>
-            <li>Ask about alternative routing options if available</li>
-          </ol>
-          <p className="mt-2">
-            Our team proactively monitors shipments and will typically notify you of significant delays before you need
-            to inquire. We work diligently to minimize delays and find alternative solutions when disruptions occur.
-          </p>
-          <p className="mt-2">
-            For time-sensitive shipments, we recommend selecting our premium services which include priority handling
-            and expedited options in case of delays.
-          </p>
-        </div>
-      ),
-      category: "shipping",
-      searchableText:
-        "If your shipment is delayed: Check the tracking information for status updates Contact your dedicated account manager for detailed information Request an estimated new delivery date Ask about alternative routing options if available. Our team proactively monitors shipments and will typically notify you of significant delays before you need to inquire. We work diligently to minimize delays and find alternative solutions when disruptions occur. For time-sensitive shipments, we recommend selecting our premium services which include priority handling and expedited options in case of delays.",
-    },
-
-    // Customs & Compliance
-    {
-      id: "customs-1",
-      question: "What documents are required for international shipping?",
-      answer: (
-        <div>
-          Standard required documents include:
-          <ul className="list-disc pl-5 mt-2">
-            <li>Commercial Invoice</li>
-            <li>Packing List</li>
-            <li>Bill of Lading or Air Waybill</li>
-            <li>Certificate of Origin (when applicable)</li>
-            <li>Import/Export Declarations</li>
-          </ul>
-          <p className="mt-2">Depending on the product and destination, additional documents may be required:</p>
-          <ul className="list-disc pl-5 mt-1">
-            <li>Product certifications (CE, FDA, etc.)</li>
-            <li>Material Safety Data Sheets (for chemicals)</li>
-            <li>Fumigation certificates (for wooden packaging)</li>
-            <li>Inspection certificates</li>
-            <li>Special permits for restricted items</li>
-          </ul>
-          <p className="mt-2">
-            Our customs compliance team can provide guidance on the specific documentation required for your shipment
-            and destination.
-          </p>
-        </div>
-      ),
-      category: "customs",
-      searchableText:
-        "Standard required documents include: Commercial Invoice Packing List Bill of Lading or Air Waybill Certificate of Origin (when applicable) Import/Export Declarations. Depending on the product and destination, additional documents may be required: Product certifications (CE, FDA, etc.) Material Safety Data Sheets (for chemicals) Fumigation certificates (for wooden packaging) Inspection certificates Special permits for restricted items. Our customs compliance team can provide guidance on the specific documentation required for your shipment and destination.",
-      popular: true,
-    },
-
-    // Pricing & Payment
-    {
-      id: "pricing-1",
-      question: "How is shipping cost calculated?",
-      answer: (
-        <div>
-          Shipping costs are calculated based on several factors:
-          <ul className="list-disc pl-5 mt-2">
-            <li>
-              <strong>For Express and Air Freight:</strong> Primarily based on chargeable weight (the greater of actual
-              weight or dimensional weight)
-            </li>
-            <li>
-              <strong>For LCL Ocean Freight:</strong> Based on volume (cubic meters or CBM)
-            </li>
-            <li>
-              <strong>For FCL Ocean Freight:</strong> Fixed rate per container size (20ft, 40ft, 40ft HC)
-            </li>
-            <li>
-              <strong>Additional factors affecting all shipments:</strong>
-              <ul className="list-disc pl-5 mt-1">
-                <li>Origin and destination locations</li>
-                <li>Service level selected (standard, expedited, etc.)</li>
-                <li>Fuel surcharges and security fees</li>
-                <li>Special handling requirements</li>
-                <li>Insurance coverage</li>
-                <li>Seasonal factors and market conditions</li>
-              </ul>
-            </li>
-          </ul>
-          <p className="mt-2">
-            For accurate pricing, we recommend requesting a quote with your specific shipment details. Volume discounts
-            are available for regular shippers.
-          </p>
-        </div>
-      ),
-      category: "pricing",
-      searchableText:
-        "Shipping costs are calculated based on several factors: For Express and Air Freight: Primarily based on chargeable weight (the greater of actual weight or dimensional weight) For LCL Ocean Freight: Based on volume (cubic meters or CBM) For FCL Ocean Freight: Fixed rate per container size (20ft, 40ft, 40ft HC) Additional factors affecting all shipments: Origin and destination locations Service level selected (standard, expedited, etc.) Fuel surcharges and security fees Special handling requirements Insurance coverage Seasonal factors and market conditions. For accurate pricing, we recommend requesting a quote with your specific shipment details. Volume discounts are available for regular shippers.",
-      popular: true,
-    },
-
-    // Services & Solutions
-    {
-      id: "services-1",
-      question: "What is your FBA preparation service?",
-      answer: (
-        <div>
-          Our FBA (Fulfillment by Amazon) preparation service helps sellers meet Amazon's strict requirements before
-          shipping to FBA warehouses. The service includes:
-          <ul className="list-disc pl-5 mt-2">
-            <li>
-              <strong>Inspection:</strong> Quality check of products against specifications
-            </li>
-            <li>
-              <strong>Labeling:</strong> Application of Amazon FNSKU labels, warning labels, and expiration dates
-            </li>
-            <li>
-              <strong>Packaging:</strong> Proper packaging according to Amazon requirements
-            </li>
-            <li>
-              <strong>Bundling:</strong> Creating multi-packs or kits as needed
-            </li>
-            <li>
-              <strong>Poly-bagging:</strong> Sealing products in compliant poly bags with suffocation warnings
-            </li>
-            <li>
-              <strong>Box preparation:</strong> Proper carton labeling and packaging
-            </li>
-            <li>
-              <strong>Shipment creation:</strong> Assistance with Amazon shipping plan creation
-            </li>
-            <li>
-              <strong>Direct delivery:</strong> Shipping directly to Amazon fulfillment centers
-            </li>
-          </ul>
-          <p className="mt-2">
-            We have dedicated FBA prep facilities in China with staff trained in Amazon's latest requirements. This
-            service helps prevent costly rejections, delays, and additional fees at Amazon warehouses.
-          </p>
-          <p className="mt-2">
-            We can work with your existing suppliers or receive goods from multiple vendors for consolidation before FBA
-            shipment.
-          </p>
-        </div>
-      ),
-      category: "services",
-      searchableText:
-        "Our FBA (Fulfillment by Amazon) preparation service helps sellers meet Amazon's strict requirements before shipping to FBA warehouses. The service includes: Inspection: Quality check of products against specifications Labeling: Application of Amazon FNSKU labels, warning labels, and expiration dates Packaging: Proper packaging according to Amazon requirements Bundling: Creating multi-packs or kits as needed Poly-bagging: Sealing products in compliant poly bags with suffocation warnings Box preparation: Proper carton labeling and packaging Shipment creation: Assistance with Amazon shipping plan creation Direct delivery: Shipping directly to Amazon fulfillment centers. We have dedicated FBA prep facilities in China with staff trained in Amazon's latest requirements. This service helps prevent costly rejections, delays, and additional fees at Amazon warehouses. We can work with your existing suppliers or receive goods from multiple vendors for consolidation before FBA shipment.",
-      popular: true,
-    },
-  ]
-
-  // Set up popular questions
+  // 初始化加载数据
   useEffect(() => {
-    setPopularQuestions(faqItems.filter((item) => item.popular))
+    fetchFAQs()
   }, [])
 
   // Filter FAQs based on search query
   useEffect(() => {
     if (!searchQuery.trim()) {
       // If no search query, show all FAQs for the active tab
-      setFilteredFAQs(faqItems.filter((item) => item.category === activeTab))
+      setFilteredFAQs(allFAQs.filter((item) => item.category === activeTab))
       setExpandedItems([])
       return
     }
 
     const query = searchQuery.toLowerCase().trim()
-    const filtered = faqItems.filter((item) => {
+    const filtered = allFAQs.filter((item) => {
       return (
         item.question.toLowerCase().includes(query) ||
-        (item.searchableText && item.searchableText.toLowerCase().includes(query))
+        (item.searchable_text && item.searchable_text.toLowerCase().includes(query))
       )
     })
 
     setFilteredFAQs(filtered)
 
     // Auto-expand items that match the search
-    setExpandedItems(filtered.map((item) => item.id))
+    setExpandedItems(filtered.map((item) => item.id.toString()))
 
     // If search results include items from other tabs, switch to the tab with most results
     if (filtered.length > 0) {
@@ -454,7 +108,7 @@ export default function FAQPage() {
       const mostFrequentCategory = Object.entries(categoryCounts).sort((a, b) => b[1] - a[1])[0][0]
       setActiveTab(mostFrequentCategory)
     }
-  }, [searchQuery, activeTab])
+  }, [searchQuery, activeTab, allFAQs])
 
   // Handle scroll to top button
   useEffect(() => {
@@ -470,37 +124,19 @@ export default function FAQPage() {
     window.scrollTo({ top: 0, behavior: "smooth" })
   }
 
-  // Render FAQ items with highlighted text
-  const renderFAQContent = (content: React.ReactNode, highlight: string): React.ReactNode => {
-    if (!highlight.trim() || typeof content !== "object") {
-      return content
+  // Helper function to render HTML content safely
+  const renderAnswerHTML = (htmlContent: string) => {
+    return <div dangerouslySetInnerHTML={{ __html: htmlContent }} />
+  }
+
+  // Render FAQ content with highlighted text
+  const renderFAQContent = (content: string, highlight: string): React.ReactNode => {
+    if (!highlight.trim()) {
+      return renderAnswerHTML(content)
     }
 
-    // Clone the content and replace text nodes with highlighted versions
-    return React.Children.map(content as React.ReactElement, (child) => {
-      if (!child || typeof child !== "object") {
-        return child
-      }
-
-      // If it's a text element or has no children, return as is
-      if (!child.props || !child.props.children) {
-        return child
-      }
-
-      // If children is a string, highlight it
-      if (typeof child.props.children === "string") {
-        return React.cloneElement(child, {
-          ...child.props,
-          children: <HighlightText text={child.props.children} highlight={highlight} />,
-        })
-      }
-
-      // If children is an array or another React element, recursively process it
-      return React.cloneElement(child, {
-        ...child.props,
-        children: renderFAQContent(child.props.children, highlight),
-      })
-    })
+    // For highlighted search, we'll use the plain text version
+    return <HighlightText text={content.replace(/<[^>]*>/g, '')} highlight={highlight} />
   }
 
   const categoryInfo = {
@@ -534,6 +170,17 @@ export default function FAQPage() {
       icon: <Package className="h-6 w-6" />,
       color: "bg-purple-100 text-purple-700",
     },
+  }
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600 mx-auto mb-4"></div>
+          <p className="text-gray-600">Loading FAQ...</p>
+        </div>
+      </div>
+    )
   }
 
   return (
@@ -596,7 +243,7 @@ export default function FAQPage() {
       <div className="container mx-auto px-4 py-8">
         <div className="max-w-4xl mx-auto">
           {/* Popular Questions Section */}
-          {!searchQuery && (
+          {!searchQuery && popularQuestions.length > 0 && (
             <div className="mb-12">
               <h2 className="text-2xl font-bold mb-6 text-gray-800">Popular Questions</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -619,8 +266,8 @@ export default function FAQPage() {
                           onClick={(e) => {
                             e.preventDefault()
                             setActiveTab(item.category)
-                            setExpandedItems([...expandedItems, item.id])
-                            document.getElementById(item.id)?.scrollIntoView({ behavior: "smooth" })
+                            setExpandedItems([...expandedItems, item.id.toString()])
+                            document.getElementById(item.id.toString())?.scrollIntoView({ behavior: "smooth" })
                           }}
                         >
                           View answer <ChevronRight size={14} className="ml-1" />
@@ -687,8 +334,8 @@ export default function FAQPage() {
                         .map((item) => (
                           <AccordionItem
                             key={item.id}
-                            value={item.id}
-                            id={item.id}
+                            value={item.id.toString()}
+                            id={item.id.toString()}
                             className="border border-gray-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow"
                           >
                             <AccordionTrigger className="px-6 py-4 hover:bg-gray-50 data-[state=open]:bg-gray-50">
@@ -702,8 +349,8 @@ export default function FAQPage() {
                             </AccordionTrigger>
                             <AccordionContent className="px-6 py-4 bg-white border-t border-gray-100">
                               <div className="prose max-w-none text-gray-700">
-                                {searchQuery ? renderFAQContent(item.answer, searchQuery) : item.answer}
-                                <FAQFeedback questionId={item.id} question={item.question} />
+                                {searchQuery ? renderFAQContent(item.answer, searchQuery) : renderAnswerHTML(item.answer)}
+                                <FAQFeedback questionId={item.id.toString()} question={item.question} />
                               </div>
                             </AccordionContent>
                           </AccordionItem>
@@ -716,7 +363,7 @@ export default function FAQPage() {
           </div>
 
           {/* Contact Section */}
-          <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100">
+          <div className="bg-white p-8 rounded-xl shadow-md border border-gray-100 hidden">
             <h3 className="text-2xl font-bold mb-4 text-gray-800">Still have questions?</h3>
             <p className="mb-6 text-gray-600">Our team is ready to help with any questions not covered in our FAQ.</p>
 

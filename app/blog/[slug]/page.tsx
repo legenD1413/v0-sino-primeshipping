@@ -56,7 +56,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   console.log("详情页 - 所有作者:", authors);
   
   // Get related articles
-  const relatedPosts = getRelatedPosts(slug, 2)
+  const relatedPosts = getRelatedPosts(slug, 4)
   
   // Format date
   let formattedDate = post.date
@@ -142,90 +142,67 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         </div>
 
         {/* Article content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Article content */}
-          <div className="lg:col-span-2">
-            <div className="bg-white rounded-lg shadow-md p-8">
-              {/* 移除目录组件，因为它已经固定在右侧 */}
+        <div className="bg-white rounded-lg shadow-md p-8">
+          <div 
+            className="prose max-w-none" 
+            dangerouslySetInnerHTML={{ __html: post.content }}
+          />
 
-              <div 
-                className="prose max-w-none" 
-                dangerouslySetInnerHTML={{ __html: post.content }}
-              />
-
-              {/* Tags */}
-              {post.tags && post.tags.length > 0 && (
-                <div className="mt-12">
-                  <Separator className="mb-6" />
-                  <div className="flex flex-wrap gap-2">
-                    {post.tags.map((tag: string) => (
-                      <Link
-                        key={tag}
-                        href={`/blog?tag=${tag}`}
-                        className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm"
-                >
-                        #{tag}
-                      </Link>
-              ))}
+          {/* Tags */}
+          {post.tags && post.tags.length > 0 && (
+            <div className="mt-12">
+              <Separator className="mb-6" />
+              <div className="flex flex-wrap gap-2">
+                {post.tags.map((tag: string) => (
+                  <Link
+                    key={tag}
+                    href={`/blog?tag=${tag}`}
+                    className="bg-gray-100 hover:bg-gray-200 text-gray-800 px-3 py-1 rounded-full text-sm"
+                  >
+                    #{tag}
+                  </Link>
+                ))}
+              </div>
             </div>
-          </div>
-              )}
-            </div>
-          </div>
-          
-          {/* Sidebar */}
-          <div className="space-y-8">
-            {/* Author information card */}
-            {author && (
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">About the Author</h3>
-                <div className="flex items-center mb-4">
-                  <div className="w-12 h-12 bg-blue-700 rounded-full flex items-center justify-center text-white mr-4">
-                    {author.name.charAt(0)}
+          )}
         </div>
-                  <div>
-                    <div className="font-medium">{author.name}</div>
-                    <div className="text-sm text-gray-500">{author.role}</div>
-                  </div>
-                </div>
-                <p className="text-gray-600 text-sm">{author.bio}</p>
+
+        {/* Related Articles - Moved to bottom */}
+        {relatedPosts.length > 0 && (
+          <div className="mt-16">
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <h3 className="text-lg font-bold text-gray-900 mb-4">Related Articles</h3>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                {relatedPosts.map((relatedPost) => (
+                  <Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`} className="block group">
+                    <div className="flex gap-3">
+                      <div className="relative w-16 h-16 shrink-0">
+                        <Image
+                          src={relatedPost.coverImage || "/placeholder-byhpf.png"}
+                          alt={relatedPost.title}
+                          fill
+                          className="object-cover rounded"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-gray-900 group-hover:text-red-600 transition-colors line-clamp-2">
+                          {relatedPost.title}
+                        </h4>
+                        <p className="text-xs text-gray-500 mt-1">{relatedPost.readTime}</p>
+                      </div>
+                    </div>
+                  </Link>
+                ))}
               </div>
-            )}
-            
-            {/* Related articles */}
-            {relatedPosts.length > 0 && (
-              <div className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-bold text-gray-900 mb-4">Related Articles</h3>
-                <div className="space-y-4">
-                  {relatedPosts.map((relatedPost) => (
-                    <Link key={relatedPost.slug} href={`/blog/${relatedPost.slug}`} className="block group">
-                      <div className="flex gap-3">
-                        <div className="relative w-16 h-16 shrink-0">
-                          <Image
-                            src={relatedPost.coverImage || "/placeholder-byhpf.png"}
-                            alt={relatedPost.title}
-                            fill
-                            className="object-cover rounded"
-                          />
-                        </div>
-                        <div>
-                          <h4 className="font-medium text-gray-900 group-hover:text-red-600 transition-colors line-clamp-2">
-                            {relatedPost.title}
-                          </h4>
-                          <p className="text-xs text-gray-500 mt-1">{relatedPost.readTime}</p>
-                        </div>
-                  </div>
-                </Link>
-              ))}
             </div>
-              </div>
-            )}
-            
-            {/* View all articles button */}
-            <Link href="/blog">
-              <Button className="w-full">View All Articles</Button>
-            </Link>
           </div>
+        )}
+
+        {/* View All Articles Button - Moved to bottom */}
+        <div className="mt-8 text-center">
+          <Link href="/blog">
+            <Button className="px-8">View All Articles</Button>
+          </Link>
         </div>
       </div>
     </div>

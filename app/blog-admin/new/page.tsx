@@ -62,12 +62,14 @@ export default function NewPostPage() {
       if (isAdmin === 'true') {
         setIsLoggedIn(true)
       } else {
-        router.push('/sps-admin')
+        // 如果没有登录状态，重定向到管理页面并附带当前页面作为参数
+        router.push(`/sps-admin?redirect=${encodeURIComponent(window.location.pathname)}`)
       }
       setIsChecking(false)
     }
     
-    checkAuthStatus()
+    // 添加小延迟确保localStorage已经加载
+    setTimeout(checkAuthStatus, 100)
   }, [router])
   
   // 加载作者和分类数据
