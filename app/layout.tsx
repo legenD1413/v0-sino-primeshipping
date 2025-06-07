@@ -36,21 +36,75 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <head>
-        {/* Google Tag Manager */}
+        {/* Google Tag Manager with Smart Loading */}
         <Script
           id="gtm-script"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
-              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-              'https://www.googletagmanager.com/gtm.js?id='+i+dl;
-              j.onerror=function(){
-                console.log('GTM加载失败，启用本地分析备用方案');
-                if(window.initLocalAnalytics) window.initLocalAnalytics();
-              };
-              f.parentNode.insertBefore(j,f);
+              // 智能GTM加载 - 先检测网络连接
+              (function(w,d,s,l,i){
+                // 初始化 dataLayer
+                w[l]=w[l]||[];
+                w[l].push({'gtm.start': new Date().getTime(),event:'gtm.js'});
+                
+                // 网络检测函数
+                function canLoadGTM() {
+                  // 检查是否在中国大陆网络环境
+                  var timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+                  var language = navigator.language || navigator.userLanguage;
+                  
+                  // 如果是中文环境且时区为亚洲/上海，可能在受限网络环境
+                  if ((language.indexOf('zh') === 0 || language.indexOf('cn') !== -1) && 
+                      (timezone === 'Asia/Shanghai' || timezone === 'Asia/Beijing')) {
+                    return false;
+                  }
+                  
+                  // 检查是否已经有其他Google服务加载失败的痕迹
+                  var googleErrors = w.gtmLoadErrors || 0;
+                  if (googleErrors > 2) {
+                    return false;
+                  }
+                  
+                  return true;
+                }
+                
+                // 如果判断可以加载GTM，则尝试加载
+                if (canLoadGTM()) {
+                  var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';
+                  j.async=true;
+                  j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;
+                  
+                  // 设置超时机制
+                  var timeout = setTimeout(function() {
+                    console.log('GTM加载超时，使用本地分析');
+                    w.gtmLoadErrors = (w.gtmLoadErrors || 0) + 1;
+                    if(w.initLocalAnalytics) w.initLocalAnalytics();
+                  }, 3000);
+                  
+                  j.onload=function(){
+                    clearTimeout(timeout);
+                    console.log('GTM加载成功');
+                  };
+                  
+                  j.onerror=function(){
+                    clearTimeout(timeout);
+                    console.log('GTM加载失败，使用本地分析');
+                    w.gtmLoadErrors = (w.gtmLoadErrors || 0) + 1;
+                    if(w.initLocalAnalytics) w.initLocalAnalytics();
+                  };
+                  
+                  f.parentNode.insertBefore(j,f);
+                } else {
+                  // 直接使用本地分析，不尝试加载GTM
+                  console.log('检测到受限网络环境，跳过GTM加载，使用本地分析');
+                  if(w.initLocalAnalytics) {
+                    setTimeout(function() {
+                      w.initLocalAnalytics();
+                    }, 100);
+                  }
+                }
               })(window,document,'script','dataLayer','GTM-PCJRWMF2');
             `,
           }}

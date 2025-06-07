@@ -13,12 +13,35 @@ declare global {
     }
     initLocalAnalytics: () => void
   }
+  
+  interface Navigator {
+    userLanguage?: string;
+  }
 }
 
 export default function GoogleAnalytics() {
   useEffect(() => {
+    // 检查网络环境
+    const checkNetworkEnvironment = () => {
+      const timezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+      const language = navigator.language || navigator.userLanguage || 'en';
+      
+      // 如果是中文环境且时区为亚洲，可能在受限网络环境
+      const isRestrictedNetwork = (language.indexOf('zh') === 0 || language.indexOf('cn') !== -1) && 
+                                 (timezone === 'Asia/Shanghai' || timezone === 'Asia/Beijing');
+      
+      return isRestrictedNetwork;
+    }
+
     // 初始化本地分析系统
     initializeLocalAnalytics()
+    
+    // 如果检测到受限网络环境，立即使用本地分析，不等待GTM
+    if (checkNetworkEnvironment()) {
+      console.log('🌏 检测到受限网络环境，使用本地分析系统');
+      createFallbackGtag();
+      return;
+    }
     
     // 检查 GTM 是否加载成功
     const checkGTM = () => {
@@ -31,8 +54,10 @@ export default function GoogleAnalytics() {
       }
     }
     
-    // 延迟检查 GTM 加载状态
-    setTimeout(checkGTM, 3000)
+    // 延迟检查 GTM 加载状态（仅在非受限网络环境）
+    const timer = setTimeout(checkGTM, 2000)
+    
+    return () => clearTimeout(timer)
   }, [])
 
   const initializeLocalAnalytics = () => {
