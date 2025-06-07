@@ -46,8 +46,8 @@ export default function GoogleAnalytics() {
     }
   }, [pathname])
 
-  // 在开发环境或禁用时不加载
-  if (!ENABLE_ANALYTICS && process.env.NODE_ENV === 'development') {
+  // 只在明确禁用时不加载
+  if (!ENABLE_ANALYTICS) {
     return null
   }
 
