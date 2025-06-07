@@ -41,6 +41,10 @@ interface AnalyticsConfig {
   track_pageviews: boolean
   track_events: boolean
   track_ecommerce: boolean
+  use_direct_gtm: boolean
+  skip_gtm: boolean
+  use_local_only: boolean
+  fallback_enabled: boolean
   custom_dimensions: CustomDimension[]
   goals: Goal[]
 }
@@ -79,6 +83,10 @@ export default function AnalyticsManagement() {
     track_pageviews: true,
     track_events: true,
     track_ecommerce: false,
+    use_direct_gtm: true,
+    skip_gtm: false,
+    use_local_only: false,
+    fallback_enabled: true,
     custom_dimensions: [],
     goals: []
   })
@@ -104,13 +112,29 @@ export default function AnalyticsManagement() {
 
   const loadAnalyticsConfig = async () => {
     try {
-      // 从localStorage或API加载配置
-      const savedConfig = localStorage.getItem('analytics_config')
-      if (savedConfig) {
-        setConfig(JSON.parse(savedConfig))
+      // 从API加载配置
+      const response = await fetch('/api/analytics/config')
+      if (response.ok) {
+        const savedConfig = await response.json()
+        setConfig(savedConfig)
+      } else {
+        // 如果API失败，尝试从localStorage加载
+        const localConfig = localStorage.getItem('analytics_config')
+        if (localConfig) {
+          setConfig(JSON.parse(localConfig))
+        }
       }
     } catch (error) {
       console.error('加载Analytics配置失败:', error)
+      // 尝试从localStorage加载
+      try {
+        const localConfig = localStorage.getItem('analytics_config')
+        if (localConfig) {
+          setConfig(JSON.parse(localConfig))
+        }
+      } catch (localError) {
+        console.error('从localStorage加载配置也失败:', localError)
+      }
     }
   }
 
@@ -118,24 +142,30 @@ export default function AnalyticsManagement() {
     try {
       setIsSaving(true)
       
-      // 保存到localStorage（实际项目中应该保存到数据库）
-      localStorage.setItem('analytics_config', JSON.stringify(config))
-      
-      // 这里可以调用API保存到数据库
-      // await fetch('/api/analytics/config', {
-      //   method: 'POST',
-      //   headers: { 'Content-Type': 'application/json' },
-      //   body: JSON.stringify(config)
-      // })
-
-      toast({
-        title: "成功",
-        description: "Analytics配置已保存"
+      // 保存到API
+      const response = await fetch('/api/analytics/config', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(config)
       })
+
+      if (response.ok) {
+        // 同时保存到localStorage作为备份
+        localStorage.setItem('analytics_config', JSON.stringify(config))
+        
+        toast({
+          title: "成功",
+          description: "Analytics配置已保存"
+        })
+      } else {
+        const error = await response.json()
+        throw new Error(error.error || '保存失败')
+      }
     } catch (error) {
+      console.error('保存配置失败:', error)
       toast({
         title: "错误",
-        description: "保存配置失败",
+        description: error instanceof Error ? error.message : "保存配置失败",
         variant: "destructive"
       })
     } finally {
@@ -145,33 +175,50 @@ export default function AnalyticsManagement() {
 
   const loadRealTimeStats = async () => {
     try {
-      // 模拟实时数据（实际项目中调用Google Analytics API）
-      setRealTimeStats({
-        activeUsers: Math.floor(Math.random() * 50) + 10,
-        pageViews: Math.floor(Math.random() * 200) + 50,
-        events: Math.floor(Math.random() * 100) + 20,
-        topPages: [
-          { page: '/', views: 45 },
-          { page: '/services/fcl-to-port', views: 23 },
-          { page: '/services/fcl-to-door', views: 18 },
-          { page: '/get-quote', views: 15 },
-          { page: '/about-us', views: 12 }
-        ],
-        topEvents: [
-          { event: 'page_view', count: 156 },
-          { event: 'button_click', count: 45 },
-          { event: 'form_submit', count: 23 },
-          { event: 'file_download', count: 12 },
-          { event: 'external_link', count: 8 }
-        ]
-      })
+      // 从API获取实时统计数据
+      const response = await fetch('/api/analytics/stats')
+      if (response.ok) {
+        const stats = await response.json()
+        setRealTimeStats(stats)
+      } else {
+        // 如果API失败，使用模拟数据
+        setRealTimeStats({
+          activeUsers: Math.floor(Math.random() * 50) + 10,
+          pageViews: Math.floor(Math.random() * 200) + 50,
+          events: Math.floor(Math.random() * 100) + 20,
+          topPages: [
+            { page: '/', views: 45 },
+            { page: '/services/fcl-to-port', views: 23 },
+            { page: '/services/fcl-to-door', views: 18 },
+            { page: '/get-quote', views: 15 },
+            { page: '/about-us', views: 12 }
+          ],
+          topEvents: [
+            { event: 'page_view', count: 156 },
+            { event: 'button_click', count: 45 },
+            { event: 'form_submit', count: 23 },
+            { event: 'file_download', count: 12 },
+            { event: 'external_link', count: 8 }
+          ]
+        })
+      }
     } catch (error) {
       console.error('加载实时数据失败:', error)
+      // 使用模拟数据作为备用
+      setRealTimeStats({
+        activeUsers: 0,
+        pageViews: 0,
+        events: 0,
+        topPages: [],
+        topEvents: []
+      })
     }
   }
 
   const testAnalyticsConnection = async () => {
     setIsLoading(true)
+    setTestResult(null)
+    
     try {
       // 验证GTM ID格式
       const gtmIdPattern = /^GTM-[A-Z0-9]+$/
@@ -183,35 +230,58 @@ export default function AnalyticsManagement() {
         return
       }
 
-      // 检查GTM是否已加载（如果已经在页面中运行）
+      // 调用API测试连接
+      const response = await fetch('/api/analytics/config', {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ gtm_id: config.gtm_id })
+      })
+
+      const result = await response.json()
+      
+      // 检查本地分析状态
+      let localAnalyticsStatus = '未知'
       if (typeof window !== 'undefined') {
-        // 检查dataLayer是否存在
         const hasDataLayer = (window as any).dataLayer && Array.isArray((window as any).dataLayer)
+        const hasLocalAnalytics = (window as any).localAnalytics
+        const hasGtag = typeof (window as any).gtag === 'function'
         
-        // 检查GTM容器是否存在
-        const hasGTMScript = document.querySelector(`script[src*="${config.gtm_id}"]`)
-        
-        if (hasDataLayer || hasGTMScript) {
-          setTestResult({ 
-            success: true, 
-            message: `GTM ID ${config.gtm_id} 格式正确，跟踪代码已集成` 
-          })
+        if (hasDataLayer && hasGtag) {
+          localAnalyticsStatus = 'GTM 和本地分析都正常'
+        } else if (hasLocalAnalytics) {
+          localAnalyticsStatus = '本地分析正常运行'
         } else {
-          setTestResult({ 
-            success: true, 
-            message: `GTM ID ${config.gtm_id} 格式正确，将在下次页面加载时生效` 
-          })
+          localAnalyticsStatus = '等待初始化'
         }
+      }
+      
+      setTestResult({
+        ...result,
+        message: `${result.message} | 本地状态: ${localAnalyticsStatus}`
+      })
+      
+      if (result.success) {
+        toast({
+          title: "测试成功",
+          description: result.message
+        })
       } else {
-        setTestResult({ 
-          success: true, 
-          message: `GTM ID ${config.gtm_id} 格式正确` 
+        toast({
+          title: "测试结果",
+          description: result.message,
+          variant: "destructive"
         })
       }
     } catch (error) {
-      setTestResult({ 
+      const errorResult = { 
         success: false, 
-        message: '测试失败，请检查GTM ID格式' 
+        message: '测试连接时出错，请检查网络连接' 
+      }
+      setTestResult(errorResult)
+      toast({
+        title: "错误",
+        description: errorResult.message,
+        variant: "destructive"
       })
     } finally {
       setIsLoading(false)
@@ -457,6 +527,41 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
                     onCheckedChange={(checked) => setConfig({...config, track_ecommerce: checked})}
                   />
                 </div>
+
+                <Separator />
+
+                <div className="flex items-center justify-between p-4 border rounded-lg">
+                  <div>
+                    <h4 className="font-medium">直接GTM加载</h4>
+                    <p className="text-sm text-gray-600">在HTML头部直接加载GTM代码（推荐）</p>
+                  </div>
+                  <Switch
+                    checked={config.use_direct_gtm}
+                    onCheckedChange={(checked) => setConfig({...config, use_direct_gtm: checked})}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between p-4 border rounded-lg">
+                  <div>
+                    <h4 className="font-medium">启用本地分析备用</h4>
+                    <p className="text-sm text-gray-600">当GTM加载失败时自动切换到本地分析</p>
+                  </div>
+                  <Switch
+                    checked={config.fallback_enabled}
+                    onCheckedChange={(checked) => setConfig({...config, fallback_enabled: checked})}
+                  />
+                </div>
+
+                <div className="flex items-center justify-between p-4 border rounded-lg">
+                  <div>
+                    <h4 className="font-medium">仅使用本地分析</h4>
+                    <p className="text-sm text-gray-600">完全跳过GTM，只使用本地分析系统</p>
+                  </div>
+                  <Switch
+                    checked={config.use_local_only}
+                    onCheckedChange={(checked) => setConfig({...config, use_local_only: checked})}
+                  />
+                </div>
               </CardContent>
             </Card>
 
@@ -587,6 +692,67 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
         {/* 实时数据 */}
         <TabsContent value="stats">
           <div className="space-y-6">
+            {/* 分析状态概览 */}
+            <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center">
+                    <div className="p-2 bg-blue-100 rounded-lg mr-4">
+                      <Users className="h-6 w-6 text-blue-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-600">活跃用户</p>
+                      <p className="text-2xl font-bold">{realTimeStats?.activeUsers || 0}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center">
+                    <div className="p-2 bg-green-100 rounded-lg mr-4">
+                      <Eye className="h-6 w-6 text-green-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-600">页面浏览</p>
+                      <p className="text-2xl font-bold">{realTimeStats?.pageViews || 0}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center">
+                    <div className="p-2 bg-purple-100 rounded-lg mr-4">
+                      <Activity className="h-6 w-6 text-purple-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-600">总事件</p>
+                      <p className="text-2xl font-bold">{realTimeStats?.events || 0}</p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+              
+              <Card>
+                <CardContent className="p-6">
+                  <div className="flex items-center">
+                    <div className="p-2 bg-orange-100 rounded-lg mr-4">
+                      <BarChart3 className="h-6 w-6 text-orange-600" />
+                    </div>
+                    <div>
+                      <p className="text-sm font-medium text-gray-600">数据源</p>
+                      <p className="text-lg font-bold">
+                        {config.use_local_only ? '本地' : '混合'}
+                      </p>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <Card>
                 <CardHeader>

@@ -10,6 +10,7 @@ import { StagewiseDevToolbar } from "@/components/stagewise-toolbar"
 import AdminNav from "@/components/admin-nav"
 import { Toaster } from "@/components/ui/toaster"
 import GoogleAnalytics from "@/components/google-analytics"
+import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -34,7 +35,38 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
+      <head>
+        {/* Google Tag Manager */}
+        <Script
+          id="gtm-script"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;
+              j.onerror=function(){
+                console.log('GTM加载失败，启用本地分析备用方案');
+                if(window.initLocalAnalytics) window.initLocalAnalytics();
+              };
+              f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-PCJRWMF2');
+            `,
+          }}
+        />
+      </head>
       <body className={inter.className} suppressHydrationWarning>
+        {/* Google Tag Manager (noscript) */}
+        <noscript>
+          <iframe 
+            src="https://www.googletagmanager.com/ns.html?id=GTM-PCJRWMF2"
+            height="0" 
+            width="0" 
+            style={{ display: 'none', visibility: 'hidden' }}
+          />
+        </noscript>
+        
         <CriticalImagesPreloader />
         <GoogleAnalytics />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
