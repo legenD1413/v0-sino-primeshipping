@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import {
   Package,
@@ -23,6 +24,7 @@ import {
 } from "lucide-react"
 
 export default function GetQuotePage() {
+  const router = useRouter()
   const [isLoaded, setIsLoaded] = useState(false)
   // 表单状态管理
   const [formData, setFormData] = useState({
@@ -98,6 +100,10 @@ export default function GetQuotePage() {
           shippingMethod: [] as string[],
           description: ''
         })
+        // 跳转到感谢页面
+        setTimeout(() => {
+          router.push('/get-quote/thank-you-quote')
+        }, 1000)
       } else {
         setSubmitStatus('error')
         setSubmitMessage(result.error || 'Submission failed, please try again later')

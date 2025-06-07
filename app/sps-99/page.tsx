@@ -3,6 +3,7 @@
 import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import {
   Rocket,
   Shield,
@@ -30,6 +31,7 @@ import {
 } from "lucide-react"
 
 export default function SPS99Page() {
+  const router = useRouter()
   const [isLoaded, setIsLoaded] = useState(false)
   // 表单状态管理
   const [formData, setFormData] = useState({
@@ -103,6 +105,10 @@ export default function SPS99Page() {
           otherChallenge: '',
           description: ''
         })
+        // 跳转到感谢页面
+        setTimeout(() => {
+          router.push('/sps-99/thank-you-sp19')
+        }, 1000)
       } else {
         setSubmitStatus('error')
         setSubmitMessage(result.error || 'Submission failed, please try again later')
@@ -1724,16 +1730,31 @@ export default function SPS99Page() {
                     <label htmlFor="productCategories" className="block text-sm font-medium mb-2">
                       Main Product Categories *
                   </label>
-                  <input
-                    type="text"
+                  <select
                       id="productCategories"
                       name="productCategories"
                       value={formData.productCategories}
                     onChange={handleInputChange}
                     className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
-                      placeholder="e.g., Clothing, Electronics, Home & Garden, Beauty Products"
                     required
-                  />
+                  >
+                    <option value="" disabled className="text-gray-700">Select product category</option>
+                    <option value="bike-vehicle" className="text-gray-900 bg-white">Bike & Vehicle</option>
+                    <option value="books" className="text-gray-900 bg-white">Books</option>
+                    <option value="clothing-shoes-accessories" className="text-gray-900 bg-white">Clothing, Shoes & Accessories</option>
+                    <option value="computers-tablets-networking" className="text-gray-900 bg-white">Computers/Tablets & Networking</option>
+                    <option value="consumer-electronics" className="text-gray-900 bg-white">Consumer Electronics</option>
+                    <option value="cosmetics-skincare" className="text-gray-900 bg-white">Cosmetics & Skincare</option>
+                    <option value="garden" className="text-gray-900 bg-white">Garden</option>
+                    <option value="health-beauty" className="text-gray-900 bg-white">Health & Beauty</option>
+                    <option value="home-decoration" className="text-gray-900 bg-white">Home & Decoration</option>
+                    <option value="jewelry-watch" className="text-gray-900 bg-white">Jewelry & Watch</option>
+                    <option value="kitchenware" className="text-gray-900 bg-white">Kitchenware</option>
+                    <option value="pet-supplies" className="text-gray-900 bg-white">Pet Supplies</option>
+                    <option value="sports-fitness-outdoors" className="text-gray-900 bg-white">Sports/Fitness & Outdoors</option>
+                    <option value="toys-games" className="text-gray-900 bg-white">Toys & Games</option>
+                    <option value="others" className="text-gray-900 bg-white">Others</option>
+                  </select>
                 </div>
 
                 <div>
