@@ -171,7 +171,7 @@ export default function SPS19EBPage() {
               </div>
               <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white text-sm sm:text-base font-bold shadow-lg">
                 ✓
-              </div>
+            </div>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent leading-tight">
               Scale Your E-commerce Brand Globally
@@ -185,7 +185,7 @@ export default function SPS19EBPage() {
           <div className="bg-gradient-to-r from-red-500/20 via-red-400/30 to-red-500/20 rounded-full px-6 py-3 mb-6 sm:mb-8 inline-block backdrop-blur-sm border border-red-400/30">
             <p className="text-base sm:text-lg md:text-xl text-red-200 font-medium">
               SPS 19 Pioneer Program - Powering Independent E-commerce Brands
-            </p>
+          </p>
           </div>
 
           <p

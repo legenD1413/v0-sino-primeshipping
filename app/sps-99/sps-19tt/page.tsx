@@ -257,105 +257,110 @@ export default function SPS19TTPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
-            {/* Pain Point 1 */}
-            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-red-500/10 to-red-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-red-400/5 to-red-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+            {/* 第一行：2个版块 */}
+            <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 gap-6">
+              {/* Pain Point 1 */}
+              <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-red-500/10 to-red-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-red-400/5 to-red-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
-                    <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                <div className="flex flex-col relative">
+                  <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                    <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                      <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                    </div>
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                      Viral Video, Slow Shipping
+                    </h3>
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Viral Video, Slow Shipping
-                  </h3>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                    Your video just went viral, orders are flooding in... but your stock is still in China. By the time customers receive their orders (3+ weeks later), the viral momentum is dead.
+                  </p>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Your video just went viral, orders are flooding in... but your stock is in China. Customers are already spamming "Where is my order?!" in the comments.
-                </p>
+              </div>
+
+              {/* Pain Point 2 */}
+              <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-orange-400/5 to-orange-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
+
+                <div className="flex flex-col relative">
+                  <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                    <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                      <Package className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                    </div>
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                      Dropping TikTok Shop Ratings
+                    </h3>
+                  </div>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                    Tracking hasn't updated in 10 days. Your TikTok Shop seller rating is tanking because customers think their orders are lost. Each bad review destroys your credibility.
+                  </p>
+                </div>
               </div>
             </div>
 
-            {/* Pain Point 2 */}
-            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-orange-400/5 to-orange-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
+            {/* 第二行：3个版块 */}
+            <div className="lg:col-span-3 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {/* Pain Point 3 */}
+              <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-blue-400/5 to-blue-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
-                    <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                <div className="flex flex-col relative">
+                  <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                    <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                      <MessageSquare className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                    </div>
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                      Competing Against Local Brands
+                    </h3>
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Killing Impulse Purchases
-                  </h3>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                    Your competitors are shipping locally. Their conversion rates are 3x higher than yours because they promise fast delivery.
+                  </p>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  "Estimated delivery: 3 weeks." That one sentence just killed the impulse of 90% of your potential buyers.
-                </p>
               </div>
-            </div>
 
-            {/* Pain Point 3 */}
-            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-blue-400/5 to-blue-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
+              {/* Pain Point 4 */}
+              <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-purple-400/5 to-purple-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
-                    <MessageSquare className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                <div className="flex flex-col relative">
+                  <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                    <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                      <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                    </div>
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                      Killing Impulse Purchases
+                    </h3>
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Competing Against Local Brands
-                  </h3>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                    "Estimated delivery: 3 weeks." That one sentence just killed the impulse of 90% of your potential buyers.
+                  </p>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Your competitors are shipping locally. Their conversion rates are 3x higher than yours because they promise fast delivery.
-                </p>
               </div>
-            </div>
 
-            {/* Pain Point 4 */}
-            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-purple-400/5 to-purple-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
+              {/* Pain Point 5 */}
+              <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+                <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+                <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-green-400/5 to-green-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
-                    <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                <div className="flex flex-col relative">
+                  <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                    <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                      <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                    </div>
+                    <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                      Money Hemorrhaging on Returns
+                    </h3>
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Dropping TikTok Shop Ratings
-                  </h3>
+                  <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                    Long shipping times = angry customers = chargebacks. You're losing 30% of your revenue to disputes and returns from unsatisfied customers.
+                  </p>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Tracking hasn't updated in 10 days. Your TikTok Shop seller rating is dropping due to poor fulfillment performance.
-                </p>
-              </div>
-            </div>
-
-            {/* Pain Point 5 */}
-            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
-              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
-              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-green-400/5 to-green-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
-
-              <div className="flex flex-col relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
-                    <Compass className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
-                  </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Lost in the maze of global logistics?
-                  </h3>
-                </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Navigate the complexities of global supply chains with our end-to-end solution, from factory floor to
-                  customer door.
-                </p>
               </div>
             </div>
           </div>
