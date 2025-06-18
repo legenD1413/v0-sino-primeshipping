@@ -160,40 +160,44 @@ export default function SPS19EBPage() {
 
         {/* Hero Content */}
         <div
-          className={`container-custom relative z-10 text-white text-center max-w-5xl transition-all duration-1000 ${
+          className={`container-custom relative z-10 text-white text-center max-w-4xl transition-all duration-1000 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="flex flex-col sm:flex-row items-center justify-center mb-6 md:mb-8">
-            <div className="relative mb-4 sm:mb-0 sm:mr-4">
-              <Rocket className="h-8 w-8 md:h-10 md:w-10 text-red-500 animate-pulse mx-auto sm:mx-0" />
-              <div className="absolute -top-1 -right-1 w-5 h-5 md:w-6 md:h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                19
+          <div className="flex flex-col items-center justify-center mb-6 sm:mb-8">
+            <div className="relative mb-4 sm:mb-6">
+              <div className="bg-gradient-to-br from-red-500 via-red-600 to-red-700 p-4 sm:p-6 rounded-2xl shadow-2xl shadow-red-900/40">
+                <Rocket className="h-12 w-12 sm:h-16 sm:w-16 text-white animate-pulse" />
+              </div>
+              <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white text-sm sm:text-base font-bold shadow-lg">
+                ✓
               </div>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent leading-tight">
               Scale Your E-commerce Brand Globally
             </h1>
           </div>
 
-          <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4 text-white/90">
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-6 sm:mb-8 text-white/90 leading-relaxed px-2 sm:px-4">
             Your Dedicated China Supply Chain Partner for Direct-to-Consumer Success
           </h2>
 
-          <p className="text-lg md:text-xl text-red-400 font-medium mb-6 border-b border-t border-red-500/30 py-2 inline-block">
-            SPS 19 Pioneer Program - Powering Independent E-commerce Brands
-          </p>
+          <div className="bg-gradient-to-r from-red-500/20 via-red-400/30 to-red-500/20 rounded-full px-6 py-3 mb-6 sm:mb-8 inline-block backdrop-blur-sm border border-red-400/30">
+            <p className="text-base sm:text-lg md:text-xl text-red-200 font-medium">
+              SPS 19 Pioneer Program - Powering Independent E-commerce Brands
+            </p>
+          </div>
 
           <p
-            className={`text-base md:text-lg lg:text-xl mb-6 md:mb-8 max-w-4xl mx-auto text-gray-200 transition-all duration-1000 delay-300 leading-relaxed ${
+            className={`text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto text-gray-200 transition-all duration-1000 delay-300 leading-relaxed ${
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
             We handle the A-Z of China sourcing and shipping globally, so you can focus on growing your brand and delighting your customers.{" "}
-            <span className="font-semibold text-white">Exclusively for 19 Pioneer Partners.</span>
+            <span className="font-semibold text-white block sm:inline mt-2 sm:mt-0">Exclusively for 19 Pioneer Partners.</span>
           </p>
           
-          <p className="text-sm md:text-base lg:text-lg text-gray-300 mb-8 md:mb-10">
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-8 sm:mb-10">
             <em>✅ Trusted by over 500+ Independent E-commerce Brands</em>
           </p>
 
@@ -232,110 +236,118 @@ export default function SPS19EBPage() {
       </section>
 
       {/* Pain Points Section */}
-      <section className="bg-white py-20 md:py-28 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-gray-50 via-white to-gray-50 py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-30" />
         <div className="absolute -top-10 -left-10 w-40 h-40 bg-red-500/5 rounded-full blur-3xl" />
         <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-red-500/5 rounded-full blur-3xl" />
 
         <div className="container-custom relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900 relative inline-block">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-gray-900 relative inline-block leading-tight">
               Is Logistics Holding Your Brand Back?
-              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
+              <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
             </h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
+              Are you facing these critical challenges that can make or break your e-commerce success?
+            </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {/* Pain Point 1 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-red-500/10 to-red-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-red-400/5 to-red-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <TrendingUp className="h-8 w-8 text-red-500" />
+              <div className="flex flex-col relative">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                    <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
                     High Shipping Costs?
                   </h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                   Eroding your profit margins and making you uncompetitive.
                 </p>
               </div>
             </div>
 
             {/* Pain Point 2 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-orange-400/5 to-orange-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <Clock className="h-8 w-8 text-red-500" />
+              <div className="flex flex-col relative">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                    <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
                     Slow Delivery Times?
                   </h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                   Causing customer churn and negative reviews.
                 </p>
               </div>
             </div>
 
             {/* Pain Point 3 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-blue-400/5 to-blue-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <MessageSquare className="h-8 w-8 text-red-500" />
+              <div className="flex flex-col relative">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                    <MessageSquare className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
                     Complex International Shipping?
                   </h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                   Customs regulations, duty calculations, and international compliance are overwhelming your team.
                 </p>
               </div>
             </div>
 
             {/* Pain Point 4 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-purple-400/5 to-purple-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <BarChart3 className="h-8 w-8 text-red-500" />
+              <div className="flex flex-col relative">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                    <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
                     Poor Brand Experience?
                   </h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                   Generic packaging and unreliable delivery times damage your brand reputation and customer trust.
                 </p>
               </div>
             </div>
 
             {/* Pain Point 5 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-green-400/5 to-green-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <Compass className="h-8 w-8 text-red-500" />
+              <div className="flex flex-col relative">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                    <Compass className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
                     Inventory Management Chaos?
                   </h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                   Juggling multiple suppliers, tracking stock levels, and forecasting demand is consuming too much time.
                 </p>
               </div>
@@ -343,10 +355,13 @@ export default function SPS19EBPage() {
 
           </div>
           
-          <div className="text-center mt-12">
-            <p className="text-xl font-bold text-gray-900 bg-gradient-to-r from-red-50 to-red-100 p-6 rounded-xl border-l-4 border-red-500">
-              It's time to turn your logistics into a competitive advantage, not a bottleneck.
-            </p>
+          <div className="text-center mt-8 sm:mt-12">
+            <div className="bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-red-200 shadow-lg mx-auto max-w-4xl">
+              <p className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                It's time to turn your logistics into a competitive advantage, not a bottleneck.
+              </p>
+              <div className="w-24 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
+            </div>
           </div>
         </div>
       </section>
@@ -361,13 +376,13 @@ export default function SPS19EBPage() {
         <div className="container-custom relative z-10">
           <div className="text-center mb-20">
             <div className="inline-block mb-6">
-              <div className="flex items-center justify-center p-4 bg-gradient-to-br from-red-50 to-red-100 rounded-full mb-6 mx-auto w-24 h-24 shadow-lg">
-                <Package className="h-12 w-12 text-red-500" />
+              <div className="bg-gradient-to-br from-red-500 via-red-600 to-red-700 p-4 sm:p-6 rounded-2xl shadow-2xl shadow-red-900/40 mx-auto">
+                <Package className="h-12 w-12 sm:h-16 sm:w-16 text-white" />
               </div>
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 text-gray-900 relative">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-gray-900 relative leading-tight">
               A Logistics Toolkit Tailored for Your E-commerce Brand
-              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-red-400 via-red-500 to-red-600 rounded-full"></div>
+              <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-red-400 via-red-500 to-red-600 rounded-full"></div>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
               From sourcing to delivery, we provide a comprehensive 6-step service that transforms your China supply chain challenges into competitive advantages.
@@ -1919,15 +1934,15 @@ export default function SPS19EBPage() {
 
         <div className="container-custom relative z-10">
           <div className="text-center mb-12 md:mb-16">
-            <div className="inline-block mb-4">
-              <div className="flex items-center justify-center p-3 bg-red-500 rounded-full mb-4 mx-auto w-16 h-16 md:w-20 md:h-20">
-                <Rocket className="h-8 w-8 md:h-10 md:w-10 text-white" />
+            <div className="inline-block mb-6">
+              <div className="bg-gradient-to-br from-red-500 via-red-600 to-red-700 p-4 sm:p-6 rounded-2xl shadow-2xl shadow-red-900/40">
+                <Rocket className="h-12 w-12 sm:h-16 sm:w-16 text-white" />
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-white px-4">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-white px-2 sm:px-4 leading-tight">
               Ready to Become an SPS 19 Pioneer Partner?
             </h2>
-            <div className="w-16 md:w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
+            <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 lg:gap-16 items-start">

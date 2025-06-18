@@ -125,7 +125,7 @@ export default function SPS19FBAPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative flex flex-col items-center justify-center px-4 py-24 md:py-32 lg:py-40 overflow-hidden">
+      <section className="relative flex flex-col items-center justify-center px-4 py-16 sm:py-20 md:py-28 lg:py-36 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image src="/sps-99-hero-bg.png" alt="Global Supply Chain" fill className="object-cover" priority />
@@ -164,34 +164,28 @@ export default function SPS19FBAPage() {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="flex items-center justify-center mb-4">
-            <div className="relative">
-              <Rocket className="h-10 w-10 mr-3 text-red-500 animate-pulse" />
-              <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                19
+          <div className="flex flex-col items-center justify-center mb-6 sm:mb-8">
+            <div className="relative mb-4 sm:mb-6">
+              <Rocket className="h-12 w-12 sm:h-16 sm:w-16 text-red-500 animate-pulse mx-auto" />
+              <div className="absolute -top-1 -right-1 w-6 h-6 sm:w-8 sm:h-8 bg-red-500 rounded-full flex items-center justify-center text-white text-xs sm:text-sm font-bold">
+                FBA
               </div>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Stop Juggling, Start Scaling
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight">
+              Stop Worrying About FBA Logistics. Start Scaling Your Amazon Business.
             </h1>
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-white/90">
-            Your Dedicated China Supply Chain Partner for TikTok & Crowdfunding Success
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-6 sm:mb-8 text-white/90 leading-relaxed px-2 sm:px-4">
+            Your dedicated FBA Prep & Ship partner in China, seamlessly delivering your products to Amazon warehouses in the USA, Canada, Mexico, and the UK.
           </h2>
-
-          <p className="text-lg md:text-xl text-red-400 font-medium mb-6 border-b border-t border-red-500/30 py-2 inline-block">
-            SPS 19 Pioneer Program - Powering Your Viral Products & Crowdfunding Campaigns
-          </p>
 
           <p
             className={`text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-200 transition-all duration-1000 delay-300 ${
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            We handle the A-Z of China sourcing and shipping to Canada & USA , so you can focus on creating viral
-            content and delighting your backers.{" "}
-            <span className="font-semibold text-white">Exclusively for 19 Pioneer Partners.</span>
+            Focus on growth, not logistics. We handle everything from FBA prep to global shipping.
           </p>
 
           <div
@@ -204,7 +198,7 @@ export default function SPS19FBAPage() {
               className="group px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-all duration-300 flex items-center shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1"
             >
               <Shield className="h-5 w-5 mr-2 group-hover:animate-pulse" />
-              <span>Apply to Become a Pioneer Partner</span>
+              <span>Get a Free Quote</span>
               <ArrowRight className="h-5 w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
             </Link>
 
@@ -212,7 +206,7 @@ export default function SPS19FBAPage() {
               href="#how-it-works"
               className="group px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-md transition-all duration-300 flex items-center border border-white/20 hover:border-white/40 hover:-translate-y-1"
             >
-              <span>Learn How SPS 19 Works</span>
+              <span>Learn How It Works</span>
               <ArrowRight className="h-5 w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
             </Link>
           </div>
@@ -237,12 +231,11 @@ export default function SPS19FBAPage() {
         <div className="container-custom relative z-10">
           <div className="text-center mb-16">
             <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900 relative inline-block">
-              Tired of China Supply Chain Nightmares?
+              Are You Facing These FBA Head-On Challenges?
               <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
             </h2>
             <p className="text-gray-600 max-w-3xl mx-auto">
-              TikTok sellers and crowdfunding creators face unique challenges when sourcing from China. Here are the
-              most common pain points we solve:
+              Your path to Amazon success shouldn't be blocked by logistics hurdles. We understand your pain points:
             </p>
           </div>
 
@@ -257,12 +250,11 @@ export default function SPS19FBAPage() {
                     <TrendingUp className="h-8 w-8 text-red-500" />
                   </div>
                   <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Viral orders creating shipping chaos?
+                    Suppliers Unfamiliar with FBA Rules?
                   </h3>
                 </div>
                 <p className="text-gray-700 leading-relaxed">
-                  When your TikTok product goes viral, can your supply chain keep up? Don't let logistics bottlenecks kill
-                  your momentum.
+                  Worried about delays or extra fees from non-compliant labels and packaging.
                 </p>
               </div>
             </div>
@@ -277,12 +269,11 @@ export default function SPS19FBAPage() {
                     <Clock className="h-8 w-8 text-red-500" />
                   </div>
                   <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Worried about crowdfunding deadlines?
+                    Fear of FBA Rejection?
                   </h3>
                 </div>
                 <p className="text-gray-700 leading-relaxed">
-                  Missing backer deadlines damages trust and reputation. Our dedicated team ensures your crowdfunding
-                  promises are kept.
+                  One small mistake can lead to an entire shipment being rejected, resulting in significant losses.
                 </p>
               </div>
             </div>
@@ -297,12 +288,11 @@ export default function SPS19FBAPage() {
                     <MessageSquare className="h-8 w-8 text-red-500" />
                   </div>
                   <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Lacking expertise with China suppliers?
+                    Wasting Time on Prep Instead of Sales?
                   </h3>
                 </div>
                 <p className="text-gray-700 leading-relaxed">
-                  Language barriers and cultural differences shouldn't cost you money. Our bilingual team negotiates the
-                  best terms on your behalf.
+                  You should be focused on product sourcing, operations, and marketing, not manual labor.
                 </p>
               </div>
             </div>
@@ -317,35 +307,16 @@ export default function SPS19FBAPage() {
                     <BarChart3 className="h-8 w-8 text-red-500" />
                   </div>
                   <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Struggling with fluctuating volumes?
+                    Overwhelmed by International Shipping & Customs?
                   </h3>
                 </div>
                 <p className="text-gray-700 leading-relaxed">
-                  From zero to thousands of orders overnight - we scale with your success, providing flexible solutions
-                  for unpredictable demand.
+                  Sea freight, air freight, duties, paperwork... every step presents a challenge.
                 </p>
               </div>
             </div>
 
-            {/* Pain Point 5 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
 
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <Compass className="h-8 w-8 text-red-500" />
-                  </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Lost in the maze of global logistics?
-                  </h3>
-                </div>
-                <p className="text-gray-700 leading-relaxed">
-                  Navigate the complexities of global supply chains with our end-to-end solution, from factory floor to
-                  customer door.
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
@@ -365,11 +336,11 @@ export default function SPS19FBAPage() {
               </div>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 text-gray-900 relative">
-              Our Service: Complete Supply Chain Solution
+              Your All-in-One Global FBA Solution
               <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-red-400 via-red-500 to-red-600 rounded-full"></div>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
-              From sourcing to delivery, we provide a comprehensive 6-step service that transforms your China supply chain challenges into competitive advantages.
+              We handle everything for you, from China to North America (USA/CA/MX) and the United Kingdom (UK).
             </p>
             <div className="flex justify-center items-center space-x-2 mb-8">
               <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
@@ -389,8 +360,8 @@ export default function SPS19FBAPage() {
                       1
                 </div>
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Source Optimization</h3>
-                      <p className="text-red-500 font-semibold text-lg">Precise Supply Chain Matching & Efficient Procurement</p>
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Expert FBA Prep Services</h3>
+                      <p className="text-red-500 font-semibold text-lg">Strictly Adhering to Latest Amazon Standards</p>
               </div>
                   </div>
                 </div>
@@ -408,16 +379,22 @@ export default function SPS19FBAPage() {
                   </h4>
                   <div className="space-y-6">
                     <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">1. In-depth Supply Chain Negotiation</h5>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Receiving & Quality Inspection</h5>
                       <p className="text-gray-700 leading-relaxed">
-                        Leveraging our extensive supply chain network and expertise in China, we screen, evaluate, and connect you with source factories or suppliers that best match your product positioning and quality requirements.
+                        Quantity counting, visual checks to ensure your products meet Amazon standards before prep.
                       </p>
                     </div>
                     <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Efficient Goods Procurement Execution</h5>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Meticulous Preparation</h5>
                       <p className="text-gray-700 leading-relaxed">
-                        We act as your procurement agent, efficiently executing purchase orders, following up on production progress, and ensuring goods are delivered on quality, on quantity, and on time.
+                        FNSKU labeling, suffocation warnings, shipping mark application according to FBA requirements.
               </p>
+                    </div>
+                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Custom Packaging</h5>
+                      <p className="text-gray-700 leading-relaxed">
+                        Repackaging, product bundling/kitting, reinforcement to meet Amazon's packaging requirements.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -437,8 +414,8 @@ export default function SPS19FBAPage() {
                         <Check className="h-5 w-5 text-green-600" />
               </div>
                       <div>
-                        <span className="font-bold text-gray-900 text-lg">Cost Leadership:</span>
-                        <p className="text-gray-700 mt-1 leading-relaxed">Obtain better purchasing prices through professional negotiation and volume advantages.</p>
+                        <span className="font-bold text-gray-900 text-lg">Ensure Compliance, Avoid Risks:</span>
+                        <p className="text-gray-700 mt-1 leading-relaxed">We are FBA policy experts. We solve potential issues in China, preventing costly correction fees.</p>
                       </div>
                     </div>
                     <div className="flex items-start group">
@@ -446,8 +423,8 @@ export default function SPS19FBAPage() {
                         <Check className="h-5 w-5 text-green-600" />
                       </div>
                       <div>
-                        <span className="font-bold text-gray-900 text-lg">Quality Assurance:</span>
-                        <p className="text-gray-700 mt-1 leading-relaxed">Rigorous supplier screening to control product quality from the source.</p>
+                        <span className="font-bold text-gray-900 text-lg">Focus on Growth, Not Logistics:</span>
+                        <p className="text-gray-700 mt-1 leading-relaxed">Outsource the hassle to us and focus 100% on growing your store and sales.</p>
                       </div>
                     </div>
                     <div className="flex items-start group">
@@ -455,8 +432,8 @@ export default function SPS19FBAPage() {
                         <Check className="h-5 w-5 text-green-600" />
                       </div>
                       <div>
-                        <span className="font-bold text-gray-900 text-lg">Peace of Mind & Effort Saving:</span>
-                        <p className="text-gray-700 mt-1 leading-relaxed">No need to distract yourself with finding and managing suppliers.</p>
+                        <span className="font-bold text-gray-900 text-lg">Maximize Your Profit:</span>
+                        <p className="text-gray-700 mt-1 leading-relaxed">Significantly lower your first-mile costs through optimized packaging and best shipping routes.</p>
                       </div>
                     </div>
                   </div>
@@ -470,7 +447,7 @@ export default function SPS19FBAPage() {
                     <span className="font-bold text-blue-800 text-xl">Why This Matters for Your Business</span>
                   </div>
                   <p className="text-blue-700 leading-relaxed text-lg">
-                    Whether you're scaling viral TikTok products, fulfilling crowdfunding promises, or growing your e-commerce brand, reliable sourcing is your competitive advantage. We help you secure consistent quality suppliers, respond quickly to demand spikes, and discover trending products before your competitors do.
+                    Professional FBA prep is essential for Amazon success. We ensure your products meet all Amazon requirements, avoiding costly rejections and delays that can damage your seller performance.
               </p>
                 </div>
               </div>
@@ -488,8 +465,8 @@ export default function SPS19FBAPage() {
                       2
                     </div>
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Meticulous Pre-processing</h3>
-                      <p className="text-red-500 font-semibold text-lg">China Warehousing, Quality Inspection & Customized Packaging</p>
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Flexible & Cost-Effective Shipping</h3>
+                      <p className="text-red-500 font-semibold text-lg">Tailored Solutions Based on Your Timeline and Budget</p>
                     </div>
                   </div>
                 </div>
@@ -507,30 +484,22 @@ export default function SPS19FBAPage() {
                   </h4>
                   <div className="space-y-6">
                     <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Efficient China Warehouse Receiving</h5>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Ocean Freight</h5>
                       <p className="text-gray-700 leading-relaxed">
-                        Our consolidation warehouse in China receives goods from your various suppliers.
+                        Most cost-effective, perfect for large volumes and non-urgent restocks.
                       </p>
                     </div>
                     <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Strict Goods Inspection</h5>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Air Freight</h5>
                       <p className="text-gray-700 leading-relaxed">
-                        According to your standards and requirements, we conduct quantity counts, appearance checks, dimension/weight verification, and necessary quality spot-checks on incoming goods to ensure consistency with orders.
+                        The ideal balance of speed and cost for medium-sized shipments with time sensitivity.
                       </p>
                     </div>
                     <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Precise Labeling Operations</h5>
-                      <div className="space-y-3 text-gray-700 leading-relaxed">
-                        <p><span className="font-semibold text-blue-600">Product Labeling:</span> Affix SKU barcodes, FNSKU labels (if bound for FBA), warning labels, ingredient labels, or other specific labels required by your TikTok Shop or destination market for each item.</p>
-                        <p><span className="font-semibold text-green-600">Carton Labeling:</span> Standardized outer carton marks and shipping labels are applied according to first-mile logistics and destination overseas warehouse (e.g., Amazon FBA, third-party overseas warehouses) inbound standards.</p>
-                      </div>
-                    </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-200 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">4. Professional Repackaging & Kitting</h5>
-                      <div className="space-y-3 text-gray-700 leading-relaxed">
-                        <p><span className="font-semibold text-purple-600">Compliance & Protection:</span> Replace packaging non-compliant with international shipping or destination requirements; reinforce fragile items; optimize packaging to reduce dimensional weight.</p>
-                        <p><span className="font-semibold text-orange-600">Kitting & Customization:</span> Offer product kitting, bundling, replacement of branded packaging materials, insertion of thank-you cards/promotional flyers, and other value-added services to enhance brand image and user experience.</p>
-                      </div>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">3. International Express</h5>
+                      <p className="text-gray-700 leading-relaxed">
+                        The fastest delivery for urgent restocks or small, high-value shipments.
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -601,8 +570,8 @@ export default function SPS19FBAPage() {
                       3
                 </div>
                     <div>
-                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900"> Smart First-Mile</h3>
-                      <p className="text-red-500 font-semibold text-lg">Optimized Cost & Transit Time Cross-Border Shipping</p>
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Hassle-Free Global Customs Clearance</h3>
+                      <p className="text-red-500 font-semibold text-lg">Expert Brokerage for USA, Canada, Mexico, and UK</p>
               </div>
                   </div>
                 </div>
@@ -620,20 +589,18 @@ export default function SPS19FBAPage() {
                   </h4>
                   <div className="space-y-6">
                     <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Diversified Logistics Solutions</h5>
-                      <div className="space-y-3 text-gray-700 leading-relaxed">
-                        <p><span className="font-semibold text-blue-600">Sea Freight:</span> Most cost-effective for large-volume, non-urgent restocking</p>
-                        <p><span className="font-semibold text-green-600">Air Freight:</span> Faster transit time, ideal for medium-sized shipments</p>
-                        <p><span className="font-semibold text-purple-600">Express Courier:</span> Fastest transit time for urgent, high-value items</p>
-                      </div>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Expert Documentation Handling</h5>
+                      <p className="text-gray-700 leading-relaxed">
+                        Our expert brokerage team handles all import/export documentation and duty processes.
+                      </p>
                     </div>
                     <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Full Customs Clearance Service</h5>
-                      <p className="text-gray-700 leading-relaxed">Professional customs brokers handle export (China) and import (US/Canada) clearance.</p>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Smooth Customs Clearance</h5>
+                      <p className="text-gray-700 leading-relaxed">Ensuring your goods clear customs smoothly in the USA, Canada, Mexico, and the UK.</p>
                     </div>
                     <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Precise Overseas Warehouse Putaway</h5>
-                      <p className="text-gray-700 leading-relaxed">Safe delivery to designated US/Canadian warehouses with complete unloading and putaway services.</p>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Direct FBA Warehouse Delivery</h5>
+                      <p className="text-gray-700 leading-relaxed">Safe delivery directly to your designated Amazon FBA warehouse locations.</p>
                     </div>
                   </div>
                 </div>
@@ -653,8 +620,8 @@ export default function SPS19FBAPage() {
                         <Check className="h-5 w-5 text-green-600" />
                       </div>
                       <div>
-                        <span className="font-bold text-gray-900 text-lg">Optimal Balance of Cost & Time:</span>
-                        <p className="text-gray-700 mt-1 leading-relaxed">Tailored, most cost-effective first-mile solution for your needs.</p>
+                        <span className="font-bold text-gray-900 text-lg">Your Gateway to Global Markets:</span>
+                        <p className="text-gray-700 mt-1 leading-relaxed">One partner to effortlessly manage all your shipments to four key marketplaces.</p>
                       </div>
                     </div>
                     <div className="flex items-start group">
@@ -662,8 +629,8 @@ export default function SPS19FBAPage() {
                         <Check className="h-5 w-5 text-green-600" />
                       </div>
                       <div>
-                        <span className="font-bold text-gray-900 text-lg">Worry-Free End-to-End Service:</span>
-                        <p className="text-gray-700 mt-1 leading-relaxed">From China factory to North America warehouse, we manage all links.</p>
+                        <span className="font-bold text-gray-900 text-lg">Avoid Costly Delays:</span>
+                        <p className="text-gray-700 mt-1 leading-relaxed">Professional customs handling prevents shipment delays and unexpected fees.</p>
                       </div>
                     </div>
                     <div className="flex items-start group">
@@ -671,8 +638,8 @@ export default function SPS19FBAPage() {
                         <Check className="h-5 w-5 text-green-600" />
                       </div>
                       <div>
-                        <span className="font-bold text-gray-900 text-lg">Inventory Assurance:</span>
-                        <p className="text-gray-700 mt-1 leading-relaxed">Ensure your TikTok Shop doesn't run out of stock during peak sales periods.</p>
+                        <span className="font-bold text-gray-900 text-lg">Peace of Mind:</span>
+                        <p className="text-gray-700 mt-1 leading-relaxed">Complete transparency with full tracking from China to Amazon warehouses.</p>
                       </div>
                     </div>
                   </div>

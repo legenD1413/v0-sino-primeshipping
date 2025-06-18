@@ -167,25 +167,29 @@ export default function SPS19CCPage() {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="flex flex-col sm:flex-row items-center justify-center mb-4 sm:mb-6">
-            <div className="relative mb-2 sm:mb-0">
-              <Package className="h-8 w-8 sm:h-10 sm:w-10 mr-0 sm:mr-3 text-red-500 animate-pulse" />
-              <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
+          <div className="flex flex-col items-center justify-center mb-6 sm:mb-8">
+            <div className="relative mb-4 sm:mb-6">
+              <div className="bg-gradient-to-br from-red-500 via-red-600 to-red-700 p-4 sm:p-6 rounded-2xl shadow-2xl shadow-red-900/40">
+                <Package className="h-12 w-12 sm:h-16 sm:w-16 text-white animate-pulse" />
+              </div>
+              <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white text-sm sm:text-base font-bold shadow-lg">
                 ✓
               </div>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent leading-tight">
               From Funded to Fulfilled
             </h1>
           </div>
 
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-4 text-white/90 leading-tight">
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-6 sm:mb-8 text-white/90 leading-relaxed px-2 sm:px-4">
             One-Stop Crowdfunding Logistics for Your Kickstarter & Indiegogo Project
           </h2>
 
-          <p className="text-base sm:text-lg md:text-xl text-red-400 font-medium mb-6 border-b border-t border-red-500/30 py-2 inline-block text-center">
-            Your dedicated crowdfunding fulfillment partner
-          </p>
+          <div className="bg-gradient-to-r from-red-500/20 via-red-400/30 to-red-500/20 rounded-full px-6 py-3 mb-6 sm:mb-8 inline-block backdrop-blur-sm border border-red-400/30">
+            <p className="text-base sm:text-lg md:text-xl text-red-200 font-medium">
+              Your dedicated crowdfunding fulfillment partner
+            </p>
+          </div>
 
           <p
             className={`text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto text-gray-200 transition-all duration-1000 delay-300 leading-relaxed ${
@@ -203,19 +207,24 @@ export default function SPS19CCPage() {
           >
             <Link
               href="#apply"
-              className="group w-full sm:w-auto px-6 sm:px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-all duration-300 flex items-center justify-center shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1 text-center min-h-[44px]"
+              className="group w-full sm:w-auto px-6 sm:px-8 py-4 bg-gradient-to-r from-red-600 via-red-700 to-red-800 hover:from-red-700 hover:via-red-800 hover:to-red-900 text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center shadow-2xl shadow-red-900/50 hover:shadow-red-900/80 hover:-translate-y-2 hover:scale-105 text-center min-h-[52px] border border-red-400/20"
             >
-              <Shield className="h-5 w-5 mr-2 group-hover:animate-pulse flex-shrink-0" />
+              <div className="bg-white/20 p-1.5 rounded-lg mr-3 group-hover:bg-white/30 transition-all duration-300">
+                <Shield className="h-5 w-5 group-hover:animate-pulse flex-shrink-0" />
+              </div>
               <span className="text-sm sm:text-base leading-tight">Get Your Free Fulfillment Strategy & Quote Today</span>
-              <ArrowRight className="h-5 w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" />
+              <ArrowRight className="h-5 w-5 ml-3 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" />
             </Link>
 
             <Link
               href="#how-it-works"
-              className="group w-full sm:w-auto px-6 sm:px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-md transition-all duration-300 flex items-center justify-center border border-white/20 hover:border-white/40 hover:-translate-y-1 text-center min-h-[44px]"
+              className="group w-full sm:w-auto px-6 sm:px-8 py-4 bg-white/15 hover:bg-white/25 backdrop-blur-md text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center border-2 border-white/30 hover:border-white/50 hover:-translate-y-2 hover:scale-105 text-center min-h-[52px] shadow-xl shadow-black/20"
             >
+              <div className="bg-white/20 p-1.5 rounded-lg mr-3 group-hover:bg-white/30 transition-all duration-300">
+                <Package className="h-5 w-5 flex-shrink-0" />
+              </div>
               <span className="text-sm sm:text-base">See How It Works</span>
-              <ArrowRight className="h-5 w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" />
+              <ArrowRight className="h-5 w-5 ml-3 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" />
             </Link>
           </div>
         </div>
@@ -231,7 +240,7 @@ export default function SPS19CCPage() {
       </section>
 
       {/* Challenge Section */}
-      <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-gray-50 via-white to-gray-50 py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-30" />
         <div className="absolute -top-10 -left-10 w-40 h-40 bg-red-500/5 rounded-full blur-3xl" />
         <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-red-500/5 rounded-full blur-3xl" />
@@ -247,10 +256,11 @@ export default function SPS19CCPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {/* Challenge 1 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-red-500/10 to-red-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-red-400/5 to-red-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
               <div className="flex flex-col relative">
                 <div className="flex flex-col sm:flex-row sm:items-center mb-4">
@@ -268,8 +278,9 @@ export default function SPS19CCPage() {
             </div>
 
             {/* Challenge 2 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-orange-400/5 to-orange-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
               <div className="flex flex-col relative">
                 <div className="flex flex-col sm:flex-row sm:items-center mb-4">
@@ -287,8 +298,9 @@ export default function SPS19CCPage() {
             </div>
 
             {/* Challenge 3 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-blue-400/5 to-blue-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
               <div className="flex flex-col relative">
                 <div className="flex flex-col sm:flex-row sm:items-center mb-4">
@@ -306,8 +318,9 @@ export default function SPS19CCPage() {
             </div>
 
             {/* Challenge 4 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-purple-400/5 to-purple-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
               <div className="flex flex-col relative">
                 <div className="flex flex-col sm:flex-row sm:items-center mb-4">
@@ -325,8 +338,29 @@ export default function SPS19CCPage() {
             </div>
 
             {/* Challenge 5 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden col-span-1 md:col-span-2">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-green-400/5 to-green-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
+
+              <div className="flex flex-col relative">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                    <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+                  </div>
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                    Budget Pressure & Cost Control
+                  </h3>
+                </div>
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                  How do you manage shipping costs when every penny counts? Unexpected fees can eat into your already tight crowdfunding margins.
+                </p>
+              </div>
+            </div>
+
+            {/* Challenge 6 */}
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-indigo-500/10 to-indigo-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-indigo-400/5 to-indigo-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
               <div className="flex flex-col relative">
                 <div className="flex flex-col sm:flex-row sm:items-center mb-4">
@@ -334,52 +368,11 @@ export default function SPS19CCPage() {
                     <Users className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
                   </div>
                   <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Lacking expertise with China suppliers?
+                    Communication & Support Challenges
                   </h3>
                 </div>
                 <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Language barriers and cultural differences shouldn't cost you money. Our bilingual team negotiates the
-                  best terms on your behalf.
-                </p>
-              </div>
-            </div>
-
-            {/* Pain Point 4 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
-
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <BarChart3 className="h-8 w-8 text-red-500" />
-                  </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Struggling with fluctuating volumes?
-                  </h3>
-                </div>
-                <p className="text-gray-700 leading-relaxed">
-                  From zero to thousands of orders overnight - we scale with your success, providing flexible solutions
-                  for unpredictable demand.
-                </p>
-              </div>
-            </div>
-
-            {/* Pain Point 5 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
-
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <Compass className="h-8 w-8 text-red-500" />
-                  </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Lost in the maze of global logistics?
-                  </h3>
-                </div>
-                <p className="text-gray-700 leading-relaxed">
-                  Navigate the complexities of global supply chains with our end-to-end solution, from factory floor to
-                  customer door.
+                  How do you keep thousands of backers updated and handle customer service when things go wrong? Communication is key to maintaining trust.
                 </p>
               </div>
             </div>
@@ -2145,3 +2138,4 @@ export default function SPS19CCPage() {
     </div>
   )
 }
+ 

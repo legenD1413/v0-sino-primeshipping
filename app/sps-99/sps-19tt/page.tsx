@@ -125,7 +125,7 @@ export default function SPS19TTPage() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative flex flex-col items-center justify-center px-4 py-24 md:py-32 lg:py-40 overflow-hidden">
+      <section className="relative flex flex-col items-center justify-center px-4 py-12 sm:py-16 md:py-20 lg:py-24 xl:py-28 overflow-hidden min-h-[80vh] sm:min-h-0">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image src="/sps-99-hero-bg.png" alt="Global Supply Chain" fill className="object-cover" priority />
@@ -135,7 +135,7 @@ export default function SPS19TTPage() {
         </div>
 
         {/* Animated Particles */}
-        <div className="absolute inset-0 z-0 opacity-30">
+        <div className="hidden md:block absolute inset-0 z-0 opacity-30">
           <div
             className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full bg-red-500 animate-pulse"
             style={{ animationDelay: "0.5s" }}
@@ -164,56 +164,68 @@ export default function SPS19TTPage() {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="flex items-center justify-center mb-4">
-            <div className="relative">
-              <Rocket className="h-10 w-10 mr-3 text-red-500 animate-pulse" />
-              <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
-                19
+          <div className="flex flex-col items-center justify-center mb-6 sm:mb-8">
+            <div className="relative mb-4 sm:mb-6">
+              <div className="bg-gradient-to-br from-red-500 via-red-600 to-red-700 p-4 sm:p-6 rounded-2xl shadow-2xl shadow-red-900/40">
+                <Zap className="h-12 w-12 sm:h-16 sm:w-16 text-white animate-pulse" />
+              </div>
+              <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-yellow-400 to-orange-500 rounded-full flex items-center justify-center text-white text-sm sm:text-base font-bold shadow-lg">
+                ⚡
               </div>
             </div>
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
-              Stop Juggling, Start Scaling
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent leading-tight">
+              Your TikTok Product is Viral. Your Shipping Should Be Faster.
             </h1>
           </div>
 
-          <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-white/90">
-            Your Dedicated China Supply Chain Partner for TikTok & Crowdfunding Success
+          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-6 sm:mb-8 text-white/90 leading-relaxed px-2 sm:px-4">
+            Losing sales to slow, cross-border shipping? We offer local fulfillment for TikTok sellers in the USA, UK, and Canada, cutting delivery time from 20 days to just 3.
           </h2>
 
-          <p className="text-lg md:text-xl text-red-400 font-medium mb-6 border-b border-t border-red-500/30 py-2 inline-block">
-            SPS 19 Pioneer Program - Powering Your Viral Products & Crowdfunding Campaigns
-          </p>
+          <div className="bg-gradient-to-r from-yellow-500/20 via-orange-400/30 to-red-500/20 rounded-full px-6 py-3 mb-6 sm:mb-8 inline-block backdrop-blur-sm border border-yellow-400/30">
+            <p className="text-base sm:text-lg md:text-xl text-yellow-200 font-medium">
+              Watch your 5-star reviews and sales explode!
+            </p>
+          </div>
 
           <p
-            className={`text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-200 transition-all duration-1000 delay-300 ${
+            className={`text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto text-gray-200 transition-all duration-1000 delay-300 leading-relaxed ${
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            We handle the A-Z of China sourcing and shipping to Canada & USA , so you can focus on creating viral
-            content and delighting your backers.{" "}
-            <span className="font-semibold text-white">Exclusively for 19 Pioneer Partners.</span>
+            Ready to transform your TikTok business with local fulfillment that matches your content's viral speed?{" "}
+            <span className="font-semibold text-white block sm:inline mt-2 sm:mt-0">Lightning-fast delivery = Higher conversions.</span>
+          </p>
+          
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-8 sm:mb-10">
+            <em>⚡ Trusted by 200+ TikTok Sellers Worldwide</em>
           </p>
 
           <div
-            className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-1000 delay-500 ${
+            className={`flex flex-col w-full sm:flex-row items-center justify-center gap-3 sm:gap-4 transition-all duration-1000 delay-500 ${
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
             <Link
               href="#apply"
-              className="group px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-all duration-300 flex items-center shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1"
+              className="group w-full sm:w-auto px-6 sm:px-8 py-4 bg-gradient-to-r from-red-600 via-red-700 to-red-800 hover:from-red-700 hover:via-red-800 hover:to-red-900 text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center shadow-2xl shadow-red-900/50 hover:shadow-red-900/80 hover:-translate-y-2 hover:scale-105 text-center min-h-[52px] border border-red-400/20"
             >
-              <Shield className="h-5 w-5 mr-2 group-hover:animate-pulse" />
-              <span>Apply to Become a Pioneer Partner</span>
-              <ArrowRight className="h-5 w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+              <div className="bg-white/20 p-1.5 rounded-lg mr-3 group-hover:bg-white/30 transition-all duration-300">
+                <Zap className="h-5 w-5 group-hover:animate-pulse flex-shrink-0" />
+              </div>
+              <span className="text-sm sm:text-base leading-tight">Get My Lightning-Fast TikTok Shipping Plan</span>
+              <ArrowRight className="h-5 w-5 ml-3 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" />
             </Link>
 
             <Link
               href="#how-it-works"
-              className="group px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-md transition-all duration-300 flex items-center border border-white/20 hover:border-white/40 hover:-translate-y-1"
+              className="group w-full sm:w-auto px-6 sm:px-8 py-4 bg-white/15 hover:bg-white/25 backdrop-blur-md text-white font-semibold rounded-xl transition-all duration-300 flex items-center justify-center border-2 border-white/30 hover:border-white/50 hover:-translate-y-2 hover:scale-105 text-center min-h-[52px] shadow-xl shadow-black/20"
             >
-              <span>Learn How SPS 19 Works</span>
-              <ArrowRight className="h-5 w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+              <div className="bg-white/20 p-1.5 rounded-lg mr-3 group-hover:bg-white/30 transition-all duration-300">
+                <Package className="h-5 w-5 flex-shrink-0" />
+              </div>
+              <span className="text-sm sm:text-base">See How It Works</span>
+              <ArrowRight className="h-5 w-5 ml-3 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 flex-shrink-0" />
             </Link>
           </div>
         </div>
@@ -229,122 +241,131 @@ export default function SPS19TTPage() {
       </section>
 
       {/* Pain Points Section */}
-      <section className="bg-white py-20 md:py-28 relative overflow-hidden">
+      <section className="bg-gradient-to-br from-gray-50 via-white to-gray-50 py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-30" />
         <div className="absolute -top-10 -left-10 w-40 h-40 bg-red-500/5 rounded-full blur-3xl" />
         <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-red-500/5 rounded-full blur-3xl" />
 
         <div className="container-custom relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900 relative inline-block">
-              Tired of China Supply Chain Nightmares?
-              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
+          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-gray-900 relative inline-block leading-tight">
+              As a TikTok Seller, Are You Facing These "Business Killer" Problems?
+              <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
             </h2>
-            <p className="text-gray-600 max-w-3xl mx-auto">
-              TikTok sellers and crowdfunding creators face unique challenges when sourcing from China. Here are the
-              most common pain points we solve:
+            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed px-4 sm:px-0">
+              In the TikTok world, speed is everything. Slow logistics is the biggest waste of your traffic and your money.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
             {/* Pain Point 1 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-red-500/10 to-red-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-red-400/5 to-red-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <TrendingUp className="h-8 w-8 text-red-500" />
+              <div className="flex flex-col relative">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                    <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Viral orders creating shipping chaos?
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                    Viral Video, Slow Shipping
                   </h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
-                  When your TikTok product goes viral, can your supply chain keep up? Don't let logistics bottlenecks kill
-                  your momentum.
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                  Your video just went viral, orders are flooding in... but your stock is in China. Customers are already spamming "Where is my order?!" in the comments.
                 </p>
               </div>
             </div>
 
             {/* Pain Point 2 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-orange-500/10 to-orange-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-orange-400/5 to-orange-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <Clock className="h-8 w-8 text-red-500" />
+              <div className="flex flex-col relative">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                    <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Worried about crowdfunding deadlines?
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                    Killing Impulse Purchases
                   </h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
-                  Missing backer deadlines damages trust and reputation. Our dedicated team ensures your crowdfunding
-                  promises are kept.
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                  "Estimated delivery: 3 weeks." That one sentence just killed the impulse of 90% of your potential buyers.
                 </p>
               </div>
             </div>
 
             {/* Pain Point 3 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-blue-500/10 to-blue-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-blue-400/5 to-blue-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <MessageSquare className="h-8 w-8 text-red-500" />
+              <div className="flex flex-col relative">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                    <MessageSquare className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Lacking expertise with China suppliers?
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                    Competing Against Local Brands
                   </h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
-                  Language barriers and cultural differences shouldn't cost you money. Our bilingual team negotiates the
-                  best terms on your behalf.
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                  Your competitors are shipping locally. Their conversion rates are 3x higher than yours because they promise fast delivery.
                 </p>
               </div>
             </div>
 
             {/* Pain Point 4 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-purple-500/10 to-purple-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-purple-400/5 to-purple-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <BarChart3 className="h-8 w-8 text-red-500" />
+              <div className="flex flex-col relative">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                    <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Struggling with fluctuating volumes?
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                    Dropping TikTok Shop Ratings
                   </h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
-                  From zero to thousands of orders overnight - we scale with your success, providing flexible solutions
-                  for unpredictable demand.
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                  Tracking hasn't updated in 10 days. Your TikTok Shop seller rating is dropping due to poor fulfillment performance.
                 </p>
               </div>
             </div>
 
             {/* Pain Point 5 */}
-            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
+            <div className="group bg-white/80 backdrop-blur-sm p-4 sm:p-6 lg:p-8 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 border border-gray-200/50 hover:border-red-200 relative overflow-hidden hover:-translate-y-2">
+              <div className="absolute top-0 right-0 w-24 h-24 bg-gradient-to-br from-green-500/10 to-green-600/10 rounded-full -translate-x-8 -translate-y-8 group-hover:scale-150 transition-all duration-500" />
+              <div className="absolute -bottom-4 -left-4 w-16 h-16 bg-gradient-to-br from-green-400/5 to-green-500/5 rounded-full group-hover:scale-125 transition-all duration-500" />
 
-              <div className="flex flex-col mb-6 relative">
-                <div className="flex items-center mb-4">
-                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
-                    <Compass className="h-8 w-8 text-red-500" />
+              <div className="flex flex-col relative">
+                <div className="flex flex-col sm:flex-row sm:items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mb-3 sm:mb-0 sm:mr-4 group-hover:bg-red-100 transition-colors duration-300 self-start">
+                    <Compass className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
                   </div>
-                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
                     Lost in the maze of global logistics?
                   </h3>
                 </div>
-                <p className="text-gray-700 leading-relaxed">
+                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
                   Navigate the complexities of global supply chains with our end-to-end solution, from factory floor to
                   customer door.
                 </p>
               </div>
+            </div>
+          </div>
+          
+          <div className="text-center mt-8 sm:mt-12">
+            <div className="bg-white/90 backdrop-blur-sm p-6 sm:p-8 rounded-2xl border border-red-200 shadow-lg mx-auto max-w-4xl">
+              <p className="text-lg sm:text-xl font-bold text-gray-900 mb-2">
+                Stop letting slow logistics kill your TikTok momentum. Turn speed into your competitive advantage.
+              </p>
+              <div className="w-24 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full"></div>
             </div>
           </div>
         </div>
@@ -360,16 +381,16 @@ export default function SPS19TTPage() {
         <div className="container-custom relative z-10">
           <div className="text-center mb-20">
             <div className="inline-block mb-6">
-              <div className="flex items-center justify-center p-4 bg-gradient-to-br from-red-50 to-red-100 rounded-full mb-6 mx-auto w-24 h-24 shadow-lg">
-                <Package className="h-12 w-12 text-red-500" />
+              <div className="bg-gradient-to-br from-red-500 via-red-600 to-red-700 p-4 sm:p-6 rounded-2xl shadow-2xl shadow-red-900/40 mx-auto">
+                <Package className="h-12 w-12 sm:h-16 sm:w-16 text-white" />
               </div>
             </div>
-            <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 text-gray-900 relative">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold mb-6 text-gray-900 relative leading-tight">
               Our Service: Complete Supply Chain Solution
-              <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-red-400 via-red-500 to-red-600 rounded-full"></div>
+              <div className="absolute -bottom-3 sm:-bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-red-400 via-red-500 to-red-600 rounded-full"></div>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
-              From sourcing to delivery, we provide a comprehensive 6-step service that transforms your China supply chain challenges into competitive advantages.
+              From sourcing to delivery, we provide a comprehensive 7-step service that transforms your China supply chain challenges into competitive advantages.
             </p>
             <div className="flex justify-center items-center space-x-2 mb-8">
               <div className="w-3 h-3 bg-red-500 rounded-full animate-pulse"></div>
@@ -1017,16 +1038,198 @@ export default function SPS19TTPage() {
             </div>
           </div>
 
+          {/* Step 7: How TikTok Sellers Get Local Fulfillment */}
+          <div className="mb-24">
+            <div className="relative mb-12">
+              <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-red-500 to-red-300 rounded-full opacity-30"></div>
+              <div className="bg-gradient-to-r from-yellow-500 via-orange-500 to-red-600 p-1 rounded-2xl inline-block shadow-xl">
+                <div className="bg-white px-8 py-4 rounded-xl">
+                  <div className="flex items-center">
+                    <div className="bg-gradient-to-r from-yellow-500 to-orange-600 text-white text-lg font-bold rounded-full w-10 h-10 flex items-center justify-center mr-4 shadow-lg">
+                      7
+                    </div>
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900">TikTok Local Fulfillment</h3>
+                      <p className="text-orange-600 font-semibold text-lg">From Viral to Local: 2-Step Lightning Process</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+              {/* STEP 1: Smart Pre-stocking */}
+              <div className="space-y-8">
+                <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-blue-100 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+                    <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-3 rounded-xl mr-4 shadow-md">
+                      <Package className="h-8 w-8 text-blue-600" />
+                    </div>
+                    STEP 1: Smart Pre-stocking
+                  </h4>
+                  
+                  <div className="mb-6">
+                    <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-500 mb-4">
+                      <h5 className="font-bold text-blue-800 mb-2">What it is:</h5>
+                      <p className="text-blue-700 leading-relaxed">
+                        You send your high-potential products in bulk from China to our fulfillment centers in the <strong>USA, UK, or Canada</strong> at a fraction of the cost of retail shipping.
+                      </p>
+                    </div>
+                    
+                    <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-500">
+                      <h5 className="font-bold text-green-800 mb-3">How it helps you:</h5>
+                      <div className="space-y-3">
+                        <div className="flex items-start">
+                          <div className="bg-green-100 p-1 rounded-full mr-3 mt-1">
+                            <Check className="h-4 w-4 text-green-600" />
+                          </div>
+                          <div>
+                            <span className="font-semibold text-green-800">Save Big on Costs:</span>
+                            <p className="text-green-700 text-sm">Bulk first-mile shipping is far cheaper than shipping individual orders internationally.</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-green-100 p-1 rounded-full mr-3 mt-1">
+                            <Check className="h-4 w-4 text-green-600" />
+                          </div>
+                          <div>
+                            <span className="font-semibold text-green-800">Be Ready for a Viral Hit:</span>
+                            <p className="text-green-700 text-sm">Stock is already in place when—not if—your product takes off.</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-green-100 p-1 rounded-full mr-3 mt-1">
+                            <Check className="h-4 w-4 text-green-600" />
+                          </div>
+                          <div>
+                            <span className="font-semibold text-green-800">Hassle-Free & Compliant:</span>
+                            <p className="text-green-700 text-sm">We handle all customs, duties, and import processes for you.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* STEP 2: Lightning-Fast Local Fulfillment */}
+              <div className="space-y-8">
+                <div className="bg-gradient-to-br from-orange-50 to-white p-8 rounded-2xl border border-orange-100 shadow-lg hover:shadow-xl transition-all duration-300">
+                  <h4 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+                    <div className="bg-gradient-to-br from-orange-100 to-orange-200 p-3 rounded-xl mr-4 shadow-md">
+                      <Zap className="h-8 w-8 text-orange-600" />
+                    </div>
+                    STEP 2: Lightning-Fast Local Fulfillment
+                  </h4>
+                  
+                  <div className="mb-6">
+                    <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-500 mb-4">
+                      <h5 className="font-bold text-orange-800 mb-2">What it is:</h5>
+                      <p className="text-orange-700 leading-relaxed">
+                        Once you receive an order on TikTok Shop, our system automatically picks it up. We then pick, pack, and ship it within 24 hours via local carriers (like USPS, Royal Mail, Canada Post).
+                      </p>
+                    </div>
+                    
+                    <div className="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-500">
+                      <h5 className="font-bold text-yellow-800 mb-3">How it helps you:</h5>
+                      <div className="space-y-3">
+                        <div className="flex items-start">
+                          <div className="bg-yellow-100 p-1 rounded-full mr-3 mt-1">
+                            <Zap className="h-4 w-4 text-yellow-600" />
+                          </div>
+                          <div>
+                            <span className="font-semibold text-yellow-800">Game-Changing Speed (2-5 Day Delivery):</span>
+                            <p className="text-yellow-700 text-sm">Give your customers an Amazon Prime-like experience.</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-yellow-100 p-1 rounded-full mr-3 mt-1">
+                            <TrendingUp className="h-4 w-4 text-yellow-600" />
+                          </div>
+                          <div>
+                            <span className="font-semibold text-yellow-800">Boost Trust & Conversion:</span>
+                            <p className="text-yellow-700 text-sm">Double your conversion rate instantly by adding "Ships from USA / UK / CA" to your profile.</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-yellow-100 p-1 rounded-full mr-3 mt-1">
+                            <Shield className="h-4 w-4 text-yellow-600" />
+                          </div>
+                          <div>
+                            <span className="font-semibold text-yellow-800">Eliminate Bad Reviews & WISMO:</span>
+                            <p className="text-yellow-700 text-sm">Get happy customers with reliable, local tracking numbers.</p>
+                          </div>
+                        </div>
+                        <div className="flex items-start">
+                          <div className="bg-yellow-100 p-1 rounded-full mr-3 mt-1">
+                            <BarChart3 className="h-4 w-4 text-yellow-600" />
+                          </div>
+                          <div>
+                            <span className="font-semibold text-yellow-800">Handle Viral Spikes Effortlessly:</span>
+                            <p className="text-yellow-700 text-sm">Whether it's 100 or 1,000 orders a day, we've got you covered.</p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* How It Works - Simple 3 Steps */}
+          <div className="mb-16">
+            <div className="relative mb-12">
+              <div className="bg-gradient-to-r from-green-500 via-emerald-600 to-teal-600 p-1 rounded-2xl inline-block shadow-xl">
+                <div className="bg-white px-8 py-4 rounded-xl">
+                  <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Go "Local" in Just 3 Simple Steps</h3>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              <div className="text-center group">
+                <div className="bg-gradient-to-br from-green-100 to-emerald-100 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+                  <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg">
+                    1
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-3">Ship Your Inventory to Us</h4>
+                  <p className="text-gray-700 leading-relaxed">Our experts will guide you through the bulk first-mile process.</p>
+                </div>
+              </div>
+
+              <div className="text-center group">
+                <div className="bg-gradient-to-br from-blue-100 to-cyan-100 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+                  <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg">
+                    2
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-3">We Stock & Store It</h4>
+                  <p className="text-gray-700 leading-relaxed">Your products are checked in and ready to go at our US, UK, or CA warehouses.</p>
+                </div>
+              </div>
+
+              <div className="text-center group">
+                <div className="bg-gradient-to-br from-orange-100 to-red-100 p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group-hover:-translate-y-2">
+                  <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-600 rounded-full flex items-center justify-center text-white text-2xl font-bold mx-auto mb-4 shadow-lg">
+                    3
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900 mb-3">You Sell, We Ship Instantly</h4>
+                  <p className="text-gray-700 leading-relaxed">You get an order, we ship it in 24 hours. You sit back and collect 5-star reviews!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="text-center mt-16 p-10 bg-gradient-to-r from-red-50 via-white to-red-50 rounded-3xl border-2 border-red-100 shadow-xl">
             <div className="flex justify-center mb-6">
               <div className="flex space-x-2">
-                {[1, 2, 3, 4, 5, 6].map((step) => (
+                {[1, 2, 3, 4, 5, 6, 7].map((step) => (
                   <div key={step} className="w-4 h-4 bg-red-500 rounded-full animate-pulse" style={{ animationDelay: `${step * 0.2}s` }}></div>
                 ))}
               </div>
             </div>
             <p className="text-3xl font-bold text-gray-900 mb-4">
-              Six integrated steps, one seamless solution for your China supply chain success.
+              Seven integrated steps, one seamless solution for your TikTok success.
             </p>
           </div>
         </div>
@@ -1242,71 +1445,71 @@ export default function SPS19TTPage() {
       </section>
 
       {/* Who is this for Section */}
-      <section className="bg-gray-50 py-20 md:py-28 relative overflow-hidden">
+      <section className="bg-gray-50 py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
         <div className="absolute -top-40 -left-40 w-80 h-80 bg-red-50 rounded-full opacity-50 blur-3xl" />
         <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-red-50 rounded-full opacity-50 blur-3xl" />
 
         <div className="container-custom relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 sm:mb-16">
             <div className="inline-block mb-4">
-              <div className="flex items-center justify-center p-3 bg-red-50 rounded-full mb-4 mx-auto w-20 h-20">
-                <Target className="h-10 w-10 text-red-500" />
+              <div className="flex items-center justify-center p-2 sm:p-3 bg-red-50 rounded-full mb-3 sm:mb-4 mx-auto w-16 h-16 sm:w-20 sm:h-20">
+                <Target className="h-8 w-8 sm:h-10 sm:w-10 text-red-500" />
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-gray-900 leading-tight px-4">
               Is the SPS 19 Pioneer Program Right for You?
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
+            <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
             {/* TikTok Sellers */}
             <div className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-              <div className="h-56 relative">
+              <div className="h-48 sm:h-56 relative">
                 <Image src="/tiktok-viral-products.png" alt="TikTok Sellers" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end">
-                  <div className="p-6">
-                    <div className="flex items-center mb-2">
-                      <div className="bg-red-500 p-2 rounded-lg mr-3">
-                        <TrendingUp className="h-6 w-6 text-white" />
+                  <div className="p-4 sm:p-6">
+                    <div className="flex flex-col sm:flex-row sm:items-center mb-2">
+                      <div className="bg-red-500 p-2 rounded-lg mr-0 sm:mr-3 mb-2 sm:mb-0 self-start">
+                        <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
                       </div>
-                      <h3 className="text-white text-2xl font-bold">TikTok Sellers</h3>
+                      <h3 className="text-white text-xl sm:text-2xl font-bold">TikTok Sellers</h3>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="p-6">
-                <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
+              <div className="p-4 sm:p-6">
+                <p className="text-gray-700 text-sm sm:text-base mb-4 sm:mb-6 border-l-4 border-red-500 pl-3 sm:pl-4 italic">
                   Selling China-sourced products, needing reliable fulfillment for viral growth in US & Canada.
                 </p>
-                <ul className="space-y-3">
+                <ul className="space-y-2 sm:space-y-3">
                   <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
-                      <Check className="h-4 w-4 text-red-500" />
+                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1 flex-shrink-0">
+                      <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
                     </div>
-                    <span className="text-gray-700">Ready for sudden viral demand spikes</span>
+                    <span className="text-gray-700 text-sm sm:text-base">Ready for sudden viral demand spikes</span>
                   </li>
                   <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
-                      <Check className="h-4 w-4 text-red-500" />
+                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1 flex-shrink-0">
+                      <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
                     </div>
-                    <span className="text-gray-700">Fast shipping to maintain momentum</span>
+                    <span className="text-gray-700 text-sm sm:text-base">Fast shipping to maintain momentum</span>
                   </li>
                   <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
-                      <Check className="h-4 w-4 text-red-500" />
+                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1 flex-shrink-0">
+                      <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
                     </div>
-                    <span className="text-gray-700">Quality control for 5-star reviews</span>
+                    <span className="text-gray-700 text-sm sm:text-base">Quality control for 5-star reviews</span>
                   </li>
                 </ul>
-                <div className="mt-6 pt-6 border-t border-gray-100">
+                <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-100">
                   <Link
-                    href="#apply"
-                    className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
+                    href="ps-99/sps-19tt"
+                    className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300 text-sm sm:text-base"
                   >
                     <span>Learn if you qualify</span>
-                    <ArrowRight className="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </div>
@@ -1353,7 +1556,7 @@ export default function SPS19TTPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-100">
                   <Link
-                    href="#apply"
+                    href="ps-99/sps-19cc"
                     className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
                   >
                     <span>Learn if you qualify</span>
@@ -1409,7 +1612,7 @@ export default function SPS19TTPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-100">
                   <Link
-                    href="#apply"
+                    href="ps-99/sps-19eb"
                     className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
                   >
                     <span>Learn if you qualify</span>
@@ -1538,89 +1741,100 @@ export default function SPS19TTPage() {
         </div>
 
         <div className="container-custom relative z-10">
-          <div className="text-center mb-16">
-            <div className="inline-block mb-4">
-              <div className="flex items-center justify-center p-3 bg-red-500 rounded-full mb-4 mx-auto w-20 h-20">
-                <Rocket className="h-10 w-10 text-white" />
+          <div className="text-center mb-12 md:mb-16">
+            <div className="inline-block mb-6">
+              <div className="bg-gradient-to-br from-red-500 via-red-600 to-red-700 p-4 sm:p-6 rounded-2xl shadow-2xl shadow-red-900/40">
+                <Rocket className="h-12 w-12 sm:h-16 sm:w-16 text-white" />
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-white">
+            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-white px-2 sm:px-4 leading-tight">
               Ready to Become an SPS 19 Pioneer Partner?
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
+            <div className="w-20 sm:w-24 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 lg:gap-16 items-start">
             <div className="lg:col-span-2">
-              <h3 className="text-2xl font-bold mb-8 flex items-center">
-                <div className="bg-red-500 p-2 rounded-lg mr-3">
-                  <CheckCircle className="h-6 w-6 text-white" />
+              <div className="mb-6 md:mb-8">
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 bg-gradient-to-r from-green-500 to-emerald-600 rounded-2xl flex items-center justify-center shadow-lg mr-4">
+                    <CheckCircle className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-xl md:text-2xl font-bold text-white">Membership Criteria</h3>
                 </div>
-                Membership Criteria
-              </h3>
-              <ul className="space-y-6 mb-10">
+                <div className="w-20 h-1 bg-gradient-to-r from-green-400 to-emerald-500 rounded-full"></div>
+              </div>
+              <ul className="space-y-4 md:space-y-6 mb-8 md:mb-10">
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 bg-green-500/20 backdrop-blur-sm rounded-full p-2 mr-4">
-                    <CheckCircle className="h-6 w-6 text-green-400" />
+                  <div className="flex-shrink-0 bg-green-500/20 backdrop-blur-sm rounded-full p-2 mr-3 md:mr-4">
+                    <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-green-400" />
                   </div>
                   <div>
-                    <span className="font-semibold text-xl block mb-1">Stable sourcing needs from China</span>
-                    <p className="text-white/80 mt-1 leading-relaxed">Regular orders that benefit from consistent management</p>
+                    <span className="font-semibold text-lg md:text-xl block mb-1">Stable sourcing needs from China</span>
+                    <p className="text-white/80 text-sm md:text-base mt-1 leading-relaxed">Regular orders that benefit from consistent management</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 bg-green-500/20 backdrop-blur-sm rounded-full p-2 mr-4">
-                    <CheckCircle className="h-6 w-6 text-green-400" />
+                  <div className="flex-shrink-0 bg-green-500/20 backdrop-blur-sm rounded-full p-2 mr-3 md:mr-4">
+                    <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-green-400" />
                   </div>
                   <div>
-                    <span className="font-semibold text-xl block mb-1">Growth-oriented business</span>
-                    <p className="text-white/80 mt-1 leading-relaxed">Clear plans for scaling your TikTok or crowdfunding success</p>
+                    <span className="font-semibold text-lg md:text-xl block mb-1">Growth-oriented business</span>
+                    <p className="text-white/80 text-sm md:text-base mt-1 leading-relaxed">Clear plans for scaling your TikTok or crowdfunding success</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 bg-green-500/20 backdrop-blur-sm rounded-full p-2 mr-4">
-                    <CheckCircle className="h-6 w-6 text-green-600" />
+                  <div className="flex-shrink-0 bg-green-500/20 backdrop-blur-sm rounded-full p-2 mr-3 md:mr-4">
+                    <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-green-600" />
                   </div>
                   <div>
-                    <span className="font-semibold text-xl block mb-1">Value sincere, long-term partnership</span>
-                    <p className="text-white/80 mt-1 leading-relaxed">Looking for a true partner, not just a service provider</p>
+                    <span className="font-semibold text-lg md:text-xl block mb-1">Value sincere, long-term partnership</span>
+                    <p className="text-white/80 text-sm md:text-base mt-1 leading-relaxed">Looking for a true partner, not just a service provider</p>
                   </div>
                 </li>
               </ul>
             </div>
 
-            <div className="lg:col-span-3 bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 shadow-xl">
-              <h3 className="text-2xl font-bold mb-8 text-center">Start Your Application</h3>
+            <div className="lg:col-span-3 bg-white/10 backdrop-blur-md p-8 md:p-10 rounded-2xl border border-white/30 shadow-2xl hover:shadow-3xl transition-all duration-300 hover:bg-white/15">
+              <div className="text-center mb-8">
+                <div className="inline-block mb-4">
+                  <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-xl">
+                    <Zap className="h-8 w-8 text-white" />
+                  </div>
+                </div>
+                <h3 className="text-xl md:text-2xl font-bold text-white">Start Your Application</h3>
+                <div className="w-16 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 mx-auto rounded-full mt-2"></div>
+              </div>
               
               {/* 状态提示 */}
               {submitStatus === 'success' && (
-                <div className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-300">
-                  <div className="flex items-center">
-                    <CheckCircle className="h-5 w-5 mr-2" />
-                    {submitMessage}
+                <div className="mb-4 md:mb-6 p-3 md:p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-300">
+                  <div className="flex items-center text-sm md:text-base">
+                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 mr-2 flex-shrink-0" />
+                    <span>{submitMessage}</span>
                   </div>
                 </div>
               )}
               
               {submitStatus === 'error' && (
-                <div className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300">
-                  <div className="flex items-center">
-                    <div className="h-5 w-5 mr-2 rounded-full bg-red-500 flex items-center justify-center">
+                <div className="mb-4 md:mb-6 p-3 md:p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300">
+                  <div className="flex items-center text-sm md:text-base">
+                    <div className="h-4 w-4 md:h-5 md:w-5 mr-2 rounded-full bg-red-500 flex items-center justify-center flex-shrink-0">
                       <span className="text-white text-xs">!</span>
                     </div>
-                    {submitMessage}
+                    <span>{submitMessage}</span>
                   </div>
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
                 {/* Contact Information */}
-                <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-white border-b border-white/20 pb-2">Contact Information</h4>
+                <div className="space-y-3 md:space-y-4">
+                  <h4 className="text-base md:text-lg font-semibold text-white border-b border-white/20 pb-2">Contact Information</h4>
                   
                 <div>
-                  <label htmlFor="fullName" className="block text-sm font-medium mb-2">
+                  <label htmlFor="fullName" className="block text-sm font-medium mb-2 text-white">
                       Your Name *
                   </label>
                   <input
@@ -1629,14 +1843,14 @@ export default function SPS19TTPage() {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50"
                     placeholder="Your name"
                     required
                   />
                 </div>
 
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium mb-2">
+                    <label htmlFor="company" className="block text-sm font-medium mb-2 text-white">
                       Company/Store Name *
                     </label>
                     <input
@@ -1645,14 +1859,14 @@ export default function SPS19TTPage() {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50"
                       placeholder="Your company or store name"
                       required
                     />
                   </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium mb-2 text-white">
                       Email Address *
                   </label>
                   <input
@@ -1661,14 +1875,14 @@ export default function SPS19TTPage() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50"
                     placeholder="Your email"
                     required
                   />
                 </div>
 
                 <div>
-                    <label htmlFor="country" className="block text-sm font-medium mb-2">
+                    <label htmlFor="country" className="block text-sm font-medium mb-2 text-white">
                       Country *
                     </label>
                     <select
@@ -1676,7 +1890,7 @@ export default function SPS19TTPage() {
                       name="country"
                       value={formData.country}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                       required
                     >
                       <option value="" disabled className="text-gray-700">Select your country</option>
@@ -1688,11 +1902,11 @@ export default function SPS19TTPage() {
                 </div>
 
                   {/* Business Information */}
-                  <div className="space-y-4">
-                    <h4 className="text-lg font-semibold text-white border-b border-white/20 pb-2">Business Information</h4>
+                  <div className="space-y-3 md:space-y-4">
+                    <h4 className="text-base md:text-lg font-semibold text-white border-b border-white/20 pb-2">Business Information</h4>
                   
                   <div>
-                    <label className="block text-sm font-medium mb-3">
+                    <label className="block text-sm font-medium mb-3 text-white">
                       Primary Sales Platform * (Select all that apply)
                     </label>
                     <div className="space-y-2">
@@ -1704,7 +1918,7 @@ export default function SPS19TTPage() {
                         { value: 'crowdfunding', label: 'Crowdfunding Platform' },
                         { value: 'other', label: 'Other' }
                       ].map((platform) => (
-                        <label key={platform.value} className="flex items-center space-x-3 cursor-pointer">
+                        <label key={platform.value} className="flex items-center space-x-3 cursor-pointer py-1">
                           <input
                             type="checkbox"
                             value={platform.value}
@@ -1718,16 +1932,16 @@ export default function SPS19TTPage() {
                                   : prev.salesPlatforms.filter(p => p !== value)
                               }));
                             }}
-                            className="rounded border-gray-600 text-red-600 focus:ring-red-500"
+                            className="w-4 h-4 md:w-5 md:h-5 rounded border-gray-600 text-red-600 focus:ring-red-500 focus:ring-2"
                           />
-                          <span className="text-white text-sm">{platform.label}</span>
+                          <span className="text-white text-sm md:text-base">{platform.label}</span>
                         </label>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="productCategories" className="block text-sm font-medium mb-2">
+                    <label htmlFor="productCategories" className="block text-sm font-medium mb-2 text-white">
                       Main Product Categories *
                   </label>
                   <select
@@ -1735,7 +1949,7 @@ export default function SPS19TTPage() {
                       name="productCategories"
                       value={formData.productCategories}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                     required
                   >
                     <option value="" disabled className="text-gray-700">Select product category</option>
@@ -1758,7 +1972,7 @@ export default function SPS19TTPage() {
                 </div>
 
                 <div>
-                    <label htmlFor="monthlyOrderVolume" className="block text-sm font-medium mb-2">
+                    <label htmlFor="monthlyOrderVolume" className="block text-sm font-medium mb-2 text-white">
                       Monthly Order Volume *
                   </label>
                     <select
@@ -1766,7 +1980,7 @@ export default function SPS19TTPage() {
                       name="monthlyOrderVolume"
                       value={formData.monthlyOrderVolume}
                       onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                      className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                       required
                     >
                       <option value="" disabled className="text-gray-700">Select monthly order volume</option>
@@ -1780,11 +1994,11 @@ export default function SPS19TTPage() {
                 </div>
 
                 {/* Logistics Needs - Full Width */}
-                <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-white border-b border-white/20 pb-2">Logistics Needs</h4>
+                <div className="space-y-3 md:space-y-4">
+                  <h4 className="text-base md:text-lg font-semibold text-white border-b border-white/20 pb-2">Logistics Needs</h4>
                   
                   <div>
-                    <label className="block text-sm font-medium mb-3">
+                    <label className="block text-sm font-medium mb-3 text-white">
                       Primary Business Challenge in Logistics * (Select all that apply)
                     </label>
                     <div className="space-y-2">
@@ -1797,7 +2011,7 @@ export default function SPS19TTPage() {
                         { value: 'other', label: 'Other' },
                         { value: 'none', label: 'None' }
                       ].map((challenge) => (
-                        <label key={challenge.value} className="flex items-center space-x-3 cursor-pointer">
+                        <label key={challenge.value} className="flex items-center space-x-3 cursor-pointer py-1">
                           <input
                             type="checkbox"
                             value={challenge.value}
@@ -1811,9 +2025,9 @@ export default function SPS19TTPage() {
                                   : prev.logisticsChallenges.filter(c => c !== value)
                               }));
                             }}
-                            className="rounded border-gray-600 text-red-600 focus:ring-red-500"
+                            className="w-4 h-4 md:w-5 md:h-5 rounded border-gray-600 text-red-600 focus:ring-red-500 focus:ring-2"
                           />
-                          <span className="text-white text-sm">{challenge.label}</span>
+                          <span className="text-white text-sm md:text-base">{challenge.label}</span>
                         </label>
                       ))}
                     </div>
@@ -1821,7 +2035,7 @@ export default function SPS19TTPage() {
 
                   {formData.logisticsChallenges.includes('other') && (
                     <div>
-                      <label htmlFor="otherChallenge" className="block text-sm font-medium mb-2">
+                      <label htmlFor="otherChallenge" className="block text-sm font-medium mb-2 text-white">
                         Please describe other challenges
                       </label>
                       <input
@@ -1830,14 +2044,14 @@ export default function SPS19TTPage() {
                         name="otherChallenge"
                         value={formData.otherChallenge}
                         onChange={handleInputChange}
-                        className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                        className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50"
                         placeholder="Describe your other logistics challenges"
                       />
                 </div>
                   )}
 
                 <div>
-                  <label htmlFor="description" className="block text-sm font-medium mb-2">
+                  <label htmlFor="description" className="block text-sm font-medium mb-2 text-white">
                       Briefly describe your needs *
                   </label>
                   <textarea
@@ -1846,20 +2060,27 @@ export default function SPS19TTPage() {
                     rows={4}
                     value={formData.description}
                     onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                    className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50 resize-none"
                       placeholder="Tell us about your specific needs and requirements"
                     required
                   />
                   </div>
                 </div>
 
-                <div>
+                <div className="pt-4">
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-all duration-300 shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
+                    className="w-full px-6 py-3 md:py-4 text-base md:text-lg bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-all duration-300 shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center min-h-[44px] touch-target"
                   >
-                    {isSubmitting ? "Submitting..." : "Submit Application"}
+                    {isSubmitting ? (
+                      <>
+                        <div className="animate-spin rounded-full h-4 w-4 md:h-5 md:w-5 border-b-2 border-white mr-2"></div>
+                        <span>Submitting...</span>
+                      </>
+                    ) : (
+                      <span>Submit Application</span>
+                    )}
                   </button>
                 </div>
               </form>
