@@ -30,7 +30,7 @@ import {
   ArrowRight,
 } from "lucide-react"
 
-export default function SPS99Page() {
+export default function SPS19EBPage() {
   const router = useRouter()
   const [isLoaded, setIsLoaded] = useState(false)
   // 表单状态管理
@@ -125,7 +125,7 @@ export default function SPS99Page() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative flex flex-col items-center justify-center px-4 py-16 sm:py-20 md:py-24 lg:py-32 xl:py-40 overflow-hidden min-h-screen sm:min-h-0">
+      <section className="relative flex flex-col items-center justify-center px-4 py-12 md:py-16 lg:py-20 xl:py-24 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image src="/sps-99-hero-bg.png" alt="Global Supply Chain" fill className="object-cover" priority />
@@ -134,7 +134,7 @@ export default function SPS99Page() {
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,0,0,0.1),transparent_70%)]" />
         </div>
 
-        {/* Animated Particles */}
+        {/* Animated Particles - Hidden on mobile for performance */}
         <div className="hidden md:block absolute inset-0 z-0 opacity-30">
           <div
             className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full bg-red-500 animate-pulse"
@@ -160,60 +160,63 @@ export default function SPS99Page() {
 
         {/* Hero Content */}
         <div
-          className={`container-custom relative z-10 text-white text-center max-w-4xl transition-all duration-1000 ${
+          className={`container-custom relative z-10 text-white text-center max-w-5xl transition-all duration-1000 ${
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="flex flex-col sm:flex-row items-center justify-center mb-4 sm:mb-6">
-            <div className="relative mb-2 sm:mb-0">
-              <Rocket className="h-8 w-8 sm:h-10 sm:w-10 mr-0 sm:mr-3 text-red-500 animate-pulse" />
-              <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
+          <div className="flex flex-col sm:flex-row items-center justify-center mb-6 md:mb-8">
+            <div className="relative mb-4 sm:mb-0 sm:mr-4">
+              <Rocket className="h-8 w-8 md:h-10 md:w-10 text-red-500 animate-pulse mx-auto sm:mx-0" />
+              <div className="absolute -top-1 -right-1 w-5 h-5 md:w-6 md:h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
                 19
               </div>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight">
-              Stop Juggling, Start Scaling
+              Scale Your E-commerce Brand Globally
             </h1>
           </div>
 
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-4 text-white/90 leading-tight">
-            Your Dedicated China Supply Chain Partner for TikTok & Crowdfunding Success
+          <h2 className="text-xl md:text-2xl lg:text-3xl font-semibold mb-4 text-white/90">
+            Your Dedicated China Supply Chain Partner for Direct-to-Consumer Success
           </h2>
 
-          <p className="text-base sm:text-lg md:text-xl text-red-400 font-medium mb-6 border-b border-t border-red-500/30 py-2 inline-block text-center">
-            SPS 19 Pioneer Program - Powering Your Viral Products & Crowdfunding Campaigns
+          <p className="text-lg md:text-xl text-red-400 font-medium mb-6 border-b border-t border-red-500/30 py-2 inline-block">
+            SPS 19 Pioneer Program - Powering Independent E-commerce Brands
           </p>
 
           <p
-            className={`text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto text-gray-200 transition-all duration-1000 delay-300 leading-relaxed ${
+            className={`text-base md:text-lg lg:text-xl mb-6 md:mb-8 max-w-4xl mx-auto text-gray-200 transition-all duration-1000 delay-300 leading-relaxed ${
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            We handle the A-Z of China sourcing and shipping to Canada & USA, so you can focus on creating viral
-            content and delighting your backers.{" "}
-            <span className="font-semibold text-white block sm:inline mt-2 sm:mt-0">Exclusively for 19 Pioneer Partners.</span>
+            We handle the A-Z of China sourcing and shipping globally, so you can focus on growing your brand and delighting your customers.{" "}
+            <span className="font-semibold text-white">Exclusively for 19 Pioneer Partners.</span>
+          </p>
+          
+          <p className="text-sm md:text-base lg:text-lg text-gray-300 mb-8 md:mb-10">
+            <em>✅ Trusted by over 500+ Independent E-commerce Brands</em>
           </p>
 
           <div
-            className={`flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 transition-all duration-1000 delay-500 w-full ${
+            className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-1000 delay-500 ${
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
             <Link
               href="#apply"
-              className="group w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-red-600 hover:bg-red-700 text-white font-medium text-sm sm:text-base rounded-lg transition-all duration-300 flex items-center justify-center shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1"
+              className="group w-full sm:w-auto px-6 py-3 md:px-8 md:py-4 bg-red-600 hover:bg-red-700 text-white font-medium text-base md:text-lg rounded-lg transition-all duration-300 flex items-center justify-center shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1"
             >
-              <Shield className="h-4 w-4 sm:h-5 sm:w-5 mr-2 group-hover:animate-pulse" />
+              <Shield className="h-4 w-4 md:h-5 md:w-5 mr-2 group-hover:animate-pulse" />
               <span>Apply to Become a Pioneer Partner</span>
-              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+              <ArrowRight className="h-5 w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
             </Link>
 
             <Link
               href="#how-it-works"
-              className="group w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium text-sm sm:text-base rounded-lg transition-all duration-300 flex items-center justify-center border border-white/20 hover:border-white/40 hover:-translate-y-1"
+              className="group px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-md transition-all duration-300 flex items-center border border-white/20 hover:border-white/40 hover:-translate-y-1"
             >
               <span>Learn How SPS 19 Works</span>
-              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+              <ArrowRight className="h-5 w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
             </Link>
           </div>
         </div>
@@ -229,123 +232,121 @@ export default function SPS99Page() {
       </section>
 
       {/* Pain Points Section */}
-      <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden">
+      <section className="bg-white py-20 md:py-28 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-30" />
         <div className="absolute -top-10 -left-10 w-40 h-40 bg-red-500/5 rounded-full blur-3xl" />
         <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-red-500/5 rounded-full blur-3xl" />
 
         <div className="container-custom relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-gray-900 relative inline-block leading-tight">
-              Tired of China Supply Chain Nightmares?
-              <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
+          <div className="text-center mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900 relative inline-block">
+              Is Logistics Holding Your Brand Back?
+              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto mt-4 leading-relaxed px-4">
-              TikTok sellers and crowdfunding creators face unique challenges when sourcing from China. Here are the
-              most common pain points we solve:
-            </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {/* Pain Point 1 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
+            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
 
-              <div className="flex flex-col mb-4 sm:mb-6 relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4">
-                  <div className="p-2 sm:p-3 bg-red-50 rounded-lg mr-0 sm:mr-4 mb-3 sm:mb-0 self-start group-hover:bg-red-100 transition-colors duration-300">
-                    <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+              <div className="flex flex-col mb-6 relative">
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
+                    <TrendingUp className="h-8 w-8 text-red-500" />
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Viral orders creating shipping chaos?
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                    High Shipping Costs?
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  When your TikTok product goes viral, can your supply chain keep up? Don't let logistics bottlenecks kill
-                  your momentum.
+                <p className="text-gray-700 leading-relaxed">
+                  Eroding your profit margins and making you uncompetitive.
                 </p>
               </div>
             </div>
 
             {/* Pain Point 2 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
+            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
 
-              <div className="flex flex-col mb-4 sm:mb-6 relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4">
-                  <div className="p-2 sm:p-3 bg-red-50 rounded-lg mr-0 sm:mr-4 mb-3 sm:mb-0 self-start group-hover:bg-red-100 transition-colors duration-300">
-                    <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+              <div className="flex flex-col mb-6 relative">
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
+                    <Clock className="h-8 w-8 text-red-500" />
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Worried about crowdfunding deadlines?
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                    Slow Delivery Times?
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Missing backer deadlines damages trust and reputation. Our dedicated team ensures your crowdfunding
-                  promises are kept.
+                <p className="text-gray-700 leading-relaxed">
+                  Causing customer churn and negative reviews.
                 </p>
               </div>
             </div>
 
             {/* Pain Point 3 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
+            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
 
-              <div className="flex flex-col mb-4 sm:mb-6 relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4">
-                  <div className="p-2 sm:p-3 bg-red-50 rounded-lg mr-0 sm:mr-4 mb-3 sm:mb-0 self-start group-hover:bg-red-100 transition-colors duration-300">
-                    <MessageSquare className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+              <div className="flex flex-col mb-6 relative">
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
+                    <MessageSquare className="h-8 w-8 text-red-500" />
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Lacking expertise with China suppliers?
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                    Complex International Shipping?
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Language barriers and cultural differences shouldn't cost you money. Our bilingual team negotiates the
-                  best terms on your behalf.
+                <p className="text-gray-700 leading-relaxed">
+                  Customs regulations, duty calculations, and international compliance are overwhelming your team.
                 </p>
               </div>
             </div>
 
             {/* Pain Point 4 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
+            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
 
-              <div className="flex flex-col mb-4 sm:mb-6 relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4">
-                  <div className="p-2 sm:p-3 bg-red-50 rounded-lg mr-0 sm:mr-4 mb-3 sm:mb-0 self-start group-hover:bg-red-100 transition-colors duration-300">
-                    <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+              <div className="flex flex-col mb-6 relative">
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
+                    <BarChart3 className="h-8 w-8 text-red-500" />
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Struggling with fluctuating volumes?
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                    Poor Brand Experience?
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  From zero to thousands of orders overnight - we scale with your success, providing flexible solutions
-                  for unpredictable demand.
+                <p className="text-gray-700 leading-relaxed">
+                  Generic packaging and unreliable delivery times damage your brand reputation and customer trust.
                 </p>
               </div>
             </div>
 
             {/* Pain Point 5 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
+            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
 
-              <div className="flex flex-col mb-4 sm:mb-6 relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4">
-                  <div className="p-2 sm:p-3 bg-red-50 rounded-lg mr-0 sm:mr-4 mb-3 sm:mb-0 self-start group-hover:bg-red-100 transition-colors duration-300">
-                    <Compass className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+              <div className="flex flex-col mb-6 relative">
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
+                    <Compass className="h-8 w-8 text-red-500" />
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
-                    Lost in the maze of global logistics?
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                    Inventory Management Chaos?
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
-                  Navigate the complexities of global supply chains with our end-to-end solution, from factory floor to
-                  customer door.
+                <p className="text-gray-700 leading-relaxed">
+                  Juggling multiple suppliers, tracking stock levels, and forecasting demand is consuming too much time.
                 </p>
               </div>
             </div>
+
+          </div>
+          
+          <div className="text-center mt-12">
+            <p className="text-xl font-bold text-gray-900 bg-gradient-to-r from-red-50 to-red-100 p-6 rounded-xl border-l-4 border-red-500">
+              It's time to turn your logistics into a competitive advantage, not a bottleneck.
+            </p>
           </div>
         </div>
       </section>
@@ -365,7 +366,7 @@ export default function SPS99Page() {
               </div>
             </div>
             <h2 className="text-3xl md:text-4xl lg:text-6xl font-bold mb-6 text-gray-900 relative">
-              Our Service: Complete Supply Chain Solution
+              A Logistics Toolkit Tailored for Your E-commerce Brand
               <div className="absolute -bottom-4 left-1/2 transform -translate-x-1/2 w-32 h-1 bg-gradient-to-r from-red-400 via-red-500 to-red-600 rounded-full"></div>
             </h2>
             <p className="text-xl text-gray-600 max-w-4xl mx-auto mb-8 leading-relaxed">
@@ -470,7 +471,7 @@ export default function SPS99Page() {
                     <span className="font-bold text-blue-800 text-xl">Why This Matters for Your Business</span>
                   </div>
                   <p className="text-blue-700 leading-relaxed text-lg">
-                    Whether you're scaling viral TikTok products, fulfilling crowdfunding promises, or growing your e-commerce brand, reliable sourcing is your competitive advantage. We help you secure consistent quality suppliers, respond quickly to demand spikes, and discover trending products before your competitors do.
+                    Whether you're scaling your independent e-commerce brand, launching new product lines, or expanding to new markets, reliable sourcing is your competitive advantage. We help you secure consistent quality suppliers, respond quickly to demand spikes, and discover trending products before your competitors do.
               </p>
                 </div>
               </div>
@@ -521,7 +522,7 @@ export default function SPS99Page() {
                     <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Precise Labeling Operations</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
-                        <p><span className="font-semibold text-blue-600">Product Labeling:</span> Affix SKU barcodes, FNSKU labels (if bound for FBA), warning labels, ingredient labels, or other specific labels required by your TikTok Shop or destination market for each item.</p>
+                        <p><span className="font-semibold text-blue-600">Product Labeling:</span> Affix SKU barcodes, FNSKU labels (if bound for FBA), warning labels, ingredient labels, or other specific labels required by your e-commerce platform or destination market for each item.</p>
                         <p><span className="font-semibold text-green-600">Carton Labeling:</span> Standardized outer carton marks and shipping labels are applied according to first-mile logistics and destination overseas warehouse (e.g., Amazon FBA, third-party overseas warehouses) inbound standards.</p>
                       </div>
                     </div>
@@ -569,7 +570,7 @@ export default function SPS99Page() {
                       </div>
                       <div>
                         <span className="font-bold text-gray-900 text-lg">Enhanced Brand Perception:</span>
-                        <p className="text-gray-700 mt-1 leading-relaxed">Customized packaging helps elevate the unboxing experience for your TikTok customers.</p>
+                        <p className="text-gray-700 mt-1 leading-relaxed">Customized packaging helps elevate the unboxing experience for your e-commerce customers.</p>
                       </div>
                     </div>
                   </div>
@@ -583,7 +584,7 @@ export default function SPS99Page() {
                     <span className="font-bold text-blue-800 text-xl">Quality Control That Scales</span>
                   </div>
                   <p className="text-blue-700 leading-relaxed text-lg">
-                    Professional pre-processing is essential for all business models. TikTok sellers need consistent quality for viral growth. Crowdfunding creators require meticulous preparation to meet backer expectations. E-commerce brands benefit from standardized packaging that reinforces brand identity and reduces returns.
+                    Professional pre-processing is essential for all e-commerce business models. Growing brands need consistent quality for sustainable growth. International sellers require meticulous preparation to meet customer expectations. Independent e-commerce brands benefit from standardized packaging that reinforces brand identity and reduces returns.
               </p>
                 </div>
               </div>
@@ -672,7 +673,7 @@ export default function SPS99Page() {
                       </div>
                       <div>
                         <span className="font-bold text-gray-900 text-lg">Inventory Assurance:</span>
-                        <p className="text-gray-700 mt-1 leading-relaxed">Ensure your TikTok Shop doesn't run out of stock during peak sales periods.</p>
+                        <p className="text-gray-700 mt-1 leading-relaxed">Ensure your e-commerce store doesn't run out of stock during peak sales periods.</p>
                       </div>
                     </div>
                   </div>
@@ -686,7 +687,7 @@ export default function SPS99Page() {
                     <span className="font-bold text-blue-800 text-xl">Strategic Shipping for Growth</span>
                   </div>
                   <p className="text-blue-700 leading-relaxed text-lg">
-                    Smart first-mile logistics is crucial for all our partners. TikTok sellers need rapid restocking for viral moments. Crowdfunding creators require predictable delivery timelines to meet backer expectations. E-commerce brands benefit from optimized shipping costs that improve profit margins and customer satisfaction.
+                    Smart first-mile logistics is crucial for all our partners. Growing e-commerce brands need rapid restocking for marketing campaigns. International sellers require predictable delivery timelines to meet customer expectations. Independent brands benefit from optimized shipping costs that improve profit margins and customer satisfaction.
               </p>
                 </div>
               </div>
@@ -724,7 +725,7 @@ export default function SPS99Page() {
                   <div className="space-y-6">
                     <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Automatic Platform Order Sync</h5>
-                      <p className="text-gray-700 leading-relaxed">Seamless integration of your TikTok Shop with our Order Management System (OMS) through API.</p>
+                      <p className="text-gray-700 leading-relaxed">Seamless integration of your e-commerce platform with our Order Management System (OMS) through API.</p>
                     </div>
                     <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Real-time Information Transfer</h5>
@@ -785,7 +786,7 @@ export default function SPS99Page() {
                     <span className="font-bold text-blue-800 text-xl">Automation That Scales With Success</span>
                   </div>
                   <p className="text-blue-700 leading-relaxed text-lg">
-                    When orders surge—whether from a viral TikTok, successful crowdfunding campaign, or marketing breakthrough—automated order processing ensures you never miss a sale. Our integration handles thousands of orders seamlessly, letting you focus on what you do best: creating content and growing your brand.
+                    When orders surge—whether from a successful marketing campaign, product launch, or seasonal peak—automated order processing ensures you never miss a sale. Our integration handles thousands of orders seamlessly, letting you focus on what you do best: growing your brand and serving your customers.
               </p>
                 </div>
               </div>
@@ -898,7 +899,7 @@ export default function SPS99Page() {
                     <span className="font-bold text-blue-800 text-xl">Speed That Builds Loyalty</span>
                   </div>
                   <p className="text-blue-700 leading-relaxed text-lg">
-                    Fast, local fulfillment drives customer satisfaction across all channels. TikTok buyers expect quick gratification. Crowdfunding backers appreciate early delivery. E-commerce customers leave better reviews and return for repeat purchases when shipping exceeds expectations.
+                    Fast, local fulfillment drives customer satisfaction across all channels. Online customers expect quick delivery. International buyers appreciate reliable shipping. E-commerce customers leave better reviews and return for repeat purchases when shipping exceeds expectations.
               </p>
             </div>
               </div>
@@ -1010,47 +1011,482 @@ export default function SPS99Page() {
                     <span className="font-bold text-blue-800 text-xl">Data-Driven Growth Strategy</span>
                   </div>
                   <p className="text-blue-700 leading-relaxed text-lg">
-                    Clear fulfillment data empowers smarter business decisions. TikTok sellers can optimize content based on conversion patterns. Crowdfunding creators gain insights for future campaigns. E-commerce brands discover which products drive the highest lifetime customer value and plan inventory accordingly.
+                    Clear fulfillment data empowers smarter business decisions. Independent e-commerce brands can optimize marketing based on conversion patterns. Growing companies gain insights for future product launches. DTC brands discover which products drive the highest lifetime customer value and plan inventory accordingly.
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          <div className="text-center mt-16 p-10 bg-gradient-to-r from-red-50 via-white to-red-50 rounded-3xl border-2 border-red-100 shadow-xl">
-            <div className="flex justify-center mb-6">
-              <div className="flex space-x-2">
-                {[1, 2, 3, 4, 5, 6].map((step) => (
-                  <div key={step} className="w-4 h-4 bg-red-500 rounded-full animate-pulse" style={{ animationDelay: `${step * 0.2}s` }}></div>
+          {/* Step 7: Advanced Logistics Solutions */}
+          <div className="mb-16">
+            <div className="relative mb-12">
+              <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-red-500 to-red-300 rounded-full opacity-30"></div>
+              <div className="bg-gradient-to-r from-red-500 via-red-600 to-red-700 p-1 rounded-2xl inline-block shadow-xl">
+                <div className="bg-white px-8 py-4 rounded-xl">
+                  <div className="flex items-center">
+                    <div className="bg-red-500 text-white text-lg font-bold rounded-full w-10 h-10 flex items-center justify-center mr-4 shadow-lg">
+                      7
+                    </div>
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Advanced Logistics Solutions</h3>
+                      <p className="text-red-500 font-semibold text-lg">Customizable Shipping & Fulfillment Options for E-commerce Brands</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 mb-12">
+              {/* Service 1: DTC Shipping */}
+              <div className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-center mb-6">
+                  <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-4 rounded-xl mr-4 shadow-md group-hover:shadow-lg transition-shadow duration-300">
+                    <Send className="h-10 w-10 text-blue-600" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-gray-900 mb-2">1. Direct-to-Consumer (DTC) Shipping</h4>
+                  </div>
+                </div>
+                
+                <div className="space-y-4 mb-6">
+                  <div className="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                    <p className="font-semibold text-blue-800 mb-2">What It Delivers:</p>
+                    <p className="text-blue-700">Cost-optimized and brand-focused shipping directly from your supply source to global customers.</p>
+                  </div>
+                  
+                  <div className="bg-white p-4 rounded-lg border border-gray-200">
+                    <p className="font-semibold text-gray-900 mb-3">What You Get:</p>
+                    <div className="space-y-3">
+                      <div className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <span className="font-semibold text-gray-900">Cost Leadership:</span>
+                          <span className="text-gray-700"> Cut out the middlemen and reduce shipping rates by up to 30%.</span>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <span className="font-semibold text-gray-900">Branded Experience:</span>
+                          <span className="text-gray-700"> Use custom packaging to turn every unboxing into a marketing opportunity.</span>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <span className="font-semibold text-gray-900">Global Reach:</span>
+                          <span className="text-gray-700"> Effortlessly ship to 200+ countries and regions with a single, simple rate card.</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                    <p className="font-semibold text-green-800 mb-2">Best For:</p>
+                    <p className="text-green-700">Growth-stage brands who want full control over the customer experience and need to be cost-efficient.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Service 2: FBA Logistics */}
+              <div className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-center mb-6">
+                  <div className="bg-gradient-to-br from-orange-100 to-orange-200 p-4 rounded-xl mr-4 shadow-md group-hover:shadow-lg transition-shadow duration-300">
+                    <Package className="h-10 w-10 text-orange-600" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-gray-900 mb-2">2. FBA Logistics (Prep & Inbound)</h4>
+                  </div>
+                </div>
+                
+                <div className="space-y-4 mb-6">
+                  <div className="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400">
+                    <p className="font-semibold text-orange-800 mb-2">What It Delivers:</p>
+                    <p className="text-orange-700">A seamless, compliant, and headache-free pipeline to Amazon's fulfillment network.</p>
+                  </div>
+                  
+                  <div className="bg-white p-4 rounded-lg border border-gray-200">
+                    <p className="font-semibold text-gray-900 mb-3">What You Get:</p>
+                    <div className="space-y-3">
+                      <div className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <span className="font-semibold text-gray-900">Guaranteed Compliance:</span>
+                          <span className="text-gray-700"> 100% adherence to FBA requirements to eliminate the risk of rejection.</span>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <span className="font-semibold text-gray-900">Expert Handling:</span>
+                          <span className="text-gray-700"> Full-service prep, including labeling, bundling, inspection, and delivery appointments.</span>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <span className="font-semibold text-gray-900">Peak Season Ready:</span>
+                          <span className="text-gray-700"> Reliable first-mile transport ensures you're always in stock when it matters most.</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                    <p className="font-semibold text-green-800 mb-2">Best For:</p>
+                    <p className="text-green-700">Sellers operating on both their own site and Amazon who need to simplify and de-risk FBA replenishment.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Service 3: International Express */}
+              <div className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-center mb-6">
+                  <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-4 rounded-xl mr-4 shadow-md group-hover:shadow-lg transition-shadow duration-300">
+                    <Zap className="h-10 w-10 text-purple-600" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-gray-900 mb-2">3. International Express Shipping</h4>
+                  </div>
+                </div>
+                
+                <div className="space-y-4 mb-6">
+                  <div className="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+                    <p className="font-semibold text-purple-800 mb-2">What It Delivers:</p>
+                    <p className="text-purple-700">Maximum speed and reliability to meet the expectations of your high-value customers.</p>
+                  </div>
+                  
+                  <div className="bg-white p-4 rounded-lg border border-gray-200">
+                    <p className="font-semibold text-gray-900 mb-3">What You Get:</p>
+                    <div className="space-y-3">
+                      <div className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <span className="font-semibold text-gray-900">Blazing-Fast Speed:</span>
+                          <span className="text-gray-700"> Integrated with DHL, UPS, and FedEx to achieve global delivery in 3-5 business days.</span>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <span className="font-semibold text-gray-900">Full Visibility:</span>
+                          <span className="text-gray-700"> Pinpoint, end-to-end tracking that gives your customers peace of mind.</span>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <span className="font-semibold text-gray-900">Premium Option:</span>
+                          <span className="text-gray-700"> Offer a premium shipping tier that matches the quality of your high-ticket items.</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                    <p className="font-semibold text-green-800 mb-2">Best For:</p>
+                    <p className="text-green-700">Brands selling high-value products or those wanting to offer differentiated shipping options.</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Service 4: Overseas Warehouse */}
+              <div className="bg-gradient-to-br from-white to-gray-50 p-8 rounded-2xl border border-gray-100 shadow-lg hover:shadow-xl transition-all duration-300 group">
+                <div className="flex items-center mb-6">
+                  <div className="bg-gradient-to-br from-green-100 to-green-200 p-4 rounded-xl mr-4 shadow-md group-hover:shadow-lg transition-shadow duration-300">
+                    <Package className="h-10 w-10 text-green-600" />
+                  </div>
+                  <div>
+                    <h4 className="text-2xl font-bold text-gray-900 mb-2">4. Overseas Warehouse & Fulfillment</h4>
+                  </div>
+                </div>
+                
+                <div className="space-y-4 mb-6">
+                  <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                    <p className="font-semibold text-green-800 mb-2">What It Delivers:</p>
+                    <p className="text-green-700">A revolutionary "local" shipping experience for your international customers.</p>
+                  </div>
+                  
+                  <div className="bg-white p-4 rounded-lg border border-gray-200">
+                    <p className="font-semibold text-gray-900 mb-3">What You Get:</p>
+                    <div className="space-y-3">
+                      <div className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <span className="font-semibold text-gray-900">Amazon-like Speed:</span>
+                          <span className="text-gray-700"> Crush delivery times from weeks down to just 2-5 days in key markets like the US & Canada.</span>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <span className="font-semibold text-gray-900">Reduced Return Rates:</span>
+                          <span className="text-gray-700"> Fast delivery dramatically increases customer satisfaction and reduces refund requests.</span>
+                        </div>
+                      </div>
+                      <div className="flex items-start">
+                        <CheckCircle className="h-5 w-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" />
+                        <div>
+                          <span className="font-semibold text-gray-900">Agile Inventory:</span>
+                          <span className="text-gray-700"> Stock products in bulk to easily handle sales promotions and order surges.</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div className="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                    <p className="font-semibold text-green-800 mb-2">Best For:</p>
+                    <p className="text-green-700">Established brands focused on winning major markets by providing a superior customer experience.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="text-center mt-12 md:mt-16 p-6 md:p-10 bg-gradient-to-r from-red-50 via-white to-red-50 rounded-2xl md:rounded-3xl border-2 border-red-100 shadow-xl">
+            <div className="flex justify-center mb-4 md:mb-6">
+              <div className="flex space-x-1 md:space-x-2">
+                {[1, 2, 3, 4, 5, 6, 7].map((step) => (
+                  <div key={step} className="w-3 h-3 md:w-4 md:h-4 bg-red-500 rounded-full animate-pulse" style={{ animationDelay: `${step * 0.2}s` }}></div>
                 ))}
               </div>
             </div>
-            <p className="text-3xl font-bold text-gray-900 mb-4">
-              Six integrated steps, one seamless solution for your China supply chain success.
+            <p className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 mb-3 md:mb-4 leading-tight">
+              Seven integrated steps, one seamless solution for your e-commerce logistics success.
             </p>
           </div>
         </div>
       </section>
 
+      {/* Why Us Section */}
+      <section className="bg-gray-50 py-20 md:py-28 relative overflow-hidden">
+        <div className="absolute -top-40 -right-40 w-80 h-80 bg-red-50 rounded-full opacity-50 blur-3xl" />
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-red-50 rounded-full opacity-50 blur-3xl" />
+
+        <div className="container-custom relative z-10">
+          <div className="text-center mb-12 md:mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 text-gray-900 relative px-4">
+              More Than a Shipping Company—We're Your Global Growth Partner
+              <div className="absolute -bottom-2 md:-bottom-4 left-1/2 transform -translate-x-1/2 w-20 md:w-32 h-1 bg-gradient-to-r from-red-400 via-red-500 to-red-600 rounded-full"></div>
+            </h2>
+            <p className="text-lg md:text-xl text-gray-600 max-w-4xl mx-auto mb-6 md:mb-8 leading-relaxed px-4">
+              See why over 500+ DTC brands choose us over traditional logistics providers
+            </p>
+          </div>
+
+          {/* Desktop Table */}
+          <div className="hidden lg:block overflow-x-auto">
+            <table className="w-full bg-white rounded-2xl shadow-lg overflow-hidden">
+              <thead className="bg-gradient-to-r from-red-500 to-red-600 text-white">
+                <tr>
+                  <th className="text-left py-6 px-8 text-xl font-bold">Feature</th>
+                  <th className="text-left py-6 px-8 text-xl font-bold">Traditional Logistics</th>
+                  <th className="text-left py-6 px-8 text-xl font-bold">Our Promise to You</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300">
+                  <td className="py-6 px-8 font-bold text-gray-900 text-lg">Expert Team</td>
+                  <td className="py-6 px-8 text-gray-600">Generic support with limited e-commerce expertise</td>
+                  <td className="py-6 px-8 text-gray-700">We live and breathe e-commerce. We'll design a strategy that fits your budget and goals.</td>
+                </tr>
+                <tr className="border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300">
+                  <td className="py-6 px-8 font-bold text-gray-900 text-lg">Smart Platform</td>
+                  <td className="py-6 px-8 text-gray-600">Basic tracking with limited visibility</td>
+                  <td className="py-6 px-8 text-gray-700">Manage all orders, track shipments in real-time, and make data-driven decisions from one dashboard.</td>
+                </tr>
+                <tr className="border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300">
+                  <td className="py-6 px-8 font-bold text-gray-900 text-lg">Dedicated Support</td>
+                  <td className="py-6 px-8 text-gray-600">Ticket-based support with slow response times</td>
+                  <td className="py-6 px-8 text-gray-700">Your 1-on-1 account manager is always there to proactively solve problems for you.</td>
+                </tr>
+                <tr className="border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300">
+                  <td className="py-6 px-8 font-bold text-gray-900 text-lg">Easy Integration</td>
+                  <td className="py-6 px-8 text-gray-600">Complex setup requiring IT resources</td>
+                  <td className="py-6 px-8 text-gray-700">Seamlessly connect with Shopify, WooCommerce, and other major e-commerce platforms via API.</td>
+                </tr>
+                <tr className="border-b border-gray-200 hover:bg-gray-50 transition-colors duration-300">
+                  <td className="py-6 px-8 font-bold text-gray-900 text-lg">Transparency</td>
+                  <td className="py-6 px-8 text-gray-600">Hidden fees and unclear pricing</td>
+                  <td className="py-6 px-8 text-gray-700">Full cost transparency with no surprise fees. You know exactly what you're paying for.</td>
+                </tr>
+                <tr className="hover:bg-gray-50 transition-colors duration-300">
+                  <td className="py-6 px-8 font-bold text-gray-900 text-lg">Risk Mitigation</td>
+                  <td className="py-6 px-8 text-gray-600">You bear all operational risks and compliance issues</td>
+                  <td className="py-6 px-8 text-gray-700">We handle compliance, customs, and regulatory issues. Your peace of mind is our responsibility.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          {/* Mobile Comparison Cards */}
+          <div className="lg:hidden space-y-6">
+            {[
+              {
+                feature: "Expert Team",
+                traditional: "Generic support with limited e-commerce expertise",
+                ours: "We live and breathe e-commerce. We'll design a strategy that fits your budget and goals.",
+                icon: Users
+              },
+              {
+                feature: "Smart Platform", 
+                traditional: "Basic tracking with limited visibility",
+                ours: "Manage all orders, track shipments in real-time, and make data-driven decisions from one dashboard.",
+                icon: BarChart3
+              },
+              {
+                feature: "Dedicated Support",
+                traditional: "Ticket-based support with slow response times", 
+                ours: "Your 1-on-1 account manager is always there to proactively solve problems for you.",
+                icon: MessageCircle
+              },
+              {
+                feature: "Easy Integration",
+                traditional: "Complex setup requiring IT resources",
+                ours: "Seamlessly connect with Shopify, WooCommerce, and other major e-commerce platforms via API.",
+                icon: Settings
+              },
+              {
+                feature: "Transparency",
+                traditional: "Hidden fees and unclear pricing",
+                ours: "Full cost transparency with no surprise fees. You know exactly what you're paying for.",
+                icon: Search
+              },
+              {
+                feature: "Risk Mitigation",
+                traditional: "You bear all operational risks and compliance issues",
+                ours: "We handle compliance, customs, and regulatory issues. Your peace of mind is our responsibility.",
+                icon: Shield
+              }
+            ].map((item, index) => (
+              <div key={index} className="bg-white rounded-2xl shadow-lg overflow-hidden border border-gray-100">
+                <div className="p-6">
+                  <div className="flex items-center mb-4">
+                    <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-br from-red-100 to-red-200 rounded-full mr-4">
+                      <item.icon className="h-6 w-6 text-red-600" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900">{item.feature}</h3>
+                  </div>
+                  
+                  <div className="space-y-4">
+                    <div className="bg-gray-50 p-4 rounded-lg border-l-4 border-gray-300">
+                      <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-2">Traditional Logistics</h4>
+                      <p className="text-gray-700 text-sm leading-relaxed">{item.traditional}</p>
+                    </div>
+                    
+                    <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
+                      <h4 className="text-sm font-semibold text-red-600 uppercase tracking-wide mb-2 flex items-center">
+                        <CheckCircle className="h-4 w-4 mr-1" />
+                        Our Promise to You
+                      </h4>
+                      <p className="text-gray-800 text-sm leading-relaxed font-medium">{item.ours}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Key Differentiators */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mt-12 md:mt-16">
+            <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100">
+              <div className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-blue-100 to-blue-200 rounded-full mb-4 md:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                <Users className="h-7 w-7 md:h-8 md:w-8 text-blue-600" />
+              </div>
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4 text-center">E-commerce DNA</h3>
+              <p className="text-sm md:text-base text-gray-600 text-center leading-relaxed">
+                Unlike generic logistics providers, we understand the unique challenges of e-commerce brands. From viral product launches to seasonal surges, we've got you covered.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100">
+              <div className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-green-100 to-green-200 rounded-full mb-4 md:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                <Shield className="h-7 w-7 md:h-8 md:w-8 text-green-600" />
+              </div>
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4 text-center">Your Success, Our Responsibility</h3>
+              <p className="text-sm md:text-base text-gray-600 text-center leading-relaxed">
+                We don't just ship packages—we protect your brand reputation. Our quality assurance and compliance expertise ensures your customers always have a positive experience.
+              </p>
+            </div>
+
+            <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 group border border-gray-100">
+              <div className="flex items-center justify-center w-14 h-14 md:w-16 md:h-16 bg-gradient-to-br from-purple-100 to-purple-200 rounded-full mb-4 md:mb-6 mx-auto group-hover:scale-110 transition-transform duration-300">
+                <TrendingUp className="h-7 w-7 md:h-8 md:w-8 text-purple-600" />
+              </div>
+              <h3 className="text-lg md:text-xl font-bold text-gray-900 mb-3 md:mb-4 text-center">Growth-Focused Partnership</h3>
+              <p className="text-sm md:text-base text-gray-600 text-center leading-relaxed">
+                We scale with you. From startup to enterprise, our flexible solutions grow with your business. No need to switch providers as you expand globally.
+              </p>
+            </div>
+          </div>
+
+          {/* Trust Indicators */}
+          <div className="bg-white p-6 md:p-8 rounded-2xl shadow-lg mt-12 md:mt-16 border border-gray-100">
+            <div className="text-center mb-6 md:mb-8">
+              <h3 className="text-xl md:text-2xl font-bold text-gray-900 mb-3 md:mb-4">Trusted by Leading E-commerce Brands</h3>
+              <p className="text-sm md:text-base text-gray-600">Join 500+ successful brands who've made the switch</p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8 items-center">
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-red-500 mb-1 md:mb-2">500+</div>
+                <div className="text-xs md:text-sm text-gray-600">Active Brands</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-red-500 mb-1 md:mb-2">99.8%</div>
+                <div className="text-xs md:text-sm text-gray-600">On-Time Delivery</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-red-500 mb-1 md:mb-2">50M+</div>
+                <div className="text-xs md:text-sm text-gray-600">Packages Delivered</div>
+              </div>
+              <div className="text-center">
+                <div className="text-2xl md:text-3xl font-bold text-red-500 mb-1 md:mb-2">24/7</div>
+                <div className="text-xs md:text-sm text-gray-600">Expert Support</div>
+              </div>
+            </div>
+          </div>
+
+          {/* CTA */}
+          <div className="text-center mt-12 md:mt-16 px-4">
+            <div className="bg-gradient-to-r from-red-500 to-red-600 p-6 md:p-8 rounded-2xl text-white shadow-xl">
+              <h3 className="text-xl md:text-2xl lg:text-3xl font-bold mb-3 md:mb-4">Ready to Experience the Difference?</h3>
+              <p className="text-sm md:text-base text-red-100 mb-6 max-w-2xl mx-auto leading-relaxed">
+                Get a free logistics analysis and see how we can optimize your supply chain for better margins and faster growth.
+              </p>
+              <Link
+                href="#apply"
+                className="inline-flex items-center px-6 py-3 md:px-8 md:py-4 bg-white text-red-600 font-bold text-base md:text-lg rounded-lg hover:bg-gray-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1"
+              >
+                <Rocket className="h-4 w-4 md:h-5 md:w-5 mr-2" />
+                <span>Get Your Free Analysis</span>
+                <ArrowRight className="h-4 w-4 md:h-5 md:w-5 ml-2" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Detailed Service Process Section */}
-      <section id="how-it-works" className="bg-gray-50 py-20 md:py-28 relative overflow-hidden">
+      <section id="how-it-works" className="bg-white py-16 md:py-20 lg:py-28 relative overflow-hidden">
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
         <div className="absolute bottom-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
 
         <div className="container-custom relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-4">
-              <div className="flex items-center justify-center p-3 bg-red-50 rounded-full mb-4 mx-auto w-20 h-20">
-                <Settings className="h-10 w-10 text-red-500" />
+              <div className="flex items-center justify-center p-3 bg-red-50 rounded-full mb-4 mx-auto w-16 h-16 md:w-20 md:h-20">
+                <Settings className="h-8 w-8 md:h-10 md:w-10 text-red-500" />
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 md:mb-6 text-gray-900 px-4">
               Your Success Blueprint: How We Partner With You
             </h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto mb-6">
+            <p className="text-base md:text-lg text-gray-600 max-w-3xl mx-auto mb-4 md:mb-6 px-4 leading-relaxed">
               We believe in a transparent and collaborative process. Here's how we turn your vision into reality:
             </p>
-            <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
+            <div className="w-16 md:w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
           </div>
 
           {/* Phase 1 */}
@@ -1203,7 +1639,7 @@ export default function SPS99Page() {
                       <h4 className="text-xl font-bold text-gray-900">Order Fulfillment & Global Shipping</h4>
                     </div>
                     <p className="text-gray-700">
-                      As your orders come in (from TikTok Shop, crowdfunding backers, your e-commerce store, etc.), we
+                      As your orders come in (from your e-commerce store, marketplace platforms, direct sales, etc.), we
                       pick, pack, and ship them according to the pre-defined logistics solution. Whether it's individual
                       B2C parcels or larger B2B consignments to North America, we ensure efficient and reliable
                       dispatch.
@@ -1242,177 +1678,121 @@ export default function SPS99Page() {
       </section>
 
       {/* Who is this for Section */}
-      <section className="bg-gray-50 py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden">
+      <section className="bg-gray-50 py-20 md:py-28 relative overflow-hidden">
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
         <div className="absolute -top-40 -left-40 w-80 h-80 bg-red-50 rounded-full opacity-50 blur-3xl" />
         <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-red-50 rounded-full opacity-50 blur-3xl" />
 
         <div className="container-custom relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-16">
             <div className="inline-block mb-4">
-              <div className="flex items-center justify-center p-2 sm:p-3 bg-red-50 rounded-full mb-3 sm:mb-4 mx-auto w-16 h-16 sm:w-20 sm:h-20">
-                <Target className="h-8 w-8 sm:h-10 sm:w-10 text-red-500" />
+              <div className="flex items-center justify-center p-3 bg-red-50 rounded-full mb-4 mx-auto w-20 h-20">
+                <Target className="h-10 w-10 text-red-500" />
               </div>
             </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-gray-900 leading-tight px-4">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900">
               Is the SPS 19 Pioneer Program Right for You?
             </h2>
-            <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
-            {/* TikTok Sellers */}
-            <div className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-              <div className="h-48 sm:h-56 relative">
-                <Image src="/tiktok-viral-products.png" alt="TikTok Sellers" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end">
-                  <div className="p-4 sm:p-6">
-                    <div className="flex flex-col sm:flex-row sm:items-center mb-2">
-                      <div className="bg-red-500 p-2 rounded-lg mr-0 sm:mr-3 mb-2 sm:mb-0 self-start">
-                        <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
-                      </div>
-                      <h3 className="text-white text-xl sm:text-2xl font-bold">TikTok Sellers</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="p-4 sm:p-6">
-                <p className="text-gray-700 text-sm sm:text-base mb-4 sm:mb-6 border-l-4 border-red-500 pl-3 sm:pl-4 italic">
-                  Selling China-sourced products, needing reliable fulfillment for viral growth in US & Canada.
-                </p>
-                <ul className="space-y-2 sm:space-y-3">
-                  <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1 flex-shrink-0">
-                      <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
-                    </div>
-                    <span className="text-gray-700 text-sm sm:text-base">Ready for sudden viral demand spikes</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1 flex-shrink-0">
-                      <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
-                    </div>
-                    <span className="text-gray-700 text-sm sm:text-base">Fast shipping to maintain momentum</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1 flex-shrink-0">
-                      <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
-                    </div>
-                    <span className="text-gray-700 text-sm sm:text-base">Quality control for 5-star reviews</span>
-                  </li>
-                </ul>
-                <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-100">
-                  <Link
-                    href="ps-99/sps-19tt"
-                    className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300 text-sm sm:text-base"
-                  >
-                    <span>Learn if you qualify</span>
-                    <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Crowdfunding Creators */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* Independent E-commerce Brands */}
             <div className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
               <div className="h-56 relative">
-                <Image src="/data-viz-overlay.png" alt="Crowdfunding Creators" fill className="object-cover" />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end">
-                  <div className="p-6">
-                    <div className="flex items-center mb-2">
-                      <div className="bg-red-500 p-2 rounded-lg mr-3">
-                        <Clock className="h-6 w-6 text-white" />
-                      </div>
-                      <h3 className="text-white text-2xl font-bold">Crowdfunding Creators</h3>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
-                  Needing to deliver quality products from China to backers on time, every time in US & Canada.
-                </p>
-                <ul className="space-y-3">
-                  <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
-                      <Check className="h-4 w-4 text-red-500" />
-                    </div>
-                    <span className="text-gray-700">Meet backer delivery promises</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
-                      <Check className="h-4 w-4 text-red-500" />
-                    </div>
-                    <span className="text-gray-700">Scale from prototype to mass production</span>
-                  </li>
-                  <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
-                      <Check className="h-4 w-4 text-red-500" />
-                    </div>
-                    <span className="text-gray-700">Transparent updates for backers</span>
-                  </li>
-                </ul>
-                <div className="mt-6 pt-6 border-t border-gray-100">
-                  <Link
-                    href="ps-99/sps-19cc"
-                    className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
-                  >
-                    <span>Learn if you qualify</span>
-                    <ArrowRight className="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
-                  </Link>
-                </div>
-              </div>
-            </div>
-
-            {/* Emerging E-commerce Brands */}
-            <div className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-              <div className="h-56 relative">
-                <Image
-                  src="/ecommerce-supply-chain.png"
-                  alt="Emerging E-commerce Brands"
-                  fill
-                  className="object-cover"
-                />
+                <Image src="/ecommerce-supply-chain.png" alt="Independent E-commerce Brands" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end">
                   <div className="p-6">
                     <div className="flex items-center mb-2">
                       <div className="bg-red-500 p-2 rounded-lg mr-3">
                         <Package className="h-6 w-6 text-white" />
                       </div>
-                      <h3 className="text-white text-2xl font-bold">E-commerce Brands</h3>
+                      <h3 className="text-white text-2xl font-bold">Independent E-commerce Brands</h3>
                     </div>
                   </div>
                 </div>
               </div>
               <div className="p-6">
                 <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
-                  Valuing a dedicated, expert partner for their China supply chain to North America.
+                  Building direct-to-consumer brands, needing reliable China sourcing and fulfillment for scalable growth.
                 </p>
                 <ul className="space-y-3">
                   <li className="flex items-start">
                     <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
                       <Check className="h-4 w-4 text-red-500" />
                     </div>
-                    <span className="text-gray-700">Streamlined sourcing and logistics</span>
+                    <span className="text-gray-700">Scale operations efficiently</span>
                   </li>
                   <li className="flex items-start">
                     <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
                       <Check className="h-4 w-4 text-red-500" />
                     </div>
-                    <span className="text-gray-700">Consistent quality and delivery times</span>
+                    <span className="text-gray-700">Branded packaging & experience</span>
                   </li>
                   <li className="flex items-start">
                     <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
                       <Check className="h-4 w-4 text-red-500" />
                     </div>
-                    <span className="text-gray-700">Focus on growth, not supply chain headaches</span>
+                    <span className="text-gray-700">Global shipping capabilities</span>
                   </li>
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-100">
                   <Link
-                    href="ps-99/sps-19eb"
+                    href="/sps-99"
                     className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
                   >
-                    <span>Learn if you qualify</span>
+                    <span>Apply to SPS 19 Program</span>
+                    <ArrowRight className="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+
+            {/* DTC Brands with Overseas Warehouses */}
+            <div className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
+              <div className="h-56 relative">
+                <Image src="/modern-ecommerce-fulfillment-center.png" alt="DTC Brands" fill className="object-cover" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end">
+                  <div className="p-6">
+                    <div className="flex items-center mb-2">
+                      <div className="bg-red-500 p-2 rounded-lg mr-3">
+                        <TrendingUp className="h-6 w-6 text-white" />
+                      </div>
+                      <h3 className="text-white text-2xl font-bold">DTC Brands</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="p-6">
+                <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
+                  Established brands needing China sourcing and efficient fulfillment across North America.
+                </p>
+                <ul className="space-y-3">
+                  <li className="flex items-start">
+                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
+                      <Check className="h-4 w-4 text-red-500" />
+                    </div>
+                    <span className="text-gray-700">Optimize supply chain costs</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
+                      <Check className="h-4 w-4 text-red-500" />
+                    </div>
+                    <span className="text-gray-700">Multi-channel distribution</span>
+                  </li>
+                  <li className="flex items-start">
+                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
+                      <Check className="h-4 w-4 text-red-500" />
+                    </div>
+                    <span className="text-gray-700">Premium customer experience</span>
+                  </li>
+                </ul>
+                <div className="mt-6 pt-6 border-t border-gray-100">
+                  <Link
+                    href="/get-quote"
+                    className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
+                  >
+                    <span>Get Custom Solution</span>
                     <ArrowRight className="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
@@ -1538,16 +1918,16 @@ export default function SPS99Page() {
         </div>
 
         <div className="container-custom relative z-10">
-          <div className="text-center mb-16">
+          <div className="text-center mb-12 md:mb-16">
             <div className="inline-block mb-4">
-              <div className="flex items-center justify-center p-3 bg-red-500 rounded-full mb-4 mx-auto w-20 h-20">
-                <Rocket className="h-10 w-10 text-white" />
+              <div className="flex items-center justify-center p-3 bg-red-500 rounded-full mb-4 mx-auto w-16 h-16 md:w-20 md:h-20">
+                <Rocket className="h-8 w-8 md:h-10 md:w-10 text-white" />
               </div>
             </div>
-            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-white">
+            <h2 className="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-white px-4">
               Ready to Become an SPS 19 Pioneer Partner?
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
+            <div className="w-16 md:w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 lg:gap-16 items-start">
@@ -1574,7 +1954,7 @@ export default function SPS99Page() {
                   </div>
                   <div>
                     <span className="font-semibold text-lg md:text-xl block mb-1">Growth-oriented business</span>
-                    <p className="text-white/80 text-sm md:text-base mt-1 leading-relaxed">Clear plans for scaling your TikTok or crowdfunding success</p>
+                    <p className="text-white/80 text-sm md:text-base mt-1 leading-relaxed">Clear plans for scaling your e-commerce success</p>
                   </div>
                 </li>
                 <li className="flex items-start">
@@ -1594,21 +1974,21 @@ export default function SPS99Page() {
               
               {/* 状态提示 */}
               {submitStatus === 'success' && (
-                <div className="mb-4 md:mb-6 p-3 md:p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-300">
-                  <div className="flex items-center text-sm md:text-base">
-                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 mr-2 flex-shrink-0" />
-                    <span>{submitMessage}</span>
+                <div className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-300">
+                  <div className="flex items-center">
+                    <CheckCircle className="h-5 w-5 mr-2" />
+                    {submitMessage}
                   </div>
                 </div>
               )}
               
               {submitStatus === 'error' && (
-                <div className="mb-4 md:mb-6 p-3 md:p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300">
-                  <div className="flex items-center text-sm md:text-base">
-                    <div className="h-4 w-4 md:h-5 md:w-5 mr-2 rounded-full bg-red-500 flex items-center justify-center flex-shrink-0">
+                <div className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300">
+                  <div className="flex items-center">
+                    <div className="h-5 w-5 mr-2 rounded-full bg-red-500 flex items-center justify-center">
                       <span className="text-white text-xs">!</span>
                     </div>
-                    <span>{submitMessage}</span>
+                    {submitMessage}
                   </div>
                 </div>
               )}
@@ -1616,11 +1996,11 @@ export default function SPS99Page() {
               <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
                 {/* Contact Information */}
-                <div className="space-y-3 md:space-y-4">
+                <div className="space-y-4">
                   <h4 className="text-base md:text-lg font-semibold text-white border-b border-white/20 pb-2">Contact Information</h4>
                   
                 <div>
-                  <label htmlFor="fullName" className="block text-sm font-medium mb-2 text-white">
+                  <label htmlFor="fullName" className="block text-sm font-medium mb-2">
                       Your Name *
                   </label>
                   <input
@@ -1629,14 +2009,14 @@ export default function SPS99Page() {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleInputChange}
-                    className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50"
+                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                     placeholder="Your name"
                     required
                   />
                 </div>
 
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium mb-2 text-white">
+                    <label htmlFor="company" className="block text-sm font-medium mb-2">
                       Company/Store Name *
                     </label>
                     <input
@@ -1645,14 +2025,14 @@ export default function SPS99Page() {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50"
+                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                       placeholder="Your company or store name"
                       required
                     />
                   </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2 text-white">
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
                       Email Address *
                   </label>
                   <input
@@ -1661,14 +2041,14 @@ export default function SPS99Page() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50"
+                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                     placeholder="Your email"
                     required
                   />
                 </div>
 
                 <div>
-                    <label htmlFor="country" className="block text-sm font-medium mb-2 text-white">
+                    <label htmlFor="country" className="block text-sm font-medium mb-2">
                       Country *
                     </label>
                     <select
@@ -1676,7 +2056,7 @@ export default function SPS99Page() {
                       name="country"
                       value={formData.country}
                       onChange={handleInputChange}
-                      className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                       required
                     >
                       <option value="" disabled className="text-gray-700">Select your country</option>
@@ -1688,23 +2068,25 @@ export default function SPS99Page() {
                 </div>
 
                   {/* Business Information */}
-                  <div className="space-y-3 md:space-y-4">
+                  <div className="space-y-4">
                     <h4 className="text-base md:text-lg font-semibold text-white border-b border-white/20 pb-2">Business Information</h4>
                   
                   <div>
-                    <label className="block text-sm font-medium mb-3 text-white">
+                    <label className="block text-sm font-medium mb-3">
                       Primary Sales Platform * (Select all that apply)
                     </label>
                     <div className="space-y-2">
                       {[
-                        { value: 'tiktok-us', label: 'TikTok Shop US' },
-                        { value: 'tiktok-ca', label: 'TikTok Shop CA' },
                         { value: 'website-us', label: 'Independent Website US' },
                         { value: 'website-ca', label: 'Independent Website CA' },
-                        { value: 'crowdfunding', label: 'Crowdfunding Platform' },
-                        { value: 'other', label: 'Other' }
+                        { value: 'shopify', label: 'Shopify Store' },
+                        { value: 'woocommerce', label: 'WooCommerce' },
+                        { value: 'bigcommerce', label: 'BigCommerce' },
+                        { value: 'magento', label: 'Magento' },
+                        { value: 'amazon', label: 'Amazon FBA' },
+                        { value: 'other', label: 'Other Platform' }
                       ].map((platform) => (
-                        <label key={platform.value} className="flex items-center space-x-3 cursor-pointer py-1">
+                        <label key={platform.value} className="flex items-center space-x-3 cursor-pointer">
                           <input
                             type="checkbox"
                             value={platform.value}
@@ -1718,16 +2100,16 @@ export default function SPS99Page() {
                                   : prev.salesPlatforms.filter(p => p !== value)
                               }));
                             }}
-                            className="w-4 h-4 md:w-5 md:h-5 rounded border-gray-600 text-red-600 focus:ring-red-500 focus:ring-2"
+                            className="rounded border-gray-600 text-red-600 focus:ring-red-500"
                           />
-                          <span className="text-white text-sm md:text-base">{platform.label}</span>
+                          <span className="text-white text-sm">{platform.label}</span>
                         </label>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="productCategories" className="block text-sm font-medium mb-2 text-white">
+                    <label htmlFor="productCategories" className="block text-sm font-medium mb-2">
                       Main Product Categories *
                   </label>
                   <select
@@ -1735,7 +2117,7 @@ export default function SPS99Page() {
                       name="productCategories"
                       value={formData.productCategories}
                     onChange={handleInputChange}
-                    className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                     required
                   >
                     <option value="" disabled className="text-gray-700">Select product category</option>
@@ -1758,7 +2140,7 @@ export default function SPS99Page() {
                 </div>
 
                 <div>
-                    <label htmlFor="monthlyOrderVolume" className="block text-sm font-medium mb-2 text-white">
+                    <label htmlFor="monthlyOrderVolume" className="block text-sm font-medium mb-2">
                       Monthly Order Volume *
                   </label>
                     <select
@@ -1766,7 +2148,7 @@ export default function SPS99Page() {
                       name="monthlyOrderVolume"
                       value={formData.monthlyOrderVolume}
                       onChange={handleInputChange}
-                      className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                       required
                     >
                       <option value="" disabled className="text-gray-700">Select monthly order volume</option>
@@ -1780,14 +2162,14 @@ export default function SPS99Page() {
                 </div>
 
                 {/* Logistics Needs - Full Width */}
-                <div className="space-y-3 md:space-y-4">
+                <div className="space-y-4">
                   <h4 className="text-base md:text-lg font-semibold text-white border-b border-white/20 pb-2">Logistics Needs</h4>
                   
                   <div>
-                    <label className="block text-sm font-medium mb-3 text-white">
+                    <label className="block text-sm font-medium mb-3">
                       Primary Business Challenge in Logistics * (Select all that apply)
                     </label>
-                    <div className="space-y-2">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                       {[
                         { value: 'high-costs', label: 'High shipping costs' },
                         { value: 'slow-delivery', label: 'Slow delivery times' },
@@ -1797,7 +2179,7 @@ export default function SPS99Page() {
                         { value: 'other', label: 'Other' },
                         { value: 'none', label: 'None' }
                       ].map((challenge) => (
-                        <label key={challenge.value} className="flex items-center space-x-3 cursor-pointer py-1">
+                        <label key={challenge.value} className="flex items-center space-x-2 cursor-pointer p-2 hover:bg-white/5 rounded transition-colors">
                           <input
                             type="checkbox"
                             value={challenge.value}
@@ -1811,9 +2193,9 @@ export default function SPS99Page() {
                                   : prev.logisticsChallenges.filter(c => c !== value)
                               }));
                             }}
-                            className="w-4 h-4 md:w-5 md:h-5 rounded border-gray-600 text-red-600 focus:ring-red-500 focus:ring-2"
+                            className="rounded border-gray-600 text-red-600 focus:ring-red-500"
                           />
-                          <span className="text-white text-sm md:text-base">{challenge.label}</span>
+                          <span className="text-white text-sm">{challenge.label}</span>
                         </label>
                       ))}
                     </div>
@@ -1821,7 +2203,7 @@ export default function SPS99Page() {
 
                   {formData.logisticsChallenges.includes('other') && (
                     <div>
-                      <label htmlFor="otherChallenge" className="block text-sm font-medium mb-2 text-white">
+                      <label htmlFor="otherChallenge" className="block text-sm font-medium mb-2">
                         Please describe other challenges
                       </label>
                       <input
@@ -1830,14 +2212,14 @@ export default function SPS99Page() {
                         name="otherChallenge"
                         value={formData.otherChallenge}
                         onChange={handleInputChange}
-                        className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50"
+                        className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                         placeholder="Describe your other logistics challenges"
                       />
                 </div>
                   )}
 
                 <div>
-                  <label htmlFor="description" className="block text-sm font-medium mb-2 text-white">
+                  <label htmlFor="description" className="block text-sm font-medium mb-2">
                       Briefly describe your needs *
                   </label>
                   <textarea
@@ -1846,7 +2228,7 @@ export default function SPS99Page() {
                     rows={4}
                     value={formData.description}
                     onChange={handleInputChange}
-                    className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50 resize-none"
+                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 resize-none"
                       placeholder="Tell us about your specific needs and requirements"
                     required
                   />
@@ -1857,17 +2239,23 @@ export default function SPS99Page() {
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-6 py-3 md:py-4 text-base md:text-lg bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-all duration-300 shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center min-h-[44px] touch-target"
+                    className="w-full px-6 py-4 bg-red-600 hover:bg-red-700 text-white font-bold text-base md:text-lg rounded-lg transition-all duration-300 shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center"
                   >
                     {isSubmitting ? (
                       <>
-                        <div className="animate-spin rounded-full h-4 w-4 md:h-5 md:w-5 border-b-2 border-white mr-2"></div>
-                        <span>Submitting...</span>
+                        <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                        Submitting...
                       </>
                     ) : (
-                      <span>Submit Application</span>
+                      <>
+                        <Send className="h-5 w-5 mr-2" />
+                        Submit Application
+                      </>
                     )}
                   </button>
+                  <p className="text-xs text-white/60 text-center mt-3">
+                    We'll review your application and contact you within 24 hours
+                  </p>
                 </div>
               </form>
             </div>

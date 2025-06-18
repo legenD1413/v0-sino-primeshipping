@@ -30,7 +30,7 @@ import {
   ArrowRight,
 } from "lucide-react"
 
-export default function SPS99Page() {
+export default function SPS19TTPage() {
   const router = useRouter()
   const [isLoaded, setIsLoaded] = useState(false)
   // 表单状态管理
@@ -125,7 +125,7 @@ export default function SPS99Page() {
   return (
     <div className="flex flex-col min-h-screen">
       {/* Hero Section */}
-      <section className="relative flex flex-col items-center justify-center px-4 py-16 sm:py-20 md:py-24 lg:py-32 xl:py-40 overflow-hidden min-h-screen sm:min-h-0">
+      <section className="relative flex flex-col items-center justify-center px-4 py-24 md:py-32 lg:py-40 overflow-hidden">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <Image src="/sps-99-hero-bg.png" alt="Global Supply Chain" fill className="object-cover" priority />
@@ -135,7 +135,7 @@ export default function SPS99Page() {
         </div>
 
         {/* Animated Particles */}
-        <div className="hidden md:block absolute inset-0 z-0 opacity-30">
+        <div className="absolute inset-0 z-0 opacity-30">
           <div
             className="absolute top-1/4 left-1/4 w-2 h-2 rounded-full bg-red-500 animate-pulse"
             style={{ animationDelay: "0.5s" }}
@@ -164,56 +164,56 @@ export default function SPS99Page() {
             isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
           }`}
         >
-          <div className="flex flex-col sm:flex-row items-center justify-center mb-4 sm:mb-6">
-            <div className="relative mb-2 sm:mb-0">
-              <Rocket className="h-8 w-8 sm:h-10 sm:w-10 mr-0 sm:mr-3 text-red-500 animate-pulse" />
-              <div className="absolute -top-1 -right-1 w-5 h-5 sm:w-6 sm:h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
+          <div className="flex items-center justify-center mb-4">
+            <div className="relative">
+              <Rocket className="h-10 w-10 mr-3 text-red-500 animate-pulse" />
+              <div className="absolute -top-1 -right-1 w-6 h-6 bg-red-500 rounded-full flex items-center justify-center text-white text-xs font-bold">
                 19
               </div>
             </div>
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent leading-tight">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight bg-gradient-to-r from-white to-gray-300 bg-clip-text text-transparent">
               Stop Juggling, Start Scaling
             </h1>
           </div>
 
-          <h2 className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-semibold mb-4 text-white/90 leading-tight">
+          <h2 className="text-2xl md:text-3xl font-semibold mb-4 text-white/90">
             Your Dedicated China Supply Chain Partner for TikTok & Crowdfunding Success
           </h2>
 
-          <p className="text-base sm:text-lg md:text-xl text-red-400 font-medium mb-6 border-b border-t border-red-500/30 py-2 inline-block text-center">
+          <p className="text-lg md:text-xl text-red-400 font-medium mb-6 border-b border-t border-red-500/30 py-2 inline-block">
             SPS 19 Pioneer Program - Powering Your Viral Products & Crowdfunding Campaigns
           </p>
 
           <p
-            className={`text-base sm:text-lg md:text-xl mb-6 sm:mb-8 max-w-3xl mx-auto text-gray-200 transition-all duration-1000 delay-300 leading-relaxed ${
+            className={`text-lg md:text-xl mb-8 max-w-3xl mx-auto text-gray-200 transition-all duration-1000 delay-300 ${
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
-            We handle the A-Z of China sourcing and shipping to Canada & USA, so you can focus on creating viral
+            We handle the A-Z of China sourcing and shipping to Canada & USA , so you can focus on creating viral
             content and delighting your backers.{" "}
-            <span className="font-semibold text-white block sm:inline mt-2 sm:mt-0">Exclusively for 19 Pioneer Partners.</span>
+            <span className="font-semibold text-white">Exclusively for 19 Pioneer Partners.</span>
           </p>
 
           <div
-            className={`flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 transition-all duration-1000 delay-500 w-full ${
+            className={`flex flex-col sm:flex-row items-center justify-center gap-4 transition-all duration-1000 delay-500 ${
               isLoaded ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
             }`}
           >
             <Link
               href="#apply"
-              className="group w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-red-600 hover:bg-red-700 text-white font-medium text-sm sm:text-base rounded-lg transition-all duration-300 flex items-center justify-center shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1"
+              className="group px-8 py-4 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-all duration-300 flex items-center shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1"
             >
-              <Shield className="h-4 w-4 sm:h-5 sm:w-5 mr-2 group-hover:animate-pulse" />
+              <Shield className="h-5 w-5 mr-2 group-hover:animate-pulse" />
               <span>Apply to Become a Pioneer Partner</span>
-              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+              <ArrowRight className="h-5 w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
             </Link>
 
             <Link
               href="#how-it-works"
-              className="group w-full sm:w-auto px-6 py-3 sm:px-8 sm:py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium text-sm sm:text-base rounded-lg transition-all duration-300 flex items-center justify-center border border-white/20 hover:border-white/40 hover:-translate-y-1"
+              className="group px-8 py-4 bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white font-medium rounded-md transition-all duration-300 flex items-center border border-white/20 hover:border-white/40 hover:-translate-y-1"
             >
               <span>Learn How SPS 19 Works</span>
-              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+              <ArrowRight className="h-5 w-5 ml-2 opacity-0 -translate-x-3 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
             </Link>
           </div>
         </div>
@@ -229,38 +229,38 @@ export default function SPS99Page() {
       </section>
 
       {/* Pain Points Section */}
-      <section className="bg-white py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden">
+      <section className="bg-white py-20 md:py-28 relative overflow-hidden">
         <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent opacity-30" />
         <div className="absolute -top-10 -left-10 w-40 h-40 bg-red-500/5 rounded-full blur-3xl" />
         <div className="absolute -bottom-20 -right-20 w-60 h-60 bg-red-500/5 rounded-full blur-3xl" />
 
         <div className="container-custom relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-gray-900 relative inline-block leading-tight">
+          <div className="text-center mb-16">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900 relative inline-block">
               Tired of China Supply Chain Nightmares?
-              <div className="absolute -bottom-2 sm:-bottom-3 left-1/2 transform -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
+              <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-2/3 h-1 bg-gradient-to-r from-transparent via-red-500 to-transparent"></div>
             </h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-600 max-w-3xl mx-auto mt-4 leading-relaxed px-4">
+            <p className="text-gray-600 max-w-3xl mx-auto">
               TikTok sellers and crowdfunding creators face unique challenges when sourcing from China. Here are the
               most common pain points we solve:
             </p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 lg:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 lg:gap-8">
             {/* Pain Point 1 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
+            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
 
-              <div className="flex flex-col mb-4 sm:mb-6 relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4">
-                  <div className="p-2 sm:p-3 bg-red-50 rounded-lg mr-0 sm:mr-4 mb-3 sm:mb-0 self-start group-hover:bg-red-100 transition-colors duration-300">
-                    <TrendingUp className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+              <div className="flex flex-col mb-6 relative">
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
+                    <TrendingUp className="h-8 w-8 text-red-500" />
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
                     Viral orders creating shipping chaos?
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed">
                   When your TikTok product goes viral, can your supply chain keep up? Don't let logistics bottlenecks kill
                   your momentum.
                 </p>
@@ -268,19 +268,19 @@ export default function SPS99Page() {
             </div>
 
             {/* Pain Point 2 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
+            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
 
-              <div className="flex flex-col mb-4 sm:mb-6 relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4">
-                  <div className="p-2 sm:p-3 bg-red-50 rounded-lg mr-0 sm:mr-4 mb-3 sm:mb-0 self-start group-hover:bg-red-100 transition-colors duration-300">
-                    <Clock className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+              <div className="flex flex-col mb-6 relative">
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
+                    <Clock className="h-8 w-8 text-red-500" />
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
                     Worried about crowdfunding deadlines?
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed">
                   Missing backer deadlines damages trust and reputation. Our dedicated team ensures your crowdfunding
                   promises are kept.
                 </p>
@@ -288,19 +288,19 @@ export default function SPS99Page() {
             </div>
 
             {/* Pain Point 3 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
+            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
 
-              <div className="flex flex-col mb-4 sm:mb-6 relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4">
-                  <div className="p-2 sm:p-3 bg-red-50 rounded-lg mr-0 sm:mr-4 mb-3 sm:mb-0 self-start group-hover:bg-red-100 transition-colors duration-300">
-                    <MessageSquare className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+              <div className="flex flex-col mb-6 relative">
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
+                    <MessageSquare className="h-8 w-8 text-red-500" />
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
                     Lacking expertise with China suppliers?
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed">
                   Language barriers and cultural differences shouldn't cost you money. Our bilingual team negotiates the
                   best terms on your behalf.
                 </p>
@@ -308,19 +308,19 @@ export default function SPS99Page() {
             </div>
 
             {/* Pain Point 4 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
+            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
 
-              <div className="flex flex-col mb-4 sm:mb-6 relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4">
-                  <div className="p-2 sm:p-3 bg-red-50 rounded-lg mr-0 sm:mr-4 mb-3 sm:mb-0 self-start group-hover:bg-red-100 transition-colors duration-300">
-                    <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+              <div className="flex flex-col mb-6 relative">
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
+                    <BarChart3 className="h-8 w-8 text-red-500" />
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
                     Struggling with fluctuating volumes?
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed">
                   From zero to thousands of orders overnight - we scale with your success, providing flexible solutions
                   for unpredictable demand.
                 </p>
@@ -328,19 +328,19 @@ export default function SPS99Page() {
             </div>
 
             {/* Pain Point 5 */}
-            <div className="group bg-white p-4 sm:p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
+            <div className="group bg-white p-6 lg:p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-500 border border-gray-100 hover:border-red-100 relative overflow-hidden">
               <div className="absolute top-0 right-0 w-20 h-20 bg-red-500/5 rounded-full -translate-x-5 -translate-y-5 group-hover:scale-150 transition-all duration-500" />
 
-              <div className="flex flex-col mb-4 sm:mb-6 relative">
-                <div className="flex flex-col sm:flex-row sm:items-center mb-3 sm:mb-4">
-                  <div className="p-2 sm:p-3 bg-red-50 rounded-lg mr-0 sm:mr-4 mb-3 sm:mb-0 self-start group-hover:bg-red-100 transition-colors duration-300">
-                    <Compass className="h-6 w-6 sm:h-8 sm:w-8 text-red-500" />
+              <div className="flex flex-col mb-6 relative">
+                <div className="flex items-center mb-4">
+                  <div className="p-3 bg-red-50 rounded-lg mr-4 group-hover:bg-red-100 transition-colors duration-300">
+                    <Compass className="h-8 w-8 text-red-500" />
                   </div>
-                  <h3 className="text-base sm:text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
+                  <h3 className="text-lg lg:text-xl font-bold text-gray-900 group-hover:text-red-500 transition-colors duration-300 leading-tight">
                     Lost in the maze of global logistics?
                   </h3>
                 </div>
-                <p className="text-sm sm:text-base text-gray-700 leading-relaxed">
+                <p className="text-gray-700 leading-relaxed">
                   Navigate the complexities of global supply chains with our end-to-end solution, from factory floor to
                   customer door.
                 </p>
@@ -1242,71 +1242,71 @@ export default function SPS99Page() {
       </section>
 
       {/* Who is this for Section */}
-      <section className="bg-gray-50 py-12 sm:py-16 md:py-20 lg:py-28 relative overflow-hidden">
+      <section className="bg-gray-50 py-20 md:py-28 relative overflow-hidden">
         <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-red-500/50 to-transparent" />
         <div className="absolute -top-40 -left-40 w-80 h-80 bg-red-50 rounded-full opacity-50 blur-3xl" />
         <div className="absolute -bottom-40 -right-40 w-80 h-80 bg-red-50 rounded-full opacity-50 blur-3xl" />
 
         <div className="container-custom relative z-10">
-          <div className="text-center mb-12 sm:mb-16">
+          <div className="text-center mb-16">
             <div className="inline-block mb-4">
-              <div className="flex items-center justify-center p-2 sm:p-3 bg-red-50 rounded-full mb-3 sm:mb-4 mx-auto w-16 h-16 sm:w-20 sm:h-20">
-                <Target className="h-8 w-8 sm:h-10 sm:w-10 text-red-500" />
+              <div className="flex items-center justify-center p-3 bg-red-50 rounded-full mb-4 mx-auto w-20 h-20">
+                <Target className="h-10 w-10 text-red-500" />
               </div>
             </div>
-            <h2 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4 text-gray-900 leading-tight px-4">
+            <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900">
               Is the SPS 19 Pioneer Program Right for You?
             </h2>
-            <div className="w-16 sm:w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {/* TikTok Sellers */}
             <div className="group bg-white rounded-xl overflow-hidden shadow-lg hover:shadow-xl transition-all duration-500 hover:-translate-y-2">
-              <div className="h-48 sm:h-56 relative">
+              <div className="h-56 relative">
                 <Image src="/tiktok-viral-products.png" alt="TikTok Sellers" fill className="object-cover" />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent flex items-end">
-                  <div className="p-4 sm:p-6">
-                    <div className="flex flex-col sm:flex-row sm:items-center mb-2">
-                      <div className="bg-red-500 p-2 rounded-lg mr-0 sm:mr-3 mb-2 sm:mb-0 self-start">
-                        <TrendingUp className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                  <div className="p-6">
+                    <div className="flex items-center mb-2">
+                      <div className="bg-red-500 p-2 rounded-lg mr-3">
+                        <TrendingUp className="h-6 w-6 text-white" />
                       </div>
-                      <h3 className="text-white text-xl sm:text-2xl font-bold">TikTok Sellers</h3>
+                      <h3 className="text-white text-2xl font-bold">TikTok Sellers</h3>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="p-4 sm:p-6">
-                <p className="text-gray-700 text-sm sm:text-base mb-4 sm:mb-6 border-l-4 border-red-500 pl-3 sm:pl-4 italic">
+              <div className="p-6">
+                <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
                   Selling China-sourced products, needing reliable fulfillment for viral growth in US & Canada.
                 </p>
-                <ul className="space-y-2 sm:space-y-3">
+                <ul className="space-y-3">
                   <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1 flex-shrink-0">
-                      <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
+                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
+                      <Check className="h-4 w-4 text-red-500" />
                     </div>
-                    <span className="text-gray-700 text-sm sm:text-base">Ready for sudden viral demand spikes</span>
+                    <span className="text-gray-700">Ready for sudden viral demand spikes</span>
                   </li>
                   <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1 flex-shrink-0">
-                      <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
+                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
+                      <Check className="h-4 w-4 text-red-500" />
                     </div>
-                    <span className="text-gray-700 text-sm sm:text-base">Fast shipping to maintain momentum</span>
+                    <span className="text-gray-700">Fast shipping to maintain momentum</span>
                   </li>
                   <li className="flex items-start">
-                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1 flex-shrink-0">
-                      <Check className="h-3 w-3 sm:h-4 sm:w-4 text-red-500" />
+                    <div className="bg-red-100 p-1 rounded-full mr-3 mt-1">
+                      <Check className="h-4 w-4 text-red-500" />
                     </div>
-                    <span className="text-gray-700 text-sm sm:text-base">Quality control for 5-star reviews</span>
+                    <span className="text-gray-700">Quality control for 5-star reviews</span>
                   </li>
                 </ul>
-                <div className="mt-4 sm:mt-6 pt-4 sm:pt-6 border-t border-gray-100">
+                <div className="mt-6 pt-6 border-t border-gray-100">
                   <Link
-                    href="ps-99/sps-19tt"
-                    className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300 text-sm sm:text-base"
+                    href="#apply"
+                    className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
                   >
                     <span>Learn if you qualify</span>
-                    <ArrowRight className="h-3 w-3 sm:h-4 sm:w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
+                    <ArrowRight className="h-4 w-4 ml-2 transform group-hover:translate-x-1 transition-transform duration-300" />
                   </Link>
                 </div>
               </div>
@@ -1353,7 +1353,7 @@ export default function SPS99Page() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-100">
                   <Link
-                    href="ps-99/sps-19cc"
+                    href="#apply"
                     className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
                   >
                     <span>Learn if you qualify</span>
@@ -1409,7 +1409,7 @@ export default function SPS99Page() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-100">
                   <Link
-                    href="ps-99/sps-19eb"
+                    href="#apply"
                     className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
                   >
                     <span>Learn if you qualify</span>
@@ -1550,77 +1550,77 @@ export default function SPS99Page() {
             <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8 md:gap-12 lg:gap-16 items-start">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-16 items-start">
             <div className="lg:col-span-2">
-              <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 flex items-center">
-                <div className="bg-red-500 p-2 rounded-lg mr-3 flex-shrink-0">
-                  <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-white" />
+              <h3 className="text-2xl font-bold mb-8 flex items-center">
+                <div className="bg-red-500 p-2 rounded-lg mr-3">
+                  <CheckCircle className="h-6 w-6 text-white" />
                 </div>
-                <span>Membership Criteria</span>
+                Membership Criteria
               </h3>
-              <ul className="space-y-4 md:space-y-6 mb-8 md:mb-10">
+              <ul className="space-y-6 mb-10">
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 bg-green-500/20 backdrop-blur-sm rounded-full p-2 mr-3 md:mr-4">
-                    <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-green-400" />
+                  <div className="flex-shrink-0 bg-green-500/20 backdrop-blur-sm rounded-full p-2 mr-4">
+                    <CheckCircle className="h-6 w-6 text-green-400" />
                   </div>
                   <div>
-                    <span className="font-semibold text-lg md:text-xl block mb-1">Stable sourcing needs from China</span>
-                    <p className="text-white/80 text-sm md:text-base mt-1 leading-relaxed">Regular orders that benefit from consistent management</p>
+                    <span className="font-semibold text-xl block mb-1">Stable sourcing needs from China</span>
+                    <p className="text-white/80 mt-1 leading-relaxed">Regular orders that benefit from consistent management</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 bg-green-500/20 backdrop-blur-sm rounded-full p-2 mr-3 md:mr-4">
-                    <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-green-400" />
+                  <div className="flex-shrink-0 bg-green-500/20 backdrop-blur-sm rounded-full p-2 mr-4">
+                    <CheckCircle className="h-6 w-6 text-green-400" />
                   </div>
                   <div>
-                    <span className="font-semibold text-lg md:text-xl block mb-1">Growth-oriented business</span>
-                    <p className="text-white/80 text-sm md:text-base mt-1 leading-relaxed">Clear plans for scaling your TikTok or crowdfunding success</p>
+                    <span className="font-semibold text-xl block mb-1">Growth-oriented business</span>
+                    <p className="text-white/80 mt-1 leading-relaxed">Clear plans for scaling your TikTok or crowdfunding success</p>
                   </div>
                 </li>
                 <li className="flex items-start">
-                  <div className="flex-shrink-0 bg-green-500/20 backdrop-blur-sm rounded-full p-2 mr-3 md:mr-4">
-                    <CheckCircle className="h-5 w-5 md:h-6 md:w-6 text-green-600" />
+                  <div className="flex-shrink-0 bg-green-500/20 backdrop-blur-sm rounded-full p-2 mr-4">
+                    <CheckCircle className="h-6 w-6 text-green-600" />
                   </div>
                   <div>
-                    <span className="font-semibold text-lg md:text-xl block mb-1">Value sincere, long-term partnership</span>
-                    <p className="text-white/80 text-sm md:text-base mt-1 leading-relaxed">Looking for a true partner, not just a service provider</p>
+                    <span className="font-semibold text-xl block mb-1">Value sincere, long-term partnership</span>
+                    <p className="text-white/80 mt-1 leading-relaxed">Looking for a true partner, not just a service provider</p>
                   </div>
                 </li>
               </ul>
             </div>
 
-            <div className="lg:col-span-3 bg-white/10 backdrop-blur-sm p-6 md:p-8 rounded-xl border border-white/20 shadow-xl">
-              <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center">Start Your Application</h3>
+            <div className="lg:col-span-3 bg-white/10 backdrop-blur-sm p-8 rounded-xl border border-white/20 shadow-xl">
+              <h3 className="text-2xl font-bold mb-8 text-center">Start Your Application</h3>
               
               {/* 状态提示 */}
               {submitStatus === 'success' && (
-                <div className="mb-4 md:mb-6 p-3 md:p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-300">
-                  <div className="flex items-center text-sm md:text-base">
-                    <CheckCircle className="h-4 w-4 md:h-5 md:w-5 mr-2 flex-shrink-0" />
-                    <span>{submitMessage}</span>
+                <div className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-300">
+                  <div className="flex items-center">
+                    <CheckCircle className="h-5 w-5 mr-2" />
+                    {submitMessage}
                   </div>
                 </div>
               )}
               
               {submitStatus === 'error' && (
-                <div className="mb-4 md:mb-6 p-3 md:p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300">
-                  <div className="flex items-center text-sm md:text-base">
-                    <div className="h-4 w-4 md:h-5 md:w-5 mr-2 rounded-full bg-red-500 flex items-center justify-center flex-shrink-0">
+                <div className="mb-6 p-4 bg-red-500/20 border border-red-500/30 rounded-lg text-red-300">
+                  <div className="flex items-center">
+                    <div className="h-5 w-5 mr-2 rounded-full bg-red-500 flex items-center justify-center">
                       <span className="text-white text-xs">!</span>
                     </div>
-                    <span>{submitMessage}</span>
+                    {submitMessage}
                   </div>
                 </div>
               )}
 
-              <form onSubmit={handleSubmit} className="space-y-6 md:space-y-8">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+              <form onSubmit={handleSubmit} className="space-y-8">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 {/* Contact Information */}
-                <div className="space-y-3 md:space-y-4">
-                  <h4 className="text-base md:text-lg font-semibold text-white border-b border-white/20 pb-2">Contact Information</h4>
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold text-white border-b border-white/20 pb-2">Contact Information</h4>
                   
                 <div>
-                  <label htmlFor="fullName" className="block text-sm font-medium mb-2 text-white">
+                  <label htmlFor="fullName" className="block text-sm font-medium mb-2">
                       Your Name *
                   </label>
                   <input
@@ -1629,14 +1629,14 @@ export default function SPS99Page() {
                     name="fullName"
                     value={formData.fullName}
                     onChange={handleInputChange}
-                    className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50"
+                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                     placeholder="Your name"
                     required
                   />
                 </div>
 
                   <div>
-                    <label htmlFor="company" className="block text-sm font-medium mb-2 text-white">
+                    <label htmlFor="company" className="block text-sm font-medium mb-2">
                       Company/Store Name *
                     </label>
                     <input
@@ -1645,14 +1645,14 @@ export default function SPS99Page() {
                       name="company"
                       value={formData.company}
                       onChange={handleInputChange}
-                      className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50"
+                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                       placeholder="Your company or store name"
                       required
                     />
                   </div>
 
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2 text-white">
+                  <label htmlFor="email" className="block text-sm font-medium mb-2">
                       Email Address *
                   </label>
                   <input
@@ -1661,14 +1661,14 @@ export default function SPS99Page() {
                     name="email"
                     value={formData.email}
                     onChange={handleInputChange}
-                    className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50"
+                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                     placeholder="Your email"
                     required
                   />
                 </div>
 
                 <div>
-                    <label htmlFor="country" className="block text-sm font-medium mb-2 text-white">
+                    <label htmlFor="country" className="block text-sm font-medium mb-2">
                       Country *
                     </label>
                     <select
@@ -1676,7 +1676,7 @@ export default function SPS99Page() {
                       name="country"
                       value={formData.country}
                       onChange={handleInputChange}
-                      className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                       required
                     >
                       <option value="" disabled className="text-gray-700">Select your country</option>
@@ -1688,11 +1688,11 @@ export default function SPS99Page() {
                 </div>
 
                   {/* Business Information */}
-                  <div className="space-y-3 md:space-y-4">
-                    <h4 className="text-base md:text-lg font-semibold text-white border-b border-white/20 pb-2">Business Information</h4>
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-white border-b border-white/20 pb-2">Business Information</h4>
                   
                   <div>
-                    <label className="block text-sm font-medium mb-3 text-white">
+                    <label className="block text-sm font-medium mb-3">
                       Primary Sales Platform * (Select all that apply)
                     </label>
                     <div className="space-y-2">
@@ -1704,7 +1704,7 @@ export default function SPS99Page() {
                         { value: 'crowdfunding', label: 'Crowdfunding Platform' },
                         { value: 'other', label: 'Other' }
                       ].map((platform) => (
-                        <label key={platform.value} className="flex items-center space-x-3 cursor-pointer py-1">
+                        <label key={platform.value} className="flex items-center space-x-3 cursor-pointer">
                           <input
                             type="checkbox"
                             value={platform.value}
@@ -1718,16 +1718,16 @@ export default function SPS99Page() {
                                   : prev.salesPlatforms.filter(p => p !== value)
                               }));
                             }}
-                            className="w-4 h-4 md:w-5 md:h-5 rounded border-gray-600 text-red-600 focus:ring-red-500 focus:ring-2"
+                            className="rounded border-gray-600 text-red-600 focus:ring-red-500"
                           />
-                          <span className="text-white text-sm md:text-base">{platform.label}</span>
+                          <span className="text-white text-sm">{platform.label}</span>
                         </label>
                       ))}
                     </div>
                   </div>
 
                   <div>
-                    <label htmlFor="productCategories" className="block text-sm font-medium mb-2 text-white">
+                    <label htmlFor="productCategories" className="block text-sm font-medium mb-2">
                       Main Product Categories *
                   </label>
                   <select
@@ -1735,7 +1735,7 @@ export default function SPS99Page() {
                       name="productCategories"
                       value={formData.productCategories}
                     onChange={handleInputChange}
-                    className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                     required
                   >
                     <option value="" disabled className="text-gray-700">Select product category</option>
@@ -1758,7 +1758,7 @@ export default function SPS99Page() {
                 </div>
 
                 <div>
-                    <label htmlFor="monthlyOrderVolume" className="block text-sm font-medium mb-2 text-white">
+                    <label htmlFor="monthlyOrderVolume" className="block text-sm font-medium mb-2">
                       Monthly Order Volume *
                   </label>
                     <select
@@ -1766,7 +1766,7 @@ export default function SPS99Page() {
                       name="monthlyOrderVolume"
                       value={formData.monthlyOrderVolume}
                       onChange={handleInputChange}
-                      className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                       required
                     >
                       <option value="" disabled className="text-gray-700">Select monthly order volume</option>
@@ -1780,11 +1780,11 @@ export default function SPS99Page() {
                 </div>
 
                 {/* Logistics Needs - Full Width */}
-                <div className="space-y-3 md:space-y-4">
-                  <h4 className="text-base md:text-lg font-semibold text-white border-b border-white/20 pb-2">Logistics Needs</h4>
+                <div className="space-y-4">
+                  <h4 className="text-lg font-semibold text-white border-b border-white/20 pb-2">Logistics Needs</h4>
                   
                   <div>
-                    <label className="block text-sm font-medium mb-3 text-white">
+                    <label className="block text-sm font-medium mb-3">
                       Primary Business Challenge in Logistics * (Select all that apply)
                     </label>
                     <div className="space-y-2">
@@ -1797,7 +1797,7 @@ export default function SPS99Page() {
                         { value: 'other', label: 'Other' },
                         { value: 'none', label: 'None' }
                       ].map((challenge) => (
-                        <label key={challenge.value} className="flex items-center space-x-3 cursor-pointer py-1">
+                        <label key={challenge.value} className="flex items-center space-x-3 cursor-pointer">
                           <input
                             type="checkbox"
                             value={challenge.value}
@@ -1811,9 +1811,9 @@ export default function SPS99Page() {
                                   : prev.logisticsChallenges.filter(c => c !== value)
                               }));
                             }}
-                            className="w-4 h-4 md:w-5 md:h-5 rounded border-gray-600 text-red-600 focus:ring-red-500 focus:ring-2"
+                            className="rounded border-gray-600 text-red-600 focus:ring-red-500"
                           />
-                          <span className="text-white text-sm md:text-base">{challenge.label}</span>
+                          <span className="text-white text-sm">{challenge.label}</span>
                         </label>
                       ))}
                     </div>
@@ -1821,7 +1821,7 @@ export default function SPS99Page() {
 
                   {formData.logisticsChallenges.includes('other') && (
                     <div>
-                      <label htmlFor="otherChallenge" className="block text-sm font-medium mb-2 text-white">
+                      <label htmlFor="otherChallenge" className="block text-sm font-medium mb-2">
                         Please describe other challenges
                       </label>
                       <input
@@ -1830,14 +1830,14 @@ export default function SPS99Page() {
                         name="otherChallenge"
                         value={formData.otherChallenge}
                         onChange={handleInputChange}
-                        className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50"
+                        className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                         placeholder="Describe your other logistics challenges"
                       />
                 </div>
                   )}
 
                 <div>
-                  <label htmlFor="description" className="block text-sm font-medium mb-2 text-white">
+                  <label htmlFor="description" className="block text-sm font-medium mb-2">
                       Briefly describe your needs *
                   </label>
                   <textarea
@@ -1846,27 +1846,20 @@ export default function SPS99Page() {
                     rows={4}
                     value={formData.description}
                     onChange={handleInputChange}
-                    className="w-full px-3 md:px-4 py-2 md:py-3 text-base border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300 placeholder-white/50 resize-none"
+                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
                       placeholder="Tell us about your specific needs and requirements"
                     required
                   />
                   </div>
                 </div>
 
-                <div className="pt-4">
+                <div>
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full px-6 py-3 md:py-4 text-base md:text-lg bg-red-600 hover:bg-red-700 text-white font-medium rounded-lg transition-all duration-300 shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0 flex items-center justify-center min-h-[44px] touch-target"
+                    className="w-full px-6 py-3 bg-red-600 hover:bg-red-700 text-white font-medium rounded-md transition-all duration-300 shadow-lg shadow-red-900/20 hover:shadow-red-900/40 hover:-translate-y-1 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                   >
-                    {isSubmitting ? (
-                      <>
-                        <div className="animate-spin rounded-full h-4 w-4 md:h-5 md:w-5 border-b-2 border-white mr-2"></div>
-                        <span>Submitting...</span>
-                      </>
-                    ) : (
-                      <span>Submit Application</span>
-                    )}
+                    {isSubmitting ? "Submitting..." : "Submit Application"}
                   </button>
                 </div>
               </form>
