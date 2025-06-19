@@ -6,7 +6,7 @@ import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
 import { ThemeProvider } from "@/components/theme-provider"
 import { CriticalImagesPreloader } from "@/components/critical-images-preloader"
-// import { StagewiseDevToolbar } from "@/components/stagewise-toolbar"
+import { StagewiseDevToolbar } from "@/components/stagewise-toolbar"
 import AdminNav from "@/components/admin-nav"
 import { Toaster } from "@/components/ui/toaster"
 import GoogleAnalytics from "@/components/google-analytics"
@@ -55,7 +55,7 @@ export default function RootLayout({
           <AdminNav />
           <Toaster />
         </ThemeProvider>
-        {/* <StagewiseDevToolbar /> */}
+        <StagewiseDevToolbar />
       </body>
     </html>
   )

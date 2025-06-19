@@ -437,17 +437,17 @@ export default function SPS19CCPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. In-depth Supply Chain Negotiation</h5>
                       <p className="text-gray-700 leading-relaxed">
                         Leveraging our extensive supply chain network and expertise in China, we screen, evaluate, and connect you with source factories or suppliers that best match your product positioning and quality requirements.
                       </p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Efficient Goods Procurement Execution</h5>
                       <p className="text-gray-700 leading-relaxed">
                         We act as your procurement agent, efficiently executing purchase orders, following up on production progress, and ensuring goods are delivered on quality, on quantity, and on time.
-              </p>
+                      </p>
                     </div>
                   </div>
                 </div>
@@ -536,26 +536,26 @@ export default function SPS19CCPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Efficient China Warehouse Receiving</h5>
                       <p className="text-gray-700 leading-relaxed">
                         Our consolidation warehouse in China receives goods from your various suppliers.
                       </p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Strict Goods Inspection</h5>
                       <p className="text-gray-700 leading-relaxed">
                         According to your standards and requirements, we conduct quantity counts, appearance checks, dimension/weight verification, and necessary quality spot-checks on incoming goods to ensure consistency with orders.
                       </p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Precise Labeling Operations</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-blue-600">Product Labeling:</span> Affix SKU barcodes, FNSKU labels (if bound for FBA), warning labels, ingredient labels, or other specific labels required by your crowdfunding project or destination market for each item.</p>
                         <p><span className="font-semibold text-green-600">Carton Labeling:</span> Standardized outer carton marks and shipping labels are applied according to first-mile logistics and destination overseas warehouse (e.g., Amazon FBA, third-party overseas warehouses) inbound standards.</p>
                       </div>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-200 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">4. Professional Repackaging & Kitting</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-purple-600">Compliance & Protection:</span> Replace packaging non-compliant with international shipping or destination requirements; reinforce fragile items; optimize packaging to reduce dimensional weight.</p>
@@ -649,7 +649,7 @@ export default function SPS19CCPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Diversified Logistics Solutions</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-blue-600">Sea Freight:</span> Most cost-effective for large-volume, non-urgent restocking</p>
@@ -657,11 +657,11 @@ export default function SPS19CCPage() {
                         <p><span className="font-semibold text-purple-600">Express Courier:</span> Fastest transit time for urgent, high-value items</p>
                       </div>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Full Customs Clearance Service</h5>
                       <p className="text-gray-700 leading-relaxed">Professional customs brokers handle export (China) and import (US/Canada) clearance.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Precise Overseas Warehouse Putaway</h5>
                       <p className="text-gray-700 leading-relaxed">Safe delivery to designated US/Canadian warehouses with complete unloading and putaway services.</p>
                     </div>
@@ -752,15 +752,15 @@ export default function SPS19CCPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Automatic Platform Order Sync</h5>
                       <p className="text-gray-700 leading-relaxed">Seamless integration of your crowdfunding platform data with our Order Management System (OMS) through CSV import or API.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Real-time Information Transfer</h5>
                       <p className="text-gray-700 leading-relaxed">Order details are automatically synchronized to our fulfillment system when customers place orders.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Two-Way Inventory Sync</h5>
                       <p className="text-gray-700 leading-relaxed">Real-time inventory updates prevent overselling and ensure accurate stock levels.</p>
                     </div>
@@ -851,11 +851,11 @@ export default function SPS19CCPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Intelligent Warehouse Management</h5>
                       <p className="text-gray-700 leading-relaxed">Systematic storage and management in US/Canada local fulfillment centers.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Precise Order Processing</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-blue-600">Picking:</span> Efficient and accurate item selection</p>
@@ -864,7 +864,7 @@ export default function SPS19CCPage() {
                         <p><span className="font-semibold text-orange-600">Shipping:</span> Optimal carrier selection and label printing</p>
                       </div>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Fast Local Delivery & Tracking</h5>
                       <p className="text-gray-700 leading-relaxed">Partner with local couriers for last-mile delivery with real-time tracking updates.</p>
                     </div>
@@ -964,19 +964,19 @@ export default function SPS19CCPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. SPS System Support</h5>
                       <p className="text-gray-700 leading-relaxed">Monitor and manage entire fulfillment process through our Service Performance System.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Proactive Information Feedback</h5>
                       <p className="text-gray-700 leading-relaxed">Detailed order fulfillment reports and operational data analysis provided periodically.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Comprehensive Report Coverage</h5>
                       <p className="text-gray-700 leading-relaxed">Orders processed, shipping rates, delivery times, inventory turnover, cost analysis, and KPIs.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-200 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">4. Visualized Data Dashboard</h5>
                       <p className="text-gray-700 leading-relaxed">Online dashboard for real-time inventory, orders, and logistics monitoring.</p>
                     </div>
@@ -1084,7 +1084,7 @@ export default function SPS19CCPage() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                   {/* Suitable Scenarios */}
-                  <div className="bg-white p-6 rounded-xl border-l-4 border-blue-500 shadow-md">
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
                     <h5 className="font-bold text-gray-900 mb-4 text-lg flex items-center">
                       <CheckCircle className="h-5 w-5 text-blue-500 mr-2" />
                       Suitable Scenarios
@@ -1110,7 +1110,7 @@ export default function SPS19CCPage() {
                   </div>
 
                   {/* Our Services */}
-                  <div className="bg-white p-6 rounded-xl border-l-4 border-green-500 shadow-md">
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
                     <h5 className="font-bold text-gray-900 mb-4 text-lg flex items-center">
                       <Package className="h-5 w-5 text-green-500 mr-2" />
                       Our Services
@@ -1136,7 +1136,7 @@ export default function SPS19CCPage() {
                   </div>
 
                   {/* Value for You */}
-                  <div className="bg-white p-6 rounded-xl border-l-4 border-orange-500 shadow-md">
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
                     <h5 className="font-bold text-gray-900 mb-4 text-lg flex items-center">
                       <Star className="h-5 w-5 text-orange-500 mr-2" />
                       Value for You
@@ -1190,7 +1190,7 @@ export default function SPS19CCPage() {
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
                   {/* Suitable Scenarios */}
-                  <div className="bg-white p-6 rounded-xl border-l-4 border-purple-500 shadow-md">
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
                     <h5 className="font-bold text-gray-900 mb-4 text-lg flex items-center">
                       <CheckCircle className="h-5 w-5 text-purple-500 mr-2" />
                       Suitable Scenarios
@@ -1216,7 +1216,7 @@ export default function SPS19CCPage() {
                   </div>
 
                   {/* Our Services (Two-Leg Logistics) */}
-                  <div className="bg-white p-6 rounded-xl border-l-4 border-green-500 shadow-md">
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
                     <h5 className="font-bold text-gray-900 mb-4 text-lg flex items-center">
                       <Package className="h-5 w-5 text-green-500 mr-2" />
                       Our Services (Two-Leg Logistics)
@@ -1238,7 +1238,7 @@ export default function SPS19CCPage() {
                   </div>
 
                   {/* Value for You */}
-                  <div className="bg-white p-6 rounded-xl border-l-4 border-orange-500 shadow-md">
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
                     <h5 className="font-bold text-gray-900 mb-4 text-lg flex items-center">
                       <Star className="h-5 w-5 text-orange-500 mr-2" />
                       Value for You
@@ -1518,7 +1518,38 @@ export default function SPS19CCPage() {
             <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900">
               Is the SPS 19 Pioneer Program Right for You?
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full mb-8"></div>
+            
+            {/* SPS Program Navigation */}
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-12">
+              <Link href="/sps-99/sps-19cc" className="group bg-red-50 p-4 rounded-lg border border-red-200 shadow-sm">
+                <div className="text-center">
+                  <div className="text-sm font-medium text-red-500">SPS PROGRAM</div>
+                  <div className="text-lg font-bold text-red-600">SPS 19CC</div>
+                </div>
+              </Link>
+              
+              <Link href="/sps-99/sps-19tt" className="group bg-white p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-md transition-all duration-300">
+                <div className="text-center">
+                  <div className="text-sm font-medium text-gray-500 group-hover:text-red-500 transition-colors">SPS PROGRAM</div>
+                  <div className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">SPS 19TT</div>
+                </div>
+              </Link>
+              
+              <Link href="/sps-99/sps-19eb" className="group bg-white p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-md transition-all duration-300">
+                <div className="text-center">
+                  <div className="text-sm font-medium text-gray-500 group-hover:text-red-500 transition-colors">SPS PROGRAM</div>
+                  <div className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">SPS 19EB</div>
+                </div>
+              </Link>
+              
+              <Link href="/sps-99/sps-19fba" className="group bg-white p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-md transition-all duration-300">
+                <div className="text-center">
+                  <div className="text-sm font-medium text-gray-500 group-hover:text-red-500 transition-colors">SPS PROGRAM</div>
+                  <div className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">SPS 19FBA</div>
+                </div>
+              </Link>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -1538,7 +1569,7 @@ export default function SPS19CCPage() {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
+                <p className="text-gray-700 mb-6 border border-gray-200 pl-4 italic">
                   Selling China-sourced products, needing reliable fulfillment for viral growth in US & Canada.
                 </p>
                 <ul className="space-y-3">
@@ -1589,7 +1620,7 @@ export default function SPS19CCPage() {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
+                <p className="text-gray-700 mb-6 border border-gray-200 pl-4 italic">
                   Needing to deliver quality products from China to backers on time, every time in US & Canada.
                 </p>
                 <ul className="space-y-3">
@@ -1645,7 +1676,7 @@ export default function SPS19CCPage() {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
+                <p className="text-gray-700 mb-6 border border-gray-200 pl-4 italic">
                   Valuing a dedicated, expert partner for their China supply chain to North America.
                 </p>
                 <ul className="space-y-3">

@@ -33,8 +33,7 @@ import {
 export default function SPS19EBPage() {
   const router = useRouter()
   const [isLoaded, setIsLoaded] = useState(false)
-  // 表单状态管理
-  const [formData, setFormData] = useState({
+  // 表单状态管�?  const [formData, setFormData] = useState({
     fullName: '',
     company: '',
     email: '',
@@ -105,8 +104,7 @@ export default function SPS19EBPage() {
           otherChallenge: '',
           description: ''
         })
-        // 跳转到感谢页面
-        setTimeout(() => {
+        // 跳转到感谢页�?        setTimeout(() => {
           router.push('/sps-99/thank-you-sp19')
         }, 1000)
       } else {
@@ -170,8 +168,7 @@ export default function SPS19EBPage() {
                 <Rocket className="h-12 w-12 sm:h-16 sm:w-16 text-white animate-pulse" />
               </div>
               <div className="absolute -top-2 -right-2 w-8 h-8 sm:w-10 sm:h-10 bg-gradient-to-br from-green-400 to-green-600 rounded-full flex items-center justify-center text-white text-sm sm:text-base font-bold shadow-lg">
-                ✓
-            </div>
+                �?            </div>
             </div>
             <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold tracking-tight bg-gradient-to-r from-white via-gray-100 to-white bg-clip-text text-transparent leading-tight">
               Scale Your E-commerce Brand Globally
@@ -198,7 +195,7 @@ export default function SPS19EBPage() {
           </p>
           
           <p className="text-sm sm:text-base md:text-lg text-gray-300 mb-8 sm:mb-10">
-            <em>✅ Trusted by over 500+ Independent E-commerce Brands</em>
+            <em>�?Trusted by over 500+ Independent E-commerce Brands</em>
           </p>
 
           <div
@@ -522,26 +519,26 @@ export default function SPS19EBPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Efficient China Warehouse Receiving</h5>
                       <p className="text-gray-700 leading-relaxed">
                         Our consolidation warehouse in China receives goods from your various suppliers.
                       </p>
                     </div>
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Strict Goods Inspection</h5>
                       <p className="text-gray-700 leading-relaxed">
                         According to your standards and requirements, we conduct quantity counts, appearance checks, dimension/weight verification, and necessary quality spot-checks on incoming goods to ensure consistency with orders.
                       </p>
                     </div>
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Precise Labeling Operations</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-blue-600">Product Labeling:</span> Affix SKU barcodes, FNSKU labels (if bound for FBA), warning labels, ingredient labels, or other specific labels required by your e-commerce platform or destination market for each item.</p>
                         <p><span className="font-semibold text-green-600">Carton Labeling:</span> Standardized outer carton marks and shipping labels are applied according to first-mile logistics and destination overseas warehouse (e.g., Amazon FBA, third-party overseas warehouses) inbound standards.</p>
                       </div>
                     </div>
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">4. Professional Repackaging & Kitting</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-purple-600">Compliance & Protection:</span> Replace packaging non-compliant with international shipping or destination requirements; reinforce fragile items; optimize packaging to reduce dimensional weight.</p>
@@ -635,7 +632,7 @@ export default function SPS19EBPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Diversified Logistics Solutions</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-blue-600">Sea Freight:</span> Most cost-effective for large-volume, non-urgent restocking</p>
@@ -643,11 +640,11 @@ export default function SPS19EBPage() {
                         <p><span className="font-semibold text-purple-600">Express Courier:</span> Fastest transit time for urgent, high-value items</p>
                       </div>
                     </div>
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Full Customs Clearance Service</h5>
                       <p className="text-gray-700 leading-relaxed">Professional customs brokers handle export (China) and import (US/Canada) clearance.</p>
                     </div>
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Precise Overseas Warehouse Putaway</h5>
                       <p className="text-gray-700 leading-relaxed">Safe delivery to designated US/Canadian warehouses with complete unloading and putaway services.</p>
                     </div>
@@ -738,15 +735,15 @@ export default function SPS19EBPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Automatic Platform Order Sync</h5>
                       <p className="text-gray-700 leading-relaxed">Seamless integration of your e-commerce platform with our Order Management System (OMS) through API.</p>
                     </div>
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Real-time Information Transfer</h5>
                       <p className="text-gray-700 leading-relaxed">Order details are automatically synchronized to our fulfillment system when customers place orders.</p>
                     </div>
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Two-Way Inventory Sync</h5>
                       <p className="text-gray-700 leading-relaxed">Real-time inventory updates prevent overselling and ensure accurate stock levels.</p>
                     </div>
@@ -837,11 +834,11 @@ export default function SPS19EBPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Intelligent Warehouse Management</h5>
                       <p className="text-gray-700 leading-relaxed">Systematic storage and management in US/Canada local fulfillment centers.</p>
                     </div>
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Precise Order Processing</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-blue-600">Picking:</span> Efficient and accurate item selection</p>
@@ -850,7 +847,7 @@ export default function SPS19EBPage() {
                         <p><span className="font-semibold text-orange-600">Shipping:</span> Optimal carrier selection and label printing</p>
                       </div>
                     </div>
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Fast Local Delivery & Tracking</h5>
                       <p className="text-gray-700 leading-relaxed">Partner with local couriers for last-mile delivery with real-time tracking updates.</p>
                     </div>
@@ -950,19 +947,19 @@ export default function SPS19EBPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. SPS System Support</h5>
                       <p className="text-gray-700 leading-relaxed">Monitor and manage entire fulfillment process through our Service Performance System.</p>
                     </div>
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Proactive Information Feedback</h5>
                       <p className="text-gray-700 leading-relaxed">Detailed order fulfillment reports and operational data analysis provided periodically.</p>
                     </div>
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Comprehensive Report Coverage</h5>
                       <p className="text-gray-700 leading-relaxed">Orders processed, shipping rates, delivery times, inventory turnover, cost analysis, and KPIs.</p>
                     </div>
-                    <div>
+                    <div >
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">4. Visualized Data Dashboard</h5>
                       <p className="text-gray-700 leading-relaxed">Online dashboard for real-time inventory, orders, and logistics monitoring.</p>
                     </div>
@@ -1708,38 +1705,7 @@ export default function SPS19EBPage() {
             <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900">
               Is the SPS 19 Pioneer Program Right for You?
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full mb-8"></div>
-            
-            {/* SPS Program Navigation */}
-            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-12">
-              <Link href="/sps-99/sps-19cc" className="group bg-white p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-md transition-all duration-300">
-                <div className="text-center">
-                  <div className="text-sm font-medium text-gray-500 group-hover:text-red-500 transition-colors">SPS PROGRAM</div>
-                  <div className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">SPS 19CC</div>
-                </div>
-              </Link>
-              
-              <Link href="/sps-99/sps-19tt" className="group bg-white p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-md transition-all duration-300">
-                <div className="text-center">
-                  <div className="text-sm font-medium text-gray-500 group-hover:text-red-500 transition-colors">SPS PROGRAM</div>
-                  <div className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">SPS 19TT</div>
-                </div>
-              </Link>
-              
-              <Link href="/sps-99/sps-19eb" className="group bg-red-50 p-4 rounded-lg border border-red-200 shadow-sm">
-                <div className="text-center">
-                  <div className="text-sm font-medium text-red-500">SPS PROGRAM</div>
-                  <div className="text-lg font-bold text-red-600">SPS 19EB</div>
-                </div>
-              </Link>
-              
-              <Link href="/sps-99/sps-19fba" className="group bg-white p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-md transition-all duration-300">
-                <div className="text-center">
-                  <div className="text-sm font-medium text-gray-500 group-hover:text-red-500 transition-colors">SPS PROGRAM</div>
-                  <div className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">SPS 19FBA</div>
-                </div>
-              </Link>
-            </div>
+            <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">
@@ -1784,7 +1750,7 @@ export default function SPS19EBPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-100">
                   <Link
-                    href="/sps-99/sps-19eb"
+                    href="/sps-99"
                     className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
                   >
                     <span>Apply to SPS 19 Program</span>
@@ -1835,7 +1801,7 @@ export default function SPS19EBPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-100">
                   <Link
-                    href="/services/direct-to-consumer-shipping"
+                    href="/get-quote"
                     className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
                   >
                     <span>Get Custom Solution</span>
@@ -2018,7 +1984,7 @@ export default function SPS19EBPage() {
             <div className="lg:col-span-3 bg-white/10 backdrop-blur-sm p-6 md:p-8 rounded-xl border border-white/20 shadow-xl">
               <h3 className="text-xl md:text-2xl font-bold mb-6 md:mb-8 text-center">Start Your Application</h3>
               
-              {/* 状态提示 */}
+              {/* 状态提�?*/}
               {submitStatus === 'success' && (
                 <div className="mb-6 p-4 bg-green-500/20 border border-green-500/30 rounded-lg text-green-300">
                   <div className="flex items-center">

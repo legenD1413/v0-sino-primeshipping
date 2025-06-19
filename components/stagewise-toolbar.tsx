@@ -4,9 +4,24 @@ import { useEffect, useState } from 'react'
 
 export function StagewiseDevToolbar() {
   const [isClient, setIsClient] = useState(false)
+  const [StagewiseToolbar, setStagewiseToolbar] = useState<any>(null)
 
   useEffect(() => {
     setIsClient(true)
+    
+    // 动态导入Stagewise工具栏以避免SSR问题
+    const loadStagewise = async () => {
+      try {
+        const { StagewiseToolbar: Toolbar } = await import('@stagewise/toolbar-next')
+        setStagewiseToolbar(() => Toolbar)
+      } catch (error) {
+        console.warn('Failed to load Stagewise toolbar:', error)
+      }
+    }
+
+    if (process.env.NODE_ENV === 'development' && process.env.NEXT_PUBLIC_DISABLE_STAGEWISE !== 'true') {
+      loadStagewise()
+    }
   }, [])
 
   // 只在开发模式下显示
@@ -24,7 +39,12 @@ export function StagewiseDevToolbar() {
     return null
   }
 
-  // 暂时显示一个占位符，等待 stagewise 包修复兼容性问题
+  // 如果Stagewise组件已加载，渲染它
+  if (StagewiseToolbar) {
+    return <StagewiseToolbar />
+  }
+
+  // 加载中的占位符
   return (
     <div style={{ 
       position: 'fixed', 
@@ -40,10 +60,7 @@ export function StagewiseDevToolbar() {
       boxShadow: '0 2px 8px rgba(0,0,0,0.2)',
       cursor: 'pointer'
     }}>
-      🔧 Stagewise 开发工具栏
-      <div style={{ fontSize: '10px', opacity: 0.8, marginTop: '2px' }}>
-        (等待包兼容性修复)
-      </div>
+      🔧 Stagewise 工具栏加载中...
     </div>
   )
 } 

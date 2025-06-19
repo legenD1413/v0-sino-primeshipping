@@ -118,6 +118,26 @@ export function Footer() {
                   SPS 19 Pioneer Program
                 </Link>
               </li>
+              <li>
+                <Link href="/sps-99/sps-19cc" className="text-muted-foreground hover:text-primary">
+                  SPS 19CC
+                </Link>
+              </li>
+              <li>
+                <Link href="/sps-99/sps-19tt" className="text-muted-foreground hover:text-primary">
+                  SPS 19TT
+                </Link>
+              </li>
+              <li>
+                <Link href="/sps-99/sps-19eb" className="text-muted-foreground hover:text-primary">
+                  SPS 19EB
+                </Link>
+              </li>
+              <li>
+                <Link href="/sps-99/sps-19fba" className="text-muted-foreground hover:text-primary">
+                  SPS 19FBA
+                </Link>
+              </li>
             </ul>
           </div>
         </div>

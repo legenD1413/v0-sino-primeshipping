@@ -378,23 +378,19 @@ export default function SPS19FBAPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Receiving & Quality Inspection</h5>
                       <p className="text-gray-700 leading-relaxed">
-                        Quantity counting, visual checks to ensure your products meet Amazon standards before prep.
+                        Quantity counting, visual checks to ensure your products meet Amazon's standards before any prep work begins.
                       </p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Meticulous Preparation</h5>
-                      <p className="text-gray-700 leading-relaxed">
-                        FNSKU labeling, suffocation warnings, shipping mark application according to FBA requirements.
-              </p>
+                    <div>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">2. FBA Labeling & Prep</h5>
+                      <p className="text-gray-700 leading-relaxed">Professional FNSKU labeling, poly-bagging, bundling, and any other prep required by Amazon's strict guidelines.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Custom Packaging</h5>
-                      <p className="text-gray-700 leading-relaxed">
-                        Repackaging, product bundling/kitting, reinforcement to meet Amazon's packaging requirements.
-                      </p>
+                    <div>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Safe Storage & Shipping to FBA</h5>
+                      <p className="text-gray-700 leading-relaxed">Secure warehousing and direct shipment to Amazon fulfillment centers with all required documentation.</p>
                     </div>
                   </div>
                 </div>
@@ -483,23 +479,17 @@ export default function SPS19FBAPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Ocean Freight</h5>
-                      <p className="text-gray-700 leading-relaxed">
-                        Most cost-effective, perfect for large volumes and non-urgent restocks.
-                      </p>
+                    <div>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Professional China Warehouse Operations</h5>
+                      <p className="text-gray-700 leading-relaxed">Expert receiving, inventory management, and quality control at our China consolidation facility.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Air Freight</h5>
-                      <p className="text-gray-700 leading-relaxed">
-                        The ideal balance of speed and cost for medium-sized shipments with time sensitivity.
-                      </p>
+                    <div>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">2. End-to-End Logistics Management</h5>
+                      <p className="text-gray-700 leading-relaxed">From China to Amazon warehouses, we handle customs, shipping, and compliance requirements.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
-                      <h5 className="font-bold text-gray-900 mb-3 text-lg">3. International Express</h5>
-                      <p className="text-gray-700 leading-relaxed">
-                        The fastest delivery for urgent restocks or small, high-value shipments.
-                      </p>
+                    <div>
+                      <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Strategic Partnership Approach</h5>
+                      <p className="text-gray-700 leading-relaxed">Long-term growth support with inventory planning, cost optimization, and scaling guidance.</p>
                     </div>
                   </div>
                 </div>
@@ -588,17 +578,17 @@ export default function SPS19FBAPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Expert Documentation Handling</h5>
                       <p className="text-gray-700 leading-relaxed">
                         Our expert brokerage team handles all import/export documentation and duty processes.
                       </p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Smooth Customs Clearance</h5>
                       <p className="text-gray-700 leading-relaxed">Ensuring your goods clear customs smoothly in the USA, Canada, Mexico, and the UK.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Direct FBA Warehouse Delivery</h5>
                       <p className="text-gray-700 leading-relaxed">Safe delivery directly to your designated Amazon FBA warehouse locations.</p>
                     </div>
@@ -689,15 +679,15 @@ export default function SPS19FBAPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Automatic Platform Order Sync</h5>
                       <p className="text-gray-700 leading-relaxed">Seamless integration of your TikTok Shop with our Order Management System (OMS) through API.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Real-time Information Transfer</h5>
                       <p className="text-gray-700 leading-relaxed">Order details are automatically synchronized to our fulfillment system when customers place orders.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Two-Way Inventory Sync</h5>
                       <p className="text-gray-700 leading-relaxed">Real-time inventory updates prevent overselling and ensure accurate stock levels.</p>
                     </div>
@@ -788,11 +778,11 @@ export default function SPS19FBAPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Intelligent Warehouse Management</h5>
                       <p className="text-gray-700 leading-relaxed">Systematic storage and management in US/Canada local fulfillment centers.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Precise Order Processing</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-blue-600">Picking:</span> Efficient and accurate item selection</p>
@@ -801,7 +791,7 @@ export default function SPS19FBAPage() {
                         <p><span className="font-semibold text-orange-600">Shipping:</span> Optimal carrier selection and label printing</p>
                       </div>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Fast Local Delivery & Tracking</h5>
                       <p className="text-gray-700 leading-relaxed">Partner with local couriers for last-mile delivery with real-time tracking updates.</p>
                     </div>
@@ -901,19 +891,19 @@ export default function SPS19FBAPage() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. SPS System Support</h5>
                       <p className="text-gray-700 leading-relaxed">Monitor and manage entire fulfillment process through our Service Performance System.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Proactive Information Feedback</h5>
                       <p className="text-gray-700 leading-relaxed">Detailed order fulfillment reports and operational data analysis provided periodically.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Comprehensive Report Coverage</h5>
                       <p className="text-gray-700 leading-relaxed">Orders processed, shipping rates, delivery times, inventory turnover, cost analysis, and KPIs.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-200 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">4. Visualized Data Dashboard</h5>
                       <p className="text-gray-700 leading-relaxed">Online dashboard for real-time inventory, orders, and logistics monitoring.</p>
                     </div>
@@ -984,16 +974,184 @@ export default function SPS19FBAPage() {
             </div>
           </div>
 
+          {/* Step 7: Professional FBA Prep & Flexible Shipping */}
+          <div className="mb-16">
+            <div className="relative mb-12">
+              <div className="absolute -left-4 top-0 w-1 h-full bg-gradient-to-b from-red-500 to-red-300 rounded-full opacity-30"></div>
+              <div className="bg-gradient-to-r from-red-500 via-red-600 to-red-700 p-1 rounded-2xl inline-block shadow-xl">
+                <div className="bg-white px-8 py-4 rounded-xl">
+                  <div className="flex items-center">
+                    <div className="bg-red-500 text-white text-lg font-bold rounded-full w-10 h-10 flex items-center justify-center mr-4 shadow-lg">
+                      7
+                    </div>
+                    <div>
+                      <h3 className="text-2xl md:text-3xl font-bold text-gray-900">Professional FBA Prep & Flexible Shipping</h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Approach 7.1: Professional FBA Prep */}
+            <div className="mb-16">
+              <div className="bg-gradient-to-br from-blue-50 to-white p-8 rounded-2xl border border-blue-100 shadow-lg hover:shadow-xl transition-all duration-300">
+                <h4 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+                  <div className="bg-gradient-to-br from-blue-100 to-blue-200 p-3 rounded-xl mr-4 shadow-md">
+                    <Package className="h-8 w-8 text-blue-600" />
+                  </div>
+                  Professional FBA Prep: Receiving, Inspection, and Meticulous Preparation
+                </h4>
+                
+                <div className="mb-8">
+                  <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                    This is the critical stage to ensure your products are <strong>compliant with Amazon's inbound standards</strong>. We handle every item with precision according to Amazon's latest policies and your custom requirements, mitigating the risk of rejection at the source.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  {/* Receiving & Inspection */}
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
+                    <h5 className="font-bold text-gray-900 mb-4 text-lg flex items-center">
+                      <CheckCircle className="h-5 w-5 text-blue-500 mr-2" />
+                      Receiving & Inspection
+                    </h5>
+                    <div className="text-gray-700">
+                      <p className="mb-3">We receive goods from your suppliers and perform services like quantity counting, visual inspection, and basic functional tests based on your requirements to ensure initial product quality.</p>
+                    </div>
+                  </div>
+
+                  {/* Precise Labeling */}
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
+                    <h5 className="font-bold text-gray-900 mb-4 text-lg flex items-center">
+                      <Target className="h-5 w-5 text-green-500 mr-2" />
+                      Precise Labeling
+                    </h5>
+                    <div className="space-y-3 text-gray-700">
+                      <div>
+                        <p className="font-semibold text-blue-600">Inner Label:</p>
+                        <p className="text-sm">We accurately print and apply the required FNSKU label to each of your products.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-green-600">Outer Carton Label:</p>
+                        <p className="text-sm">After the shipment plan is created, we print and affix clear FBA shipment labels to the outer cartons for quick identification and check-in at Amazon's fulfillment centers.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-orange-600">Other Labels:</p>
+                        <p className="text-sm">We apply any necessary warning labels, such as those for suffocation hazards or fragile items.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Repackaging */}
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
+                    <h5 className="font-bold text-gray-900 mb-4 text-lg flex items-center">
+                      <Send className="h-5 w-5 text-purple-500 mr-2" />
+                      Repackaging
+                    </h5>
+                    <div className="space-y-3 text-gray-700">
+                      <div>
+                        <p className="font-semibold text-purple-600">Compliance Packaging:</p>
+                        <p className="text-sm">We ensure all packaging is secure, sturdy, and meets Amazon's size and weight requirements (e.g., under 50 lbs/22.7kg per box).</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-indigo-600">Bundling/Kitting:</p>
+                        <p className="text-sm">We combine different products into new sellable units according to your marketing strategy.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-pink-600">Marketing Inserts:</p>
+                        <p className="text-sm">In compliance with Amazon policy, we can insert materials like thank-you cards or discount coupons.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Approach 7.2: Flexible International Shipping Solutions */}
+            <div className="mb-16">
+              <div className="bg-gradient-to-br from-purple-50 to-white p-8 rounded-2xl border border-purple-100 shadow-lg hover:shadow-xl transition-all duration-300">
+                <h4 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
+                  <div className="bg-gradient-to-br from-purple-100 to-purple-200 p-3 rounded-xl mr-4 shadow-md">
+                    <Send className="h-8 w-8 text-purple-600" />
+                  </div>
+                  Flexible International Shipping Solutions: From China Direct to FBA Warehouses
+                </h4>
+                
+                <div className="mb-8">
+                  <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                    We transport your fully prepped and compliant goods from our China warehouse to the designated Amazon fulfillment centers safely, compliantly, and economically.
+                  </p>
+                </div>
+
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                  {/* International Express */}
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
+                    <h5 className="font-bold text-gray-900 mb-4 text-lg flex items-center">
+                      <Zap className="h-5 w-5 text-purple-500 mr-2" />
+                      International Express
+                    </h5>
+                    <div className="space-y-3 text-gray-700">
+                      <div>
+                        <p className="font-semibold text-blue-600">Advantages:</p>
+                        <p className="text-sm">Fastest option (approx. 3-5 days), door-to-door service, simple process.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-green-600">Best for:</p>
+                        <p className="text-sm">Small shipments (typically &lt;100kg), high-value items, or urgent inventory replenishment.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Dedicated Air Freight Line */}
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
+                    <h5 className="font-bold text-gray-900 mb-4 text-lg flex items-center">
+                      <Target className="h-5 w-5 text-green-500 mr-2" />
+                      Dedicated Air Freight Line
+                    </h5>
+                    <div className="space-y-3 text-gray-700">
+                      <div>
+                        <p className="font-semibold text-blue-600">Advantages:</p>
+                        <p className="text-sm">Fast transit (approx. 7-10 days), more cost-effective than express for larger shipments.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-green-600">Best for:</p>
+                        <p className="text-sm">Medium-sized shipments (100kg-500kg) and products with time sensitivity.</p>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Dedicated Ocean Freight Line */}
+                  <div className="bg-white p-6 rounded-xl border border-gray-200 shadow-md">
+                    <h5 className="font-bold text-gray-900 mb-4 text-lg flex items-center">
+                      <Package className="h-5 w-5 text-orange-500 mr-2" />
+                      Dedicated Ocean Freight Line
+                    </h5>
+                    <div className="space-y-3 text-gray-700">
+                      <div>
+                        <p className="font-semibold text-blue-600">Advantages:</p>
+                        <p className="text-sm">Extremely cost-effective, especially for large-volume and bulky goods.</p>
+                      </div>
+                      <div>
+                        <p className="font-semibold text-green-600">Best for:</p>
+                        <p className="text-sm">Large shipments (&gt;500kg), non-seasonal products, and sellers with ample lead time for inventory planning.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <div className="text-center mt-16 p-10 bg-gradient-to-r from-red-50 via-white to-red-50 rounded-3xl border-2 border-red-100 shadow-xl">
             <div className="flex justify-center mb-6">
               <div className="flex space-x-2">
-                {[1, 2, 3, 4, 5, 6].map((step) => (
+                {[1, 2, 3, 4, 5, 6, 7].map((step) => (
                   <div key={step} className="w-4 h-4 bg-red-500 rounded-full animate-pulse" style={{ animationDelay: `${step * 0.2}s` }}></div>
                 ))}
               </div>
             </div>
             <p className="text-3xl font-bold text-gray-900 mb-4">
-              Six integrated steps, one seamless solution for your China supply chain success.
+              Seven integrated steps, one seamless solution for your Amazon FBA success.
             </p>
           </div>
         </div>
@@ -1224,7 +1382,38 @@ export default function SPS19FBAPage() {
             <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold mb-4 text-gray-900">
               Is the SPS 19 Pioneer Program Right for You?
             </h2>
-            <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full"></div>
+            <div className="w-20 h-1 bg-gradient-to-r from-red-400 to-red-600 mx-auto rounded-full mb-8"></div>
+            
+            {/* SPS Program Navigation */}
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 mb-12">
+              <Link href="/sps-99/sps-19cc" className="group bg-white p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-md transition-all duration-300">
+                <div className="text-center">
+                  <div className="text-sm font-medium text-gray-500 group-hover:text-red-500 transition-colors">SPS PROGRAM</div>
+                  <div className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">SPS 19CC</div>
+                </div>
+              </Link>
+              
+              <Link href="/sps-99/sps-19tt" className="group bg-white p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-md transition-all duration-300">
+                <div className="text-center">
+                  <div className="text-sm font-medium text-gray-500 group-hover:text-red-500 transition-colors">SPS PROGRAM</div>
+                  <div className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">SPS 19TT</div>
+                </div>
+              </Link>
+              
+              <Link href="/sps-99/sps-19eb" className="group bg-white p-4 rounded-lg border border-gray-200 hover:border-red-300 hover:shadow-md transition-all duration-300">
+                <div className="text-center">
+                  <div className="text-sm font-medium text-gray-500 group-hover:text-red-500 transition-colors">SPS PROGRAM</div>
+                  <div className="text-lg font-bold text-gray-900 group-hover:text-red-600 transition-colors">SPS 19EB</div>
+                </div>
+              </Link>
+              
+              <Link href="/sps-99/sps-19fba" className="group bg-red-50 p-4 rounded-lg border border-red-200 shadow-sm">
+                <div className="text-center">
+                  <div className="text-sm font-medium text-red-500">SPS PROGRAM</div>
+                  <div className="text-lg font-bold text-red-600">SPS 19FBA</div>
+                </div>
+              </Link>
+            </div>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -1244,7 +1433,7 @@ export default function SPS19FBAPage() {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
+                <p className="text-gray-700 mb-6 border border-gray-200 rounded-lg p-3 italic">
                   Selling China-sourced products, needing reliable fulfillment for viral growth in US & Canada.
                 </p>
                 <ul className="space-y-3">
@@ -1269,7 +1458,7 @@ export default function SPS19FBAPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-100">
                   <Link
-                    href="#apply"
+                    href="/sps-99/sps-19tt"
                     className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
                   >
                     <span>Learn if you qualify</span>
@@ -1295,7 +1484,7 @@ export default function SPS19FBAPage() {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
+                <p className="text-gray-700 mb-6 border border-gray-200 rounded-lg p-3 italic">
                   Needing to deliver quality products from China to backers on time, every time in US & Canada.
                 </p>
                 <ul className="space-y-3">
@@ -1320,7 +1509,7 @@ export default function SPS19FBAPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-100">
                   <Link
-                    href="#apply"
+                    href="/sps-99/sps-19cc"
                     className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
                   >
                     <span>Learn if you qualify</span>
@@ -1351,7 +1540,7 @@ export default function SPS19FBAPage() {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
+                <p className="text-gray-700 mb-6 border border-gray-200 rounded-lg p-3 italic">
                   Valuing a dedicated, expert partner for their China supply chain to North America.
                 </p>
                 <ul className="space-y-3">
@@ -1376,7 +1565,7 @@ export default function SPS19FBAPage() {
                 </ul>
                 <div className="mt-6 pt-6 border-t border-gray-100">
                   <Link
-                    href="#apply"
+                    href="/sps-99/sps-19eb"
                     className="group flex items-center text-red-500 font-medium hover:text-red-700 transition-colors duration-300"
                   >
                     <span>Learn if you qualify</span>
@@ -1582,77 +1771,77 @@ export default function SPS19FBAPage() {
 
               <form onSubmit={handleSubmit} className="space-y-8">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                {/* Contact Information */}
-                <div className="space-y-4">
-                  <h4 className="text-lg font-semibold text-white border-b border-white/20 pb-2">Contact Information</h4>
+                  {/* Contact Information */}
+                  <div className="space-y-4">
+                    <h4 className="text-lg font-semibold text-white border-b border-white/20 pb-2">Contact Information</h4>
                   
-                <div>
-                  <label htmlFor="fullName" className="block text-sm font-medium mb-2">
-                      Your Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
-                    placeholder="Your name"
-                    required
-                  />
-                </div>
+                    <div>
+                      <label htmlFor="fullName" className="block text-sm font-medium mb-2">
+                        Your Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="fullName"
+                        name="fullName"
+                        value={formData.fullName}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                        placeholder="Your name"
+                        required
+                      />
+                    </div>
 
-                  <div>
-                    <label htmlFor="company" className="block text-sm font-medium mb-2">
-                      Company/Store Name *
-                    </label>
-                    <input
-                      type="text"
-                      id="company"
-                      name="company"
-                      value={formData.company}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
-                      placeholder="Your company or store name"
-                      required
-                    />
+                    <div>
+                      <label htmlFor="company" className="block text-sm font-medium mb-2">
+                        Company/Store Name *
+                      </label>
+                      <input
+                        type="text"
+                        id="company"
+                        name="company"
+                        value={formData.company}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                        placeholder="Your company or store name"
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="email" className="block text-sm font-medium mb-2">
+                        Email Address *
+                      </label>
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                        placeholder="Your email"
+                        required
+                      />
+                    </div>
+
+                    <div>
+                      <label htmlFor="country" className="block text-sm font-medium mb-2">
+                        Country *
+                      </label>
+                      <select
+                        id="country"
+                        name="country"
+                        value={formData.country}
+                        onChange={handleInputChange}
+                        className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
+                        required
+                      >
+                        <option value="" disabled className="text-gray-700">Select your country</option>
+                        <option value="usa" className="text-gray-900 bg-white">United States</option>
+                        <option value="canada" className="text-gray-900 bg-white">Canada</option>
+                        <option value="other" className="text-gray-900 bg-white">Other</option>
+                      </select>
+                    </div>
                   </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium mb-2">
-                      Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
-                    placeholder="Your email"
-                    required
-                  />
-                </div>
-
-                <div>
-                    <label htmlFor="country" className="block text-sm font-medium mb-2">
-                      Country *
-                    </label>
-                    <select
-                      id="country"
-                      name="country"
-                      value={formData.country}
-                      onChange={handleInputChange}
-                      className="w-full px-4 py-3 border border-gray-600 bg-white/10 backdrop-blur-sm text-white rounded-lg focus:ring-red-500 focus:border-red-500 transition-all duration-300"
-                      required
-                    >
-                      <option value="" disabled className="text-gray-700">Select your country</option>
-                      <option value="usa" className="text-gray-900 bg-white">United States</option>
-                      <option value="canada" className="text-gray-900 bg-white">Canada</option>
-                      <option value="other" className="text-gray-900 bg-white">Other</option>
-                    </select>
-                  </div>
-                </div>
 
                   {/* Business Information */}
                   <div className="space-y-4">
@@ -1669,6 +1858,7 @@ export default function SPS19FBAPage() {
                         { value: 'website-us', label: 'Independent Website US' },
                         { value: 'website-ca', label: 'Independent Website CA' },
                         { value: 'crowdfunding', label: 'Crowdfunding Platform' },
+                        { value: 'amazon', label: 'Amazon' },
                         { value: 'other', label: 'Other' }
                       ].map((platform) => (
                         <label key={platform.value} className="flex items-center space-x-3 cursor-pointer">
