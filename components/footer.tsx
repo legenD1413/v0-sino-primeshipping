@@ -40,7 +40,7 @@ export function Footer() {
           </div>
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase">Services</h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-xs">
              
            
              
@@ -92,7 +92,7 @@ export function Footer() {
           </div>
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase">Resources</h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-xs">
               <li className="hidden">
                 <Link href="/blog" className="text-muted-foreground hover:text-primary">
                   Blog
@@ -112,7 +112,7 @@ export function Footer() {
           </div>
           <div>
             <h3 className="mb-4 text-sm font-semibold uppercase">SPS Program</h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-xs">
               <li>
                 <Link href="/sps-99" className="text-muted-foreground hover:text-primary">
                   SPS 19 Pioneer Program

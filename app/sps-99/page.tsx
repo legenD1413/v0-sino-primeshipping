@@ -407,13 +407,13 @@ export default function SPS99Page() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. In-depth Supply Chain Negotiation</h5>
                       <p className="text-gray-700 leading-relaxed">
                         Leveraging our extensive supply chain network and expertise in China, we screen, evaluate, and connect you with source factories or suppliers that best match your product positioning and quality requirements.
                       </p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Efficient Goods Procurement Execution</h5>
                       <p className="text-gray-700 leading-relaxed">
                         We act as your procurement agent, efficiently executing purchase orders, following up on production progress, and ensuring goods are delivered on quality, on quantity, and on time.
@@ -506,26 +506,26 @@ export default function SPS99Page() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Efficient China Warehouse Receiving</h5>
                       <p className="text-gray-700 leading-relaxed">
                         Our consolidation warehouse in China receives goods from your various suppliers.
                       </p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Strict Goods Inspection</h5>
                       <p className="text-gray-700 leading-relaxed">
                         According to your standards and requirements, we conduct quantity counts, appearance checks, dimension/weight verification, and necessary quality spot-checks on incoming goods to ensure consistency with orders.
                       </p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Precise Labeling Operations</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-blue-600">Product Labeling:</span> Affix SKU barcodes, FNSKU labels (if bound for FBA), warning labels, ingredient labels, or other specific labels required by your TikTok Shop or destination market for each item.</p>
                         <p><span className="font-semibold text-green-600">Carton Labeling:</span> Standardized outer carton marks and shipping labels are applied according to first-mile logistics and destination overseas warehouse (e.g., Amazon FBA, third-party overseas warehouses) inbound standards.</p>
                       </div>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-200 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">4. Professional Repackaging & Kitting</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-purple-600">Compliance & Protection:</span> Replace packaging non-compliant with international shipping or destination requirements; reinforce fragile items; optimize packaging to reduce dimensional weight.</p>
@@ -619,7 +619,7 @@ export default function SPS99Page() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Diversified Logistics Solutions</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-blue-600">Sea Freight:</span> Most cost-effective for large-volume, non-urgent restocking</p>
@@ -627,11 +627,11 @@ export default function SPS99Page() {
                         <p><span className="font-semibold text-purple-600">Express Courier:</span> Fastest transit time for urgent, high-value items</p>
                       </div>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Full Customs Clearance Service</h5>
                       <p className="text-gray-700 leading-relaxed">Professional customs brokers handle export (China) and import (US/Canada) clearance.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Precise Overseas Warehouse Putaway</h5>
                       <p className="text-gray-700 leading-relaxed">Safe delivery to designated US/Canadian warehouses with complete unloading and putaway services.</p>
                     </div>
@@ -722,15 +722,15 @@ export default function SPS99Page() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Automatic Platform Order Sync</h5>
                       <p className="text-gray-700 leading-relaxed">Seamless integration of your TikTok Shop with our Order Management System (OMS) through API.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Real-time Information Transfer</h5>
                       <p className="text-gray-700 leading-relaxed">Order details are automatically synchronized to our fulfillment system when customers place orders.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Two-Way Inventory Sync</h5>
                       <p className="text-gray-700 leading-relaxed">Real-time inventory updates prevent overselling and ensure accurate stock levels.</p>
                     </div>
@@ -821,11 +821,11 @@ export default function SPS99Page() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. Intelligent Warehouse Management</h5>
                       <p className="text-gray-700 leading-relaxed">Systematic storage and management in US/Canada local fulfillment centers.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Precise Order Processing</h5>
                       <div className="space-y-3 text-gray-700 leading-relaxed">
                         <p><span className="font-semibold text-blue-600">Picking:</span> Efficient and accurate item selection</p>
@@ -834,7 +834,7 @@ export default function SPS99Page() {
                         <p><span className="font-semibold text-orange-600">Shipping:</span> Optimal carrier selection and label printing</p>
                       </div>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Fast Local Delivery & Tracking</h5>
                       <p className="text-gray-700 leading-relaxed">Partner with local couriers for last-mile delivery with real-time tracking updates.</p>
                     </div>
@@ -934,19 +934,19 @@ export default function SPS99Page() {
                     Core Services
                   </h4>
                   <div className="space-y-6">
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-500 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">1. SPS System Support</h5>
                       <p className="text-gray-700 leading-relaxed">Monitor and manage entire fulfillment process through our Service Performance System.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-400 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">2. Proactive Information Feedback</h5>
                       <p className="text-gray-700 leading-relaxed">Detailed order fulfillment reports and operational data analysis provided periodically.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-300 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">3. Comprehensive Report Coverage</h5>
                       <p className="text-gray-700 leading-relaxed">Orders processed, shipping rates, delivery times, inventory turnover, cost analysis, and KPIs.</p>
                     </div>
-                    <div className="bg-white p-6 rounded-xl border-l-4 border-red-200 shadow-md hover:shadow-lg transition-all duration-300">
+                    <div>
                       <h5 className="font-bold text-gray-900 mb-3 text-lg">4. Visualized Data Dashboard</h5>
                       <p className="text-gray-700 leading-relaxed">Online dashboard for real-time inventory, orders, and logistics monitoring.</p>
                     </div>
@@ -1277,7 +1277,7 @@ export default function SPS99Page() {
                 </div>
               </div>
               <div className="p-4 sm:p-6">
-                <p className="text-gray-700 text-sm sm:text-base mb-4 sm:mb-6 border-l-4 border-red-500 pl-3 sm:pl-4 italic">
+                <p className="text-gray-700 text-sm sm:text-base mb-4 sm:mb-6 border border-gray-200 rounded-lg p-3 italic">
                   Selling China-sourced products, needing reliable fulfillment for viral growth in US & Canada.
                 </p>
                 <ul className="space-y-2 sm:space-y-3">
@@ -1328,7 +1328,7 @@ export default function SPS99Page() {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
+                <p className="text-gray-700 mb-6 border border-gray-200 rounded-lg p-3 italic">
                   Needing to deliver quality products from China to backers on time, every time in US & Canada.
                 </p>
                 <ul className="space-y-3">
@@ -1384,7 +1384,7 @@ export default function SPS99Page() {
                 </div>
               </div>
               <div className="p-6">
-                <p className="text-gray-700 mb-6 border-l-4 border-red-500 pl-4 italic">
+                <p className="text-gray-700 mb-6 border border-gray-200 rounded-lg p-3 italic">
                   Valuing a dedicated, expert partner for their China supply chain to North America.
                 </p>
                 <ul className="space-y-3">
