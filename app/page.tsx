@@ -290,7 +290,7 @@ export default function Home() {
           </div>
 
           <div className="mt-12 text-center">
-            <Link href="/why-us">
+            <Link href="/about-us">
               <Button
                 variant="outline"
                 className="gap-2 border-blue-200 text-blue-700 hover:bg-blue-50 transition-all duration-200"

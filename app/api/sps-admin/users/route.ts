@@ -1,24 +1,17 @@
 import { NextRequest, NextResponse } from 'next/server'
-
-// 模拟用户数据存储（实际项目中应使用数据库）
-let users = [
-  { 
-    id: '1', 
-    username: 'admin', 
-    email: 'admin@sinoprimeshipping.com', 
-    password: 'sps2024!', // 实际项目中应该是哈希密码
-    role: 'admin' as const,
-    lastLogin: '2024-01-15 14:30:00'
-  },
-  { 
-    id: '2', 
-    username: 'user1', 
-    email: 'user1@sinoprimeshipping.com', 
-    password: 'user123', // 实际项目中应该是哈希密码
-    role: 'user' as const,
-    lastLogin: '2024-01-14 09:15:00'
-  }
-]
+import { 
+  getAllUsers, 
+  getUserById, 
+  getUserByUsername, 
+  addUser, 
+  updateUser, 
+  deleteUser, 
+  isUserExists,
+  hashPassword,
+  verifyPassword,
+  initializeDefaultUsers,
+  type User 
+} from '@/lib/users-data'
 
 // 验证管理员权限的简单函数
 function isAuthenticated(request: NextRequest) {
@@ -27,24 +20,38 @@ function isAuthenticated(request: NextRequest) {
   return authHeader === 'Bearer admin-token' // 简化的验证
 }
 
+// 安全地返回用户信息（不包含密码）
+function getSafeUser(user: User) {
+  const { password, ...safeUser } = user
+  return safeUser
+}
+
 // GET - 获取所有用户
 export async function GET(request: NextRequest) {
   try {
+    console.log('=== 用户列表API调用 ===')
+    
     // 在实际项目中应该验证管理员权限
     
     // 返回用户列表，但不包含密码
-    const safeUsers = users.map(user => ({
-      id: user.id,
-      username: user.username,
-      email: user.email,
-      role: user.role,
-      lastLogin: user.lastLogin
-    }))
+    const users = await getAllUsers()
+    console.log('从数据库获取的用户数量:', users.length)
+    console.log('用户详情:', users.map(u => ({ id: u.id, username: u.username, email: u.email })))
+    
+    const safeUsers = users.map(getSafeUser)
+    console.log('安全用户数据数量:', safeUsers.length)
 
-    return NextResponse.json({ users: safeUsers })
+    return NextResponse.json({ 
+      users: safeUsers,
+      debug: {
+        totalUsers: users.length,
+        timestamp: new Date().toISOString()
+      }
+    })
   } catch (error) {
+    console.error('获取用户列表失败:', error)
     return NextResponse.json(
-      { error: '获取用户列表失败' },
+      { error: '获取用户列表失败: ' + (error instanceof Error ? error.message : String(error)) },
       { status: 500 }
     )
   }
@@ -53,11 +60,15 @@ export async function GET(request: NextRequest) {
 // POST - 创建新用户
 export async function POST(request: NextRequest) {
   try {
+    console.log('=== 创建用户API调用 ===')
     const body = await request.json()
+    console.log('接收到的数据:', { ...body, password: body.password ? '***' : undefined })
+    
     const { username, email, password, role } = body
 
     // 验证必需字段
     if (!username || !email || !password) {
+      console.log('验证失败：缺少必需字段')
       return NextResponse.json(
         { error: '用户名、邮箱和密码不能为空' },
         { status: 400 }
@@ -65,11 +76,12 @@ export async function POST(request: NextRequest) {
     }
 
     // 检查用户名是否已存在
-    const existingUser = users.find(user => 
-      user.username === username || user.email === email
-    )
+    console.log('检查用户是否已存在...')
+    const exists = await isUserExists(username, email)
+    console.log('用户存在检查结果:', exists)
     
-    if (existingUser) {
+    if (exists) {
+      console.log('用户已存在，返回409错误')
       return NextResponse.json(
         { error: '用户名或邮箱已存在' },
         { status: 409 }
@@ -77,33 +89,40 @@ export async function POST(request: NextRequest) {
     }
 
     // 创建新用户
-    const newUser = {
-      id: Date.now().toString(),
+    console.log('开始创建新用户...')
+    const hashedPassword = hashPassword(password)
+    console.log('密码哈希长度:', hashedPassword.length)
+    
+    const newUser = await addUser({
       username,
       email,
-      password, // 实际项目中应该哈希密码
+      password: hashedPassword,
       role: role || 'user',
-      lastLogin: '从未登录'
+      lastLogin: '从未登录',
+      isActive: true
+    })
+
+    console.log('用户创建结果:', newUser ? { id: newUser.id, username: newUser.username } : '失败')
+
+    if (!newUser) {
+      console.log('创建用户失败：addUser返回null')
+      return NextResponse.json(
+        { error: '创建用户失败' },
+        { status: 500 }
+      )
     }
 
-    users.push(newUser)
-
+    console.log('=== 创建用户API完成 ===')
+    
     // 返回创建的用户信息（不包含密码）
-    const safeUser = {
-      id: newUser.id,
-      username: newUser.username,
-      email: newUser.email,
-      role: newUser.role,
-      lastLogin: newUser.lastLogin
-    }
-
     return NextResponse.json({ 
       message: '用户创建成功', 
-      user: safeUser 
+      user: getSafeUser(newUser)
     })
   } catch (error) {
+    console.error('创建用户失败:', error)
     return NextResponse.json(
-      { error: '创建用户失败' },
+      { error: '创建用户失败: ' + (error instanceof Error ? error.message : String(error)) },
       { status: 500 }
     )
   }
@@ -113,7 +132,10 @@ export async function POST(request: NextRequest) {
 export async function PUT(request: NextRequest) {
   try {
     const body = await request.json()
-    const { id, username, email, role, newPassword } = body
+    const { id, username, email, role, newPassword, isActive } = body
+
+    console.log('=== 密码修改API调用 ===')
+    console.log('接收到的数据:', { id, username, email, role, newPassword: newPassword ? '***' : undefined, isActive })
 
     if (!id) {
       return NextResponse.json(
@@ -123,37 +145,63 @@ export async function PUT(request: NextRequest) {
     }
 
     // 查找用户
-    const userIndex = users.findIndex(user => user.id === id)
+    const existingUser = await getUserById(id)
+    console.log('查找用户结果:', existingUser ? { id: existingUser.id, username: existingUser.username } : '用户不存在')
     
-    if (userIndex === -1) {
+    if (!existingUser) {
       return NextResponse.json(
         { error: '用户不存在' },
         { status: 404 }
       )
     }
 
-    // 更新用户信息
-    if (username) users[userIndex].username = username
-    if (email) users[userIndex].email = email
-    if (role) users[userIndex].role = role
-    if (newPassword) users[userIndex].password = newPassword
+    // 构建更新数据
+    const updates: Partial<User> = {}
+    
+    if (username !== undefined) updates.username = username
+    if (email !== undefined) updates.email = email
+    if (role !== undefined) updates.role = role
+    if (newPassword !== undefined) {
+      const hashedPassword = hashPassword(newPassword)
+      updates.password = hashedPassword
+      console.log('新密码哈希值:', hashedPassword)
+    }
+    if (isActive !== undefined) updates.isActive = isActive
 
-    // 返回更新后的用户信息（不包含密码）
-    const safeUser = {
-      id: users[userIndex].id,
-      username: users[userIndex].username,
-      email: users[userIndex].email,
-      role: users[userIndex].role,
-      lastLogin: users[userIndex].lastLogin
+    console.log('准备更新的字段:', Object.keys(updates))
+
+    // 更新用户信息
+    const updatedUser = await updateUser(id, updates)
+    console.log('更新结果:', updatedUser ? '成功' : '失败')
+
+    if (!updatedUser) {
+      return NextResponse.json(
+        { error: '更新用户信息失败' },
+        { status: 500 }
+      )
     }
 
+    // 验证密码是否真的更新了
+    if (newPassword !== undefined) {
+      const verificationResult = verifyPassword(newPassword, updatedUser.password)
+      console.log('密码验证结果:', verificationResult)
+    }
+
+    console.log('=== 密码修改API完成 ===')
+
+    // 返回更新后的用户信息（不包含密码）
     return NextResponse.json({ 
       message: '用户信息更新成功', 
-      user: safeUser 
+      user: getSafeUser(updatedUser),
+      debug: newPassword ? {
+        passwordUpdated: true,
+        verificationPassed: verifyPassword(newPassword, updatedUser.password)
+      } : undefined
     })
   } catch (error) {
+    console.error('更新用户信息失败:', error)
     return NextResponse.json(
-      { error: '更新用户信息失败' },
+      { error: '更新用户信息失败: ' + (error instanceof Error ? error.message : String(error)) },
       { status: 500 }
     )
   }
@@ -180,27 +228,22 @@ export async function DELETE(request: NextRequest) {
       )
     }
 
-    // 查找并删除用户
-    const userIndex = users.findIndex(user => user.id === userId)
+    // 删除用户
+    const deletedUser = await deleteUser(userId)
     
-    if (userIndex === -1) {
+    if (!deletedUser) {
       return NextResponse.json(
         { error: '用户不存在' },
         { status: 404 }
       )
     }
 
-    const deletedUser = users.splice(userIndex, 1)[0]
-
     return NextResponse.json({ 
       message: '用户删除成功',
-      deletedUser: {
-        id: deletedUser.id,
-        username: deletedUser.username,
-        email: deletedUser.email
-      }
+      deletedUser: getSafeUser(deletedUser)
     })
   } catch (error) {
+    console.error('删除用户失败:', error)
     return NextResponse.json(
       { error: '删除用户失败' },
       { status: 500 }

@@ -15,6 +15,7 @@ import { Textarea } from '@/components/ui/textarea'
 import BlogManagement from './components/BlogManagement'
 import FAQManagement from './components/FAQManagement'
 import AnalyticsManagement from './components/AnalyticsManagement'
+import UserManagement from './components/UserManagement'
 
 // 模拟用户数据
 interface User {
@@ -99,27 +100,7 @@ export default function SPSAdminPage() {
   const [showPassword, setShowPassword] = useState(false)
   const [loginError, setLoginError] = useState('')
   
-  // 用户管理状态
-  const [users, setUsers] = useState<User[]>([
-    { 
-      id: '1', 
-      username: 'admin', 
-      email: 'admin@sinoprimeshipping.com', 
-      role: 'admin',
-      lastLogin: '2024-01-15 14:30:00'
-    },
-    { 
-      id: '2', 
-      username: 'user1', 
-      email: 'user1@sinoprimeshipping.com', 
-      role: 'user',
-      lastLogin: '2024-01-14 09:15:00'
-    }
-  ])
-  
-  const [newUser, setNewUser] = useState({ username: '', email: '', password: '', role: 'user' as 'admin' | 'user' })
-  const [editingUser, setEditingUser] = useState<User | null>(null)
-  const [passwordReset, setPasswordReset] = useState({ userId: '', newPassword: '' })
+  // 用户管理状态（已迁移到UserManagement组件）
   
   // Postmark配置状态
   const [postmarkConfig, setPostmarkConfig] = useState<PostmarkConfig>({
@@ -277,26 +258,50 @@ export default function SPSAdminPage() {
   }
 
   // 登录处理
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoginError('')
     
-    // 简单的登录验证（实际项目中应该使用安全的认证系统）
-    if (loginForm.username === 'admin' && loginForm.password === 'sps2024!') {
-      setIsLoggedIn(true)
-      setAuthStatus(true)
-      toast({
-        title: "登录成功",
-        description: "欢迎回到SPS管理后台",
+    try {
+      // 使用API进行登录验证
+      const response = await fetch('/api/sps-admin/auth', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: loginForm.username,
+          password: loginForm.password
+        })
       })
-      // 登录成功后检查当前标签页，如果是表单管理则加载数据
-      setTimeout(() => {
-        if (activeTab === 'forms' && !hasLoadedForms) {
-          handleLoadFormSubmissions(1)
-        }
-      }, 1000)
-    } else {
-      setLoginError('用户名或密码错误')
+
+      const result = await response.json()
+
+      if (response.ok && result.success) {
+        setIsLoggedIn(true)
+        setAuthStatus(true)
+        
+        // 可以保存用户信息和token到localStorage
+        localStorage.setItem('sps_admin_user', JSON.stringify(result.user))
+        localStorage.setItem('sps_admin_token', result.token)
+        
+        toast({
+          title: "登录成功",
+          description: `欢迎回到SPS管理后台，${result.user.username}`,
+        })
+        
+        // 登录成功后检查当前标签页，如果是表单管理则加载数据
+        setTimeout(() => {
+          if (activeTab === 'forms' && !hasLoadedForms) {
+            handleLoadFormSubmissions(1)
+          }
+        }, 1000)
+      } else {
+        setLoginError(result.error || '登录失败')
+      }
+    } catch (error) {
+      console.error('登录时出错:', error)
+      setLoginError('网络错误，请重试')
     }
   }
 
@@ -305,68 +310,18 @@ export default function SPSAdminPage() {
     setIsLoggedIn(false)
     setAuthStatus(false)
     setLoginForm({ username: '', password: '' })
+    
+    // 清理存储的用户信息
+    localStorage.removeItem('sps_admin_user')
+    localStorage.removeItem('sps_admin_token')
+    
     toast({
       title: "已登出",
       description: "安全退出管理后台",
     })
   }
 
-  // 添加用户
-  const handleAddUser = () => {
-    if (!newUser.username || !newUser.email || !newUser.password) {
-      toast({
-        title: "错误",
-        description: "请填写所有必填字段",
-        variant: "destructive"
-      })
-      return
-    }
-
-    const user: User = {
-      id: Date.now().toString(),
-      username: newUser.username,
-      email: newUser.email,
-      role: newUser.role,
-      lastLogin: '从未登录'
-    }
-
-    setUsers([...users, user])
-    setNewUser({ username: '', email: '', password: '', role: 'user' })
-    
-    toast({
-      title: "用户创建成功",
-      description: `用户 ${user.username} 已成功创建`,
-    })
-  }
-
-  // 删除用户
-  const handleDeleteUser = (userId: string) => {
-    if (window.confirm('确定要删除这个用户吗？此操作不可撤销。')) {
-      setUsers(users.filter(user => user.id !== userId))
-      toast({
-        title: "用户已删除",
-        description: "用户已成功从系统中移除",
-      })
-    }
-  }
-
-  // 重置密码
-  const handlePasswordReset = () => {
-    if (!passwordReset.newPassword) {
-      toast({
-        title: "错误",
-        description: "请输入新密码",
-        variant: "destructive"
-      })
-      return
-    }
-
-    toast({
-      title: "密码重置成功",
-      description: "用户密码已成功重置",
-    })
-    setPasswordReset({ userId: '', newPassword: '' })
-  }
+  // 用户管理函数已迁移到UserManagement组件
 
   // 保存Postmark配置
   const handleSavePostmarkConfig = async () => {
@@ -1254,160 +1209,7 @@ export default function SPSAdminPage() {
 
           {/* 用户管理标签页 */}
           <TabsContent value="users" className="space-y-8">
-            {/* 添加新用户 */}
-            <Card>
-              <CardHeader className="pb-6">
-                <CardTitle className="flex items-center gap-3 text-xl">
-                  <Plus className="h-6 w-6" />
-                  添加新用户
-                </CardTitle>
-                <CardDescription className="text-base">
-                  创建新的系统用户账户
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                  <div className="space-y-2">
-                    <Label htmlFor="new-username">用户名</Label>
-                    <Input
-                      id="new-username"
-                      value={newUser.username}
-                      onChange={(e) => setNewUser({...newUser, username: e.target.value})}
-                      placeholder="输入用户名"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="new-email">邮箱</Label>
-                    <Input
-                      id="new-email"
-                      type="email"
-                      value={newUser.email}
-                      onChange={(e) => setNewUser({...newUser, email: e.target.value})}
-                      placeholder="输入邮箱地址"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="new-password">密码</Label>
-                    <Input
-                      id="new-password"
-                      type="password"
-                      value={newUser.password}
-                      onChange={(e) => setNewUser({...newUser, password: e.target.value})}
-                      placeholder="输入密码"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <Label htmlFor="new-role">角色</Label>
-                    <select
-                      id="new-role"
-                      value={newUser.role}
-                      onChange={(e) => setNewUser({...newUser, role: e.target.value as 'admin' | 'user'})}
-                      className="w-full h-10 px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                    >
-                      <option value="user">普通用户</option>
-                      <option value="admin">管理员</option>
-                    </select>
-                  </div>
-                </div>
-                                  <Button onClick={handleAddUser} className="mt-6 px-6 py-3 text-base">
-                  添加用户
-                </Button>
-              </CardContent>
-            </Card>
-
-            {/* 用户列表 */}
-            <Card>
-              <CardHeader className="pb-6">
-                <CardTitle className="text-xl">现有用户</CardTitle>
-                <CardDescription className="text-base">
-                  管理系统中的所有用户账户
-                </CardDescription>
-              </CardHeader>
-              <CardContent className="pt-6">
-                <div className="space-y-6">
-                  {users.map((user) => (
-                    <div key={user.id} className="flex items-center justify-between p-6 border rounded-lg">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-6">
-                          <div>
-                            <h3 className="font-medium text-lg">{user.username}</h3>
-                            <p className="text-base text-gray-600">{user.email}</p>
-                          </div>
-                          <div className="flex items-center gap-2">
-                            <span className={`px-2 py-1 text-xs rounded-full ${
-                              user.role === 'admin' 
-                                ? 'bg-red-100 text-red-800' 
-                                : 'bg-blue-100 text-blue-800'
-                            }`}>
-                              {user.role === 'admin' ? '管理员' : '普通用户'}
-                            </span>
-                          </div>
-                        </div>
-                        <p className="text-sm text-gray-500 mt-1">
-                          最后登录: {user.lastLogin}
-                        </p>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        <Button 
-                          variant="outline" 
-                          size="sm"
-                          onClick={() => setPasswordReset({userId: user.id, newPassword: ''})}
-                        >
-                          <Edit className="h-4 w-4" />
-                          重置密码
-                        </Button>
-                        {user.id !== '1' && ( // 防止删除主管理员
-                          <Button 
-                            variant="outline" 
-                            size="sm"
-                            onClick={() => handleDeleteUser(user.id)}
-                            className="text-red-600 hover:text-red-700"
-                          >
-                            <Trash2 className="h-4 w-4" />
-                            删除
-                          </Button>
-                        )}
-                      </div>
-                    </div>
-                  ))}
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* 密码重置区域 */}
-            {passwordReset.userId && (
-              <Card>
-                <CardHeader>
-                  <CardTitle>重置用户密码</CardTitle>
-                  <CardDescription>
-                    为选定用户设置新密码
-                  </CardDescription>
-                </CardHeader>
-                <CardContent>
-                  <div className="flex gap-4 items-end">
-                    <div className="flex-1 space-y-2">
-                      <Label htmlFor="reset-password">新密码</Label>
-                      <Input
-                        id="reset-password"
-                        type="password"
-                        value={passwordReset.newPassword}
-                        onChange={(e) => setPasswordReset({...passwordReset, newPassword: e.target.value})}
-                        placeholder="输入新密码"
-                      />
-                    </div>
-                    <Button onClick={handlePasswordReset}>
-                      重置密码
-                    </Button>
-                    <Button 
-                      variant="outline" 
-                      onClick={() => setPasswordReset({userId: '', newPassword: ''})}
-                    >
-                      取消
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
-            )}
+            <UserManagement />
           </TabsContent>
 
           {/* 表单管理标签页 */}

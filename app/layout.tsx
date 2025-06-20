@@ -10,13 +10,69 @@ import { StagewiseDevToolbar } from "@/components/stagewise-toolbar"
 import AdminNav from "@/components/admin-nav"
 import { Toaster } from "@/components/ui/toaster"
 import GoogleAnalytics from "@/components/google-analytics"
+import { StructuredData } from "@/components/structured-data"
 import Script from "next/script"
 
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
   title: "SinoPrime Shipping | International Logistics Solutions",
-  description: "Professional international logistics and shipping solutions from China to worldwide destinations",
+  description: "Professional international logistics and shipping solutions from China to worldwide destinations. Expert FBA prep, LCL/FCL shipping, air freight, and customs clearance services.",
+  keywords: [
+    "international shipping",
+    "logistics solutions", 
+    "FBA prep services",
+    "LCL shipping",
+    "FCL shipping", 
+    "air freight",
+    "customs clearance",
+    "China shipping",
+    "supply chain management",
+    "cross-border ecommerce"
+  ],
+  authors: [{ name: "SinoPrime Shipping Team" }],
+  creator: "SinoPrime Shipping",
+  publisher: "SinoPrime Shipping",
+  metadataBase: new URL("https://sinoprimeshipping.com"),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "en_US",
+    url: "https://sinoprimeshipping.com",
+    title: "SinoPrime Shipping | International Logistics Solutions",
+    description: "Professional international logistics and shipping solutions from China to worldwide destinations. Expert FBA prep, LCL/FCL shipping, air freight, and customs clearance services.",
+    siteName: "SinoPrime Shipping",
+    images: [
+      {
+        url: "/business-logistics-hero5.png",
+        width: 1200,
+        height: 630,
+        alt: "SinoPrime Shipping - International Logistics Solutions",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "SinoPrime Shipping | International Logistics Solutions",
+    description: "Professional international logistics and shipping solutions from China to worldwide destinations.",
+    images: ["/business-logistics-hero5.png"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-video-preview": -1,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+    },
+  },
+  verification: {
+    google: "your-google-verification-code", // 请替换为您的Google验证码
+  },
   icons: {
     icon: [
       { url: "/favicon-16x16.png", sizes: "16x16", type: "image/png" },
@@ -25,7 +81,8 @@ export const metadata: Metadata = {
     apple: [{ url: "/apple-touch-icon.png" }],
     shortcut: ["/favicon.ico"],
   },
-    generator: 'v0.dev'
+  generator: 'Next.js',
+  category: 'business',
 }
 
 export default function RootLayout({
@@ -48,6 +105,8 @@ export default function RootLayout({
         
         <CriticalImagesPreloader />
         <GoogleAnalytics />
+        <StructuredData type="organization" />
+        <StructuredData type="website" />
         <ThemeProvider attribute="class" defaultTheme="light" enableSystem disableTransitionOnChange>
           <Header />
           <main className="min-h-screen">{children}</main>
